@@ -18,7 +18,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
       {" "}
       <div data-r="guessgrid" style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: "16px" }}>
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-1.jpg" alt="Кадр 1 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-1.webp" alt="Кадр 1 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             01
@@ -50,7 +50,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-3.jpg" alt="Кадр 2 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-2.webp" alt="Кадр 2 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             02
@@ -82,7 +82,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-4.jpg" alt="Кадр 3 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-3.webp" alt="Кадр 3 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             03
@@ -114,7 +114,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-5.jpg" alt="Кадр 4 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-4.webp" alt="Кадр 4 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             04
@@ -146,7 +146,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-6.jpg" alt="Кадр 5 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-5.webp" alt="Кадр 5 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             05
@@ -178,7 +178,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-2.jpg" alt="Кадр 6 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-6.webp" alt="Кадр 6 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             06
@@ -210,7 +210,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-7.jpg" alt="Кадр 7 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-7.webp" alt="Кадр 7 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             07
@@ -242,7 +242,7 @@ export function S03Guess({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#E4E8ED", aspectRatio: "3/4" }}>
-          <img src="/landing/ru/look-4.jpg" alt="Кадр 8 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <img src="/landing/ru/guess-8.webp" alt="Кадр 8 из восьми: съёмка или примерка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
           {" "}
           <span style={{ position: "absolute", top: "14px", left: "14px", height: "28px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.9)", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", color: "#121417" }}>
             08

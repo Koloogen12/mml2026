@@ -295,3 +295,57 @@ html {
 @media (max-width: 640px) {
   .mml-v2 section[data-screen-label="01 Hero"] { padding-top: 12px !important; }
 }
+
+/* Кнопки ставок в угадайке на узком экране.
+
+   «Съёмка» и «Примерка» стоят парой с flex: 1, но у flex-элемента
+   min-width: auto — уже своего текста он не сжимается. Паре нужно 155 px,
+   а внутри карточки на 390 px их всего 143: «Примерка» уезжала за край
+   карточки и обрезалась её overflow: hidden, а на 320 px тащила вбок всю
+   страницу. Ставим их друг под друга — тогда каждой достаётся вся ширина
+   карточки. Порог 420 px: с этой ширины пара помещается в строку. */
+@media (max-width: 420px) {
+  .mml-v2 [data-r="guessgrid"] > div > div:has(> button) {
+    flex-direction: column;
+  }
+  .mml-v2 [data-r="guessgrid"] > div > div:has(> button) > button {
+    min-height: 40px !important;
+  }
+}
+
+/* Сетки с минимальной колонкой шире экрана.
+
+   В макете шапки блоков и пара крупных сеток заданы как
+   repeat(auto-fit, minmax(320px, 1fr)) — на 320 px экране под контент остаётся
+   288, и минимальная колонка сама по себе шире доступного места: сетка вылезает
+   за край и тащит за собой страницу. На таких ширинах колонка всё равно одна,
+   поэтому просто снимаем нижнюю границу трека. */
+@media (max-width: 400px) {
+  .mml-v2 [style*="minmax(320px"],
+  .mml-v2 [style*="minmax(300px"] {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* Блок «Продукт» на узком экране.
+
+   Кнопка «Посмотреть на моих товарах» и плашка «В корзину» заданы с
+   white-space: nowrap и не сжимаются: на 320 px кнопка шире экрана, а плашка
+   выезжает из карточки. Кнопке разрешаем перенос, строку с размером и корзиной
+   складываем в две. */
+@media (max-width: 400px) {
+  .mml-v2 section[data-screen-label="08 Product"] a.scp1 {
+    white-space: normal !important;
+    height: auto !important;
+    min-height: 52px;
+    padding: 12px 18px !important;
+    text-align: center;
+  }
+  .mml-v2 section[data-screen-label="08 Product"] div[style*="bottom:16px"] {
+    flex-wrap: wrap;
+  }
+  .mml-v2 section[data-screen-label="08 Product"] div[style*="bottom:16px"] > span {
+    width: 100%;
+    justify-content: center;
+  }
+}
