@@ -18,7 +18,7 @@ export function S07WhyNow({ v }: { v: LandingVals }) {
           <div>
             <h2 style={{ margin: "0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(30px,3.4vw,52px)", lineHeight: "1.04", letterSpacing: "-.03em" }}>
               {"Примерка переехала "}
-              <span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: "400", fontSize: "1.15em" }}>
+              <span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: "400", fontSize: "1.15em", whiteSpace: "nowrap" }}>
                 в логистику
               </span>
             </h2>

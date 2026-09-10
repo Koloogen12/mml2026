@@ -89,7 +89,7 @@ export function useLandingVals() {
       // человек вернётся на середину последовательности вместо начала.
       if (document.hidden) return;
       setLayer((k) => (k + 1) % 4);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(id);
   }, [layerAuto]);
 

@@ -667,10 +667,14 @@ const OVERRIDES = {
     {
       // Заголовок. Типографский приём макета сохранён: последние слова —
       // курсивной антиквой, меняются только сами слова.
+      //
+      // nowrap на курсивной части: без него «в» цеплялось к первой строке и
+      // заголовок ломался как «Примерка переехала в / логистику». Неразрывная
+      // вторая половина уезжает на строку целиком — по два слова в строке.
       what: 'заголовок блока о рынке',
       find: /\{"Мерить стало "\}\n(\s*)<span style=\{\{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: "400", fontSize: "1\.15em" \}\}>\n\s*негде\n(\s*)<\/span>/,
       to: (m, i1, i2) =>
-        `{"Примерка переехала "}\n${i1}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: "400", fontSize: "1.15em" }}>\n${i1}  в логистику\n${i2}</span>`
+        `{"Примерка переехала "}\n${i1}<span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: "400", fontSize: "1.15em", whiteSpace: "nowrap" }}>\n${i1}  в логистику\n${i2}</span>`
     },
     {
       // Текст. Было четыре доли процента подряд — читается как справка, а не
