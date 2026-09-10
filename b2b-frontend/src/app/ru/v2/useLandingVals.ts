@@ -32,6 +32,16 @@ const KINDS: Kind[] = ['tryon', 'shoot', 'tryon', 'shoot', 'shoot', 'tryon', 'sh
 
 const fmt = (n: number) => Math.round(n).toLocaleString('ru-RU').replace(/,/g, ' ');
 
+// Слои образа в блоке «Один человек, одна поза». Каждая вещь описана один раз:
+// вкладки отличаются только тем, сколько из них надето, — в этом весь смысл
+// демонстрации, вещи не подменяются от кадра к кадру. Точка — цвет самой вещи
+// на снимке, чтобы плашку можно было сопоставить с картинкой глазами.
+const SHIRT = { name: 'Рубашка белая с вышивкой на манжетах', dot: '#F2F0EB' };
+const TROUSERS = { name: 'Брюки палаццо', dot: '#A28D6C' };
+const BAG = { name: 'Сумка-хобо', dot: '#4E5236' };
+const VEST = { name: 'Жилет трикотажный', dot: '#CE3A2B' };
+const COAT = { name: 'Пальто оверсайз', dot: '#4B4F57' };
+
 export type GuessCell = {
   betShoot: () => void;
   betTryon: () => void;
@@ -216,7 +226,8 @@ export function useLandingVals() {
       lo0: layer === 0 ? 1 : 0,
       lo1: layer === 1 ? 1 : 0,
       lo2: layer === 2 ? 1 : 0,
-      layerTabs: ['1 слой', '3 слоя', '5 слоёв'].map((label, k) => ({
+      lo3: layer === 3 ? 1 : 0,
+      layerTabs: ['1 слой', '3 слоя', '4 слоя', '5 слоёв'].map((label, k) => ({
         label,
         pick: () => {
           track('layers_switch', { layers: k });
@@ -227,24 +238,16 @@ export function useLandingVals() {
         border: k === layer ? '#fff' : 'rgba(255,255,255,.3)'
       })),
       activeLayerChips: [
-        [{ name: 'Топ в рубчик', dot: '#E8E4DE' }],
-        [
-          { name: 'Топ в рубчик', dot: '#E8E4DE' },
-          { name: 'Брюки прямые', dot: '#2B3340' },
-          { name: 'Жакет', dot: '#8E96A3' }
-        ],
-        [
-          { name: 'Топ в рубчик', dot: '#E8E4DE' },
-          { name: 'Брюки прямые', dot: '#2B3340' },
-          { name: 'Жакет', dot: '#8E96A3' },
-          { name: 'Пальто', dot: '#DDE3EA' },
-          { name: 'Лоферы', dot: '#6B5A44' }
-        ]
+        [SHIRT],
+        [TROUSERS, SHIRT, BAG],
+        [TROUSERS, SHIRT, BAG, VEST],
+        [TROUSERS, SHIRT, BAG, VEST, COAT]
       ][layer],
-      layerCount: [1, 3, 5][layer],
+      layerCount: [1, 3, 4, 5][layer],
       layerNote: [
         'Одна вещь на человеке — это всё, что умеет примерка маркетплейсов',
-        'Низ, верх и третий слой — образ читается целиком',
+        'Низ, верх и сумка — образ читается целиком',
+        'Жилет лёг поверх рубашки, а не вместо неё — манжеты остались на месте',
         'Пять слоёв в одном образе: от базы до верхней одежды'
       ][layer],
 

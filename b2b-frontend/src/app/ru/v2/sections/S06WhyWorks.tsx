@@ -27,12 +27,14 @@ export function S06WhyWorks({ v }: { v: LandingVals }) {
       </div>
       {" "}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "12px", alignItems: "stretch" }}>
-        <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#0E1014", minHeight: "620px" }}>
-          <img src="/landing/ru/look-3.jpg" alt="Один человек, 1 слоя одежды в образе" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%", opacity: v.lo0, transition: "opacity 500ms ease" }} />
+        <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", background: "#0E1014", aspectRatio: "3/4", width: "100%" }}>
+          <img src="/landing/ru/layer-1.webp" alt="Один человек в одной позе, 1 слой одежды: рубашка" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%", opacity: v.lo0, transition: "opacity 500ms ease" }} />
           {" "}
-          <img src="/landing/ru/look-7.jpg" alt="Один человек, 3 слоя одежды в образе" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%", opacity: v.lo1, transition: "opacity 500ms ease" }} />
+          <img src="/landing/ru/layer-2.webp" alt="Один человек в одной позе, 3 слоя одежды: брюки палаццо, рубашка и сумка-хобо" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%", opacity: v.lo1, transition: "opacity 500ms ease" }} />
           {" "}
-          <img src="/landing/ru/look-2.jpg" alt="Один человек, 5 слоя одежды в образе" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 30%", opacity: v.lo2, transition: "opacity 500ms ease" }} />
+          <img src="/landing/ru/layer-3.webp" alt="Один человек в одной позе, 4 слоя одежды: те же три вещи плюс трикотажный жилет" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%", opacity: v.lo2, transition: "opacity 500ms ease" }} />
+          {" "}
+          <img src="/landing/ru/layer-4.webp" alt="Один человек в одной позе, 5 слоёв одежды: те же четыре вещи плюс пальто оверсайз" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%", opacity: v.lo3, transition: "opacity 500ms ease" }} />
           {" "}
           <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(10,14,22,.4) 0%,rgba(10,14,22,0) 30%,rgba(10,14,22,.6) 100%)", pointerEvents: "none" }}></div>
           {" "}
@@ -76,22 +78,22 @@ export function S06WhyWorks({ v }: { v: LandingVals }) {
         </div>
         {" "}
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          <div style={{ background: "#fff", borderRadius: "28px", padding: "clamp(22px,2.6vw,32px)", display: "flex", flexDirection: "column", gap: "20px", flex: "1" }}>
+          <div style={{ background: "#fff", borderRadius: "28px", padding: "clamp(22px,2.6vw,32px)", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "20px", flex: "1" }}>
             <div>
               <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".04em", color: "#565E6B" }}>
                 ПРОИСХОЖДЕНИЕ ВЕЩИ
               </span>
               {" "}
               <h3 style={{ margin: "12px 0 0", fontSize: "22px", fontWeight: "500", lineHeight: "1.3", letterSpacing: "-.015em" }}>
-                Это ваш артикул DR-2041, а не похожая вещь
+                Это точно ваш артикул, а не похожая вещь
               </h3>
             </div>
             {" "}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#EEF0F3", aspectRatio: "3/4" }}>
-                  <img src="/landing/ru/look-3.jpg" alt="Фотография изделия DR-2041 из каталога магазина" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 30%" }} />
-                  <span style={{ position: "absolute", left: "44%", top: "38%", width: "72px", height: "72px", borderRadius: "50%", border: "2px solid #2F5AE6", transform: "translate(-50%,-50%)", boxShadow: "0 0 0 9999px rgba(18,20,23,.18)" }}></span>
+                  <img src="/landing/ru/prov-catalog.webp" alt="Фотография жилета из каталога магазина: полосатый V-образный кант" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }} />
+                  <span style={{ position: "absolute", left: "50%", top: "75%", width: "72px", height: "72px", borderRadius: "50%", border: "2px solid #2F5AE6", transform: "translate(-50%,-50%)", boxShadow: "0 0 0 9999px rgba(18,20,23,.18)" }}></span>
                 </div>
                 {" "}
                 <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".03em", color: "#565E6B" }}>
@@ -101,8 +103,8 @@ export function S06WhyWorks({ v }: { v: LandingVals }) {
               {" "}
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#EEF0F3", aspectRatio: "3/4" }}>
-                  <img src="/landing/ru/look-7.jpg" alt="Наш рендер того же изделия на покупателе" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 30%" }} />
-                  <span style={{ position: "absolute", left: "52%", top: "44%", width: "72px", height: "72px", borderRadius: "50%", border: "2px solid #2F5AE6", transform: "translate(-50%,-50%)", boxShadow: "0 0 0 9999px rgba(18,20,23,.18)" }}></span>
+                  <img src="/landing/ru/prov-render.webp" alt="Наш рендер: тот же жилет на покупателе, кант с тем же порядком полос" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }} />
+                  <span style={{ position: "absolute", left: "50%", top: "47%", width: "72px", height: "72px", borderRadius: "50%", border: "2px solid #2F5AE6", transform: "translate(-50%,-50%)", boxShadow: "0 0 0 9999px rgba(18,20,23,.18)" }}></span>
                 </div>
                 {" "}
                 <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".03em", color: "#2F5AE6" }}>
@@ -112,7 +114,7 @@ export function S06WhyWorks({ v }: { v: LandingVals }) {
             </div>
             {" "}
             <p style={{ margin: "0", fontSize: "15px", lineHeight: "1.55", color: "#565E6B" }}>
-              Сверьте принт, пуговицу и шов: на обоих кадрах обведён один и тот же элемент вашего изделия. Генератор картинок такую сверку не проходит — он рисует похожее.
+              Сверьте порядок полос и переход цвета: на обоих кадрах обведён один и тот же элемент вашего изделия. Генератор картинок такую сверку не проходит — он рисует похожее.
             </p>
           </div>
           {" "}

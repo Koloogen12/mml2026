@@ -230,3 +230,17 @@ html {
 @media (max-width: 900px) {
   .mml-v2 [data-r="stepcard"] { aspect-ratio: auto !important; height: auto !important; }
 }
+
+/* Вкладки слоёв на телефоне.
+
+   Вкладок стало четыре (между тремя и пятью слоями лежит тот самый случай,
+   ради которого блок и существует), и в макетных размерах они переносились на
+   вторую строку, закрывая модели голову. Уменьшаем сами кнопки, а не подписи:
+   «3 слоя» без слова «слоя» перестаёт что-либо значить. */
+@media (max-width: 640px) {
+  .mml-v2 section[data-screen-label="06 Why works"] button {
+    height: 38px !important;
+    padding: 0 9px !important;
+    font-size: 13px !important;
+  }
+}
