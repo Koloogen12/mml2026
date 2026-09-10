@@ -649,6 +649,20 @@ const OVERRIDES = {
       to: () => 'Сверьте порядок полос и переход цвета: на обоих кадрах обведён один и тот же элемент вашего изделия.'
     }
   ],
+  S09Connect: [
+    {
+      // Строка над сниппетом: слева подпись «СТРАНИЦА ТОВАРА · ОДНА СТРОКА»,
+      // справа плашка «скопировать», обе с white-space: nowrap. На 390 px они
+      // вдвоём не помещаются, и страница уезжает вбок на 37 px. Разрешаем
+      // переносить: на широком экране строка как была, на узком плашка
+      // опускается под подпись.
+      what: 'строка над сниппетом → перенос на узком экране',
+      find: /<div style=\{\{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px" \}\}>\n(\s*)<span style=\{\{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: "\.04em", color: "rgba\(255,255,255,\.45\)", whiteSpace: "nowrap" \}\}>/,
+      to: (m, ind) =>
+        `<div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>\n${ind}` +
+        `<span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".04em", color: "rgba(255,255,255,.45)", whiteSpace: "nowrap" }}>`
+    }
+  ],
   S14Cta: [
     {
       // Состояние отправки. В макете подпись кнопки статична, потому что там

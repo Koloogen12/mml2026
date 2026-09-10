@@ -244,3 +244,66 @@ html {
     font-size: 13px !important;
   }
 }
+
+/* Шапка первого экрана на узком экране.
+
+   В макете это логотип-пилюля, ссылка «Как работает» и белая кнопка
+   «Показать на моих товарах» — в одну строку, все три с white-space: nowrap.
+   На 390 px строке нужно 538 px при 350 доступных: кнопка уезжала за правый
+   край экрана и обрезалась, а вместе с ней вбок ехала вся страница.
+
+   Переносим в две строки, а не выбрасываем ничего: кнопка в шапке — это
+   единственное целевое действие, которое видно на первом экране до прокрутки
+   (собственные кнопки геро-карточки лежат ниже сгиба на телефоне, а липкая
+   полоса внизу появляется только когда первый экран уехал вверх). */
+@media (max-width: 640px) {
+  .mml-v2 header {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+  .mml-v2 header nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .mml-v2 header > div,
+  .mml-v2 header nav a {
+    height: 40px !important;
+    font-size: 14px !important;
+  }
+  .mml-v2 header nav a { padding: 0 14px !important; }
+  .mml-v2 header > div { padding: 0 14px 0 12px !important; }
+}
+
+/* Ещё уже: второй строке нужно 336 px, на 360 доступно 320. Кегль на пункт
+   меньше — на глаз незаметно, строка перестаёт вылезать. */
+@media (max-width: 400px) {
+  .mml-v2 header > div,
+  .mml-v2 header nav a { font-size: 13px !important; }
+  .mml-v2 header nav a { padding: 0 12px !important; }
+  .mml-v2 header > div { padding: 0 12px 0 10px !important; }
+}
+
+/* Плашки вещей в блоке слоёв на узком экране.
+
+   «Рубашка белая с вышивкой на манжетах» — 351 px при white-space: nowrap,
+   а на 360 px в кадре доступно 288. Уменьшаем кегль и разрешаем перенос:
+   на 360 подпись укладывается в строку, на 320 переносится на две. */
+@media (max-width: 640px) {
+  .mml-v2 section[data-screen-label="06 Why works"] [style*="rgba(255,255,255,.92)"] {
+    white-space: normal !important;
+    max-width: 100%;
+    font-size: 13px !important;
+    height: auto !important;
+    padding: 5px 12px 5px 6px !important;
+  }
+}
+
+/* Совсем узкие экраны (320 px, iPhone SE первого поколения). Логотип и ссылка
+   в шапке вдвоём занимают 306 px при 288 доступных — ужимаем кегль ещё на
+   пункт. Ниже 400 px это уже не заметно на глаз, а строка перестаёт вылезать. */
+@media (max-width: 400px) {
+  .mml-v2 header > div,
+  .mml-v2 header nav a { font-size: 13px !important; }
+  .mml-v2 header nav a { padding: 0 12px !important; }
+  .mml-v2 header > div { padding: 0 12px 0 10px !important; }
+}

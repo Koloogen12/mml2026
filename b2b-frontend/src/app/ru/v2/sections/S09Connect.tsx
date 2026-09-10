@@ -49,7 +49,7 @@ export function S09Connect({ v }: { v: LandingVals }) {
           </div>
           {" "}
           <div style={{ borderRadius: "16px", background: "#0E1014", padding: "20px 22px", display: "flex", flexDirection: "column", gap: "12px" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
               <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".04em", color: "rgba(255,255,255,.45)", whiteSpace: "nowrap" }}>
                 СТРАНИЦА ТОВАРА · ОДНА СТРОКА
               </span>
