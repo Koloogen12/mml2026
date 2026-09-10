@@ -13,7 +13,7 @@ export function S02Steps(_props: { v: LandingVals }) {
         </span>
         {" "}
         <h2 style={{ margin: "18px 0 0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(28px,3vw,44px)", lineHeight: "1.08", letterSpacing: "-.03em", textWrap: "balance" }}>
-          Четыре шага на странице товара
+          Три шага на странице товара
         </h2>
         {" "}
         <p style={{ margin: "18px 0 0", fontSize: "17px", lineHeight: "1.5", color: "#565E6B" }}>
@@ -25,7 +25,7 @@ export function S02Steps(_props: { v: LandingVals }) {
         <div data-r="stepcard" style={{ position: "sticky", top: "72px", borderRadius: "28px", overflow: "hidden", background: "linear-gradient(140deg,#2A3854 0%,#141C29 55%,#0E1014 100%)", padding: "clamp(20px,2.2vw,28px)", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "clamp(20px,2.4vw,32px)", alignItems: "center", minHeight: "420px", boxShadow: "0 -18px 40px rgba(10,14,22,.18)" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "clamp(8px,1.6vw,20px)" }}>
             <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".04em", color: "rgba(255,255,255,.6)" }}>
-              ШАГ 01 / 04
+              ШАГ 01 / 03
             </span>
             {" "}
             <h3 style={{ margin: "0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(22px,2.2vw,32px)", lineHeight: "1.1", letterSpacing: "-.025em", color: "#fff" }}>
@@ -43,14 +43,14 @@ export function S02Steps(_props: { v: LandingVals }) {
           </div>
           {" "}
           <div className="stepmedia">
-            <StepMedia step={1} alt="Запись экрана: покупатель листает каталог и нажимает «Примерить» на карточке платья" />
+            <StepMedia step={1} alt="Запись экрана: покупатель открывает каталог и нажимает «Примерить» на карточке платья" />
           </div>
         </div>
         {" "}
         <div data-r="stepcard" style={{ position: "sticky", top: "88px", borderRadius: "28px", overflow: "hidden", background: "linear-gradient(140deg,#24405E 0%,#16202E 55%,#0E1014 100%)", padding: "clamp(20px,2.2vw,28px)", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "clamp(20px,2.4vw,32px)", alignItems: "center", minHeight: "420px", boxShadow: "0 -18px 40px rgba(10,14,22,.18)" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "clamp(8px,1.6vw,20px)" }}>
             <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".04em", color: "rgba(255,255,255,.6)" }}>
-              ШАГ 02 / 04
+              ШАГ 02 / 03
             </span>
             {" "}
             <h3 style={{ margin: "0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(22px,2.2vw,32px)", lineHeight: "1.1", letterSpacing: "-.025em", color: "#fff" }}>
@@ -75,7 +75,7 @@ export function S02Steps(_props: { v: LandingVals }) {
         <div data-r="stepcard" style={{ position: "sticky", top: "104px", borderRadius: "28px", overflow: "hidden", background: "linear-gradient(140deg,#1E4A72 0%,#152331 55%,#0E1014 100%)", padding: "clamp(20px,2.2vw,28px)", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "clamp(20px,2.4vw,32px)", alignItems: "center", minHeight: "420px", boxShadow: "0 -18px 40px rgba(10,14,22,.18)" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "clamp(8px,1.6vw,20px)" }}>
             <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".04em", color: "rgba(255,255,255,.6)" }}>
-              ШАГ 03 / 04
+              ШАГ 03 / 03
             </span>
             {" "}
             <h3 style={{ margin: "0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(22px,2.2vw,32px)", lineHeight: "1.1", letterSpacing: "-.025em", color: "#fff" }}>
@@ -83,32 +83,7 @@ export function S02Steps(_props: { v: LandingVals }) {
             </h3>
             {" "}
             <p style={{ margin: "0", maxWidth: "420px", fontSize: "17px", lineHeight: "1.55", color: "rgba(255,255,255,.78)" }}>
-              Не на модели, похожей на него, а на нём. Можно добавить второй и третий слой и собрать образ целиком.
-            </p>
-            {" "}
-            <span style={{ display: "inline-flex", alignItems: "center", gap: "10px", height: "40px", padding: "0 16px", borderRadius: "999px", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.18)", color: "#fff", fontSize: "14px", whiteSpace: "nowrap", alignSelf: "flex-start" }}>
-              <span style={{ width: "8px", height: "8px", borderRadius: "50%", background: "#8FB0FF" }}></span>
-              Образ собран
-            </span>
-          </div>
-          {" "}
-          <div className="stepmedia">
-            <StepMedia step={3} alt="Запись экрана: виджет снимает мерки и показывает платье на самом покупателе" />
-          </div>
-        </div>
-        {" "}
-        <div data-r="stepcard" style={{ position: "sticky", top: "120px", borderRadius: "28px", overflow: "hidden", background: "linear-gradient(140deg,#2F5AE6 0%,#17243A 55%,#0E1014 100%)", padding: "clamp(20px,2.2vw,28px)", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: "clamp(20px,2.4vw,32px)", alignItems: "center", minHeight: "420px", boxShadow: "0 -18px 40px rgba(10,14,22,.18)" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: "16px", padding: "clamp(8px,1.6vw,20px)" }}>
-            <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".04em", color: "rgba(255,255,255,.6)" }}>
-              ШАГ 04 / 04
-            </span>
-            {" "}
-            <h3 style={{ margin: "0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(22px,2.2vw,32px)", lineHeight: "1.1", letterSpacing: "-.025em", color: "#fff" }}>
-              Получает свой размер
-            </h3>
-            {" "}
-            <p style={{ margin: "0", maxWidth: "420px", fontSize: "17px", lineHeight: "1.55", color: "rgba(255,255,255,.78)" }}>
-              Расчёт по замерам конкретного изделия и параметрам человека — с пояснением, где свободнее, а где по фигуре.
+              Не на модели, похожей на него, а на нём. Вместе с результатом сразу приходит рекомендованный размер — посчитанный по замерам этого изделия, а не по общей таблице.
             </p>
             {" "}
             <span style={{ display: "inline-flex", alignItems: "center", gap: "10px", height: "40px", padding: "0 16px", borderRadius: "999px", background: "rgba(255,255,255,.12)", border: "1px solid rgba(255,255,255,.18)", color: "#fff", fontSize: "14px", whiteSpace: "nowrap", alignSelf: "flex-start" }}>
@@ -118,7 +93,7 @@ export function S02Steps(_props: { v: LandingVals }) {
           </div>
           {" "}
           <div className="stepmedia">
-            <StepMedia step={4} alt="Запись экрана: виджет подсвечивает рекомендованный размер M среди размеров товара" />
+            <StepMedia step={3} alt="Запись экрана: платье появляется на самом покупателе, рядом — рекомендованный размер M" />
           </div>
         </div>
       </div>

@@ -3,11 +3,16 @@
 import { useEffect, useRef, useState } from 'react';
 
 /**
- * Экран виджета в блоке «Четыре шага» — запись реального прохода, а не картинка.
+ * Экран виджета в блоке «Три шага» — запись реального прохода, а не картинка.
+ *
+ * Запись сделана с десктопа окном 1124×912 и лежит во всю ширину медийной
+ * колонки. До этого здесь были вертикальные записи с телефона: в колонке
+ * карточки телефон показывался в 21% натуральной величины, и в интерфейсе
+ * не читалось ничего. Горизонтальный кадр даёт около 75%.
  *
  * Почему не GIF: та же запись в GIF весит в 12 раз больше при вдвое меньшей
- * частоте кадров и 128 цветах (замер на третьем шаге: 545 кБ против 44 кБ).
- * Зацикленное видео без звука ведёт себя так же, а стоит как картинка.
+ * частоте кадров и 128 цветах (замер: 545 кБ против 44 кБ). Зацикленное видео
+ * без звука ведёт себя так же, а стоит как картинка.
  *
  * Грузим лениво и по одному: src назначается только когда карточка подошла к
  * экрану. Четыре ролика в секции — это четыре запроса, и делать их на входе на
@@ -22,7 +27,7 @@ import { useEffect, useRef, useState } from 'react';
  * prefers-reduced-motion: показываем постер и не грузим видео вовсе — как в
  * первом экране.
  */
-export function StepMedia({ step, alt }: { step: 1 | 2 | 3 | 4; alt: string }) {
+export function StepMedia({ step, alt }: { step: 1 | 2 | 3; alt: string }) {
   const box = useRef<HTMLDivElement>(null);
   const video = useRef<HTMLVideoElement>(null);
   const [armed, setArmed] = useState(false);
@@ -62,7 +67,7 @@ export function StepMedia({ step, alt }: { step: 1 | 2 | 3 | 4; alt: string }) {
     ] as const) {
       const s = document.createElement('source');
       s.type = type;
-      s.src = `/landing/ru/step-${step}.${ext}`;
+      s.src = `/landing/ru/desk-${step}.${ext}`;
       v.appendChild(s);
     }
     const start = () => void v.play().catch(() => {});
@@ -72,11 +77,11 @@ export function StepMedia({ step, alt }: { step: 1 | 2 | 3 | 4; alt: string }) {
   }, [armed, step]);
 
   return (
-    <div ref={box} className="stepphone">
+    <div ref={box} className="stepshot">
       <video
         ref={video}
-        className="stepphone__screen"
-        poster={armed ? `/landing/ru/step-${step}-poster.webp` : undefined}
+        className="stepshot__screen"
+        poster={armed ? `/landing/ru/desk-${step}-poster.webp` : undefined}
         muted
         loop
         playsInline
