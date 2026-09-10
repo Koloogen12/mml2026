@@ -167,3 +167,66 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .mml-v2 .mml-sticky { transition: none; }
 }
+
+/* Экран виджета в блоке «Четыре шага».
+
+   Записи сняты с телефона (после обрезки строки состояния и адресной строки —
+   1080×2046), а в макете на их месте стояла картинка 4:5. Растянуть запись под
+   4:5 нельзя: либо чёрные поля, либо от вертикального экрана останется полоса
+   посередине. Поэтому кадр держит свои пропорции и задаётся по высоте, а рамка
+   вокруг честно читается как телефон — это и есть то, что показывают. */
+.mml-v2 .stepphone {
+  position: relative;
+  flex: 0 0 auto;
+  aspect-ratio: 540 / 1023;
+  height: clamp(300px, 40vw, 430px);
+  border-radius: 26px;
+  background: #0E1014;
+  /* Тень + два кольца: внешнее — корпус, внутреннее — блик на грани.
+     Обводкой, а не border: border сдвинул бы кадр внутри радиуса. */
+  box-shadow:
+    0 30px 60px -22px rgba(5, 8, 14, .8),
+    0 0 0 1px rgba(255, 255, 255, .16),
+    0 0 0 7px rgba(255, 255, 255, .05);
+}
+.mml-v2 .stepphone__screen {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  background: #0E1014;
+}
+/* Свет сверху вниз по стеклу — иначе тёмный прямоугольник на тёмной карточке
+   сливается с фоном и телефон не читается. */
+.mml-v2 .stepphone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .10) 0%, rgba(255, 255, 255, 0) 22%);
+}
+.mml-v2 .stepmedia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(4px, 1vw, 14px);
+}
+@media (max-width: 900px) {
+  .mml-v2 .stepphone { height: clamp(340px, 100vw, 420px); }
+}
+
+/* Карточка шага на телефоне.
+
+   В макете под 900px карточке задан aspect-ratio (4/5, под 640px — 3/4) плюс
+   overflow:hidden. Пока внутри стояла картинка-заглушка, срез был незаметен;
+   с реальным содержимым — текст шага плюс вертикальный экран телефона — в
+   заданную пропорцию не помещается: на iPhone 14 это 662px содержимого в
+   464px карточки, низ просто отрезан. Пропорцию снимаем, всё остальное
+   (радиус, градиент, отступы) остаётся от макета. */
+@media (max-width: 900px) {
+  .mml-v2 [data-r="stepcard"] { aspect-ratio: auto !important; height: auto !important; }
+}

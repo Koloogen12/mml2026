@@ -5,29 +5,57 @@
       "name": "buyer",
       "cwd": "platform/web",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@mml/buyer", "dev"],
+      "runtimeArgs": [
+        "--filter",
+        "@mml/buyer",
+        "dev"
+      ],
       "port": 5173
     },
     {
       "name": "partner",
       "cwd": "platform/web",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@mml/partner", "dev"],
+      "runtimeArgs": [
+        "--filter",
+        "@mml/partner",
+        "dev"
+      ],
       "port": 5174
     },
     {
       "name": "admin",
       "cwd": "platform/web",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@mml/admin", "dev"],
+      "runtimeArgs": [
+        "--filter",
+        "@mml/admin",
+        "dev"
+      ],
       "port": 5175
     },
     {
       "name": "waitlist",
       "cwd": "waitlist",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["--yes", "serve", "-l", "4173", "."],
+      "runtimeArgs": [
+        "--yes",
+        "serve",
+        "-l",
+        "4173",
+        "."
+      ],
       "port": 4173
+    },
+    {
+      "name": "b2b-frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "cwd": "b2b-frontend",
+      "port": 3000
     }
   ]
 }

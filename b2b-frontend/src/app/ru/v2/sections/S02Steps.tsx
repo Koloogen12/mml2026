@@ -2,6 +2,7 @@
    Источник: design-handoff/ru-landing/MakeMeLook Landing.dc.html */
 
 import type { LandingVals } from '../useLandingVals';
+import { StepMedia } from '../StepMedia';
 
 export function S02Steps(_props: { v: LandingVals }) {
   return (
@@ -41,8 +42,8 @@ export function S02Steps(_props: { v: LandingVals }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#0E1014", aspectRatio: "4/5", minHeight: "300px" }}>
-            <img src="/landing/ru/look-3.jpg" alt="Экран виджета на шаге 01" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <div className="stepmedia">
+            <StepMedia step={1} alt="Запись экрана: покупатель листает каталог и нажимает «Примерить» на карточке платья" />
           </div>
         </div>
         {" "}
@@ -66,8 +67,8 @@ export function S02Steps(_props: { v: LandingVals }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#0E1014", aspectRatio: "4/5", minHeight: "300px" }}>
-            <img src="/landing/ru/look-4.jpg" alt="Экран виджета на шаге 02" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <div className="stepmedia">
+            <StepMedia step={2} alt="Запись экрана: покупатель выбирает своё фото в полный рост и подтверждает загрузку" />
           </div>
         </div>
         {" "}
@@ -91,8 +92,8 @@ export function S02Steps(_props: { v: LandingVals }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#0E1014", aspectRatio: "4/5", minHeight: "300px" }}>
-            <img src="/landing/ru/look-2.jpg" alt="Экран виджета на шаге 03" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <div className="stepmedia">
+            <StepMedia step={3} alt="Запись экрана: виджет снимает мерки и показывает платье на самом покупателе" />
           </div>
         </div>
         {" "}
@@ -116,8 +117,8 @@ export function S02Steps(_props: { v: LandingVals }) {
             </span>
           </div>
           {" "}
-          <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#0E1014", aspectRatio: "4/5", minHeight: "300px" }}>
-            <img src="/landing/ru/look-1.jpg" alt="Экран виджета на шаге 04" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 22%" }} />
+          <div className="stepmedia">
+            <StepMedia step={4} alt="Запись экрана: виджет подсвечивает рекомендованный размер M среди размеров товара" />
           </div>
         </div>
       </div>
