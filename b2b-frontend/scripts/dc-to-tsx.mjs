@@ -471,8 +471,53 @@ const OVERRIDES = {
     {
       what: 'подложка героя: картинка-заглушка → видео',
       find: /<img src="\/landing\/ru\/hero-shot-3\.jpg"[^>]*?style=(\{\{[^}]*\}\}) \/>/,
-      to: (m, style) => `<HeroMedia style={${style.slice(1, -1)}} />`,
+      // objectPosition переопределяем: в макете 26% подобраны под фотографию,
+      // а в видео модель стоит выше в кадре и на широком экране ей срезало
+      // голову. 12% оставляют её целиком на всех пропорциях.
+      to: (m, style) =>
+        `<HeroMedia style={${style.slice(1, -1).replace(/objectPosition: "[^"]*"/, 'objectPosition: "50% 12%"')}} />`,
       imports: "import { HeroMedia } from '../HeroMedia';"
+    },
+    {
+      // Карточка с интерфейсом виджета поверх первого экрана — остаток макета,
+      // где подложкой была фотография. Поверх видео она закрывает половину
+      // кадра, а сам виджет показан ниже по странице отдельным блоком.
+      what: 'убрать карточку интерфейса поверх видео в герое',
+      find: /\s*\{" "\}\n\s*<div data-r="herophone"[\s\S]*?<\/div>\n/,
+      to: () => '\n'
+    }
+  ],
+  S01bCompat: [
+    {
+      // Настоящие логотипы платформ вместо набранных названий: строка
+      // «работает на» должна читаться как факт совместимости, а текст
+      // выглядит как заявление. Марки берутся официальные, с сайтов
+      // самих платформ, и не перерисовываются.
+      //
+      // Плюс шестой пункт — самописные сайты. У них логотипа нет по
+      // определению, поэтому обозначены знаком кода: виджет ставится
+      // скриптом и от движка не зависит.
+      what: 'названия платформ → официальные логотипы',
+      find: /(\s*)<span>\n\s*Tilda\n\s*<\/span>[\s\S]*?<span>\n\s*OpenCart\n\s*<\/span>/,
+      to: (m, ind) => {
+        const logos = [
+          ['tilda.svg', 'Tilda', 26],
+          ['insales.svg', 'InSales', 22],
+          ['bitrix.svg', '1С-Битрикс', 20],
+          ['cscart.png', 'CS-Cart', 22],
+          ['opencart.png', 'OpenCart', 20]
+        ];
+        const items = logos.map(([file, alt, h]) =>
+          `${ind}<img src="/landing/ru/logos/${file}" alt="${alt}" height={${h}}` +
+          ` style={{ height: "${h}px", width: "auto", display: "block", opacity: .78 }} />`
+        ).join('');
+        const custom =
+          `${ind}<span style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>` +
+          `${ind}  <span aria-hidden="true" style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "15px", color: "#8B93A0" }}>&lt;/&gt;</span>` +
+          `${ind}  самописные сайты` +
+          `${ind}</span>`;
+        return items + custom;
+      }
     }
   ],
   S14Cta: [

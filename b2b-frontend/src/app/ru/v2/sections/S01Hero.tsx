@@ -8,11 +8,7 @@ export function S01Hero(_props: { v: LandingVals }) {
   return (
     <section data-screen-label="01 Hero" style={{ padding: "12px 12px 0" }}>
       <div style={{ position: "relative", height: "calc(100vh - 24px)", minHeight: "720px", borderRadius: "28px", overflow: "hidden", background: "#0E1014" }}>
-        <HeroMedia style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 26%" }} />
-        {" "}
-        <div data-r="herophone" style={{ position: "absolute", right: "clamp(20px,3.4vw,44px)", bottom: "clamp(28px,5vh,48px)", height: "min(76%,760px)", aspectRatio: "732/1300", borderRadius: "28px", overflow: "hidden", background: "#3F6B8C", pointerEvents: "none" }}>
-          <img src="/landing/ru/widget-ui.jpg" alt="Виджет примерки: образ на покупателе, слои со своими размерами и подбор верхней одежды из каталога" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%", display: "block" }} />
-        </div>
+        <HeroMedia style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 12%" }} />
         {" "}
         <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(10,14,22,.42) 0%,rgba(10,14,22,.12) 24%,rgba(10,14,22,.42) 58%,rgba(10,14,22,.88) 100%)", pointerEvents: "none" }}></div>
         {" "}
