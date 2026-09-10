@@ -78,7 +78,7 @@ export const PrivacyPolicyStage: FC = () => {
     <div className="mml-privacy">
       {/* Background photo — NO blur overlay, clean image */}
       <div className="mml-privacy__bg">
-        <img src={assetUrl('privacy-policy-avatar.png')} alt="" draggable={false} />
+        <img src={assetUrl('privacy-bg.jpg')} alt="" draggable={false} />
       </div>
 
       {/* Privacy badge floating over the photo */}
