@@ -14,5 +14,9 @@
  "07-danil-glasses-turtleneck": {
   "box": "detector",
   "cos": 0.9563
+ },
+ "08-ghost-acc-cuff": {
+  "box": "detector",
+  "cos": 0.9728
  }
 }
