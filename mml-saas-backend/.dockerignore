@@ -1,0 +1,39 @@
+# VCS
+.git
+.gitignore
+.gitattributes
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# Build output / binaries
+bin/
+mml-saas-backend-linux
+*.exe
+*.test
+*.out
+coverage.html
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local infra / compose
+docker-compose*.yml
+infra/*.service
+infra/*.conf
+infra/minio-check.sh
+
+# Docs / reports
+*.md
+!README.md
+
+# Node / seed tooling artifacts
+seeds/*.log

@@ -1,0 +1,31 @@
+/* Раскладка публичного блога. Типографика самой статьи — в @mml/ui/prose.css,
+   общая с редактором админки. */
+
+.bl-page { padding: 44px 40px 96px; }
+
+/* Первая статья в ленте — крупная, картинка слева. */
+.bl-hero { display: grid; grid-template-columns: 1.15fr 1fr; gap: 30px; align-items: center; }
+.bl-hero-img { min-height: 360px; }
+.bl-hero-body { min-width: 0; }
+
+/* Статья: оглавление липнет сбоку. */
+.bl-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 44px; align-items: start; }
+.bl-layout > .bl-prose { max-width: 720px; }
+.bl-toc { position: sticky; top: 24px; }
+.bl-toc a:hover { color: #2b2bcc !important; }
+
+/* Без оглавления статья центрируется, а не липнет к левому краю. */
+.bl-layout:not(:has(.bl-toc)) { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+
+@media (max-width: 900px) {
+  .bl-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .bl-toc { position: static; border-left: 3px solid rgba(0, 0, 0, 0.1); padding-left: 14px; }
+}
+
+@media (max-width: 700px) {
+  .bl-page { padding: 24px 16px 80px; }
+  .bl-hero { grid-template-columns: 1fr; gap: 16px; }
+  .bl-hero-img { min-height: 0; aspect-ratio: 3 / 2; }
+  .bl-hero-body h2 { font-size: 26px !important; }
+  .bl-title { font-size: 30px !important; }
+}

@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MakeMeLook — Carousel 01 «Манифест» · v3.1 (Inter Display + photographic gradient)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+/* ——— @font-face: локальные шрифты из design_system ——— */
+@font-face {
+  font-family: "InterDisplay";
+  src: url("./assets/fonts/InterDisplay-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "InterDisplay";
+  src: url("./assets/fonts/InterDisplay-Medium.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "InterDisplay";
+  src: url("./assets/fonts/InterDisplay-SemiBold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Regular.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-SemiBold.woff2") format("woff2");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "GolosText";
+  src: url("./assets/fonts/GolosText-Regular.ttf") format("truetype");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "GolosText";
+  src: url("./assets/fonts/GolosText-Medium.ttf") format("truetype");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "GolosText";
+  src: url("./assets/fonts/GolosText-SemiBold.ttf") format("truetype");
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+
+:root {
+  /* Daydream cool gradient */
+  --grad-light:  #E5EAFB;
+  --grad-mid:    #A8B4F5;
+  --grad-deep:   #7D8FE8;
+
+  /* Iridescent accents */
+  --irid-blue:   #3D55F0;
+  --irid-purple: #7B4FEA;
+  --irid-rose:   #E8A3D8;
+  --irid-cyan:   #8FB8FF;
+
+  /* Functional */
+  --cobalt:      #2D1FB8;
+  --paper:       #FFFFFF;
+  --ink:         #0E0E14;
+  --graphite:    #3D3F4D;
+  --mute:        #8183A0;
+  --hairline:    rgba(14,14,20,0.08);
+  --shadow-card: 0 24px 64px rgba(46,31,184,0.12), 0 4px 12px rgba(14,14,20,0.04);
+  --shadow-cta:  0 12px 32px rgba(46,31,184,0.28);
+
+  /* Typography stacks — твоя design-system */
+  --display: "InterDisplay", "Inter", system-ui, -apple-system, sans-serif;
+  --sans:    "Inter", "GolosText", system-ui, -apple-system, sans-serif;
+  --cyr:     "GolosText", "Inter", system-ui, sans-serif;
+  --mono:    "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0a0a10;
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "cv01", "cv11";
+}
+
+.page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+  color: #E5EAFB;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+  color: #E5EAFB;
+}
+.page-header h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.page-header p {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: #A8B4F5;
+  letter-spacing: 0.01em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+@media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
+
+.slide-wrap { display: flex; flex-direction: column; gap: 10px; }
+.slide-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #A8B4F5;
+}
+
+/* ================= SLIDE BASE ================= */
+.slide {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(255,255,255,0.04);
+  font-family: var(--sans);
+  color: var(--ink);
+  isolation: isolate;
+}
+
+/* ================= PHOTOGRAPHIC DAYDREAM GRADIENT =================
+   Multi-layer: base linear + radial hotspots + atmospheric bloom
+   Даёт ощущение studio-фона с мягким светом, а не плоский CSS-стоп.
+==================================================================== */
+.bg-day {
+  background:
+    radial-gradient(120% 85% at 30% 10%, rgba(232,232,255,0.9) 0%, rgba(232,232,255,0) 55%),
+    radial-gradient(90% 60% at 70% 40%, rgba(168,180,245,0.6) 0%, rgba(168,180,245,0) 65%),
+    radial-gradient(100% 80% at 50% 110%, rgba(61,85,240,0.35) 0%, rgba(61,85,240,0) 60%),
+    linear-gradient(180deg, #EAEDFC 0%, #C9D1F7 45%, #9FB0EE 80%, #7D8FE8 100%);
+}
+.bg-day-centered {
+  background:
+    radial-gradient(70% 55% at 50% 38%, #F0F2FD 0%, rgba(240,242,253,0) 60%),
+    radial-gradient(120% 90% at 50% 120%, rgba(61,85,240,0.4) 0%, rgba(61,85,240,0) 55%),
+    linear-gradient(180deg, #E8ECFB 0%, #BFCAF5 55%, #8499E5 100%);
+}
+.bg-day-light {
+  background:
+    radial-gradient(90% 70% at 20% 10%, rgba(250,250,255,0.95) 0%, rgba(250,250,255,0) 55%),
+    radial-gradient(80% 60% at 80% 30%, rgba(168,180,245,0.45) 0%, rgba(168,180,245,0) 70%),
+    linear-gradient(180deg, #EEF1FD 0%, #CED6F7 60%, #A8B4F5 100%);
+}
+.bg-day-cta {
+  background:
+    radial-gradient(60% 50% at 50% 45%, #F4F6FE 0%, rgba(244,246,254,0) 60%),
+    radial-gradient(110% 90% at 50% 100%, rgba(45,31,184,0.35) 0%, rgba(45,31,184,0) 55%),
+    linear-gradient(180deg, #E5EAFB 0%, #AFBCF2 60%, #7D8FE8 100%);
+}
+
+/* Subtle grain — только в тенях, едва заметно (фотографичность) */
+.bg-day::before, .bg-day-centered::before, .bg-day-light::before, .bg-day-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(14,14,20,0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  z-index: 1;
+}
+
+/* Ensure all slide content sits above the grain layer */
+.slide > :not(.bg-day):not(.bg-day-centered):not(.bg-day-light):not(.bg-day-cta) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Metadata label */
+.meta {
+  position: absolute;
+  top: 26px;
+  left: 30px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(14,14,20,0.62);
+  z-index: 3;
+}
+
+/* Page pill bottom-right */
+.pagepill {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 500;
+  padding: 7px 13px;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px rgba(46,31,184,0.14), 0 1px 2px rgba(14,14,20,0.04);
+  z-index: 3;
+}
+
+/* Display helpers */
+.display { font-family: var(--display); font-weight: 600; letter-spacing: -0.025em; line-height: 1.04; }
+.display-tight { font-family: var(--display); font-weight: 600; letter-spacing: -0.035em; line-height: 0.98; }
+
+/* Iridescent fill */
+.iridescent {
+  background: linear-gradient(110deg, var(--irid-blue) 0%, var(--irid-purple) 38%, var(--irid-rose) 68%, var(--irid-cyan) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: saturate(1.08);
+}
+
+/* ==========================================================
+   SLIDE 01 — Hero (iridescent garment + manifesto)
+   ========================================================== */
+.s01 .garment-body {
+  position: absolute; inset: auto 0 0 0;
+  height: 58%;
+  background: linear-gradient(180deg, #A4B2EF 0%, #5F74D8 55%, #3C4DB8 100%);
+  clip-path: polygon(
+    0% 28%, 14% 16%, 28% 8%, 42% 4%, 52% 6%, 62% 4%,
+    74% 10%, 86% 20%, 100% 30%,
+    100% 100%, 0% 100%
+  );
+  z-index: 2;
+}
+.s01 .garment-sheen {
+  position: absolute; inset: auto 0 0 0;
+  height: 58%;
+  background:
+    radial-gradient(70% 80% at 30% 25%, rgba(232,163,216,0.7), transparent 55%),
+    radial-gradient(60% 70% at 75% 35%, rgba(61,85,240,0.75), transparent 65%),
+    radial-gradient(80% 70% at 50% 85%, rgba(123,79,234,0.85), transparent 70%),
+    linear-gradient(180deg, rgba(143,184,255,0.5), rgba(123,79,234,0.6) 55%, rgba(45,31,184,0.7) 100%);
+  mix-blend-mode: screen;
+  filter: saturate(1.15) blur(0.5px);
+  clip-path: polygon(
+    0% 28%, 14% 16%, 28% 8%, 42% 4%, 52% 6%, 62% 4%,
+    74% 10%, 86% 20%, 100% 30%,
+    100% 100%, 0% 100%
+  );
+  z-index: 2;
+}
+.s01 .garment-glow {
+  position: absolute;
+  left: 15%; right: 15%;
+  bottom: 22%;
+  height: 24%;
+  background: radial-gradient(50% 60% at 50% 50%, rgba(232,163,216,0.55), transparent 70%);
+  filter: blur(24px);
+  z-index: 2;
+}
+.s01 .overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center;
+  padding: 60px 44px 44px;
+  z-index: 3;
+}
+.s01 .wordmark {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 46px;
+  letter-spacing: -0.028em;
+  margin-top: 40px;
+}
+.s01 .pullquote {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 34px;
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  text-align: center;
+  color: var(--ink);
+  margin-top: 22px;
+  max-width: 92%;
+}
+.s01 .subtitle {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--graphite);
+  margin-top: 14px;
+  letter-spacing: 0.005em;
+}
+
+/* ==========================================================
+   SLIDE 02 — Hero number 30–40%
+   ========================================================== */
+.s02 .stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 80px 48px;
+  text-align: center;
+}
+.s02 .hero-num {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 132px;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
+  color: var(--ink);
+}
+.s02 .hero-caption {
+  margin-top: 22px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.s02 .body {
+  margin-top: 36px;
+  max-width: 68%;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--graphite);
+}
+
+/* ==========================================================
+   SLIDE 03 — Manifesto pull-quote
+   ========================================================== */
+.s03 .stage {
+  position: absolute; inset: 0;
+  padding: 78px 52px 48px;
+}
+.s03 .pull {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 58px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  max-width: 84%;
+  margin-top: 18px;
+}
+.s03 .bullets {
+  margin-top: 34px;
+  display: flex; flex-direction: column; gap: 10px;
+  max-width: 82%;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* ==========================================================
+   SLIDE 04 — Comparison card
+   ========================================================== */
+.s04 .stage {
+  position: absolute; inset: 0;
+  padding: 76px 48px 48px;
+}
+.s04 .headline {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+  max-width: 74%;
+}
+.s04 .card {
+  margin-top: 32px;
+  background: var(--paper);
+  border-radius: 20px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(14,14,20,0.04);
+}
+.s04 .row {
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.s04 .row:last-child { border-bottom: 0; }
+.s04 .row .name { font-family: var(--sans); font-weight: 600; font-size: 14px; color: var(--ink); }
+.s04 .row .desc { font-family: var(--sans); font-weight: 400; font-size: 13px; color: var(--graphite); line-height: 1.4; }
+.s04 .caption {
+  margin-top: 22px;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  text-align: center;
+  letter-spacing: -0.005em;
+}
+
+/* ==========================================================
+   SLIDE 05 — Hero "5 слоёв"
+   ========================================================== */
+.s05 .stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 70px 44px 44px;
+  text-align: center;
+}
+.s05 .hero {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 94px;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+  color: var(--ink);
+}
+.s05 .hero .five { display: inline-block; margin-right: 4px; }
+.s05 .model {
+  position: relative;
+  margin-top: 26px;
+  width: 60%;
+  aspect-ratio: 3 / 4;
+}
+.s05 .model .layer {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(
+    40% 0%, 60% 0%,
+    72% 12%, 78% 28%, 84% 48%, 88% 70%, 82% 92%, 70% 100%,
+    30% 100%, 18% 92%, 12% 70%, 16% 48%, 22% 28%, 28% 12%
+  );
+}
+.s05 .l1 { background: rgba(255,255,255,0.9); transform: scale(0.82); }
+.s05 .l2 { background: linear-gradient(180deg, #C4CEF9, #8FB8FF); transform: scale(0.9); mix-blend-mode: multiply; opacity: 0.55; }
+.s05 .l3 { background: linear-gradient(180deg, rgba(232,163,216,0.55), rgba(123,79,234,0.6)); transform: scale(0.98); mix-blend-mode: screen; }
+.s05 .l4 { position: absolute; left: 18%; right: 18%; top: 52%; height: 5%; background: var(--cobalt); border-radius: 2px; }
+.s05 .l5 { position: absolute; left: 26%; right: 26%; bottom: 2%; height: 5%; background: linear-gradient(90deg, #C7D0F0, #E8A3D8, #8FB8FF); border-radius: 2px; opacity: 0.9; }
+.s05 .body {
+  margin-top: 24px;
+  max-width: 74%;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* ==========================================================
+   SLIDE 06 — Product demo (split)
+   ========================================================== */
+.s06 .stage {
+  position: absolute; inset: 0;
+  padding: 70px 40px 42px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+  align-items: start;
+}
+.s06 .left { display: flex; flex-direction: column; margin-top: 14px; }
+.s06 .headline {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+  margin-top: 18px;
+}
+.s06 .steps {
+  margin-top: 24px;
+  display: flex; flex-direction: column; gap: 10px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.s06 .stepnum { font-family: var(--mono); font-weight: 500; color: var(--mute); margin-right: 6px; }
+.s06 .right {
+  align-self: center;
+  margin-top: 22px;
+  background: var(--paper);
+  border-radius: 22px;
+  padding: 14px;
+  box-shadow: var(--shadow-card);
+}
+.s06 .phone {
+  position: relative;
+  background: #101018;
+  border-radius: 26px;
+  padding: 9px;
+  aspect-ratio: 9 / 19;
+}
+.s06 .screen {
+  background: #F6F6FA;
+  border-radius: 18px;
+  height: 100%;
+  display: flex; flex-direction: column;
+  padding: 12px 10px;
+  gap: 8px;
+}
+.s06 .brand { font-family: var(--sans); font-size: 8.5px; color: var(--mute); letter-spacing: 0.08em; text-transform: uppercase; }
+.s06 .product-img {
+  background: linear-gradient(180deg, #1a1a22 0%, #0E0E14 100%);
+  border-radius: 7px;
+  aspect-ratio: 3 / 4;
+  position: relative;
+}
+.s06 .product-img::after {
+  content: "";
+  position: absolute;
+  left: 35%; right: 35%; top: 20%; bottom: 10%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+  border-radius: 40% 40% 30% 30%;
+}
+.s06 .product-title { font-family: var(--sans); font-size: 10.5px; font-weight: 600; color: var(--ink); }
+.s06 .product-price { font-family: var(--mono); font-size: 9.5px; color: var(--graphite); }
+.s06 .pill-cta-small {
+  background: var(--cobalt);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 8px 13px;
+  border-radius: 9999px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(46,31,184,0.35);
+}
+.s06 .preview-thumb {
+  margin-top: 3px;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  background:
+    radial-gradient(70% 80% at 50% 40%, rgba(232,163,216,0.4), transparent 70%),
+    linear-gradient(180deg, #D5DBF8, #8FB8FF);
+}
+
+/* ==========================================================
+   SLIDE 07 — Three metrics
+   ========================================================== */
+.s07 .stage {
+  position: absolute; inset: 0;
+  padding: 74px 48px 44px;
+}
+.s07 .headline {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+}
+.s07 .rows {
+  margin-top: 32px;
+  display: flex; flex-direction: column;
+}
+.s07 .row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.s07 .row:last-child { border-bottom: 0; }
+.s07 .num {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 68px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--cobalt);
+  font-variant-numeric: tabular-nums;
+}
+.s07 .lbl {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--ink);
+}
+.s07 .foot {
+  margin-top: 22px;
+  font-family: var(--sans);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--mute);
+  text-align: center;
+}
+
+/* ==========================================================
+   SLIDE 08 — Final CTA
+   ========================================================== */
+.s08 .stage {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 72px 44px;
+  text-align: center;
+}
+.s08 .wm {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 32px;
+  letter-spacing: -0.028em;
+}
+.s08 .headline {
+  margin-top: 36px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 58px;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.s08 .body {
+  margin-top: 20px;
+  max-width: 70%;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--graphite);
+}
+.s08 .cta {
+  margin-top: 30px;
+  display: inline-block;
+  background: var(--cobalt);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -0.003em;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  box-shadow: var(--shadow-cta);
+}
+.s08 .tail {
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--mute);
+  letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="page-header">
+    <h1>Carousel 01 — Манифест · v3.1 preview</h1>
+    <p>
+      Fonts: Inter Display + Inter + Golos Text + JetBrains Mono (из твоего design_system) ·
+      Palette: <code>#E5EAFB → #A8B4F5 → #7D8FE8</code> ·
+      Iridescent: <code>#3D55F0 / #7B4FEA / #E8A3D8</code> · CTA: <code>#2D1FB8</code>
+    </p>
+  </div>
+
+  <div class="grid">
+
+    <!-- ================= SLIDE 01 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">01 — Hero / Manifesto</div>
+      <div class="slide s01 bg-day-centered">
+        <div class="meta">МАНИФЕСТ · 01 / 08</div>
+        <div class="garment-body"></div>
+        <div class="garment-sheen"></div>
+        <div class="garment-glow"></div>
+        <div class="overlay">
+          <div class="wordmark iridescent">MakeMeLook</div>
+          <div class="pullquote display">
+            Каждое<br/>третье платье<br/>возвращается<br/>непримеренным.
+          </div>
+          <div class="subtitle">Мы это меняем.</div>
+        </div>
+        <div class="pagepill">01 / 08 →</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 02 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">02 — Hero number 30–40%</div>
+      <div class="slide s02 bg-day">
+        <div class="meta">ПРОБЛЕМА · 02 / 08</div>
+        <div class="stage">
+          <div class="hero-num">30–40%</div>
+          <div class="hero-caption">возвратов в онлайн-fashion.</div>
+          <div class="body">
+            Каждый возврат — минус маржа,<br/>
+            минус логистика, минус доверие бренда.<br/>
+            Итог: квартал съеден.
+          </div>
+        </div>
+        <div class="pagepill">02 / 08 →</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 03 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">03 — Manifesto pull-quote</div>
+      <div class="slide s03 bg-day-light">
+        <div class="meta">ПОЧЕМУ · 03 / 08</div>
+        <div class="stage">
+          <div class="pull">
+            Покупатель<br/>не видит<br/>себя<br/>в&nbsp;товаре.
+          </div>
+          <div class="bullets">
+            <div>— Фото модели не отвечает на «как сядет на меня».</div>
+            <div>— Стандартная сетка размеров врёт на два размера.</div>
+            <div>— Никто не показывает вещь в реальном образе.</div>
+          </div>
+        </div>
+        <div class="pagepill">03 / 08 →</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 04 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">04 — Market comparison</div>
+      <div class="slide s04 bg-day-light">
+        <div class="meta">РЫНОК · 04 / 08</div>
+        <div class="stage">
+          <div class="headline">Все решения —<br/>половинчатые.</div>
+          <div class="card">
+            <div class="row"><div class="name">3DLOOK</div><div class="desc">дорого, сложная интеграция</div></div>
+            <div class="row"><div class="name">True Fit</div><div class="desc">только размер, без try-on</div></div>
+            <div class="row"><div class="name">Virtusize</div><div class="desc">только сравнение со «своими» вещами</div></div>
+            <div class="row"><div class="name">Zero10</div><div class="desc">AR на один предмет</div></div>
+          </div>
+          <div class="caption">Никто не делает try-on в полный образ.</div>
+        </div>
+        <div class="pagepill">04 / 08 →</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 05 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">05 — Hero «5 слоёв»</div>
+      <div class="slide s05 bg-day-centered">
+        <div class="meta">НАШ ОТВЕТ · 05 / 08</div>
+        <div class="stage">
+          <div class="hero">
+            <span class="five iridescent">5</span> слоёв<br/>одновременно.
+          </div>
+          <div class="model">
+            <div class="layer l1"></div>
+            <div class="layer l2"></div>
+            <div class="layer l3"></div>
+            <div class="l4"></div>
+            <div class="l5"></div>
+          </div>
+          <div class="body">
+            Платье + жакет + шарф + пояс + обувь —<br/>
+            на одном фото покупателя, в реальном fit.
+          </div>
+        </div>
+        <div class="pagepill">05 / 08 →</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 06 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">06 — Product demo / UI</div>
+      <div class="slide s06 bg-day-light">
+        <div class="meta">КАК РАБОТАЕТ · 06 / 08</div>
+        <div class="stage">
+          <div class="left">
+            <div class="headline">1 строка кода —<br/>и виджет уже<br/>в карточке товара.</div>
+            <div class="steps">
+              <div><span class="stepnum">01</span>── Покупатель загружает фото</div>
+              <div><span class="stepnum">02</span>── AI собирает образ до 5 слоёв</div>
+              <div><span class="stepnum">03</span>── Видит fit → покупает → не возвращает</div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="phone">
+              <div class="screen">
+                <div class="brand">MakeMeLook ✦</div>
+                <div class="product-img"></div>
+                <div class="product-title">Slip Dress</div>
+                <div class="product-price">₽34 900</div>
+                <div class="pill-cta-small">Примерить на себе →</div>
+                <div class="preview-thumb"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pagepill">06 / 08 →</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 07 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">07 — Three metrics</div>
+      <div class="slide s07 bg-day-light">
+        <div class="meta">ЭФФЕКТ · 07 / 08</div>
+        <div class="stage">
+          <div class="headline">Что меняется<br/>после внедрения.</div>
+          <div class="rows">
+            <div class="row"><div class="num">−25%</div><div class="lbl">возвратов</div></div>
+            <div class="row"><div class="num">+30%</div><div class="lbl">AOV</div></div>
+            <div class="row"><div class="num">+20%</div><div class="lbl">конверсия в корзину</div></div>
+          </div>
+          <div class="foot">Бенчмарки virtual try-on. Под ваши SKU посчитаем в ROI-калькуляторе.</div>
+        </div>
+        <div class="pagepill">07 / 08 →</div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 08 ================= -->
+    <div class="slide-wrap">
+      <div class="slide-label">08 — Final CTA</div>
+      <div class="slide s08 bg-day-cta">
+        <div class="stage">
+          <div class="wm iridescent">MakeMeLook</div>
+          <div class="headline">Хочется<br/>увидеть<br/>в деле?</div>
+          <div class="body">15 минут демо — и ROI посчитаем под ваши SKU.</div>
+          <div class="cta">Забронировать демо →</div>
+          <div class="tail">makemelook.ai/b2b</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

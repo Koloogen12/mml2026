@@ -1,0 +1,234 @@
+/*
+ * @mml/ui — design token layer.
+ * Источник: аудит hi-fi handoff. Единые решения: ОДИН акцент #2B2BCC, ОДИН ink #16150F.
+ * Токены объявлены на :root и промаплены в Tailwind v4 через @theme (CSS-first, без tailwind.config.js).
+ */
+
+:root {
+  /* ---- Color ---- */
+  --bg-ivory: #F4F1EA;          /* канонический фон B2C */
+  --surface-alt: #F7F5F0;       /* рабочие поверхности партнёр/админка */
+  --bg-admin: #EEEBE4;
+  --white: #FFFFFF;
+  --ink: #16150F;               /* текст, primary-кнопки, активная навигация */
+  --accent: #2B2BCC;            /* ТОЛЬКО интерактив и AI/примерка */
+  --accent-hover: #2412A8;
+  --success: #3F7A4E;
+  --success-admin: #1F8A5B;
+  --success-bg: #E9F5EE;
+  --error: #C4553B;
+  --error-admin: #C0392B;
+  --error-bg: #FBEEEC;
+  --warning: #C97A16;
+  --warning-bg: #FCF3E2;
+  --text-secondary: rgba(0, 0, 0, .6);
+  --text-tertiary: rgba(0, 0, 0, .5);
+  --text-muted: rgba(0, 0, 0, .45);
+  --text-disabled: rgba(0, 0, 0, .38);
+  --placeholder: rgba(0, 0, 0, .38);
+  --border-subtle: rgba(0, 0, 0, .08);
+  --border-default: rgba(0, 0, 0, .12);
+  --border-input: rgba(0, 0, 0, .16);
+  --border-strong: rgba(0, 0, 0, .22);
+  --accent-tint-6: rgba(43, 43, 204, .06);
+  --accent-tint-10: rgba(43, 43, 204, .1);
+  --focus-ring: rgba(43, 43, 204, .1);
+
+  /* ---- Radii ---- */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+  --r-xl: 12px;
+  --r-2xl: 14px;
+  --r-3xl: 18px;
+  --r-sheet: 22px;
+  --r-full: 999px;
+  /* чат-пузыри */
+  --r-bubble-assistant: 14px 14px 4px 14px;
+  --r-bubble-user: 14px 14px 14px 4px;
+
+  /* ---- Shadows ---- */
+  --sh-sm: 0 2px 8px rgba(0, 0, 0, .14);
+  --sh-md: 0 2px 10px rgba(0, 0, 0, .05);
+  --sh-lg: 0 6px 24px rgba(0, 0, 0, .06);
+  --sh-xl: 0 10px 30px rgba(0, 0, 0, .09);
+  --sh-modal: 0 30px 80px rgba(0, 0, 0, .3);
+  --sh-toast: 0 12px 40px rgba(0, 0, 0, .25);
+  --sh-accent-md: 0 8px 22px rgba(43, 43, 204, .24);
+
+  /* ---- Motion (длительности) ---- */
+  --dur-fast: .1s;
+  --dur-base: .15s;
+  --dur-slow: .18s;
+  --dur-image: .5s;
+
+  /* ---- Line-heights ---- */
+  --lh-hero: 1.08;
+  --lh-display: 1.2;
+  --lh-body: 1.5;
+  --lh-relaxed: 1.6;
+
+  /* ---- Letter-spacing ---- */
+  --ls-display: -0.02em;
+  --ls-overline: .08em;
+  --ls-overline-wide: .14em;
+}
+
+/*
+ * Tailwind v4 mapping.
+ * @theme (обычный) сам эмитит переменную в :root — поэтому шрифты и ease
+ * объявлены только здесь (иначе циклическая ссылка var() на самих себя).
+ */
+@theme {
+  /* Font families: Spectral заменяет Martina Plantijn (нет кириллицы) — решение основателя */
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Spectral", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Easing */
+  --ease-image: cubic-bezier(.2, .7, .2, 1);
+
+  /* Type scale — UI (полупиксельные шаги значимы, НЕ округлять). 11.5 → t-11-5 и т.д. */
+  --text-t-10: 10px;
+  --text-t-10--line-height: 1.5;
+  --text-t-11: 11px;
+  --text-t-11--line-height: 1.5;
+  --text-t-11-5: 11.5px;
+  --text-t-11-5--line-height: 1.5;
+  --text-t-12: 12px;
+  --text-t-12--line-height: 1.5;
+  --text-t-12-5: 12.5px;
+  --text-t-12-5--line-height: 1.5;
+  --text-t-13: 13px;
+  --text-t-13--line-height: 1.5;
+  --text-t-13-5: 13.5px;
+  --text-t-13-5--line-height: 1.5;
+  --text-t-14: 14px;
+  --text-t-14--line-height: 1.5;
+  --text-t-15: 15px;
+  --text-t-15--line-height: 1.5;
+  --text-t-16: 16px;
+  --text-t-16--line-height: 1.5;
+  --text-t-18: 18px;
+  --text-t-18--line-height: 1.5;
+
+  /* Type scale — Display (Spectral), letter-spacing -.02em; 56/62 = hero (1.08) */
+  --text-d-20: 20px;
+  --text-d-20--line-height: 1.2;
+  --text-d-20--letter-spacing: -0.02em;
+  --text-d-26: 26px;
+  --text-d-26--line-height: 1.2;
+  --text-d-26--letter-spacing: -0.02em;
+  --text-d-32: 32px;
+  --text-d-32--line-height: 1.2;
+  --text-d-32--letter-spacing: -0.02em;
+  --text-d-40: 40px;
+  --text-d-40--line-height: 1.2;
+  --text-d-40--letter-spacing: -0.02em;
+  --text-d-44: 44px;
+  --text-d-44--line-height: 1.2;
+  --text-d-44--letter-spacing: -0.02em;
+  --text-d-56: 56px;
+  --text-d-56--line-height: 1.08;
+  --text-d-56--letter-spacing: -0.02em;
+  --text-d-62: 62px;
+  --text-d-62--line-height: 1.08;
+  --text-d-62--letter-spacing: -0.02em;
+
+  /* Line-height utilities: leading-hero / leading-display / leading-body / leading-relaxed */
+  --leading-hero: 1.08;
+  --leading-display: 1.2;
+  --leading-body: 1.5;
+  --leading-relaxed: 1.6;
+
+  /* Tracking: tracking-display / tracking-overline / tracking-overline-wide */
+  --tracking-display: -0.02em;
+  --tracking-overline: .08em;
+  --tracking-overline-wide: .14em;
+
+  /* Spacing scale в px (нечётные шаги намеренные): p-9 = 9px, gap-26 = 26px и т.д. */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-6: 6px;
+  --spacing-7: 7px;
+  --spacing-8: 8px;
+  --spacing-9: 9px;
+  --spacing-10: 10px;
+  --spacing-11: 11px;
+  --spacing-12: 12px;
+  --spacing-14: 14px;
+  --spacing-16: 16px;
+  --spacing-18: 18px;
+  --spacing-20: 20px;
+  --spacing-22: 22px;
+  --spacing-24: 24px;
+  --spacing-26: 26px;
+  --spacing-32: 32px;
+  --spacing-44: 44px;
+  --spacing-48: 48px;
+  --spacing-60: 60px;
+  --spacing-64: 64px;
+}
+
+/* Значения со ссылками на :root-токены — инлайнятся в утилиты через @theme inline */
+@theme inline {
+  /* Colors → bg-ivory, text-ink, bg-accent, text-secondary, border-border-default … */
+  --color-ivory: var(--bg-ivory);
+  --color-surface-alt: var(--surface-alt);
+  --color-admin: var(--bg-admin);
+  --color-white: var(--white);
+  --color-ink: var(--ink);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-success: var(--success);
+  --color-success-admin: var(--success-admin);
+  --color-success-bg: var(--success-bg);
+  --color-error: var(--error);
+  --color-error-admin: var(--error-admin);
+  --color-error-bg: var(--error-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-secondary: var(--text-secondary);
+  --color-tertiary: var(--text-tertiary);
+  --color-muted: var(--text-muted);
+  --color-disabled: var(--text-disabled);
+  --color-placeholder: var(--placeholder);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-input: var(--border-input);
+  --color-border-strong: var(--border-strong);
+  --color-accent-tint-6: var(--accent-tint-6);
+  --color-accent-tint-10: var(--accent-tint-10);
+  --color-focus-ring: var(--focus-ring);
+
+  /* Radii → rounded-xs … rounded-sheet */
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-2xl: var(--r-2xl);
+  --radius-3xl: var(--r-3xl);
+  --radius-sheet: var(--r-sheet);
+  --radius-full: var(--r-full);
+
+  /* Shadows → shadow-sm … shadow-modal, shadow-toast, shadow-accent-md */
+  --shadow-sm: var(--sh-sm);
+  --shadow-md: var(--sh-md);
+  --shadow-lg: var(--sh-lg);
+  --shadow-xl: var(--sh-xl);
+  --shadow-modal: var(--sh-modal);
+  --shadow-toast: var(--sh-toast);
+  --shadow-accent-md: var(--sh-accent-md);
+}
+
+/* ОБЯЗАТЕЛЬНЫЙ глобальный guard: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

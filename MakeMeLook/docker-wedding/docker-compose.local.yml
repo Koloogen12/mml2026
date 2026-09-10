@@ -1,0 +1,184 @@
+# ============================================================================
+# docker-compose.local.yml — полный локальный стек MML для демо со свадебной
+# коллекцией Christi Wedding.
+#
+# Запуск:
+#   1) Сгенерировать SQL seed из CSV (один раз или после обновления CSV):
+#      cd scripts && npm ci && node generate-wedding-seed.mjs
+#      (подробности в scripts/README.md)
+#
+#   2) Поднять базовую инфраструктуру + backend + витрину:
+#      docker compose -f docker-compose.local.yml up -d --build
+#
+#   3) Дождаться, пока backend станет healthy, и накатить seed:
+#      docker compose -f docker-compose.local.yml --profile seed run --rm seed
+#
+#   4) Открыть витрину: http://localhost:8080/shop
+#      Storefront API:  http://localhost:3010/api/storefront/v1/11111111-1111-1111-1111-111111111111/products
+#      MinIO console:   http://localhost:9011  (minioadmin / minioadmin)
+#
+# Порядок депендов:
+#   postgres, minio  →  backend (healthcheck)  →  seed (one-shot)
+#   backend                                    →  shop, widget
+# ============================================================================
+
+services:
+  # ----- infra ------------------------------------------------------------
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: mml-wedding-postgres
+    environment:
+      POSTGRES_USER: makemelook
+      POSTGRES_PASSWORD: makemelook
+      POSTGRES_DB: makemelook
+    ports:
+      - "5414:5432"
+    volumes:
+      - mml-wedding-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U makemelook -d makemelook"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+
+  minio:
+    image: minio/minio
+    container_name: mml-wedding-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9010:9000"
+      - "9011:9001"
+    volumes:
+      - mml-wedding-minio:/data
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+  # One-shot init: create the `makemelook` bucket the backend writes user photos
+  # to and make it anonymously readable so MINIO_PUBLIC_URL links work.
+  minio-init:
+    image: minio/mc
+    container_name: mml-wedding-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      set -e;
+      until mc alias set local http://minio:9000 minioadmin minioadmin >/dev/null 2>&1; do
+        echo 'waiting for minio...'; sleep 1;
+      done;
+      mc mb --ignore-existing local/makemelook;
+      mc anonymous set download local/makemelook;
+      echo 'minio bucket ready';
+      "
+    restart: "no"
+
+  # ----- backend ----------------------------------------------------------
+  backend:
+    build:
+      context: ./mml-saas-backend
+      dockerfile: Dockerfile
+    container_name: mml-wedding-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+    # Internal only — the `edge` nginx publishes 3010 to the host and proxies
+    # everything to this container on the docker network.
+    expose:
+      - "3010"
+    environment:
+      APP_ENV: development
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://127.0.0.1:3010/health"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+      start_period: 15s
+
+  # ----- edge (nginx) -----------------------------------------------------
+  # Public entrypoint on host :3010. Routes /s3/widget-assets/* to local files
+  # and proxies everything else to backend:3010. Also raises body-size limit
+  # so the widget's photo upload (multipart) doesn't 413.
+  edge:
+    image: nginx:1.27-alpine
+    container_name: mml-wedding-edge
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "3010:80"
+    volumes:
+      - ./edge/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./mml-saas-widget-tryon/src/assets/img:/srv/widget-assets:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/edge-health"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+  # ----- one-shot seed ----------------------------------------------------
+  # Runs `psql -f /seed.sql` against the postgres container, populating
+  # the wedding project + 139 Christi products. Idempotent (uses
+  # ON CONFLICT + DELETE-then-INSERT for products).
+  seed:
+    image: postgres:16-alpine
+    container_name: mml-wedding-seed
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: makemelook
+    volumes:
+      - ./seeds/christi-wedding.sql:/seed.sql:ro
+    command: >
+      psql -h postgres -U makemelook -d makemelook
+           -v ON_ERROR_STOP=1
+           -f /seed.sql
+    profiles: ["seed"]
+
+  # ----- widget bundle ----------------------------------------------------
+  widget:
+    build:
+      context: ./mml-saas-widget-tryon
+      dockerfile: Dockerfile.static
+    container_name: mml-wedding-widget
+    ports:
+      - "4173:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O-", "http://127.0.0.1/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+  # ----- shop (витрина) ---------------------------------------------------
+  shop:
+    build:
+      context: ./demo-for-mml-main
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:3010
+        VITE_PROJECT_ID: 11111111-1111-1111-1111-111111111111
+        VITE_WIDGET_URL: http://localhost:4173
+    container_name: mml-wedding-shop
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O-", "http://127.0.0.1/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+volumes:
+  mml-wedding-pgdata:
+  mml-wedding-minio:

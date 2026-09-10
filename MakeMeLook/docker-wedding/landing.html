@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Комдир для стоматологий | Системный рост выручки</title>
+    <meta name="description" content="Готовый отдел продаж и колл-центр на аутсорсе для стоматологий. Прозрачная аналитика и рост выручки без найма в штат.">
+    
+    <!-- Typography: Manrope (Modern, Geometric, Trust) & Inter (Clean, Legible) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Palette: Clinical Authority & Growth */
+            --color-navy-900: #0B1120; /* Deepest Blue */
+            --color-navy-800: #151E32; /* Panel Background */
+            --color-navy-700: #26334D; /* Border/Stroke */
+            
+            --color-teal-500: #0EA5E9; /* Primary Action - Clinical Blue */
+            --color-green-400: #10B981; /* Growth/Success Green */
+            --color-green-900: #064E3B; /* Dark Green Text */
+            
+            --color-white: #FFFFFF;
+            --color-slate-300: #CBD5E1; /* Subtext */
+            --color-slate-100: #F1F5F9; /* Light Background */
+
+            --font-display: 'Manrope', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            --radius-sm: 4px;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+
+            --shadow-subtle: 0 4px 20px rgba(0,0,0,0.05);
+            --shadow-glow: 0 0 40px rgba(14, 165, 233, 0.15);
+        }
+
+        /* Reset & Base */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-slate-100);
+            color: var(--color-navy-900);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+        ul { list-style: none; }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding { padding: 100px 0; }
+        
+        .text-center { text-align: center; }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--color-navy-900);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 36px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-display);
+        }
+
+        .btn-primary {
+            background: var(--color-navy-900);
+            color: var(--color-white);
+            border: 1px solid var(--color-navy-900);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-teal-500);
+            border-color: var(--color-teal-500);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-navy-900);
+            border: 1px solid var(--color-navy-700);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-navy-900);
+            color: var(--color-white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 160px 0 100px;
+            border-bottom: 1px solid var(--color-slate-300);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; width: 50%; height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 60%),
+                        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            color: var(--color-navy-900);
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--color-green-400);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Grid Layouts (Bento Style) */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
+        /* Problem Section (Recognition) */
+        .problem-section {
+            background-color: var(--color-navy-900);
+            color: var(--color-white);
+        }
+
+        .problem-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            transition: 0.3s;
+        }
+
+        .problem-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--color-teal-500);
+        }
+
+        .problem-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+            color: #EF4444; /* Red for alert */
+        }
+
+        /* Value Proposition / Features */
+        .feature-card {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow-subtle);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--color-navy-900);
+        }
+
+        .feature-big-text {
+            font-size: 1.1rem;
+            color: #475569;
+        }
+
+        .feature-highlight {
+            color: var(--color-teal-500);
+            font-weight: 600;
+        }
+
+        /* Competition Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 24px;
+            text-align: left;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .comparison-table th {
+            background: var(--color-navy-900);
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .comparison-table tr:last-child td { border-bottom: none; }
+        
+        .check-icon { color: var(--color-green-400); font-weight: bold; margin-right: 8px; }
+        .x-icon { color: #EF4444; font-weight: bold; margin-right: 8px; }
+
+        /* How it Works - Steps */
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 24px; left: 0; width: 100%; height: 2px;
+            background: #E2E8F0;
+            z-index: 0;
+        }
+
+        .step-item {
+            position: relative;
+            z-index: 1;
+            background: var(--color-slate-100);
+            width: 23%;
+        }
+
+        .step-number {
+            width: 48px; height: 48px;
+            background: var(--color-navy-900);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 16px;
+            border: 4px solid var(--color-slate-100);
+        }
+
+        /* Objections / FAQ */
+        .accordion-item {
+            background: var(--color-white);
+            border: 1px solid #E2E8F0;
+            margin-bottom: 16px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-navy-900);
+        }
+        
+        .accordion-header:hover {
+            background: #F8FAFC;
+        }
+
+        .accordion-content {
+            padding: 0 24px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #475569;
+        }
+
+        .accordion-item.active .accordion-content {
+            padding-bottom: 24px;
+            max-height: 200px;
+        }
+
+        .accordion-icon { transition: transform 0.3s; }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+
+        /* Final CTA */
+        .final-cta {
+            background: var(--color-navy-900);
+            color: var(--color-white);
+            text-align: center;
+            border-radius: var(--radius-lg);
+            padding: 80px 24px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            .steps-container { flex-direction: column; }
+            .steps-container::before { width: 2px; height: 100%; left: 24px; top: 0; }
+            .step-item { width: 100%; padding-left: 60px; margin-bottom: 32px; }
+            .step-number { position: absolute; left: 0; top: 0; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        /* Animation Classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Decoration */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-navy-900) 0%, var(--color-teal-500) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav style="padding: 24px 0; border-bottom: 1px solid #E2E8F0; background: rgba(255,255,255,0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; color: var(--color-navy-900);">
+                КОМДИР<span style="color: var(--color-green-400);">.</span>
+            </div>
+            <a href="#audit" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.9rem;">Бесплатный аудит</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content fade-up">
+                <div class="badge">Для владельцев стоматологий</div>
+                <h1>Системный рост выручки <br><span class="gradient-text">без найма штата</span></h1>
+                <p>Готовый отдел продаж и колл-центр на аутсорсе. Комплексное управление коммерцией: от обработки лидов до прозрачной аналитики и записи пациентов.</p>
+                
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="#audit" class="btn btn-primary">Запустить Комдир</a>
+                    <a href="#how" class="btn btn-secondary">Как это работает?</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>+40%</h3>
+                        <p>Рост выручки за 2 месяца</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>95%</h3>
+                        <p>Прозрачность лидов</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>-400к₽</h3>
+                        <p>Экономия ФОТ в год</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Problem / Recognition Section -->
+    <section class="section-padding problem-section">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div class="fade-up">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 24px;">Узнаёте себя?</h2>
+                    <p style="font-size: 1.1rem; color: var(--color-slate-300); margin-bottom: 32px;">
+                        Большинство клиник теряют до 40% выручки не в кресле врача, а на этапе записи. Хаос в продажах съедает ваш маркетинговый бюджет.
+                    </p>
+                </div>
+                <div class="grid-3" style="grid-template-columns: 1fr; gap: 16px;">
+                    <div class="problem-card fade-up">
+                        <span class="problem-icon">📉</span>
+                        <h4>Утечка лидов</h4>
+                        <p style="color: var(--color-slate-300); font-size: 0.9rem; margin-top: 8px;">Заявки с сайта не доходят до записи, администраторы не перезванивают.</p>
+                    </div>
+                    <div class="problem-card fade-up" style="transition-delay: 0.1s;">
+                        <span class="problem-icon">💸</span>
+                        <h4>Нестабильная выручка</h4>
+                        <p style="color: var(--color-slate-300); font-size: 0.9rem; margin-top: 8px;">Маркетинг дает всплески, но нет прогнозируемого потока денег.</p>
+                    </div>
+                    <div class="problem-card fade-up" style="transition-delay: 0.2s;">
+                        <span class="problem-icon">🤯</span>
+                        <h4>Проблемы с наймом</h4>
+                        <p style="color: var(--color-slate-300); font-size: 0.9rem; margin-top: 8px;">РОП и менеджеры стоят дорого (300к+), а текучка кадров постоянная.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution / Features (Bento Grid) -->
+    <section class="section-padding" style="background: var(--color-white);">
+        <div class="container">
+            <div class="text-center fade-up" style="margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 16px; color: var(--color-navy-900);">Ваша клиника на новом уровне</h2>
+                <p style="max-width: 600px; margin: 0 auto; color: #475569;">Мы не просто "звоним клиентам". Мы берем на себя весь коммерческий блок, превращая хаос в систему.</p>
+            </div>
+
+            <div class="grid-2 fade-up">
+                <div class="feature-card" style="background: #F0FDF4; border-color: #BBF7D0;">
+                    <div>
+                        <div class="badge" style="background: #DCFCE7; color: #166534; border-color: #86EFAC;">Основной продукт</div>
+                        <h3>Готовый отдел продаж</h3>
+                        <p class="feature-big-text">Полный цикл обработки лидов. Мы квалифицируем, записываем и доводим пациентов до кресла без вашего участия.</p>
+                    </div>
+                    <div style="margin-top: 24px; font-weight: 700; color: #166534;">→ Результат: Запись пациентов, а не просто "обзвон"</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div>
+                        <div class="badge">24/7 Поддержка</div>
+                        <h3>Колл-центр на аутсорсе</h3>
+                        <p class="feature-big-text">Обработка входящих и исходящих звонков. До 80% конверсии из звонка в запись благодаря медицинским скриптам.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-3 fade-up" style="margin-top: 24px;">
+                <div class="feature-card">
+                    <h3>Прозрачная аналитика</h3>
+                    <p class="feature-big-text">Дашборд с воронкой продаж. Вы видите, где теряются лиды и какой реальный ROI маркетинга.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Комплексное управление</h3>
+                    <p class="feature-big-text">Связка "Маркетинг + Продажи". Мы оптимизируем рекламные каналы на основе качества лидов.</p>
+                </div>
+                <div class="feature-card" style="background: var(--color-navy-900); color: var(--color-white); border: none;">
+                    <h3 style="color: var(--color-white);">Экономия ресурсов</h3>
+                    <p style="color: var(--color-slate-300);">Платите за результат и записи, а не за часы простоя штатных сотрудников.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AHA Moment -->
+    <section class="section-padding" style="background: #F1F5F9; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div class="fade-up">
+                    <h2 style="margin-bottom: 24px;">Момент "Вау, это работает!"</h2>
+                    <ul style="font-size: 1.1rem; color: #334155;">
+                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
+                            <span style="color: var(--color-green-400); margin-right: 12px; font-weight: bold;">✓</span>
+                            Вы открываете дашборд и видите +25 записей за неделю.
+                        </li>
+                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
+                            <span style="color: var(--color-green-400); margin-right: 12px; font-weight: bold;">✓</span>
+                            Первый отчет показывает рост конверсии лидов на 40%.
+                        </li>
+                        <li style="margin-bottom: 16px; display: flex; align-items: flex-start;">
+                            <span style="color: var(--color-green-400); margin-right: 12px; font-weight: bold;">✓</span>
+                            Звонок менеджера "Комдир" реанимировал базу и принес запись на 50 000 руб.
+                        </li>
+                    </ul>
+                </div>
+                <div class="fade-up" style="background: white; padding: 40px; border-radius: var(--radius-md); box-shadow: var(--shadow-subtle);">
+                    <h3 style="margin-bottom: 20px;">Легкий старт</h3>
+                    <div style="padding: 16px; border-bottom: 1px solid #F1F5F9;">
+                        <strong>1 день</strong> на подключение
+                    </div>
+                    <div style="padding: 16px; border-bottom: 1px solid #F1F5F9;">
+                        <strong>15 минут</strong> на интеграцию с CRM
+                    </div>
+                    <div style="padding: 16px;">
+                        <strong>0 рублей</strong> на найм и обучение
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center fade-up" style="margin-bottom: 50px;">
+                <h2>Почему Комдир выигрывает</h2>
+            </div>
+            <div class="fade-up" style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Решение</th>
+                            <th>Результат</th>
+                            <th>Затраты</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #F0FDF4;">
+                            <td><strong>Комдир (Аутсорс)</strong></td>
+                            <td><span class="check-icon">✓</span> Полный цикл до выручки, без отпусков и больничных</td>
+                            <td><span class="check-icon">✓</span> Экономия 50% с первого месяца</td>
+                        </tr>
+                        <tr>
+                            <td>Свой отдел продаж</td>
+                            <td><span class="x-icon">×</span> Высокая текучка, нужно контролировать и обучать</td>
+                            <td><span class="x-icon">×</span> Зарплаты 300к+ руб/мес + налоги</td>
+                        </tr>
+                        <tr>
+                            <td>Маркетинговые агентства</td>
+                            <td><span class="x-icon">×</span> Только "голые" лиды, которые никто не обрабатывает</td>
+                            <td><span class="x-icon">×</span> Оплата за трафик, а не за пациентов</td>
+                        </tr>
+                        <tr>
+                            <td>CRM без менеджеров</td>
+                            <td><span class="x-icon">×</span> Низкая конверсия (клиенты ждут звонка часами)</td>
+                            <td><span class="check-icon">~</span> Дешево, но неэффективно</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works (Steps) -->
+    <section class="section-padding" id="how" style="background: var(--color-white);">
+        <div class="container">
+            <h2 class="text-center fade-up" style="margin-bottom: 60px;">Как запустить рост за неделю</h2>
+            <div class="steps-container fade-up">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h4>Заявка</h4>
+                    <p style="font-size: 0.9rem; color: #64748B;">Заполните форму. Мы свяжемся с вами в течение 1 часа.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h4>Аудит воронки</h4>
+                    <p style="font-size: 0.9rem; color: #64748B;">Анализ текущей ситуации в клинике за 3 дня. План роста.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h4>Запуск</h4>
+                    <p style="font-size: 0.9rem; color: #64748B;">Подключение отдела продаж и интеграция CRM через 7 дней.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h4>Рост</h4>
+                    <p style="font-size: 0.9rem; color: #64748B;">Еженедельная аналитика, корректировки и рост выручки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objections / FAQ -->
+    <section class="section-padding" style="background: #F8FAFC;">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="text-center fade-up" style="margin-bottom: 40px;">Разберём ваши сомнения</h2>
+            
+            <div class="accordion-item fade-up">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Дорого ли содержать аутсорс?
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    Это дешевле штата на 50%. Стоимость начинается от 100к руб/мес за полный цикл, в то время как содержание собственного РОПа и менеджеров обходится минимум в 300к руб/мес.
+                </div>
+            </div>
+
+            <div class="accordion-item fade-up">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Подойдёт ли это нашей клинике?
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    Мы адаптируем скрипты и воронку под вашу специфику: будь то ортодонтия, имплантация или общая терапия. Наши менеджеры проходят обучение медицинской специфике.
+                </div>
+            </div>
+
+            <div class="accordion-item fade-up">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    Что если результатов не будет?
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    Мы работаем на результат. Гарантия: обеспечиваем первые 20 записей или возвращаем оплату за первый месяц.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section-padding" id="audit">
+        <div class="container">
+            <div class="final-cta fade-up">
+                <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Запустите рост выручки сегодня</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 32px; color: var(--color-slate-300);">
+                    Анализ вашей воронки продаж за 3 дня + пошаговый план на +30% выручки.
+                </p>
+                <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в течение часа.');" style="max-width: 400px; margin: 0 auto;">
+                    <input type="tel" placeholder="+7 (999) 000-00-00" required style="width: 100%; padding: 16px; border-radius: var(--radius-sm); border: none; margin-bottom: 16px; font-size: 1rem;">
+                    <button type="submit" class="btn btn-primary" style="width: 100%; background: var(--color-green-400); border-color: var(--color-green-400);">Получить бесплатный аудит</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: var(--color-navy-900); color: #64748B; padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <span style="font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; color: white;">КОМДИР.</span>
+                <p style="font-size: 0.9rem; margin-top: 8px;">Системный рост стоматологий.</p>
+            </div>
+            <div style="font-size: 0.9rem;">
+                &copy; 2023 Комдир. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Intersection Observer for scroll animations
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+
+        // Accordion Logic
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            document.querySelectorAll('.accordion-item').forEach(acc => {
+                acc.classList.remove('active');
+            });
+
+            // Toggle current
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

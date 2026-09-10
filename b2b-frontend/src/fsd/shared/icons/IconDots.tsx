@@ -1,0 +1,20 @@
+import { SVGProps } from 'react';
+
+export default function IconDots(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width="17"
+      height="5"
+      viewBox="0 0 17 5"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <circle cx="1.64203" cy="2.50007" r="1.52399" fill="#747474" />
+
+      <circle cx="8.49997" cy="2.50007" r="1.52399" fill="#747474" />
+
+      <circle cx="15.3579" cy="2.50007" r="1.52399" fill="#747474" />
+    </svg>
+  );
+}

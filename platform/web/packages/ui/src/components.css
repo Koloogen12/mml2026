@@ -1,0 +1,328 @@
+/*
+ * @mml/ui — стили компонентов. Импортируется из src/index.ts,
+ * подключается автоматически при импорте любого компонента.
+ */
+
+/* ============ Button ============ */
+.mml-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  line-height: 1.2;
+  border: 1px solid transparent;
+  border-radius: var(--r-full);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    opacity var(--dur-base) ease,
+    background-color var(--dur-base) ease,
+    border-color var(--dur-base) ease,
+    transform var(--dur-fast) ease;
+}
+
+.mml-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* sizes */
+.mml-btn--sm { padding: 5px 10px; font-size: 12.5px; }
+.mml-btn--md { padding: 9px 15px; font-size: 14px; }
+.mml-btn--lg { padding: 14px 26px; font-size: 15px; }
+
+/* variants */
+.mml-btn--primary { background: var(--ink); color: var(--white); }
+/* accent — ТОЛЬКО для примерки и AI-действий */
+.mml-btn--accent { background: var(--accent); color: var(--white); }
+.mml-btn--ghost { background: var(--white); color: var(--ink); border-color: var(--border-default); }
+.mml-btn--text { background: transparent; color: var(--ink); }
+
+/* states */
+.mml-btn:hover:not(:disabled) { opacity: .92; }
+.mml-btn:active:not(:disabled) { transform: scale(.98); }
+.mml-btn:disabled {
+  background: rgba(0, 0, 0, .12);
+  color: rgba(0, 0, 0, .38);
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+/* loading: спиннер 16px, кольцо 2px в акценте */
+.mml-btn__spinner {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--r-full);
+  border: 2px solid var(--accent-tint-10);
+  border-top-color: var(--accent);
+  animation: mml-spin .7s linear infinite;
+}
+
+@keyframes mml-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============ Chip ============ */
+.mml-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--border-default);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--dur-base) ease,
+    color var(--dur-base) ease,
+    border-color var(--dur-base) ease;
+}
+
+.mml-chip:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* hover-инверсия */
+.mml-chip:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--bg-ivory);
+  border-color: var(--ink);
+}
+
+.mml-chip--selected {
+  background: var(--ink);
+  color: var(--bg-ivory);
+  border-color: var(--ink);
+}
+
+.mml-chip:disabled {
+  color: var(--text-disabled);
+  border-color: var(--border-subtle);
+  cursor: not-allowed;
+  background: var(--white);
+}
+
+/* ============ Skeleton ============ */
+.mml-skeleton {
+  display: block;
+  border-radius: var(--r-xs);
+  background: linear-gradient(90deg, #ECE9E2 0%, #F4F2EC 50%, #ECE9E2 100%);
+  background-size: 760px 100%;
+  animation: mml-shimmer 1.3s infinite linear;
+}
+
+@keyframes mml-shimmer {
+  0% { background-position: -760px 0; }
+  100% { background-position: 760px 0; }
+}
+
+/* reduced-motion: статичная заливка вместо мерцания */
+@media (prefers-reduced-motion: reduce) {
+  .mml-skeleton {
+    animation: none;
+    background: #ECE9E2;
+  }
+}
+
+/* ============ Input ============ */
+.mml-input {
+  display: block;
+  width: 100%;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--border-input);
+  border-radius: 9px;
+  padding: 13px 15px;
+  transition:
+    border-color var(--dur-base) ease,
+    box-shadow var(--dur-base) ease,
+    background-color var(--dur-base) ease;
+}
+
+.mml-input::placeholder {
+  color: var(--placeholder);
+  font-style: normal; /* italic placeholder был DP-специфичным — выключен */
+}
+
+.mml-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+.mml-input--error {
+  border-color: #C0392B;
+  background: #FDEEEC;
+}
+
+.mml-input--error:focus {
+  border-color: #C0392B;
+  box-shadow: 0 0 0 4px rgba(192, 57, 43, .1);
+}
+
+.mml-input:disabled {
+  background: rgba(0, 0, 0, .04);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
+/* ── ProductCard ─────────────────────────────────────────────── */
+.mml-card {
+  display: flex;
+  flex-direction: column;
+  width: 216px;
+  flex: 0 0 216px;
+  background: var(--white);
+  border: 1px solid var(--border-subtle);
+  border-radius: 2px; /* канон: карточка B2C почти квадратная */
+  overflow: hidden;
+  transition: transform var(--dur-slow) ease, box-shadow var(--dur-slow) ease;
+  scroll-snap-align: start;
+}
+.mml-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--sh-lg);
+}
+.mml-card__imgwrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: #e4e0d6;
+  overflow: hidden;
+}
+.mml-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--dur-image) var(--ease-image);
+}
+.mml-card:hover .mml-card__img {
+  transform: scale(1.04);
+}
+.mml-card__fav {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--ink);
+  cursor: pointer;
+  transition: opacity var(--dur-base);
+}
+.mml-card__fav:hover { opacity: 0.92; }
+.mml-card__fav--on { color: #c4553b; }
+.mml-card__fav:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.mml-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px 12px;
+  flex: 1;
+}
+.mml-card__brand {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+.mml-card__name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin: 0;
+  color: var(--ink);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(2 * 1.3em);
+}
+.mml-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.mml-card__oldprice {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.mml-card__noprice {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.mml-card__cta {
+  display: flex;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.mml-card__buy {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 8px 12px;
+  background: var(--ink);
+  color: var(--bg-ivory);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: var(--r-md);
+  transition: opacity var(--dur-base);
+}
+.mml-card__buy:hover { opacity: 0.92; }
+.mml-card__buy:active { transform: scale(0.98); }
+.mml-card__buy:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.mml-card__tryon {
+  padding: 8px 12px;
+  background: var(--white);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: opacity var(--dur-base);
+}
+.mml-card__tryon:hover { opacity: 0.92; }
+.mml-card__tryon:active { transform: scale(0.98); }
+.mml-card__tryon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

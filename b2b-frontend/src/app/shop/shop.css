@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for horizontal scroll areas */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* MakeMeLook E-commerce Design System — Farfetch-inspired */
+/* Variables scoped to .shop-root to avoid conflicts with b2b-frontend globals */
+
+@layer base {
+  .shop-root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --status-bar: 0 0% 0%;
+    --status-bar-foreground: 0 0% 100%;
+
+    --nav-background: 0 0% 100%;
+    --nav-foreground: 0 0% 20%;
+    --nav-hover: 0 0% 5%;
+
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 0 0% 15%;
+
+    --accent-blue: 217 91% 60%;
+    --accent-blue-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 0%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --radius: 0.375rem;
+
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .shop-root * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  .shop-root body,
+  .shop-root {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.animate-breathe {
+  animation: breathe 2.5s ease-in-out infinite;
+}
+

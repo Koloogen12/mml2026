@@ -1,0 +1,1 @@
+ALTER TABLE widget_events ALTER COLUMN page_url TYPE VARCHAR(2048);

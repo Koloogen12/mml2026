@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MakeMeLook</title>
+      <!-- Витрина закрыта вейтлистом и наполнена тестовыми данными: не индексируем. -->
+    <meta name="robots" content="noindex, nofollow" />
+    <!-- Виджет примерки — ровно тот embed, что получают заказчики (родной UI
+         виджета: плавающая кнопка + модалка). Хост loader.js: widget.makemelook.tech;
+         API по умолчанию admin.makemelook.tech; сессия домен-верифицируется по
+         Origin (makemelook.ai уже в allowlist проекта). Товары для примерки берутся
+         из каталога проекта f121a3bb. -->
+    <script src="https://widget.makemelook.tech/loader.js" data-project="f121a3bb-43c3-425a-8b90-1222dd84db7d" async></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

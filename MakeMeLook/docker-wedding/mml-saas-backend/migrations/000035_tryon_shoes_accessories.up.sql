@@ -1,0 +1,2 @@
+ALTER TABLE lead_try_ons ADD COLUMN IF NOT EXISTS shoes_product_id INTEGER REFERENCES products(id) ON DELETE SET NULL;
+ALTER TABLE lead_try_ons ADD COLUMN IF NOT EXISTS accessories_product_id INTEGER REFERENCES products(id) ON DELETE SET NULL;

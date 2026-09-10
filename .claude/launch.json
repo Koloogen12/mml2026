@@ -1,0 +1,33 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "buyer",
+      "cwd": "platform/web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@mml/buyer", "dev"],
+      "port": 5173
+    },
+    {
+      "name": "partner",
+      "cwd": "platform/web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@mml/partner", "dev"],
+      "port": 5174
+    },
+    {
+      "name": "admin",
+      "cwd": "platform/web",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["--filter", "@mml/admin", "dev"],
+      "port": 5175
+    },
+    {
+      "name": "waitlist",
+      "cwd": "waitlist",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["--yes", "serve", "-l", "4173", "."],
+      "port": 4173
+    }
+  ]
+}

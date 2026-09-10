@@ -1,0 +1,19 @@
+.git
+.gitignore
+*.md
+bin/
+coverage.out
+coverage.html
+**/*.test
+tmp/
+logs/
+.env
+.env.example
+# But DO ship .env.docker and .env.shopping into the build context — they're
+# copied into the image via `ARG ENV_FILE` (see Dockerfile).
+!.env.docker
+!.env.shopping
+.vscode/
+.idea/
+docker-compose.dev.yml
+mml-saas-backend-linux

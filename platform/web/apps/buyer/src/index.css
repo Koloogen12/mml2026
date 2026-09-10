@@ -1,0 +1,6 @@
+@import "@mml/ui/fonts.css";
+@import "@mml/ui/tokens.css";
+
+/* Стили hi-fi макета — портированы дословно (контракт 1:1) */
+@import "./dp.css";
+@import "./onboarding.css";

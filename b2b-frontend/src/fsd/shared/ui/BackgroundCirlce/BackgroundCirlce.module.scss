@@ -1,0 +1,8 @@
+.circle {
+  position: absolute;
+  content: '';
+  z-index: -1;
+  border-radius: 100%;
+  opacity: 0.4;
+  filter: blur(82.75px);
+}

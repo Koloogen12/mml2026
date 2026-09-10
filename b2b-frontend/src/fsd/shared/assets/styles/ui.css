@@ -1,0 +1,39 @@
+.uix-x-button-primary-solid,
+.uix-x-button-secondary-solid,
+.uix-x-button-thirdly-solid {
+  height: 42px;
+  padding: 0 24px;
+  font-family: var(--primaryFont);
+  font-size: 13px;
+  font-weight: 500;
+  --color-disabled: var(--text-light-gray-search);
+}
+
+.uix-x-button-primary-solid {
+  color: var(--text-whiteColor);
+  border: 1px solid transparent;
+  background: var(--blackColor);
+  --color-hover: var(--text-whiteColor);
+  --border-hover: 1px solid rgba(156, 163, 175, 0.1);
+  --background-hover: var(--fourthColor);
+  --background-disabled: var(--blackColor);
+  --color-disabled: var(--text-secondaryColor);
+}
+
+.uix-x-button-secondary-solid {
+  color: var(--text-blackColor);
+  background: var(--whiteColor);
+  border: 1px solid transparent;
+  --background-hover: #e8e8e8;
+  --border-hover: 1px solid transparent;
+  --border-disabled: 1px solid red;
+}
+
+.uix-x-button-thirdly-solid {
+  color: var(--text-whiteColor);
+  background: var(--text-thirdlyColor);
+  --color-hover: var(--text-whiteColor);
+  --color-disabled: var(--text-whiteColor);
+  --background-hover: #283adb;
+  --background-disabled: rgba(51, 51, 51, 0.05);
+}

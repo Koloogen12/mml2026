@@ -1,0 +1,12 @@
+@import "@mml/ui/fonts.css";
+@import "@mml/ui/tokens.css";
+
+/* Стили hi-fi макетов партнёрской поверхности — портированы дословно (контракт 1:1) */
+@import "./marketing.css";
+@import "./apply.css";
+@import "./cabinet.css";
+
+html,
+body {
+  margin: 0;
+}

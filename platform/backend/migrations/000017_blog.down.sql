@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS blog_media;
+DROP TABLE IF EXISTS blog_posts;
+DROP TABLE IF EXISTS blog_authors;

@@ -1,0 +1,45 @@
+name: platform-ci
+
+# Гейт качества платформы: сборка + vet + тесты бэкенда и сборка фронтов.
+# Тесты бэкенда чистые (без БД) — сервисы не нужны.
+on:
+  push:
+    paths: ["platform/**"]
+  pull_request:
+    paths: ["platform/**"]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: platform/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25"
+          cache-dependency-path: platform/backend/go.sum
+      - run: go build ./...
+      - run: go vet ./...
+      - run: go test ./...
+
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: platform/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+          cache-dependency-path: platform/web/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @mml/buyer build
+      - run: pnpm --filter @mml/partner build
+      - run: pnpm --filter @mml/admin build

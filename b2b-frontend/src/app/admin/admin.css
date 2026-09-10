@@ -1,0 +1,106 @@
+/* Tailwind reset + utilities for the /admin subtree.
+   Separate entry from /ru/blog so each section stays independent. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.admin-root {
+  --admin-bg: #f7f8fa;
+  --admin-surface: #ffffff;
+  --admin-border: #e6e7ea;
+  --admin-ink: #1a1c1f;
+  --admin-muted: #6b7280;
+  --admin-accent: #4859f5;
+  --admin-accent-soft: #edefff;
+  --admin-success: #10b981;
+  --admin-danger: #ef4444;
+
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  color: var(--admin-ink);
+  background: var(--admin-bg);
+  min-height: 100vh;
+}
+
+.admin-root * {
+  box-sizing: border-box;
+}
+.admin-root button,
+.admin-root input,
+.admin-root select,
+.admin-root textarea {
+  outline: revert;
+}
+
+/* =============================================================
+   Tiptap ProseMirror editor styles inside the admin blog editor
+   ============================================================= */
+
+.prose-editor :where(h1, h2, h3) {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.prose-editor h1 { font-size: 30px; margin: 28px 0 12px; }
+.prose-editor h2 { font-size: 24px; margin: 24px 0 10px; }
+.prose-editor h3 { font-size: 20px; margin: 20px 0 8px; }
+
+.prose-editor p {
+  margin: 0 0 14px;
+}
+
+.prose-editor ul,
+.prose-editor ol {
+  margin: 0 0 14px;
+  padding-left: 24px;
+}
+.prose-editor ul { list-style: disc; }
+.prose-editor ol { list-style: decimal; }
+.prose-editor li { margin-bottom: 4px; }
+
+.prose-editor a {
+  color: var(--admin-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-editor blockquote {
+  border-left: 3px solid var(--admin-border);
+  padding: 4px 0 4px 16px;
+  margin: 16px 0;
+  color: var(--admin-muted);
+  font-style: italic;
+}
+
+.prose-editor hr {
+  border: 0;
+  height: 1px;
+  background: var(--admin-border);
+  margin: 24px 0;
+}
+
+.prose-editor img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+.prose-editor strong { font-weight: 700; }
+.prose-editor em { font-style: italic; }
+.prose-editor u { text-decoration: underline; }
+
+.prose-editor code {
+  background: #f4f4f4;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+/* Placeholder for the first empty paragraph */
+.prose-editor p.is-editor-empty:first-child::before {
+  color: var(--admin-muted);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&family=Cormorant+Garamond:ital,wght@1,400&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;overflow-x:hidden;background:#F2F3F5;font-family:"Golos Text",system-ui,sans-serif;color:#121417;-webkit-font-smoothing:antialiased}
+a{color:#121417}a:hover{color:#2F5AE6}
+a:focus-visible,button:focus-visible{outline:2px solid #2F5AE6;outline-offset:2px;border-radius:999px}
+@media (prefers-reduced-motion:reduce){*{transition-duration:0.01ms!important}}
+@media (max-width:900px){[data-r="aside"]{position:static!important}section,article{padding-left:16px!important;padding-right:16px!important}}
+</style>
+</helmet>
+
+<!-- header -->
+<header style="position:sticky;top:0;z-index:20;background:rgba(242,243,245,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(18,20,23,.08)">
+  <div style="max-width:1288px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <a href="./MakeMeLook Landing.dc.html" style="display:inline-flex;align-items:center;gap:10px;font-family:Unbounded,sans-serif;font-weight:500;font-size:17px;letter-spacing:-.02em;text-decoration:none;white-space:nowrap">
+      <span style="display:inline-flex;width:20px;height:15px;flex:none"><svg viewBox="0 0 34 25" width="20" height="15" fill="none" aria-hidden="true"><path d="M33.6 24.4318H30.5455V3.8182C30.5455 3.66716 30.5007 3.51952 30.4168 3.39394C30.3329 3.26836 30.2136 3.17048 30.0741 3.11268C29.9345 3.05489 29.781 3.03976 29.6328 3.06923C29.4847 3.0987 29.3486 3.17143 29.2418 3.27823L11.8635 20.6566C11.5089 21.0111 11.088 21.2924 10.6248 21.4843C10.1615 21.6761 9.66502 21.7749 9.16361 21.7749C8.6622 21.7749 8.16569 21.6761 7.70245 21.4843C7.23921 21.2924 6.8183 21.0111 6.46375 20.6566L4.35812 18.551C4.25132 18.4442 4.11526 18.3715 3.96712 18.342C3.81899 18.3125 3.66545 18.3277 3.52591 18.3854C3.38637 18.4432 3.26711 18.5411 3.1832 18.6667C3.09929 18.7923 3.0545 18.9399 3.05449 19.091V24.4318H0V19.091C0 18.3358 0.223919 17.5976 0.643462 16.9697C1.06301 16.3418 1.65932 15.8524 2.357 15.5634C3.05468 15.2744 3.82239 15.1988 4.56304 15.3461C5.3037 15.4935 5.98403 15.8571 6.51801 16.3911L8.62363 18.4967C8.69453 18.5676 8.77871 18.6239 8.87135 18.6622C8.96399 18.7006 9.06329 18.7204 9.16357 18.7204C9.26384 18.7204 9.36314 18.7006 9.45578 18.6623C9.54843 18.6239 9.63261 18.5676 9.70351 18.4967L27.0819 1.11834C27.6159 0.584351 28.2962 0.220699 29.0369 0.0733701C29.7776 -0.073959 30.5453 0.00165186 31.243 0.290641C31.9406 0.579631 32.537 1.06902 32.9565 1.69692C33.3761 2.32482 33.6 3.06303 33.6 3.8182V24.4318Z" fill="#121417"></path></svg></span>MakeMeLook
+    </a>
+    <nav style="display:flex;gap:8px;align-items:center">
+      <a href="./MakeMeLook Landing.dc.html#journal" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;font-size:14px;font-weight:500;text-decoration:none;color:#565E6B;white-space:nowrap" style-hover="color:#121417;background:rgba(18,20,23,.05)">Журнал</a>
+      <a href="./MakeMeLook Landing.dc.html#form" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:999px;box-sizing:border-box;background:#121417;color:#fff;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:#2F5AE6;color:#fff">Показать на моих товарах</a>
+    </nav>
+  </div>
+  <div style="height:2px;background:rgba(18,20,23,.06)"><div style="height:100%;width:{{ progress }};background:#2F5AE6"></div></div>
+</header>
+
+<!-- cover -->
+<section data-screen-label="Article cover" style="padding:12px 12px 0">
+  <div style="position:relative;border-radius:28px;overflow:hidden;background:#0E1014;min-height:min(72vh,620px);display:flex;align-items:flex-end">
+    <img src="./looks/look-6.jpg" alt="Покупатель в пальто — обложка разбора о стоимости возвратов" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 26%">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,16,20,.5) 0%,rgba(14,16,20,.15) 35%,rgba(14,16,20,.88) 100%)"></div>
+    <div style="position:relative;padding:clamp(28px,4vw,56px);max-width:900px;display:flex;flex-direction:column;gap:20px;color:#fff">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <span style="height:28px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;background:#2F5AE6;font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;white-space:nowrap">РАЗБОР</span>
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;color:#fff;white-space:nowrap">9 СЕНТЯБРЯ 2026 · 11 МИН</span>
+      </div>
+      <h1 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(30px,4vw,60px);line-height:1.04;letter-spacing:-.035em;text-wrap:balance">Возврат стоит дороже, чем кажется</h1>
+      <p style="margin:0;max-width:620px;font-size:clamp(17px,1.4vw,21px);line-height:1.45;color:#fff">Обратная логистика — только первая строка счёта. Разобрали, из чего складываются 300–1500 ₽ за один возврат, и почему в отчётах магазина видно меньше, чем он платит.</p>
+    </div>
+  </div>
+</section>
+
+<!-- body -->
+<article style="max-width:1288px;margin:0 auto;padding:clamp(48px,7vw,96px) 24px 0;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(32px,5vw,72px);align-items:start">
+  <div style="max-width:680px;display:flex;flex-direction:column;gap:28px">
+    <p style="margin:0;font-size:20px;line-height:1.55;color:#121417">Когда владелец магазина называет стоимость возврата, он почти всегда называет цену обратной доставки. Это самая заметная строка — она приходит счётом от службы. Всё остальное растворено в других статьях расходов, и потому кажется, что возврат стоит двести рублей.</p>
+
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3A414B">Мы посчитали полную стоимость на данных четырёх магазинов женской одежды со средним чеком 6–18 тысяч рублей. Считали только то, что можно вытащить из учёта: логистику, обработку, потерю товарного вида и повторную упаковку. Не считали недополученную выручку и стоимость поддержки — их сложно отделить от остального.</p>
+
+    <figure style="margin:0;display:flex;flex-direction:column;gap:14px">
+      <div style="border-radius:28px;background:#fff;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:22px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+          <span style="font-size:17px;font-weight:500">Из чего складывается один возврат</span>
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#565E6B;white-space:nowrap">СРЕДНЕЕ ПО 4 МАГАЗИНАМ</span>
+        </div>
+        <sc-for list="{{ costRows }}" as="c" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:150px minmax(0,1fr) 88px;gap:16px;align-items:center">
+            <span style="font-size:15px;color:#3A414B">{{ c.name }}</span>
+            <span style="position:relative;height:{{ c.thickness }};border-radius:999px;background:#EEF1F5;overflow:hidden"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ c.w }};border-radius:999px;background:{{ c.color }};transition:width 800ms cubic-bezier(.2,.8,.2,1) {{ c.delay }}"></span></span>
+            <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:15px;text-align:right;white-space:nowrap;color:{{ c.labelColor }}">{{ c.value }}</span>
+          </div>
+        </sc-for>
+        <div style="padding-top:18px;border-top:1px solid rgba(18,20,23,.08);display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+          <span style="font-size:15px;color:#565E6B">Итого один возврат</span>
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:32px;line-height:1;white-space:nowrap">742 ₽</span>
+        </div>
+      </div>
+      <figcaption style="font-size:13px;line-height:1.5;color:#6B7380">Данные четырёх магазинов за март–август 2026. Медиана, не среднее арифметическое: один магазин с собственным пунктом выдачи сильно смещал картину.</figcaption>
+    </figure>
+
+    <h2 style="margin:16px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.4vw,32px);line-height:1.14;letter-spacing:-.025em">Почему в отчётах видно меньше</h2>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3A414B">Расходы на возврат разложены по разным статьям и разным периодам. Доставка попадает в логистику текущего месяца, переупаковка — в расходники, уценка — в скидки следующей коллекции. В отчёте по возвратам остаётся одна строка, и она честная — просто неполная.</p>
+
+    <blockquote style="margin:0;padding:24px 26px;border-radius:28px;background:#fff;border-left:2px solid #2F5AE6;display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:19px;line-height:1.5">«Мы считали двести рублей за возврат. Когда сложили уценку и переупаковку, вышло восемьсот. Половина маржи ездила туда-обратно, и мы это видели только в общей цифре прибыли».</span>
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.02em;color:#565E6B">ВЛАДЕЛЕЦ МАГАЗИНА ЖЕНСКОЙ ОДЕЖДЫ, 1 400 ЗАКАЗОВ В МЕСЯЦ</span>
+    </blockquote>
+
+    <h2 style="margin:16px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.4vw,32px);line-height:1.14;letter-spacing:-.025em">Причина одна и та же</h2>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3A414B">Во всех четырёх магазинах в причинах возврата первым пунктом стоит размер: «не подошёл», «мало в груди», «широко в талии». Это не проблема описания товара — это проблема проверки. Покупатель не может проверить посадку до заказа, поэтому заказывает наугад, иногда в двух размерах сразу.</p>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3A414B">Дальше арифметика простая: чем дороже вещь, тем реже человек заказывает вслепую — и тем чаще он вообще не заказывает. Возврат и брошенная корзина растут от одной причины, и потому лечатся одним и тем же.</p>
+
+    <div style="border-radius:28px;background:#0E1014;color:#fff;padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;gap:18px">
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.55)">ЧТО С ЭТИМ ДЕЛАТЬ</span>
+      <span style="font-size:19px;line-height:1.5">Мы не обещаем процент снижения возвратов. Мы ставим счётчик: видно, сколько человек примерили, что после этого положили в корзину и что выкупили — на ваших данных, а не на среднем по рынку.</span>
+      <a href="./MakeMeLook Landing.dc.html#form" style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 26px;border-radius:999px;box-sizing:border-box;background:#fff;color:#121417;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;align-self:flex-start" style-hover="background:#2F5AE6;color:#fff">Посмотреть на своих товарах</a>
+    </div>
+
+    <h2 style="margin:16px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.4vw,32px);line-height:1.14;letter-spacing:-.025em">Как считать у себя</h2>
+    <p style="margin:0;font-size:17px;line-height:1.65;color:#3A414B">Возьмите три числа: заказов в месяц, долю возвратов и полную стоимость одного возврата — с уценкой и переупаковкой, а не только доставку. Умножьте. Полученная сумма и есть цена того, что покупатель не смог проверить посадку.</p>
+    <ol style="margin:0;padding-left:22px;display:flex;flex-direction:column;gap:12px;font-size:17px;line-height:1.6;color:#3A414B">
+      <li>Выгрузите возвраты за квартал и разметьте причины по трём группам: размер, посадка, всё остальное.</li>
+      <li>Сложите к обратной доставке уценку и расходники — это две строки, которые обычно теряются.</li>
+      <li>Разделите итог на число возвратов: получите свою цену возврата, а не отраслевую.</li>
+    </ol>
+
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:24px 0;border-top:1px solid rgba(18,20,23,.08);border-bottom:1px solid rgba(18,20,23,.08)">
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:#565E6B;margin-right:6px">ПОДЕЛИТЬСЯ</span>
+      <a href="{{ tgHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;background:#fff;border:1px solid rgba(18,20,23,.1);color:#121417;font-size:15px;text-decoration:none;white-space:nowrap" style-hover="border-color:#2F5AE6;color:#2F5AE6">Telegram</a>
+      <a href="{{ vkHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;background:#fff;border:1px solid rgba(18,20,23,.1);color:#121417;font-size:15px;text-decoration:none;white-space:nowrap" style-hover="border-color:#2F5AE6;color:#2F5AE6">ВКонтакте</a>
+      <a href="{{ waHref }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;background:#fff;border:1px solid rgba(18,20,23,.1);color:#121417;font-size:15px;text-decoration:none;white-space:nowrap" style-hover="border-color:#2F5AE6;color:#2F5AE6">WhatsApp</a>
+      <button onClick="{{ copyLink }}" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 18px;border-radius:999px;background:{{ copyBg }};border:1px solid {{ copyBorder }};color:{{ copyColor }};font-family:'Golos Text',sans-serif;font-size:15px;cursor:pointer;white-space:nowrap;transition:background 200ms,color 200ms" style-hover="border-color:#2F5AE6">{{ copyLabel }}</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;padding-top:8px">
+      <span style="width:56px;height:56px;border-radius:999px;background:#E4E8ED;overflow:hidden;position:relative;flex:none"><img src="./looks/look-4.jpg" alt="Автор разбора" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%"></span>
+      <span style="display:flex;flex-direction:column;gap:4px">
+        <span style="font-size:15px;font-weight:500">Данил Кочнев</span>
+        <span style="font-size:14px;color:#565E6B">MakeMeLook · считаем возвраты вместе с магазинами</span>
+      </span>
+    </div>
+  </div>
+
+  <aside data-r="aside" style="position:sticky;top:104px;display:flex;flex-direction:column;gap:16px">
+    <div style="border-radius:28px;background:#fff;padding:24px;display:flex;flex-direction:column;gap:14px">
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">В ЭТОМ РАЗБОРЕ</span>
+      <sc-for list="{{ toc }}" as="t" hint-placeholder-count="4">
+        <a href="{{ t.href }}" style="display:flex;gap:12px;align-items:baseline;font-size:15px;line-height:1.4;text-decoration:none;color:#3A414B" style-hover="color:#2F5AE6"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#6B7380">{{ t.n }}</span>{{ t.title }}</a>
+      </sc-for>
+    </div>
+    <div style="border-radius:28px;background:#fff;padding:24px;display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">КОРОТКО</span>
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:34px;line-height:1">742 ₽</span>
+      <span style="font-size:14px;line-height:1.5;color:#565E6B">полная стоимость одного возврата по данным четырёх магазинов — против 200 ₽, которые видно в отчёте.</span>
+    </div>
+  </aside>
+</article>
+
+<!-- more -->
+<section style="max-width:1288px;margin:0 auto;padding:clamp(64px,8vw,120px) 24px 0">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:24px">
+    <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.4vw,34px);line-height:1.1;letter-spacing:-.03em">Ещё в журнале</h2>
+    <a href="./MakeMeLook Landing.dc.html#journal" style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;text-decoration:none;color:#2F5AE6;white-space:nowrap">ВСЕ РАЗБОРЫ →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+    <a href="./MakeMeLook Article.dc.html" style="display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:hidden;text-decoration:none;color:#121417;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px);color:#121417">
+      <span style="position:relative;display:block;aspect-ratio:16/10;background:#E4E8ED;overflow:hidden"><img src="./looks/look-3.jpg" alt="Как собрать размерную сетку, по которой можно считать" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></span>
+      <span style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1">
+        <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="height:26px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:#F2F3F5;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.02em;color:#565E6B;white-space:nowrap">МЕТОДИКА</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;color:#6B7380;white-space:nowrap">7 мин</span></span>
+        <span style="font-size:20px;font-weight:500;line-height:1.28;letter-spacing:-.015em">Как собрать размерную сетку, по которой можно считать</span>
+        <span style="font-size:15px;line-height:1.5;color:#565E6B">Восемь замеров, которых достаточно, и три, которые чаще всего забывают внести.</span>
+      </span>
+    </a>
+    <a href="./MakeMeLook Article.dc.html" style="display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:hidden;text-decoration:none;color:#121417;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px);color:#121417">
+      <span style="position:relative;display:block;aspect-ratio:16/10;background:#E4E8ED;overflow:hidden"><img src="./looks/look-5.jpg" alt="Примерочная исчезает: что случилось с офлайном за два года" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></span>
+      <span style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1">
+        <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="height:26px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:#F2F3F5;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.02em;color:#565E6B;white-space:nowrap">ИССЛЕДОВАНИЕ</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;color:#6B7380;white-space:nowrap">9 мин</span></span>
+        <span style="font-size:20px;font-weight:500;line-height:1.28;letter-spacing:-.015em">Примерочная исчезает: что случилось с офлайном за два года</span>
+        <span style="font-size:15px;line-height:1.5;color:#565E6B">Данные по сокращению сетей против поведения покупателей на сайтах.</span>
+      </span>
+    </a>
+    <a href="./MakeMeLook Article.dc.html" style="display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:hidden;text-decoration:none;color:#121417;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px);color:#121417">
+      <span style="position:relative;display:block;aspect-ratio:16/10;background:#E4E8ED;overflow:hidden"><img src="./looks/look-2.jpg" alt="Какие фото товара подходят для примерки, а какие нет" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></span>
+      <span style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1">
+        <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="height:26px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:#F2F3F5;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.02em;color:#565E6B;white-space:nowrap">ПРАКТИКА</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;color:#6B7380;white-space:nowrap">6 мин</span></span>
+        <span style="font-size:20px;font-weight:500;line-height:1.28;letter-spacing:-.015em">Какие фото товара подходят для примерки, а какие нет</span>
+        <span style="font-size:15px;line-height:1.5;color:#565E6B">Ракурс, фон, складки и подкладка: что мешает собрать вещь на человеке.</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<footer style="padding:clamp(72px,8vw,120px) 12px 12px">
+  <div style="position:relative;border-radius:28px;overflow:hidden;background:#0E1014;color:#fff;padding:clamp(28px,4vw,56px) clamp(20px,3.4vw,48px) 0">
+    <div style="position:absolute;inset:0;background:radial-gradient(60% 55% at 12% 0%, rgba(47,90,230,.26) 0%, rgba(14,16,20,0) 70%),radial-gradient(50% 50% at 92% 40%, rgba(143,176,255,.12) 0%, rgba(14,16,20,0) 70%);pointer-events:none"></div>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);padding-bottom:clamp(32px,4vw,56px);border-bottom:1px solid rgba(255,255,255,.1)">
+      <div style="display:flex;flex-direction:column;gap:22px;max-width:460px">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.55)">ОДНО ДЕЙСТВИЕ</span>
+        <span style="font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.6vw,36px);line-height:1.1;letter-spacing:-.03em;text-wrap:balance">Пришлите ссылку на каталог — соберём примерку на ваших вещах</span>
+        <a href="./MakeMeLook Landing.dc.html#form" style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 26px;border-radius:999px;box-sizing:border-box;background:#fff;color:#121417;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;align-self:flex-start" style-hover="background:#2F5AE6;color:#fff">Показать на моих товарах</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:28px 24px;align-content:start">
+        <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.45);padding-bottom:8px">ПРОДУКТ</span>
+          <a href="./MakeMeLook Landing.dc.html#steps" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Примерка</a>
+          <a href="./MakeMeLook Landing.dc.html#steps" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Подсказка размера</a>
+          <a href="./MakeMeLook Landing.dc.html#steps" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Чат-стилист</a>
+          <a href="./MakeMeLook Landing.dc.html#form" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Демонстрация</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.45);padding-bottom:8px">ИНТЕГРАЦИИ</span>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Tilda</a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">InSales</a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">1С-Битрикс</a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">CS-Cart · OpenCart</a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Документация</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.45);padding-bottom:8px">КОМПАНИЯ</span>
+          <a href="./MakeMeLook Landing.dc.html#journal" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Журнал</a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">О нас</a>
+          <a href="./MakeMeLook Landing.dc.html#form" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Контакты</a>
+          <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">Политика данных</a>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center;padding:22px 0">
+      <span style="display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.55)">
+        <span style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap"><span style="width:6px;height:6px;border-radius:999px;background:#8FB0FF"></span>ОТВЕЧАЕМ В ТЕЧЕНИЕ РАБОЧЕГО ДНЯ</span>
+        <span style="white-space:nowrap">МОСКВА · МСК</span>
+        <span style="white-space:nowrap">ДАННЫЕ ХРАНЯТСЯ В РФ · 152-ФЗ</span>
+      </span>
+      <span style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;text-decoration:none;white-space:nowrap" style-hover="background:rgba(255,255,255,.18);color:#fff">Telegram</a>
+        <a href="mailto:hello@makemelook.ai" style="display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;text-decoration:none;white-space:nowrap" style-hover="background:rgba(255,255,255,.18);color:#fff">hello@makemelook.ai</a>
+      </span>
+    </div>
+    <div style="position:relative;margin:clamp(10px,2vw,22px) calc(-1 * clamp(20px,3.4vw,48px)) 0;padding-bottom:0;font-size:0;line-height:0">
+      <svg viewBox="0 0 1000 100" preserveAspectRatio="none" width="100%" height="clamp(58px,11vw,168px)" role="img" aria-label="MakeMeLook" style="display:block;overflow:hidden">
+        <text x="0" y="100" textLength="1000" lengthAdjust="spacingAndGlyphs" font-family="Unbounded, sans-serif" font-weight="500" font-size="118" fill="rgba(255,255,255,0.1)">MakeMeLook</text>
+      </svg>
+    </div>
+  </div>
+  <div style="max-width:1288px;margin:0 auto;padding:20px 12px 8px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:#565E6B">
+    <span style="display:inline-flex;align-items:center;min-height:44px">MAKEMELOOK · ООО «МОНОРУС» · 2026</span>
+    <span style="display:flex;gap:20px;flex-wrap:wrap"><a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#565E6B;text-decoration:none" style-hover="color:#121417">ПОЛИТИКА ДАННЫХ</a><a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#565E6B;text-decoration:none" style-hover="color:#121417">УСЛОВИЯ</a></span>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { progress: '0%', drawn: false, copied: false };
+  url() { return typeof location !== 'undefined' ? location.href.split('#')[0] : 'https://makemelook.ai/journal/vozvrat'; }
+  copy() {
+    const u = this.url();
+    const done = () => { this.setState({ copied: true }); clearTimeout(this._c); this._c = setTimeout(() => this.setState({ copied: false }), 2200); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done, done);
+    else done();
+  }
+  componentDidMount() {
+    this._scroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      this.setState({ progress: (max > 0 ? Math.min(100, window.scrollY / max * 100) : 0) + '%' });
+    };
+    window.addEventListener('scroll', this._scroll, { passive: true });
+    this._t = setTimeout(() => this.setState({ drawn: true }), 500);
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this._scroll); clearTimeout(this._t); }
+  renderVals() {
+    const d = this.state.drawn;
+    const rows = [
+      ['Обратная доставка', 210, '#8FB0FF'],
+      ['Обработка и приёмка', 120, '#8FB0FF'],
+      ['Потеря товарного вида', 240, 'linear-gradient(90deg,#8FB0FF 0%,#2F5AE6 100%)'],
+      ['Переупаковка', 90, '#8FB0FF'],
+      ['Повторная фотосъёмка позиции', 82, '#8FB0FF']
+    ];
+    const u = encodeURIComponent(this.url());
+    const title = encodeURIComponent('Возврат стоит дороже, чем кажется — разбор MakeMeLook');
+    const c = this.state.copied;
+    return {
+      progress: this.state.progress,
+      tgHref: 'https://t.me/share/url?url=' + u + '&text=' + title,
+      vkHref: 'https://vk.com/share.php?url=' + u + '&title=' + title,
+      waHref: 'https://api.whatsapp.com/send?text=' + title + '%20' + u,
+      copyLink: () => this.copy(),
+      copyLabel: c ? 'Ссылка скопирована' : 'Скопировать ссылку',
+      copyBg: c ? '#121417' : '#fff', copyColor: c ? '#fff' : '#121417', copyBorder: c ? '#121417' : 'rgba(18,20,23,.1)',
+      costRows: rows.map(([name, v, color], k) => ({
+        name, value: v + ' ₽', w: d ? (v / 240 * 100) + '%' : '0%',
+        thickness: v === 240 ? '18px' : '12px', color,
+        labelColor: v === 240 ? '#2F5AE6' : '#121417', delay: (k * 90) + 'ms'
+      })),
+      toc: [
+        { n: '01', title: 'Из чего складывается возврат', href: '#' },
+        { n: '02', title: 'Почему в отчётах видно меньше', href: '#' },
+        { n: '03', title: 'Причина одна и та же', href: '#' },
+        { n: '04', title: 'Как считать у себя', href: '#' }
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

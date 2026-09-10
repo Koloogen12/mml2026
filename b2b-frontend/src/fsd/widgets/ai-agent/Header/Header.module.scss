@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+}
+
+.inner {
+  position: relative;
+  margin: 0 auto;
+  max-width: var(--containerMaxlWidthXxl);
+  padding-left: var(--containerXPaddingsXxl);
+  padding-right: var(--containerXPaddingsXxl);
+  padding-bottom: 22px;
+  padding-top: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 440px) {
+    justify-content: center;
+  }
+}
+
+.logo {
+  color: var(--darkColor);
+}
+
+.btn {
+  @media (max-width: 440px) {
+    display: none;
+  }
+}

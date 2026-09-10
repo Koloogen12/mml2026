@@ -1,0 +1,284 @@
+/* =====================================================================
+   THE MONO — Design Tokens
+   Load this file in any HTML that uses the system.
+   ===================================================================== */
+
+/* ---------- Brand fonts (local) ---------- */
+
+/* Inter — UI body, 400/500/600 used */
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-SemiBold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('fonts/Inter-Italic.woff2') format('woff2');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+/* Inter Display — headings + display sizes, 500/600 used */
+@font-face {
+  font-family: 'Inter Display';
+  src: url('fonts/InterDisplay-Medium.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter Display';
+  src: url('fonts/InterDisplay-SemiBold.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Inter Display';
+  src: url('fonts/InterDisplay-Regular.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+/* Golos Text — editorial accent (pull quotes, hero lines). 500/600 used */
+@font-face {
+  font-family: 'Golos Text';
+  src: url('fonts/GolosText-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Golos Text';
+  src: url('fonts/GolosText-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Golos Text';
+  src: url('fonts/GolosText-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+
+/* JetBrains Mono — numbers, prices, codes. Loaded from Google Fonts
+   (user has NOT supplied a local file yet — substitution flagged in README). */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+  /* =================================================================
+     COLOR — monochrome first. One accent: vermilion. Use sparingly.
+     ================================================================= */
+
+  /* Surfaces */
+  --chalk:         #FAFAF7;  /* warm off-white, PRIMARY page background */
+  --paper:         #FFFFFF;  /* pure white, elevated surfaces only */
+
+  /* Ink + graphite scale */
+  --ink:           #0A0A0A;  /* primary text, NEVER pure #000 */
+  --graphite-700:  #3D3C39;  /* secondary text */
+  --graphite-500:  #8C8A82;  /* tertiary / muted */
+  --graphite-400:  #B3B1A9;  /* disabled / placeholder */
+  --graphite-300:  #D7D5CE;  /* primary borders */
+  --graphite-200:  #E6E4DD;  /* subtle borders, dividers */
+  --graphite-100:  #F3F2EE;  /* secondary surface, hover bg */
+
+  /* Accent — vermilion */
+  --vermilion-600: #B8371A;  /* pressed */
+  --vermilion-500: #D84315;  /* primary accent */
+  --vermilion-400: #E06A42;  /* hover */
+  --vermilion-100: #FBE8DF;  /* badge tint */
+  --vermilion-50:  #FDF4EE;  /* ambient surface tint */
+
+  /* Status — muted, system only */
+  --success-500: #2F7D53;  --success-tint: #E3F1E8;
+  --warning-500: #A86A00;  --warning-tint: #F8EED7;
+  --danger-500:  #B42318;  --danger-tint:  #F7DCDA;
+  --info-500:    #1F4E7A;  --info-tint:    #DEE8F2;
+
+  /* Semantic aliases */
+  --bg:            var(--chalk);
+  --bg-elevated:   var(--paper);
+  --bg-hover:      var(--graphite-100);
+  --bg-selected:   var(--vermilion-50);
+
+  --fg:            var(--ink);
+  --fg-secondary:  var(--graphite-700);
+  --fg-muted:      var(--graphite-500);
+  --fg-disabled:   var(--graphite-400);
+  --fg-accent:     var(--vermilion-500);
+
+  --border:          var(--graphite-300);
+  --border-subtle:   var(--graphite-200);
+  --border-accent:   var(--vermilion-500);
+
+  /* =================================================================
+     TYPE
+     ================================================================= */
+
+  --font-display: 'Inter Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --font-editorial:'Golos Text', 'Inter Display', serif;
+
+  /* Weights — NEVER above 600 */
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-semi:    600;
+
+  /* Display scale */
+  --t-display-2xl: 500 72px/76px var(--font-display);  --ls-display-2xl: -0.03em;
+  --t-display-xl:  500 56px/60px var(--font-display);  --ls-display-xl:  -0.025em;
+  --t-display-lg:  500 44px/48px var(--font-display);  --ls-display-lg:  -0.02em;
+  --t-display-md:  500 36px/40px var(--font-display);  --ls-display-md:  -0.02em;
+  --t-display-sm:  500 28px/34px var(--font-display);  --ls-display-sm:  -0.015em;
+
+  /* Headings */
+  --t-heading-lg:  600 22px/28px var(--font-display);  --ls-heading-lg:  -0.01em;
+  --t-heading-md:  600 18px/24px var(--font-display);  --ls-heading-md:  0;
+  --t-heading-sm:  600 16px/22px var(--font-display);  --ls-heading-sm:  0;
+
+  /* Body */
+  --t-body-lg: 400 17px/26px var(--font-body);
+  --t-body:    400 15px/22px var(--font-body);
+  --t-body-sm: 400 13px/19px var(--font-body);
+
+  /* Labels — UPPERCASE, tracked */
+  --t-label:    500 12px/16px var(--font-body);  --ls-label:    0.04em;
+  --t-label-sm: 500 11px/14px var(--font-body);  --ls-label-sm: 0.06em;
+
+  /* Mono — numbers, prices, codes */
+  --t-mono: 500 13px/20px var(--font-mono);
+
+  --measure: 720px;  /* max readable body width */
+
+  /* =================================================================
+     SPACING — 4px baseline
+     ================================================================= */
+  --sp-1:   4px;
+  --sp-2:   8px;
+  --sp-3:   12px;
+  --sp-4:   16px;
+  --sp-5:   20px;
+  --sp-6:   24px;
+  --sp-8:   32px;
+  --sp-10:  40px;
+  --sp-12:  48px;
+  --sp-16:  64px;
+  --sp-20:  80px;
+  --sp-24:  96px;
+  --sp-32:  128px;
+  --sp-40:  160px;
+  --sp-48:  192px;
+  --sp-64:  256px;
+
+  /* =================================================================
+     RADII — NEVER 16–20px
+     ================================================================= */
+  --r-sm:   4px;   /* inputs */
+  --r-md:   6px;   /* buttons, cards */
+  --r-lg:   10px;  /* modals */
+  --r-xl:   14px;  /* hero media */
+  --r-full: 9999px;/* avatars, pills */
+
+  /* =================================================================
+     ELEVATION — three tokens, no more
+     ================================================================= */
+  --shadow-subtle:
+    0 1px 2px rgba(10,10,10,0.04),
+    0 0 0 1px rgba(10,10,10,0.04);
+  --shadow-float:
+    0 8px 24px rgba(10,10,10,0.08),
+    0 0 0 1px rgba(10,10,10,0.06);
+  --shadow-modal:
+    0 24px 48px rgba(10,10,10,0.16);
+
+  /* =================================================================
+     MOTION
+     ================================================================= */
+  --ease: cubic-bezier(0.2, 0, 0.15, 1);
+  --dur-fast: 120ms;
+  --dur-base: 180ms;
+  --dur-slow: 280ms;
+
+  /* =================================================================
+     LAYOUT
+     ================================================================= */
+  --container:    1280px;
+  --container-px: 64px;      /* desktop */
+  --rail:         272px;     /* sticky right rail width */
+  --nav:          240px;     /* sidebar width */
+  --topbar:       64px;
+
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl:1536px;
+}
+
+/* =====================================================================
+   BASE — apply to <body> or a root wrapper
+   ===================================================================== */
+.mono-root,
+body.mono {
+  background: var(--bg);
+  color: var(--fg);
+  font: var(--t-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'ss01', 'cv11';
+  font-variant-numeric: tabular-nums;
+}
+
+/* =====================================================================
+   SEMANTIC TYPE
+   ===================================================================== */
+.mono-root h1, .t-display-lg { font: var(--t-display-lg); letter-spacing: var(--ls-display-lg); color: var(--fg); margin: 0; }
+.mono-root h2, .t-display-md { font: var(--t-display-md); letter-spacing: var(--ls-display-md); color: var(--fg); margin: 0; }
+.mono-root h3, .t-display-sm { font: var(--t-display-sm); letter-spacing: var(--ls-display-sm); color: var(--fg); margin: 0; }
+.mono-root h4, .t-heading-lg { font: var(--t-heading-lg); letter-spacing: var(--ls-heading-lg); color: var(--fg); margin: 0; }
+.mono-root h5, .t-heading-md { font: var(--t-heading-md); color: var(--fg); margin: 0; }
+.mono-root h6, .t-heading-sm { font: var(--t-heading-sm); color: var(--fg); margin: 0; }
+
+.t-display-2xl { font: var(--t-display-2xl); letter-spacing: var(--ls-display-2xl); }
+.t-display-xl  { font: var(--t-display-xl);  letter-spacing: var(--ls-display-xl); }
+
+.t-body-lg { font: var(--t-body-lg); color: var(--fg); }
+.t-body    { font: var(--t-body);    color: var(--fg); }
+.t-body-sm { font: var(--t-body-sm); color: var(--fg-secondary); }
+
+.t-label {
+  font: var(--t-label);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.t-label-sm {
+  font: var(--t-label-sm);
+  letter-spacing: var(--ls-label-sm);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.t-mono, code, kbd, samp, pre {
+  font: var(--t-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.t-editorial { font: 500 clamp(28px, 4vw, 44px)/1.15 var(--font-editorial); letter-spacing: -0.015em; }
+
+/* Utility text colors */
+.c-fg          { color: var(--fg); }
+.c-secondary   { color: var(--fg-secondary); }
+.c-muted       { color: var(--fg-muted); }
+.c-disabled    { color: var(--fg-disabled); }
+.c-accent      { color: var(--fg-accent); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

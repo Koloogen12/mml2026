@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- MakeMeLook brand favicon set (PNG + ICO + Apple-touch + Android).
+         Source files live in public/ and are copied verbatim from the
+         landing's public/ directory so brand identity stays consistent
+         across makemelook.tech, admin.makemelook.tech, and demo.makemelook.tech. -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+
+    <title>MakeMeLook — Виртуальная примерка одежды</title>
+    <meta name="description" content="Премиальный интернет-магазин одежды с виртуальной примеркой. Откройте для себя свадебную коллекцию 2026, новинки и тренды сезона.">
+    <meta name="author" content="MakeMeLook" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MakeMeLook — Виртуальная примерка одежды">
+    <meta property="og:description" content="Премиальный интернет-магазин одежды с виртуальной примеркой.">
+    <meta name="twitter:card" content="summary_large_image" />
+</head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- MakeMeLook widget (local demo server) -->
+    <script
+      src="http://localhost:3099/widget/loader.js"
+      data-project="demo-monsheri"
+      data-api="http://localhost:3099"
+      data-cdn="http://localhost:3099/widget"
+      async
+    ></script>
+  </body>
+</html>

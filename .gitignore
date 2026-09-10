@@ -1,0 +1,77 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build
+dist/
+build/
+tmp/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.prod
+
+# Go
+mml-saas-backend/server
+mml-saas-backend/tmp/
+
+# Python (reco-сайдкар)
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+
+# ——— Добавлено 10.09.2026 при переезде на новый репозиторий ————————————
+
+# СЕКРЕТЫ И БОЕВЫЕ ДАННЫЕ — никогда не коммитить.
+# .exfil-backup содержал живой приватный ключ сервисного аккаунта Google,
+# боевые env-файлы и три дампа продакшн-базы с персональными данными.
+.exfil-backup/
+mml-backup/
+*.dump
+*.sql.gz
+**/secrets/
+*-sa.json
+*.pem
+*.p12
+id_rsa*
+
+# Рабочие копии других сессий: вложенные репозитории и дубликаты дерева.
+.claude/worktrees/
+
+# Окружения и сборки
+.venv/
+venv/
+__pycache__/
+.next/
+out/
+.turbo/
+
+# Скомпилированные бинарники — пересобираются, в git не место.
+# Пути указаны без привязки к каталогу: одни и те же артефакты лежат в
+# нескольких копиях проекта.
+mml-saas-backend-linux
+**/mml-saas-backend/server
+
+# Тяжёлые архивы: GitHub не принимает файлы больше 100 МБ
+*.zip
+
+# Конфликтные копии iCloud
+* 2.*
+* 3.*

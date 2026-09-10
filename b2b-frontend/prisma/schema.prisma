@@ -1,0 +1,78 @@
+// Prisma schema for b2b-frontend.
+//
+// Phase 1 (public blog):
+//   - BlogPost is actively used by /ru/blog pages.
+//
+// Phase 2 (admin):
+//   - User, LeadRequest, BlogMedia are wired up to admin screens + NextAuth.
+//   - Defined here now so all migrations live in one place.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model BlogPost {
+  id          Int       @id @default(autoincrement())
+  slug        String    @unique
+  title       String
+  excerpt     String?
+  coverUrl    String?   @map("cover_url")
+  // Rendered HTML produced by the Tiptap editor (editor.getHTML()).
+  contentHtml String    @map("content_html")
+  status      String    @default("draft") // draft | published
+  publishedAt DateTime? @map("published_at")
+  authorId    Int?      @map("author_id")
+  author      User?     @relation(fields: [authorId], references: [id])
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+
+  @@index([status, publishedAt])
+  @@map("blog_posts")
+}
+
+model User {
+  id           Int        @id @default(autoincrement())
+  email        String     @unique
+  passwordHash String     @map("password_hash")
+  name         String?
+  role         String     @default("admin") // admin | editor
+  posts        BlogPost[]
+  media        BlogMedia[]
+  createdAt    DateTime   @default(now()) @map("created_at")
+
+  @@map("users")
+}
+
+model BlogMedia {
+  id         Int      @id @default(autoincrement())
+  url        String   // public URL via /blog-s3/ nginx proxy
+  objectKey  String   @unique @map("object_key") // key in MinIO bucket
+  mime       String
+  sizeBytes  Int      @map("size_bytes")
+  uploadedBy Int?     @map("uploaded_by")
+  user       User?    @relation(fields: [uploadedBy], references: [id])
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@map("blog_media")
+}
+
+model LeadRequest {
+  id           Int      @id @default(autoincrement())
+  name         String
+  contactType  String   @map("contact_type") // email | tg | wb | tel
+  contactValue String   @map("contact_value")
+  ip           String?
+  userAgent    String?  @map("user_agent")
+  referer      String?
+  read         Boolean  @default(false)
+  notes        String?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@index([read, createdAt])
+  @@map("lead_requests")
+}

@@ -1,0 +1,19 @@
+[Unit]
+Description=MakeMeLook SaaS Backend API
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User={{USER}}
+Group={{USER}}
+WorkingDirectory={{WORKDIR}}
+ExecStart={{WORKDIR}}/bin/server
+EnvironmentFile={{WORKDIR}}/.env
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/var/log/makemelook/saas-backend.log
+StandardError=append:/var/log/makemelook/saas-backend.log
+SyslogIdentifier=mml-saas-backend
+
+[Install]
+WantedBy=multi-user.target

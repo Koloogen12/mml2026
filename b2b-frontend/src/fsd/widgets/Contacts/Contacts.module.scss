@@ -1,0 +1,57 @@
+.contactSection {
+  position: relative;
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  z-index: 2;
+}
+
+.contactBgCircle1 {
+  bottom: -50%;
+  left: 0;
+  opacity: 0.7;
+}
+
+.contactBgCircle2 {
+  top: 0;
+  right: 0;
+  opacity: 0.7;
+}
+
+.btn {
+  height: 90px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.contactBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+
+  @media (max-width: 440px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.title4 {
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 40px;
+  letter-spacing: -0.05em;
+  text-align: center;
+
+  @media (max-width: 440px) {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 29.4px;
+    letter-spacing: -0.05em;
+  }
+}

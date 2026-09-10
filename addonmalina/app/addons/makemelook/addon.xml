@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>makemelook</id>
+    <version>1.0</version>
+    <priority>100</priority>
+    <position>0</position>
+    <default_language>ru</default_language>
+    <status>disabled</status>
+    <settings edition_type="ROOT,STOREFRONT">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="project_token">
+                        <type>input</type>
+                        <default_value>5eb67058-12c6-41ae-ab44-87b929ef07e3</default_value>
+                    </item>
+                    <item id="button_text">
+                        <type>input</type>
+                        <default_value>Примерить</default_value>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+</addon>

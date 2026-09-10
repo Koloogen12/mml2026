@@ -1,0 +1,93 @@
+/* =====================================================================
+   THE MONO — Components layer
+   Drop-in primitives. Requires tokens.css to be loaded first.
+   ===================================================================== */
+
+/* ---------- Buttons ---------- */
+.mono-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 36px; padding: 0 14px;
+  border-radius: var(--r-md); border: 1px solid transparent;
+  font: 500 13px/1 var(--font-body);
+  cursor: pointer; white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.mono-btn.sm { height: 30px; padding: 0 10px; font-size: 12px; border-radius: var(--r-sm); }
+.mono-btn.lg { height: 44px; padding: 0 20px; font-size: 15px; }
+
+.mono-btn--primary   { background: var(--ink); color: var(--paper); }
+.mono-btn--primary:hover { background: #000; }
+.mono-btn--accent    { background: var(--vermilion-500); color: var(--paper); }
+.mono-btn--accent:hover { background: var(--vermilion-600); }
+.mono-btn--secondary { background: var(--paper); color: var(--ink); border-color: var(--border); }
+.mono-btn--secondary:hover { border-color: var(--ink); }
+.mono-btn--ghost     { background: transparent; color: var(--ink); }
+.mono-btn--ghost:hover { background: var(--bg-hover); }
+.mono-btn--danger    { background: var(--danger-500); color: var(--paper); }
+
+/* ---------- Badges ---------- */
+.mono-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 8px; border-radius: var(--r-full);
+  font: 500 10px/1 var(--font-body); letter-spacing: 0.06em; text-transform: uppercase;
+  background: var(--graphite-100); color: var(--graphite-700);
+}
+.mono-badge--accent  { background: var(--vermilion-100); color: var(--vermilion-600); }
+.mono-badge--success { background: var(--success-tint); color: var(--success-500); }
+.mono-badge--warning { background: var(--warning-tint); color: var(--warning-500); }
+.mono-badge--danger  { background: var(--danger-tint);  color: var(--danger-500); }
+.mono-badge--info    { background: var(--info-tint);    color: var(--info-500); }
+.mono-badge--outline { background: transparent; border: 1px solid var(--border); color: var(--fg-secondary); }
+.mono-badge--solid   { background: var(--vermilion-500); color: var(--paper); }
+.mono-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* ---------- Cards ---------- */
+.mono-card {
+  background: var(--paper);
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-subtle);
+}
+.mono-card.pad    { padding: var(--sp-5); }
+.mono-card.pad-lg { padding: var(--sp-6); }
+
+/* ---------- Inputs ---------- */
+.mono-input {
+  height: 36px; padding: 0 12px;
+  background: var(--paper); border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font: var(--t-body); color: var(--fg);
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+.mono-input:focus { border-color: var(--ink); }
+.mono-input::placeholder { color: var(--fg-disabled); }
+
+/* ---------- Rule label (editorial section header) ---------- */
+.mono-rule-label {
+  display: flex; align-items: center; gap: 14px;
+  font: var(--t-label-sm); letter-spacing: var(--ls-label-sm);
+  text-transform: uppercase; color: var(--fg-muted);
+  margin-bottom: var(--sp-4);
+}
+.mono-rule-label::after { content: ''; flex: 1; border-top: 1px solid var(--border-subtle); }
+
+/* ---------- KV list (data display) ---------- */
+.mono-kv { display: grid; grid-template-columns: 140px 1fr; gap: 10px 20px; font: var(--t-body); margin: 0; }
+.mono-kv dt { color: var(--fg-muted); font: var(--t-label-sm); letter-spacing: var(--ls-label-sm); text-transform: uppercase; padding-top: 2px; }
+.mono-kv dd { margin: 0; color: var(--fg); }
+
+/* ---------- Hairline ---------- */
+.mono-hairline { height: 1px; background: var(--border-subtle); border: 0; margin: var(--sp-5) 0; }
+
+/* =====================================================================
+   COMMUNITY MODE — warm sand theme variant
+   Apply .mono-community class to <body> or any container.
+   ===================================================================== */
+.mono-community {
+  --chalk:        #F7F5F0;
+  --graphite-100: #F0EEE8;
+  --graphite-200: #E8E5DD;
+  --graphite-300: #D7D5CE;
+  --bg:           var(--chalk);
+  --bg-hover:     #F0EEE8;
+}

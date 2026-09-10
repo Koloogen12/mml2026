@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend",
+      "runtimeExecutable": "go",
+      "runtimeArgs": ["run", "./cmd/server"],
+      "port": 3010,
+      "cwd": "mml-saas-backend"
+    },
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5173,
+      "cwd": "mml-saas-frontend"
+    },
+    {
+      "name": "widget",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5175,
+      "cwd": "/Users/danilkocnev/Desktop/MML/MakeMeLook/чистая версия/mml-saas-widget-tryon"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+ALTER TABLE ecommerce_stores ADD COLUMN api_email VARCHAR(255) NOT NULL DEFAULT '';

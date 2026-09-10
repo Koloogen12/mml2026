@@ -1,0 +1,86 @@
+{
+ "06-danil-gallery-neutral": {
+  "with_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "face_found": true,
+    "invariant_ok": true,
+    "cos": 0.9578951597213745
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "face_found": true,
+    "invariant_ok": true,
+    "cos": 0.9703136682510376
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "face_found": true,
+    "invariant_ok": true,
+    "cos": 0.958493709564209
+   }
+  ],
+  "no_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "cos": 0.8648576736450195
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "cos": 0.7928180694580078
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "cos": 0.7503782510757446
+   }
+  ]
+ },
+ "04-danil-beanie-street": {
+  "with_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "face_found": true,
+    "invariant_ok": true,
+    "cos": 0.9949583411216736
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "face_found": true,
+    "invariant_ok": true,
+    "cos": 0.9945698380470276
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "face_found": true,
+    "invariant_ok": true,
+    "cos": 0.9874935746192932
+   }
+  ],
+  "no_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "cos": 0.8822708129882812
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "cos": 0.760210394859314
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "cos": 0.6643485426902771
+   }
+  ]
+ }
+}

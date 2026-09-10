@@ -1,0 +1,12 @@
+fastapi>=0.115
+uvicorn>=0.30
+sentence-transformers>=3.0
+# transformers закреплён на 4.x: sentence-transformers объявляет совместимость
+# с <6, но на 5.x падает импортом PreTrainedModel — «Could not import module
+# 'PreTrainedModel'». Локально работало на старых версиях, чистая сборка на
+# сервере тянула свежие и не стартовала.
+transformers>=4.41,<5
+pydantic>=2.7
+# Marqo-FashionSigLIP (фото + fashion-текст, 768d)
+open_clip_torch>=3.0
+Pillow>=10.0

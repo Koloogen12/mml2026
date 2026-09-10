@@ -1,0 +1,3 @@
+ALTER TABLE leads
+    ADD COLUMN IF NOT EXISTS phone VARCHAR(20);
+

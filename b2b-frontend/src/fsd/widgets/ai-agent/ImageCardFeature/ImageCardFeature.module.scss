@@ -1,0 +1,255 @@
+.sectionImages {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  width: 100%;
+  max-width: 1024px;
+
+  @media (max-width: 440px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.titleWithIcon {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 440px) {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.titleWithIconMainMobile {
+  display: none;
+
+  @media (max-width: 440px) {
+    display: flex;
+    padding-left: 13px;
+    padding-right: 13px;
+    margin-bottom: 35px;
+  }
+}
+
+.titleWithIconTitle {
+  color: var(--text-primaryColor);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 110%;
+  letter-spacing: -2.52px;
+
+  @media (max-width: 440px) {
+    font-size: 26px;
+    line-height: 105%;
+    letter-spacing: -1.3px;
+    order: 2;
+  }
+}
+
+.titleWithIconAOV p {
+  color: var(--text-primaryColor);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 95%;
+  letter-spacing: -0.05em;
+  text-align: center;
+
+  @media (max-width: 440px) {
+    font-size: 23px;
+  }
+}
+
+.titleWithIconIcon {
+  width: 74px;
+  height: 74px;
+  flex-shrink: 0;
+  background-color: #f2e9ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  color: #9747ff;
+
+  @media (max-width: 440px) {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+  }
+}
+
+.imageCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--whiteColor);
+  border-radius: 60px;
+  height: 310px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  overflow: hidden;
+
+  & img {
+    object-fit: cover;
+  }
+
+  @media (max-width: 440px) {
+    height: 500px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    border-radius: 40px;
+  }
+}
+
+.imageCardMainContainer_info {
+  @media (max-width: 440px) {
+    height: auto;
+    justify-content: flex-start;
+    max-height: 300px;
+    padding-top: 0px;
+  }
+}
+
+.imageCardMain {
+  grid-column: 1/-1;
+  height: 710px;
+  padding: 54px;
+  overflow: hidden;
+
+  @media (max-width: 440px) {
+    padding: 25px;
+    height: auto;
+  }
+}
+
+.imageCardMainImg {
+  width: 100%;
+  height: 430px;
+  position: relative;
+
+  @media (max-width: 440px) {
+    width: 120%;
+    height: 440px;
+  }
+}
+
+.imageCardMainContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  & img {
+    object-fit: contain;
+  }
+
+  @media (max-width: 440px) {
+    & img {
+      object-fit: contain;
+    }
+  }
+}
+
+.titleWithIconMainDesktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 440px) {
+    display: none;
+  }
+}
+
+.AOVContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  gap: 12px;
+
+  @media (max-width: 440px) {
+    justify-content: space-between;
+  }
+}
+
+.imageCover {
+  & img {
+    object-fit: cover;
+  }
+}
+
+.imageFeature1 {
+  @media (max-width: 440px) {
+    width: 140%;
+    height: 200px !important;
+    margin-top: 60px;
+  }
+}
+
+.textFeature1 {
+  max-width: 280px !important;
+}
+
+.imageFeature2 {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media (max-width: 440px) {
+    height: 320px !important;
+    margin-top: 10px;
+  }
+}
+
+.imageFeature4 {
+  @media (max-width: 440px) {
+    height: 350px !important;
+  }
+}
+
+.imageFeature4Mobile {
+  @media (max-width: 440px) {
+    height: 350px !important;
+  }
+}
+
+.imageCardText {
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -0.05em;
+  text-align: center;
+  padding: 0 25px;
+}
+
+.imageCardImg {
+  width: 100%;
+  height: 200px;
+  position: relative;
+
+  @media (max-width: 440px) {
+    height: 290px;
+  }
+}
+
+.imageContain {
+  & img {
+    object-fit: contain;
+  }
+}
+
+.imageCard2TextComment2 {
+  max-width: 430px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15.7px;
+  letter-spacing: -0.05em;
+  color: var(--text-secondaryColor);
+  text-align: center;
+
+  @media (max-width: 440px) {
+    padding: 0 25px;
+  }
+}

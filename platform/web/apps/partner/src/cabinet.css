@@ -1,0 +1,35 @@
+/*
+ * cabinet.css — стили hi-fi макета "Partner Cabinet.dc.html",
+ * перенесены ДОСЛОВНО (контракт 1:1).
+ * Разрешённые трансформации:
+ *   • @font-face 'Martina Plantijn' убраны — заменены на 'Spectral' в JSX
+ *     (у Martina нет кириллицы; Spectral грузится из @mml/ui/fonts.css).
+ *   • body-правила скоуплены на .pc-root (SPA: одно body на три поверхности).
+ */
+.pc-root{background:#f3f1ec;font-family:'Inter',system-ui,sans-serif;color:#141414}
+.pc-root :focus-visible{outline:2px solid #2B2BCC;outline-offset:2px;border-radius:3px}
+.pc-root a{color:#2B2BCC}.pc-root a:hover{color:#1f1fa0}
+.pc-root input,.pc-root textarea{font-family:'Inter',system-ui,sans-serif}
+@keyframes pcShimmer{0%{background-position:-380px 0}100%{background-position:380px 0}}
+@keyframes pcFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes pcSpin{to{transform:rotate(360deg)}}
+@keyframes pcDot{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@keyframes pcToast{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+.pc-skel{background:linear-gradient(100deg,#E7E3DA 30%,#F2EFE8 50%,#E7E3DA 70%);background-size:760px 100%;animation:pcShimmer 1.3s infinite linear;border-radius:4px}
+.pc-fade{animation:pcFade .4s ease both}
+.pc-spin{width:18px;height:18px;border:2px solid rgba(43,43,204,.25);border-top-color:#2B2BCC;border-radius:50%;animation:pcSpin .8s linear infinite}
+.pc-btn{cursor:pointer;transition:transform .1s,opacity .15s,background .15s,border-color .15s}
+.pc-btn:hover{opacity:.92}
+.pc-btn:active{transform:scale(.98)}
+.pc-nav{cursor:pointer;transition:background .15s,color .15s}
+.pc-card{background:#fff}
+.pc-prod{cursor:pointer;transition:transform .18s,box-shadow .18s}
+.pc-prod:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,.09)}
+.pc-row{cursor:pointer;transition:background .12s}
+.pc-row:hover{background:#faf9f6}
+.pc-src{cursor:pointer;transition:border-color .15s,box-shadow .15s,transform .1s}
+.pc-src:active{transform:scale(.995)}
+.pc-in{width:100%;border:1px solid rgba(0,0,0,.16);border-radius:9px;padding:13px 15px;font:400 14px 'Inter',sans-serif;color:#141414;outline:none;transition:border-color .15s,box-shadow .15s}
+.pc-in:focus{border-color:#2B2BCC;box-shadow:0 0 0 4px rgba(43,43,204,.1)}
+.pc-in::placeholder{color:rgba(0,0,0,.38)}
+.pc-toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:#141414;color:#fff;border-radius:10px;padding:13px 22px;font:500 13.5px 'Inter',sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.25);z-index:90;animation:pcToast .25s ease;display:flex;align-items:center;gap:10px}

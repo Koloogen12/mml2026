@@ -1,0 +1,162 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -99;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s,
+    z-index 0s 0.3s;
+}
+
+.modalOpened {
+  z-index: 99;
+  opacity: 1;
+  pointer-events: all;
+  transition:
+    opacity 0.3s,
+    z-index 0s;
+}
+
+.container {
+  width: 680px;
+  padding: 40px 50px;
+  position: fixed;
+  background: #ffffff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  border-radius: 30px;
+
+  @media (max-width: 768px) {
+    width: 90vw;
+    padding: 20px 30px;
+  }
+}
+
+.closeIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 15px;
+    right: 15px;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  font-family: var(--primaryFont);
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+}
+
+.title {
+  color: var(--text-primaryColor);
+  font-weight: 500;
+  font-size: 38px;
+  line-height: 42px;
+  letter-spacing: -0.05em;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    line-height: 25px;
+  }
+}
+
+.subTitle {
+  color: var(--text-secondaryColor);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  letter-spacing: -0.05em;
+  max-width: 485px;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.btn {
+  width: 100%;
+  height: 60px;
+  font-size: 16px;
+  line-height: 19.4px;
+}
+
+.agreement {
+  margin-top: 20px;
+  color: var(--text-secondaryColor);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: -0.05em;
+
+  a {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+    line-height: 15.6px;
+  }
+}
+
+.radioBtnContainer {
+}
+
+.radioBtnHeader {
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: -0.05em;
+  color: var(--text-secondaryColor);
+  margin-bottom: 10px;
+}
+
+.radioBtns {
+  width: 100%;
+  justify-content: space-between;
+  height: 45px;
+  border-color: #e9e9e9;
+}
+
+.radioBtn {
+  height: 43px;
+  max-width: none;
+}
+
+.radioBtnContent {
+  @media (max-width: 768px) {
+    & span {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.container {
+  background: var(--thirdlyColor);
+  height: 34px;
+  padding: 10px 16px 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}
+
+.text {
+  font-family: var(--primaryFont);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 105%;
+  color: var(--text-thirdlyColor);
+}

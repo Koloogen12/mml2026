@@ -1,0 +1,17 @@
+/*
+ * marketing.css — стили hi-fi макета "For Partners.dc.html",
+ * перенесены ДОСЛОВНО (контракт 1:1).
+ * Разрешённые трансформации:
+ *   • @font-face 'Martina Plantijn' убраны — заменены на 'Spectral'
+ *     (у Martina нет кириллицы; Spectral грузится из @mml/ui/fonts.css) в JSX.
+ *   • body-правила скоуплены на .mk-root (SPA: одно body на три поверхности).
+ */
+.mk-root{background:#fff;font-family:'Inter',system-ui,sans-serif;color:#16150F;-webkit-font-smoothing:antialiased}
+.mk-root :focus-visible{outline:2px solid #2B2BCC;outline-offset:2px;border-radius:4px}
+.dp-btn{cursor:pointer;transition:transform .1s ease,opacity .15s ease,box-shadow .2s ease}
+.dp-btn:hover{opacity:.92}
+.dp-btn:active{transform:scale(.98)}
+.dp-link{cursor:pointer;transition:opacity .15s ease}
+.dp-link:hover{opacity:.62}
+.dp-soc{cursor:pointer;transition:opacity .15s ease,transform .12s ease}
+.dp-soc:hover{opacity:1;transform:translateY(-2px)}

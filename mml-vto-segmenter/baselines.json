@@ -1,0 +1,18 @@
+{
+ "03-danil-profile-cooking": {
+  "box": "detector",
+  "cos": 0.9702
+ },
+ "04-danil-beanie-street": {
+  "box": "detector",
+  "cos": 0.9994
+ },
+ "06-danil-gallery-neutral": {
+  "box": "detector",
+  "cos": 0.9433
+ },
+ "07-danil-glasses-turtleneck": {
+  "box": "detector",
+  "cos": 0.9563
+ }
+}

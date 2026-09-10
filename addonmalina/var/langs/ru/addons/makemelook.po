@@ -1,0 +1,35 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tygh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ru_RU\n"
+"Language-Team: Russian\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgctxt "Addons::name::makemelook"
+msgid "makemelook"
+msgstr "Make Me Look"
+
+msgctxt "Addons::description::makemelook"
+msgid "makemelook_description"
+msgstr "Виртуальная примерка товаров через виджет Make Me Look."
+
+msgctxt "SettingsSections::makemelook::general"
+msgid "general"
+msgstr "Основные"
+
+msgctxt "SettingsOptions::makemelook::project_token"
+msgid "project_token"
+msgstr "Токен проекта"
+
+msgctxt "SettingsTooltips::makemelook::project_token"
+msgid "project_token_tooltip"
+msgstr "Идентификатор проекта из кабинета Make Me Look."
+
+msgctxt "SettingsOptions::makemelook::button_text"
+msgid "button_text"
+msgstr "Текст кнопки"
+
+msgctxt "SettingsTooltips::makemelook::button_text"
+msgid "button_text_tooltip"
+msgstr "Текст, который будет отображаться на кнопке примерки."

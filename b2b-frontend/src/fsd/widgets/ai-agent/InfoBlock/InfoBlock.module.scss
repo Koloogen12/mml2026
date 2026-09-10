@@ -1,0 +1,46 @@
+.sectionInfo {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  font-style: normal;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 95%;
+  letter-spacing: -0.05em;
+  leading-trim: both;
+  text-edge: cap;
+
+  @media (max-width: 440px) {
+    font-size: 26px;
+    line-height: 105%;
+  }
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.infoItem {
+  width: 100%;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+  letter-spacing: -1.7px;
+
+  @media (max-width: 768px) {
+    padding: 0 10px;
+    font-size: 26px;
+    line-height: 27.3px;
+    letter-spacing: -0.05em;
+
+    & svg {
+      height: 26px;
+      margin-top: 3px;
+      margin-right: 6px;
+    }
+  }
+}

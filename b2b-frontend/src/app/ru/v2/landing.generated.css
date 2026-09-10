@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wght@300;400;500&display=swap');
+
+/* СГЕНЕРИРОВАНО scripts/dc-to-tsx.mjs — не править руками.
+   Шрифты — те же, что в <helmet> макета. */
+
+/* <style> из <helmet> макета, один в один */
+@media (max-width:1180px){[data-r="herophone"]{height:min(64%,620px);opacity:.9}}
+@media (max-width:900px){[data-r="herophone"]{display:none}}
+body{margin:0;overflow-x:hidden;background:#F2F3F5;font-family:"Golos Text",system-ui,sans-serif;color:#121417;-webkit-font-smoothing:antialiased}
+a{color:#121417}a:hover{color:#2F5AE6}
+input.mml-range{-webkit-appearance:none;appearance:none;position:absolute;inset:0;width:100%;height:100%;margin:0;background:transparent;outline:none;cursor:pointer}
+input.mml-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:56px;opacity:0;cursor:pointer}
+input.mml-range::-moz-range-thumb{width:44px;height:56px;opacity:0;border:none;cursor:pointer}
+input.mml-range:focus-visible{outline:2px solid #121417;outline-offset:2px;border-radius:999px}
+div::-webkit-scrollbar{height:0;width:0}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #2F5AE6;outline-offset:2px;border-radius:999px}
+@keyframes mmlUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:0.01ms!important;animation-duration:0.01ms!important}}
+@media (max-width:1000px){[data-r="guessgrid"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:900px){[data-r="sticky"]{position:static!important;top:auto!important}[data-r="stepcard"]{height:auto!important;min-height:0!important;aspect-ratio:4/5}section{padding-left:16px!important;padding-right:16px!important}}
+@media (max-width:640px){section{padding-top:88px!important}[data-r="stepcard"]{aspect-ratio:3/4}}
+@media (max-width:480px){h1{letter-spacing:-.02em}}
+
+/* style-hover / style-focus: та же схема, что у рантайма макета */
+.scp0:hover{background:rgba(255,255,255,.26) !important;color:#fff !important}
+.scp1:hover{background:#2F5AE6 !important;color:#fff !important}
+.scp2:hover{background:#fff !important}
+.scp3:hover{background:#121417 !important}
+.scp4:hover{background:rgba(255,255,255,.16) !important}
+.scp5:hover{color:#fff !important}
+.scp6:hover{transform:translateY(-4px) !important;color:#121417 !important}
+.scp7:focus{border-color:#2F5AE6 !important}
+.scp8:hover{background:#2F5AE6 !important}
+.scp9:hover{background:rgba(255,255,255,.18) !important;color:#fff !important}
+.scpa:hover{color:#121417 !important}

@@ -1,0 +1,25 @@
+{
+  "name": "@mml/ui",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens.css": "./src/tokens.css",
+    "./fonts.css": "./src/fonts.css",
+    "./prose.css": "./src/prose.css"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.2.5",
+    "@fontsource/inter": "^5.2.5",
+    "@fontsource/spectral": "^5.2.5",
+    "clsx": "^2.1.1"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.0",
+    "typescript": "~5.8.3"
+  }
+}

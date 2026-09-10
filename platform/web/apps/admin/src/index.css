@@ -1,0 +1,10 @@
+@import "@mml/ui/fonts.css";
+@import "@mml/ui/tokens.css";
+
+/* Стили hi-fi хендоффа админ-консоли — портированы дословно (контракт 1:1) */
+@import "./admin.css";
+
+html,
+body {
+  margin: 0;
+}

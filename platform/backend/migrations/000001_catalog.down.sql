@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS product_images;
+DROP TABLE IF EXISTS offers;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS brands;

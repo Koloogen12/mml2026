@@ -1,0 +1,422 @@
+{
+ "06-danil-gallery-neutral": {
+  "with_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1295041,
+     "checked_generated_px": 217035,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 84.3,
+    "gen_gate": 0.8904462456703186,
+    "fin_gate": 0.946259617805481,
+    "gen_wide": 0.9052484035491943,
+    "fin_wide": 0.9083040952682495
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1283761,
+     "checked_generated_px": 229422,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 83.49,
+    "gen_gate": 0.9131069183349609,
+    "fin_gate": 0.9514261484146118,
+    "gen_wide": 0.899368405342102,
+    "fin_wide": 0.9269854426383972
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1280616,
+     "checked_generated_px": 231860,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 83.34,
+    "gen_gate": 0.8631565570831299,
+    "fin_gate": 0.9402742981910706,
+    "gen_wide": 0.9246768951416016,
+    "fin_wide": 0.949916660785675
+   }
+  ],
+  "no_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "gen_gate": 0.8912854790687561,
+    "fin_gate": 0.8912854790687561,
+    "gen_wide": 0.9122961163520813,
+    "fin_wide": 0.9122961163520813
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "gen_gate": 0.8941551446914673,
+    "fin_gate": 0.8941551446914673,
+    "gen_wide": 0.903465747833252,
+    "fin_wide": 0.903465747833252
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "gen_gate": 0.7992203831672668,
+    "fin_gate": 0.7992203831672668,
+    "gen_wide": 0.8600025177001953,
+    "fin_wide": 0.8600025177001953
+   }
+  ]
+ },
+ "04-danil-beanie-street": {
+  "with_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1204992,
+     "checked_generated_px": 290492,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 79.09,
+    "gen_gate": 0.8878343105316162,
+    "fin_gate": 0.9992678165435791,
+    "gen_wide": 0.9196912050247192,
+    "fin_wide": 0.9863650798797607
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1182922,
+     "checked_generated_px": 315375,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 77.56,
+    "gen_gate": 0.8723043203353882,
+    "fin_gate": 0.9992178678512573,
+    "gen_wide": 0.946533203125,
+    "fin_wide": 0.9840257167816162
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1183123,
+     "checked_generated_px": 313707,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 77.66,
+    "gen_gate": 0.8335975408554077,
+    "fin_gate": 0.9961957335472107,
+    "gen_wide": 0.808016300201416,
+    "fin_wide": 0.9433403015136719
+   }
+  ],
+  "no_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "gen_gate": 0.8470707535743713,
+    "fin_gate": 0.8470707535743713,
+    "gen_wide": 0.9463629722595215,
+    "fin_wide": 0.9463629722595215
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "gen_gate": 0.7737925052642822,
+    "fin_gate": 0.7737925052642822,
+    "gen_wide": 0.9161373376846313,
+    "fin_wide": 0.9161373376846313
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "gen_gate": 0.67676842212677,
+    "fin_gate": 0.67676842212677,
+    "gen_wide": 0.8358588814735413,
+    "fin_wide": 0.8358588814735413
+   }
+  ]
+ },
+ "05-danil-lowlight-sidelight": {
+  "with_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "face_found": false,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1298778,
+     "checked_generated_px": 220178,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 84.31,
+    "gen_gate": 0.9051178693771362,
+    "fin_gate": 0.9948848485946655,
+    "gen_wide": 0.8831090927124023,
+    "fin_wide": 0.9762728214263916
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "face_found": false,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1286482,
+     "checked_generated_px": 231789,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 83.56,
+    "gen_gate": 0.8706207275390625,
+    "fin_gate": 0.9969266653060913,
+    "gen_wide": 0.7619031667709351,
+    "fin_wide": 0.9820767641067505
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "face_found": false,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1282217,
+     "checked_generated_px": 237120,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 83.24,
+    "gen_gate": 0.894411027431488,
+    "fin_gate": 0.993658185005188,
+    "gen_wide": 0.7529668211936951,
+    "fin_wide": 0.9541844129562378
+   }
+  ],
+  "no_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "gen_gate": 0.8825887441635132,
+    "fin_gate": 0.8825887441635132,
+    "gen_wide": 0.7821362018585205,
+    "fin_wide": 0.7821362018585205
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "gen_gate": 0.8242604732513428,
+    "fin_gate": 0.8242604732513428,
+    "gen_wide": 0.7564002871513367,
+    "fin_wide": 0.7564002871513367
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "gen_gate": 0.7122676372528076,
+    "fin_gate": 0.7122676372528076,
+    "gen_wide": 0.7162736654281616,
+    "fin_wide": 0.7162736654281616
+   }
+  ]
+ },
+ "07-danil-glasses-turtleneck": {
+  "with_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 861293,
+     "checked_generated_px": 570813,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 59.21,
+    "gen_gate": 0.9064614176750183,
+    "fin_gate": 0.9567022919654846,
+    "gen_wide": 0.8302628993988037,
+    "fin_wide": 0.8957030177116394
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 834749,
+     "checked_generated_px": 603999,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 57.31,
+    "gen_gate": 0.9294040203094482,
+    "fin_gate": 0.9632797241210938,
+    "gen_wide": 0.9001551866531372,
+    "fin_wide": 0.8998713493347168
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 822608,
+     "checked_generated_px": 611994,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 56.67,
+    "gen_gate": 0.9356726408004761,
+    "fin_gate": 0.96504145860672,
+    "gen_wide": 0.9302479028701782,
+    "fin_wide": 0.9396840333938599
+   }
+  ],
+  "no_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "gen_gate": 0.905986487865448,
+    "fin_gate": 0.905986487865448,
+    "gen_wide": 0.7579559087753296,
+    "fin_wide": 0.7579559087753296
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "gen_gate": 0.8826436996459961,
+    "fin_gate": 0.8826436996459961,
+    "gen_wide": 0.7466220855712891,
+    "fin_wide": 0.7466220855712891
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "gen_gate": 0.8579742908477783,
+    "fin_gate": 0.8579742908477783,
+    "gen_wide": 0.8001610636711121,
+    "fin_wide": 0.8001610636711121
+   }
+  ]
+ },
+ "03-danil-profile-cooking": {
+  "with_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1339283,
+     "checked_generated_px": 180819,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 86.83,
+    "gen_gate": 0.9315704107284546,
+    "fin_gate": 0.9728578329086304,
+    "gen_wide": 0.9303885102272034,
+    "fin_wide": 0.9662796258926392
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1320946,
+     "checked_generated_px": 201348,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 85.59,
+    "gen_gate": 0.9441317319869995,
+    "fin_gate": 0.9792861938476562,
+    "gen_wide": 0.9299116134643555,
+    "fin_wide": 0.9635319709777832
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "face_found": true,
+    "invariant_ok": true,
+    "invariant": {
+     "ok": true,
+     "checked_original_px": 1313760,
+     "checked_generated_px": 207068,
+     "mismatch_original_px": 0,
+     "mismatch_generated_px": 0
+    },
+    "kept_pct": 85.18,
+    "gen_gate": 0.8753361701965332,
+    "fin_gate": 0.9401797652244568,
+    "gen_wide": 0.8257129192352295,
+    "fin_wide": 0.9163669943809509
+   }
+  ],
+  "no_composite": [
+   {
+    "pass": 1,
+    "garment": "Top/shirt",
+    "gen_gate": 0.9308884143829346,
+    "fin_gate": 0.9308884143829346,
+    "gen_wide": 0.9165337085723877,
+    "fin_wide": 0.9165337085723877
+   },
+   {
+    "pass": 2,
+    "garment": "Bottoms/pants",
+    "gen_gate": 0.8904173374176025,
+    "fin_gate": 0.8904173374176025,
+    "gen_wide": 0.9150367975234985,
+    "fin_wide": 0.9150367975234985
+   },
+   {
+    "pass": 3,
+    "garment": "Outerwear/jacket",
+    "gen_gate": 0.8384063243865967,
+    "fin_gate": 0.8384063243865967,
+    "gen_wide": 0.8066681623458862,
+    "fin_wide": 0.8066681623458862
+   }
+  ]
+ }
+}

@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Golos+Text:wght@400;500;600&family=Martian+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+@media (max-width:1180px){[data-r="herophone"]{height:min(64%,620px);opacity:.9}}
+@media (max-width:900px){[data-r="herophone"]{display:none}}
+body{margin:0;overflow-x:hidden;background:#F2F3F5;font-family:"Golos Text",system-ui,sans-serif;color:#121417;-webkit-font-smoothing:antialiased}
+a{color:#121417}a:hover{color:#2F5AE6}
+input.mml-range{-webkit-appearance:none;appearance:none;position:absolute;inset:0;width:100%;height:100%;margin:0;background:transparent;outline:none;cursor:pointer}
+input.mml-range::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:56px;opacity:0;cursor:pointer}
+input.mml-range::-moz-range-thumb{width:44px;height:56px;opacity:0;border:none;cursor:pointer}
+input.mml-range:focus-visible{outline:2px solid #121417;outline-offset:2px;border-radius:999px}
+div::-webkit-scrollbar{height:0;width:0}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #2F5AE6;outline-offset:2px;border-radius:999px}
+@keyframes mmlUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:0.01ms!important;animation-duration:0.01ms!important}}
+@media (max-width:1000px){[data-r="guessgrid"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media (max-width:900px){[data-r="sticky"]{position:static!important;top:auto!important}[data-r="stepcard"]{height:auto!important;min-height:0!important;aspect-ratio:4/5}section{padding-left:16px!important;padding-right:16px!important}}
+@media (max-width:640px){section{padding-top:88px!important}[data-r="stepcard"]{aspect-ratio:3/4}}
+@media (max-width:480px){h1{letter-spacing:-.02em}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Как выглядит примерка на моём товаре?","acceptedAnswer":{"@type":"Answer","text":"Пришлите ссылку на каталог — соберём примерку на ваших вещах и покажем результат. Бесплатно и без интеграции."}},{"@type":"Question","name":"Сколько времени занимает подключение?","acceptedAnswer":{"@type":"Answer","text":"Скрипт ставится на страницу товара за десять минут. Загрузка размерных сеток и настройка вида — один-два рабочих дня. Если разработчика нет, подключаем сами."}},{"@type":"Question","name":"Работает ли на моей платформе?","acceptedAnswer":{"@type":"Answer","text":"Да: Tilda, InSales, 1С-Битрикс, CS-Cart, OpenCart и самописные сайты. Виджет подключается скриптом и не зависит от движка."}},{"@type":"Question","name":"Нужно ли переснимать товар?","acceptedAnswer":{"@type":"Answer","text":"Нет, работаем по фотографиям, которые у вас уже есть. Если снимок не подойдёт по качеству, скажем заранее."}},{"@type":"Question","name":"Что покупатель делает со своим фото?","acceptedAnswer":{"@type":"Answer","text":"Загружает одно фото в полный рост на странице товара. Регистрация не нужна, фото сохраняется для следующих примерок."}},{"@type":"Question","name":"Насколько это снизит возвраты?","acceptedAnswer":{"@type":"Answer","text":"У вашего магазина это покажет только ваш магазин. Мы даём инструмент и считаем результат вместе с вами по вашей статистике."}},{"@type":"Question","name":"У нас маленький магазин, это не слишком дорого?","acceptedAnswer":{"@type":"Answer","text":"Оплата за примерки, а не за подписку: пока покупатели не мерили — вы не платите."}},{"@type":"Question","name":"Чем вы отличаетесь от примерки на маркетплейсах и зарубежных сервисов?","acceptedAnswer":{"@type":"Answer","text":"У маркетплейсов примерка однослойная, без расчёта размера, и работает только внутри их площадки. Зарубежные решения не отвечают на вопрос, какой размер заказать. Мы считаем размер по вашей размерной сетке."}}]}</script>
+</helmet>
+
+<!-- HERO -->
+<section data-screen-label="01 Hero" style="padding:12px 12px 0">
+  <div style="position:relative;height:calc(100vh - 24px);min-height:720px;border-radius:28px;overflow:hidden;background:#0E1014">
+    <img src="./looks/hero-shot-3.jpg" alt="Покупательница в куртке, рубашке и джинсах — кадр примерки" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 26%">
+    <div data-r="herophone" style="position:absolute;right:clamp(20px,3.4vw,44px);bottom:clamp(28px,5vh,48px);height:min(76%,760px);aspect-ratio:732/1300;border-radius:28px;overflow:hidden;background:#3F6B8C;pointer-events:none">
+      <img src="./looks/widget-ui.jpg" alt="Виджет примерки: образ на покупателе, слои со своими размерами и подбор верхней одежды из каталога" style="width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block">
+    </div>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,22,.42) 0%,rgba(10,14,22,.12) 24%,rgba(10,14,22,.42) 58%,rgba(10,14,22,.88) 100%);pointer-events:none"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,22,.7) 0%,rgba(10,14,22,.44) 34%,rgba(10,14,22,0) 64%);pointer-events:none"></div>
+
+    <header style="position:absolute;top:20px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:3">
+      <div style="display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px 0 16px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);color:#fff;font-family:Unbounded,sans-serif;font-weight:500;font-size:15px;letter-spacing:-.02em;white-space:nowrap"><span style="display:inline-flex;width:20px;height:15px;flex:none"><svg viewBox="0 0 34 25" width="20" height="15" fill="none" aria-hidden="true"><path d="M33.6 24.4318H30.5455V3.8182C30.5455 3.66716 30.5007 3.51952 30.4168 3.39394C30.3329 3.26836 30.2136 3.17048 30.0741 3.11268C29.9345 3.05489 29.781 3.03976 29.6328 3.06923C29.4847 3.0987 29.3486 3.17143 29.2418 3.27823L11.8635 20.6566C11.5089 21.0111 11.088 21.2924 10.6248 21.4843C10.1615 21.6761 9.66502 21.7749 9.16361 21.7749C8.6622 21.7749 8.16569 21.6761 7.70245 21.4843C7.23921 21.2924 6.8183 21.0111 6.46375 20.6566L4.35812 18.551C4.25132 18.4442 4.11526 18.3715 3.96712 18.342C3.81899 18.3125 3.66545 18.3277 3.52591 18.3854C3.38637 18.4432 3.26711 18.5411 3.1832 18.6667C3.09929 18.7923 3.0545 18.9399 3.05449 19.091V24.4318H0V19.091C0 18.3358 0.223919 17.5976 0.643462 16.9697C1.06301 16.3418 1.65932 15.8524 2.357 15.5634C3.05468 15.2744 3.82239 15.1988 4.56304 15.3461C5.3037 15.4935 5.98403 15.8571 6.51801 16.3911L8.62363 18.4967C8.69453 18.5676 8.77871 18.6239 8.87135 18.6622C8.96399 18.7006 9.06329 18.7204 9.16357 18.7204C9.26384 18.7204 9.36314 18.7006 9.45578 18.6623C9.54843 18.6239 9.63261 18.5676 9.70351 18.4967L27.0819 1.11834C27.6159 0.584351 28.2962 0.220699 29.0369 0.0733701C29.7776 -0.073959 30.5453 0.00165186 31.243 0.290641C31.9406 0.579631 32.537 1.06902 32.9565 1.69692C33.3761 2.32482 33.6 3.06303 33.6 3.8182V24.4318Z" fill="#fff"></path></svg></span>MakeMeLook</div>
+      <nav style="display:flex;gap:8px;align-items:center">
+        <a href="#steps" style="display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:rgba(255,255,255,.26);color:#fff">Как работает</a>
+        <a href="#form" style="display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:999px;background:#fff;color:#121417;font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:#2F5AE6;color:#fff">Показать на моих товарах</a>
+      </nav>
+    </header>
+
+    <div style="position:absolute;left:clamp(20px,3.4vw,44px);right:clamp(20px,3.4vw,44px);bottom:clamp(28px,5vh,48px);max-width:640px;z-index:3;display:flex;flex-direction:column;align-items:flex-start">
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#fff;max-width:32ch">Виртуальная примерка для интернет-магазинов одежды</span>
+      <h1 style="margin:20px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(38px,4.6vw,68px);line-height:1.02;letter-spacing:-.035em;color:#fff;text-wrap:balance">Ваша одежда на покупателе <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:1.18em;letter-spacing:-.01em">до заказа</span></h1>
+      <p style="margin:22px 0 0;max-width:480px;font-size:clamp(16px,1.2vw,19px);line-height:1.45;color:#fff">Одно фото — и покупатель видит вашу вещь на себе. Размер считается по вашей размерной сетке.</p>
+      <div style="display:flex;gap:10px;margin-top:30px;flex-wrap:wrap">
+        <a href="#form" style="display:inline-flex;align-items:center;height:56px;padding:0 26px;border-radius:999px;box-sizing:border-box;background:#fff;color:#121417;font-size:17px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:#2F5AE6;color:#fff">Покажите на моих товарах</a>
+        <a href="#steps" style="display:inline-flex;align-items:center;height:56px;padding:0 22px;border-radius:999px;box-sizing:border-box;background:rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:17px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:rgba(255,255,255,.26);color:#fff">Как это выглядит</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- compat -->
+<div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 44px;padding:40px 24px 0;color:#565E6B;font-weight:600;font-size:17px">
+  <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;font-weight:400">РАБОТАЕТ НА</span>
+  <span>Tilda</span><span>InSales</span><span>1С-Битрикс</span><span>CS-Cart</span><span>OpenCart</span>
+</div>
+
+<!-- bridge -->
+<section style="padding:120px 24px 0;text-align:center">
+  <p style="margin:0 auto;max-width:900px;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3.4vw,50px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance"><span style="color:#6B7380">Каталог показывает вещь.</span><br>Покупателю нужно увидеть в ней <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:1.15em">себя</span></p>
+</section>
+
+<!-- steps: stacked gradient frames -->
+<section id="steps" data-screen-label="02 Steps" style="padding:120px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="max-width:720px;margin:0 auto 48px;text-align:center">
+    <span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Для покупателя</span>
+    <h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance">Четыре шага на странице товара</h2>
+    <p style="margin:18px 0 0;font-size:17px;line-height:1.5;color:#565E6B">Уходить с сайта не нужно, регистрироваться тоже. Виджет открывается по кнопке «Примерить».</p>
+  </div>
+  <div id="step-cards" style="display:flex;flex-direction:column;gap:20px;padding-bottom:120px">
+      <div data-r="stepcard" style="position:sticky;top:72px;border-radius:28px;overflow:hidden;background:linear-gradient(140deg,#2A3854 0%,#141C29 55%,#0E1014 100%);padding:clamp(20px,2.2vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(20px,2.4vw,32px);align-items:center;min-height:420px;box-shadow:0 -18px 40px rgba(10,14,22,.18)">
+        <div style="display:flex;flex-direction:column;gap:16px;padding:clamp(8px,1.6vw,20px)">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.6)">ШАГ 01 / 04</span>
+          <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(22px,2.2vw,32px);line-height:1.1;letter-spacing:-.025em;color:#fff">Нажимает «Примерить»</h3>
+          <p style="margin:0;max-width:420px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.78)">Кнопка живёт на карточке товара. Вид, место и текст настраиваются под ваш магазин — виджет не выглядит вставкой.</p>
+          <span style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:14px;white-space:nowrap;align-self:flex-start"><span style="width:8px;height:8px;border-radius:50%;background:#8FB0FF"></span>Примерить</span>
+        </div>
+        <div style="position:relative;border-radius:16px;overflow:hidden;background:#0E1014;aspect-ratio:4/5;min-height:300px">
+          <img src="./looks/look-3.jpg" alt="Экран виджета на шаге 01" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+        </div>
+      </div>
+      <div data-r="stepcard" style="position:sticky;top:88px;border-radius:28px;overflow:hidden;background:linear-gradient(140deg,#24405E 0%,#16202E 55%,#0E1014 100%);padding:clamp(20px,2.2vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(20px,2.4vw,32px);align-items:center;min-height:420px;box-shadow:0 -18px 40px rgba(10,14,22,.18)">
+        <div style="display:flex;flex-direction:column;gap:16px;padding:clamp(8px,1.6vw,20px)">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.6)">ШАГ 02 / 04</span>
+          <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(22px,2.2vw,32px);line-height:1.1;letter-spacing:-.025em;color:#fff">Загружает одно фото</h3>
+          <p style="margin:0;max-width:420px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.78)">Обычное фото в полный рост. Регистрация не нужна, второй раз загружать тоже — фото сохраняется для следующих примерок.</p>
+          <span style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:14px;white-space:nowrap;align-self:flex-start"><span style="width:8px;height:8px;border-radius:50%;background:#8FB0FF"></span>Загрузить фото</span>
+        </div>
+        <div style="position:relative;border-radius:16px;overflow:hidden;background:#0E1014;aspect-ratio:4/5;min-height:300px">
+          <img src="./looks/look-4.jpg" alt="Экран виджета на шаге 02" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+        </div>
+      </div>
+      <div data-r="stepcard" style="position:sticky;top:104px;border-radius:28px;overflow:hidden;background:linear-gradient(140deg,#1E4A72 0%,#152331 55%,#0E1014 100%);padding:clamp(20px,2.2vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(20px,2.4vw,32px);align-items:center;min-height:420px;box-shadow:0 -18px 40px rgba(10,14,22,.18)">
+        <div style="display:flex;flex-direction:column;gap:16px;padding:clamp(8px,1.6vw,20px)">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.6)">ШАГ 03 / 04</span>
+          <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(22px,2.2vw,32px);line-height:1.1;letter-spacing:-.025em;color:#fff">Видит вещь на себе</h3>
+          <p style="margin:0;max-width:420px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.78)">Не на модели, похожей на него, а на нём. Можно добавить второй и третий слой и собрать образ целиком.</p>
+          <span style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:14px;white-space:nowrap;align-self:flex-start"><span style="width:8px;height:8px;border-radius:50%;background:#8FB0FF"></span>Образ собран</span>
+        </div>
+        <div style="position:relative;border-radius:16px;overflow:hidden;background:#0E1014;aspect-ratio:4/5;min-height:300px">
+          <img src="./looks/look-2.jpg" alt="Экран виджета на шаге 03" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+        </div>
+      </div>
+      <div data-r="stepcard" style="position:sticky;top:120px;border-radius:28px;overflow:hidden;background:linear-gradient(140deg,#2F5AE6 0%,#17243A 55%,#0E1014 100%);padding:clamp(20px,2.2vw,28px);display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(20px,2.4vw,32px);align-items:center;min-height:420px;box-shadow:0 -18px 40px rgba(10,14,22,.18)">
+        <div style="display:flex;flex-direction:column;gap:16px;padding:clamp(8px,1.6vw,20px)">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.6)">ШАГ 04 / 04</span>
+          <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(22px,2.2vw,32px);line-height:1.1;letter-spacing:-.025em;color:#fff">Получает свой размер</h3>
+          <p style="margin:0;max-width:420px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.78)">Расчёт по замерам конкретного изделия и параметрам человека — с пояснением, где свободнее, а где по фигуре.</p>
+          <span style="display:inline-flex;align-items:center;gap:10px;height:40px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:14px;white-space:nowrap;align-self:flex-start"><span style="width:8px;height:8px;border-radius:50%;background:#8FB0FF"></span>Ваш размер — M</span>
+        </div>
+        <div style="position:relative;border-radius:16px;overflow:hidden;background:#0E1014;aspect-ratio:4/5;min-height:300px">
+          <img src="./looks/look-1.jpg" alt="Экран виджета на шаге 04" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- guess game: bet grid -->
+<section data-screen-label="03 Guess" data-anim="guess" style="padding:200px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="text-align:center;max-width:760px;margin:0 auto 44px">
+    <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance">Где здесь съёмка, а где примерка?</h2>
+    <p style="margin:18px 0 0;font-size:17px;line-height:1.5;color:#565E6B">Восемь кадров, четыре и четыре. Поставьте на каждый — съёмка это или примерка. Ответ появится сразу.</p>
+  </div>
+  <div data-r="guessgrid" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px">
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-1.jpg" alt="Кадр 1 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">01</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g0.betOpacity }};pointer-events:{{ g0.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g0.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g0.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g0.plateBg }};opacity:{{ g0.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g0.verdictColor }}">{{ g0.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это примерка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Собрано на фото покупателя по артикулу из каталога</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-3.jpg" alt="Кадр 2 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">02</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g1.betOpacity }};pointer-events:{{ g1.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g1.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g1.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g1.plateBg }};opacity:{{ g1.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g1.verdictColor }}">{{ g1.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это съёмка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Снято фотографом на студийной съёмке</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-4.jpg" alt="Кадр 3 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">03</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g2.betOpacity }};pointer-events:{{ g2.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g2.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g2.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g2.plateBg }};opacity:{{ g2.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g2.verdictColor }}">{{ g2.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это примерка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Собрано на фото покупателя по артикулу из каталога</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-5.jpg" alt="Кадр 4 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">04</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g3.betOpacity }};pointer-events:{{ g3.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g3.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g3.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g3.plateBg }};opacity:{{ g3.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g3.verdictColor }}">{{ g3.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это съёмка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Снято фотографом на студийной съёмке</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-6.jpg" alt="Кадр 5 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">05</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g4.betOpacity }};pointer-events:{{ g4.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g4.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g4.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g4.plateBg }};opacity:{{ g4.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g4.verdictColor }}">{{ g4.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это съёмка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Снято фотографом на студийной съёмке</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-2.jpg" alt="Кадр 6 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">06</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g5.betOpacity }};pointer-events:{{ g5.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g5.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g5.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g5.plateBg }};opacity:{{ g5.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g5.verdictColor }}">{{ g5.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это примерка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Собрано на фото покупателя по артикулу из каталога</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-7.jpg" alt="Кадр 7 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">07</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g6.betOpacity }};pointer-events:{{ g6.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g6.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g6.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g6.plateBg }};opacity:{{ g6.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g6.verdictColor }}">{{ g6.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это съёмка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Снято фотографом на студийной съёмке</span>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#E4E8ED;aspect-ratio:3/4">
+      <img src="./looks/look-4.jpg" alt="Кадр 8 из восьми: съёмка или примерка" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%">
+      <span style="position:absolute;top:14px;left:14px;height:28px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.9);font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#121417">08</span>
+      <div style="position:absolute;left:14px;right:14px;bottom:14px;display:flex;gap:8px;opacity:{{ g7.betOpacity }};pointer-events:{{ g7.betEvents }};transition:opacity 220ms">
+        <button onClick="{{ g7.betShoot }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(255,255,255,.94);color:#121417;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer" style-hover="background:#fff">Съёмка</button>
+        <button onClick="{{ g7.betTryon }}" style="flex:1;min-height:44px;border-radius:999px;border:none;background:rgba(18,20,23,.6);color:#fff;font-family:'Golos Text',sans-serif;font-size:14px;font-weight:500;cursor:pointer;backdrop-filter:blur(12px)" style-hover="background:#121417">Примерка</button>
+      </div>
+      <div style="position:absolute;inset:0;background:{{ g7.plateBg }};opacity:{{ g7.plateOpacity }};transition:opacity 320ms;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ g7.verdictColor }}">{{ g7.verdict }}</span>
+        <span style="margin-top:6px;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em;color:#fff">Это примерка</span>
+        <span style="margin-top:8px;font-size:14px;line-height:1.45;color:rgba(255,255,255,.82)">Собрано на фото покупателя по артикулу из каталога</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:32px;display:flex;flex-direction:column;align-items:center;gap:20px">
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;justify-content:center">
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">СТАВОК {{ betCount }} ИЗ 8</span>
+      <span style="width:1px;height:16px;background:rgba(18,20,23,.14)"></span>
+      <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#2F5AE6">УГАДАНО {{ correctCount }}</span>
+    </div>
+    <sc-if value="{{ allBet }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+        <p style="margin:0;max-width:760px;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(22px,2.4vw,32px);line-height:1.14;letter-spacing:-.02em;text-wrap:balance">Вы угадали {{ correctCount }} из 8 — а вы искали подвох. Ваш покупатель не ищет.</p>
+        <a href="#form" style="display:inline-flex;align-items:center;height:56px;padding:0 26px;border-radius:999px;box-sizing:border-box;background:#121417;color:#fff;font-size:17px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:#2F5AE6;color:#fff">Покажите на моих товарах</a>
+      </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- 4 three situations -->
+<section data-screen-label="04 Situations" style="padding:120px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:end;gap:24px 48px;margin-bottom:40px">
+    <div><span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Три ситуации</span><h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em">Найдите <span style="font-weight:400;color:#565E6B">свою</span></h2></div>
+    <p style="margin:0;max-width:420px;font-size:17px;line-height:1.5;color:#565E6B;justify-self:end">Дальше страница говорит с вами. Цитаты — из разговоров с владельцами магазинов одежды.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px">
+    <sc-for list="{{ situations }}" as="s" hint-placeholder-count="3">
+      <div style="background:#fff;border-radius:28px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:20px">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#565E6B">{{ s.n }}</span>
+        <h3 style="margin:0;font-size:22px;font-weight:500;line-height:1.25;letter-spacing:-.015em;min-height:2.5em">{{ s.title }}</h3>
+        <p style="margin:0;padding-left:16px;border-left:2px solid #2F5AE6;font-size:17px;line-height:1.55;color:#3F4650;flex:1">{{ s.quote }}</p>
+        <div style="display:flex;gap:10px">
+          <sc-for list="{{ s.metrics }}" as="m" hint-placeholder-count="2">
+            <div style="flex:1;border-radius:16px;background:#F6F7F9;padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:22px;line-height:1;color:{{ m.color }};white-space:nowrap">{{ m.value }}</span><span style="font-size:12px;line-height:1.35;color:#565E6B">{{ m.label }}</span></div>
+          </sc-for>
+        </div>
+        <div style="padding-top:20px;border-top:1px solid rgba(18,20,23,.08)">
+          <div style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">ЧТО МЕНЯЕТСЯ</div>
+          <div style="margin-top:8px;font-size:15px;line-height:1.5">{{ s.change }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- 5 calculator: instrument -->
+<section data-screen-label="05 Calc" data-anim="calc" style="padding:200px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:end;gap:24px 48px;margin-bottom:40px">
+    <div>
+      <span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Арифметика возвратов</span>
+      <h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance">Сколько стоит чужая <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:1.15em">неуверенность</span></h2>
+    </div>
+    <p style="margin:0;max-width:420px;font-size:17px;line-height:1.5;color:#565E6B;justify-self:end">Три ваших числа — и видно, во что обходится размер, который покупатель не смог проверить. Цифры по рынку: 30–45% возвратов на маркетплейсах, 15–25% на сайтах брендов.</p>
+  </div>
+
+  <div style="border-radius:28px;overflow:hidden;background:#fff;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+    <div style="padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:26px;border-right:1px solid rgba(18,20,23,.07)">
+      <sc-for list="{{ dials }}" as="d" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+            <span style="font-size:15px;color:#565E6B">{{ d.name }}</span>
+            <span style="display:flex;align-items:baseline;gap:5px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:26px;line-height:1;letter-spacing:-.02em;white-space:nowrap">{{ d.value }}</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:15px;color:#565E6B">{{ d.unit }}</span></span>
+          </div>
+          <div style="position:relative;height:44px">
+            <div style="position:absolute;inset:0;border-radius:999px;background:#EEF1F5;overflow:hidden"><div style="height:100%;width:{{ d.pct }};background:linear-gradient(90deg,#8FB0FF 0%,#2F5AE6 100%);transition:width 160ms linear"></div></div>
+            <div style="position:absolute;top:5px;bottom:5px;left:{{ d.pct }};width:34px;margin-left:-17px;border-radius:999px;background:#fff;border:1px solid rgba(18,20,23,.12);pointer-events:none;transition:left 160ms linear"></div>
+            <input class="mml-range" type="range" min="{{ d.min }}" max="{{ d.max }}" step="{{ d.step }}" value="{{ d.raw }}" onChange="{{ d.set }}" aria-label="{{ d.name }}">
+          </div>
+          <div style="display:flex;justify-content:space-between;font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#6B7380;white-space:nowrap"><span>{{ d.minLabel }}</span><span>{{ d.maxLabel }}</span></div>
+        </div>
+      </sc-for>
+      <div style="margin-top:auto;padding-top:22px;border-top:1px solid rgba(18,20,23,.07);display:flex;gap:24px;flex-wrap:wrap">
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:20px;font-weight:300;white-space:nowrap">{{ returnsCount }}</span><span style="font-size:13px;color:#565E6B">возвратов в месяц</span></span>
+        <span style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:20px;font-weight:300;white-space:nowrap">8 ₽</span><span style="font-size:13px;color:#565E6B">стоит одна примерка</span></span>
+      </div>
+    </div>
+
+    <div style="position:relative;padding:clamp(24px,3vw,40px);background:#0E1014;color:#fff;display:flex;flex-direction:column;gap:26px;overflow:hidden">
+      <div style="position:absolute;inset:0;background:radial-gradient(70% 60% at 80% 0%, rgba(47,90,230,.28) 0%, rgba(14,16,20,0) 70%);pointer-events:none"></div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:8px">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.5)">УХОДИТ НА ВОЗВРАТЫ В МЕСЯЦ</span>
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:clamp(36px,4.4vw,60px);line-height:1;letter-spacing:-.035em;white-space:nowrap;transform:scale({{ pulse }});transform-origin:left center;transition:transform 220ms cubic-bezier(.2,.8,.2,1)">{{ monthFmt }} ₽</span>
+      </div>
+      <div style="position:relative;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.62)"><span>За год</span><span style="font-family:'Martian Mono',ui-monospace,monospace;color:#8FB0FF;white-space:nowrap">{{ yearFmt }} ₽</span></div>
+        <div style="height:8px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden"><div style="height:100%;width:100%;background:linear-gradient(90deg,#8FB0FF 0%,#2F5AE6 100%)"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;color:rgba(255,255,255,.62)"><span>Примерки на все заказы за год</span><span style="font-family:'Martian Mono',ui-monospace,monospace;color:#fff;white-space:nowrap">{{ tryonYearFmt }} ₽</span></div>
+        <div style="height:8px;border-radius:999px;background:rgba(255,255,255,.1);overflow:hidden"><div style="height:100%;width:{{ tryonShare }};background:#fff;transition:width 260ms cubic-bezier(.2,.8,.2,1)"></div></div>
+        <span style="font-size:13px;line-height:1.5;color:rgba(255,255,255,.62)">Примерка каждому покупателю стоит {{ tryonShareLabel }} от того, что вы платите за возвраты.</span>
+      </div>
+      <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px">
+        <div style="border-radius:16px;background:rgba(255,255,255,.07);padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:24px;line-height:1;color:#8FB0FF;white-space:nowrap">{{ payback }}</span><span style="font-size:13px;line-height:1.35;color:rgba(255,255,255,.62)">примерок окупает один невозврат</span></div>
+        <div style="border-radius:16px;background:rgba(255,255,255,.07);padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:24px;line-height:1;color:#fff;white-space:nowrap">{{ breakEven }}</span><span style="font-size:13px;line-height:1.35;color:rgba(255,255,255,.62)">невозвратов в месяц — и инструмент бесплатен</span></div>
+      </div>
+      <div style="position:relative;margin-top:auto;display:flex;flex-direction:column;gap:14px">
+        <span style="font-size:15px;line-height:1.5"><b style="font-weight:500">Мы не обещаем процент. Мы ставим счётчик.</b><span style="color:rgba(255,255,255,.68)"> В кабинете видно, сколько примерили, что положили в корзину и что выкупили.</span></span>
+        <a href="#form" style="display:inline-flex;align-items:center;justify-content:center;height:56px;border-radius:999px;box-sizing:border-box;background:#fff;color:#121417;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:#2F5AE6;color:#fff">Показать примерку на моих товарах</a>
+        <span style="font-size:12px;line-height:1.5;color:rgba(255,255,255,.5)">Цифры по рынку — из отраслевых исследований, не наши обещания.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 why it works: layer switcher -->
+<section data-screen-label="06 Why works" style="padding:120px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:end;gap:24px 48px;margin-bottom:40px">
+    <div><span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Слои и происхождение</span><h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance">Один человек, одна поза, <span style="font-weight:400;color:#565E6B">меняются слои</span></h2></div>
+    <p style="margin:0;max-width:420px;font-size:17px;line-height:1.5;color:#565E6B;justify-self:end">Меняется только количество слоёв одежды. Примерка у маркетплейсов умеет ровно первое состояние — это видно, а не заявлено.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;align-items:stretch">
+    <div style="position:relative;border-radius:28px;overflow:hidden;background:#0E1014;min-height:620px">
+      <img src="./looks/look-3.jpg" alt="Один человек, 1 слоя одежды в образе" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:{{ lo0 }};transition:opacity 500ms ease">
+      <img src="./looks/look-7.jpg" alt="Один человек, 3 слоя одежды в образе" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;opacity:{{ lo1 }};transition:opacity 500ms ease">
+      <img src="./looks/look-2.jpg" alt="Один человек, 5 слоя одежды в образе" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;opacity:{{ lo2 }};transition:opacity 500ms ease">
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,22,.4) 0%,rgba(10,14,22,0) 30%,rgba(10,14,22,.6) 100%);pointer-events:none"></div>
+      <div style="position:absolute;top:20px;left:20px;right:20px;display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ layerTabs }}" as="lt" hint-placeholder-count="3">
+          <button onClick="{{ lt.pick }}" style="height:44px;padding:0 18px;border-radius:999px;border:1px solid {{ lt.border }};background:{{ lt.bg }};color:{{ lt.color }};font-family:'Golos Text',sans-serif;font-size:15px;font-weight:500;cursor:pointer;white-space:nowrap;backdrop-filter:blur(14px)">{{ lt.label }}</button>
+        </sc-for>
+      </div>
+      <div style="position:absolute;left:20px;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <sc-for list="{{ activeLayerChips }}" as="ch" hint-placeholder-count="3">
+            <span style="display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 14px 0 6px;border-radius:999px;background:rgba(255,255,255,.92);color:#121417;font-size:15px;font-weight:500;white-space:nowrap"><span style="width:20px;height:20px;border-radius:50%;background:{{ ch.dot }}"></span>{{ ch.name }}</span>
+          </sc-for>
+        </div>
+        <div style="border-radius:16px;background:rgba(255,255,255,.94);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:14px">
+          <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;color:#565E6B">СЛОЁВ В ОБРАЗЕ · {{ layerCount }}</span><span style="font-size:15px;line-height:1.35">{{ layerNote }}</span></span>
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:34px;font-weight:300;color:#2F5AE6;line-height:1;flex:none">M</span>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="background:#fff;border-radius:28px;padding:clamp(22px,2.6vw,32px);display:flex;flex-direction:column;gap:20px;flex:1">
+        <div>
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">ПРОИСХОЖДЕНИЕ ВЕЩИ</span>
+          <h3 style="margin:12px 0 0;font-size:22px;font-weight:500;line-height:1.3;letter-spacing:-.015em">Это ваш артикул DR-2041, а не похожая вещь</h3>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="position:relative;border-radius:16px;overflow:hidden;background:#EEF0F3;aspect-ratio:3/4"><img src="./looks/look-3.jpg" alt="Фотография изделия DR-2041 из каталога магазина" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%"><span style="position:absolute;left:44%;top:38%;width:72px;height:72px;border-radius:50%;border:2px solid #2F5AE6;transform:translate(-50%,-50%);box-shadow:0 0 0 9999px rgba(18,20,23,.18)"></span></div>
+            <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;color:#565E6B">ФОТО ИЗ КАТАЛОГА</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="position:relative;border-radius:16px;overflow:hidden;background:#EEF0F3;aspect-ratio:3/4"><img src="./looks/look-7.jpg" alt="Наш рендер того же изделия на покупателе" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%"><span style="position:absolute;left:52%;top:44%;width:72px;height:72px;border-radius:50%;border:2px solid #2F5AE6;transform:translate(-50%,-50%);box-shadow:0 0 0 9999px rgba(18,20,23,.18)"></span></div>
+            <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;color:#2F5AE6">НАШ РЕНДЕР</span>
+          </div>
+        </div>
+        <p style="margin:0;font-size:15px;line-height:1.55;color:#565E6B">Сверьте принт, пуговицу и шов: на обоих кадрах обведён один и тот же элемент вашего изделия. Генератор картинок такую сверку не проходит — он рисует похожее.</p>
+      </div>
+      <a href="#form" style="display:inline-flex;align-items:center;justify-content:center;height:56px;border-radius:999px;background:#121417;color:#fff;font-size:17px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:#2F5AE6;color:#fff">Собрать примерку на моём артикуле</a>
+    </div>
+  </div>
+  <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(196px,1fr));gap:12px">
+    <sc-for list="{{ compare }}" as="c" hint-placeholder-count="4">
+      <div style="background:{{ c.bg }};color:{{ c.color }};border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:18px">
+        <div style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:{{ c.mutedColor }}">{{ c.title }}</div>
+        <sc-for list="{{ c.rows }}" as="r" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;gap:4px;padding-bottom:14px;border-bottom:1px solid {{ c.line }}"><span style="font-size:15px;color:{{ c.mutedColor }}">{{ r.k }}</span><span style="font-size:17px;font-weight:500">{{ r.v }}</span></div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+  <p style="margin:24px auto 0;max-width:760px;text-align:center;font-size:15px;line-height:1.55;color:#6B7380">Генератор картинок здесь только строкой таблицы — как утверждение, а не как картинка. Сравнение верно в границах примерки маркетплейсов и генераторов; отличие, которое держится против всех, — расчёт размера по вашей размерной сетке.</p>
+</section>
+
+<!-- why now: dark photo section -->
+<section data-screen-label="07 Why now" data-anim="chart" style="padding:120px 12px 0">
+  <div style="position:relative;border-radius:28px;overflow:hidden;min-height:640px;background:#0E1014;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+    <div style="position:relative;min-height:420px"><img src="./looks/look-6.jpg" alt="Покупатель в пальто — кадр к блоку о сокращении офлайна" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%"><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,21,0) 60%,rgba(15,17,21,1) 100%)"></div></div>
+    <div style="padding:clamp(32px,5vw,64px) clamp(20px,4vw,56px);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+      <div>
+        <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(30px,3.4vw,52px);line-height:1.04;letter-spacing:-.03em">Мерить стало <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:1.15em">негде</span></h2>
+        <p style="margin:22px 0 0;max-width:460px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.72)">За год <b style="color:#fff;font-weight:500">48%</b> сетевых fashion-операторов сократили офлайн. <b style="color:#fff;font-weight:500">57%</b> покупателей хотели купить вещь и не нашли её в магазине. <b style="color:#fff;font-weight:500">51%</b> не находят одежду под свою фигуру — это сложность номер один, с отрывом от цены.</p>
+      </div>
+      <div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <sc-for list="{{ bars }}" as="b" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center">
+              <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:13px;color:rgba(255,255,255,.55)">{{ b.year }}</span>
+              <span style="position:relative;height:{{ b.thickness }};border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ b.w }};border-radius:999px;background:{{ b.color }};transition:width 900ms cubic-bezier(.2,.8,.2,1) {{ b.delay }}"></span></span>
+              <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:{{ b.labelSize }};font-weight:300;color:{{ b.labelColor }};white-space:nowrap;min-width:74px;text-align:right">{{ b.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:16px;font-size:12px;color:rgba(255,255,255,.5)">Доля сетевых fashion-операторов, сокративших офлайн. РБК Исследования рынков, выборка 1110 сетей</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 what you get: sticky tabs + live product mocks -->
+<section data-screen-label="08 Product" style="padding:200px 12px 0">
+  <div style="position:relative;border-radius:28px;overflow:hidden;background:#0E1014;color:#fff;padding:clamp(28px,4vw,56px) clamp(18px,3vw,40px)">
+    <div style="position:absolute;inset:0;background:radial-gradient(60% 50% at 18% 12%, rgba(59,107,255,.22) 0%, rgba(14,16,20,0) 70%),radial-gradient(50% 40% at 90% 90%, rgba(143,176,255,.12) 0%, rgba(14,16,20,0) 70%);pointer-events:none"></div>
+    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:start;max-width:1288px;margin:0 auto">
+      <div data-r="sticky" style="position:sticky;top:28px;display:flex;flex-direction:column;gap:28px">
+        <div>
+          <span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.1);font-size:12px;font-weight:500;color:rgba(255,255,255,.75);white-space:nowrap">Состав продукта</span>
+          <h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em">Инструменты, которые ставятся <span style="font-weight:400;color:#C9D6E4">по отдельности</span></h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="5">
+            <button onClick="{{ t.pick }}" style="display:inline-flex;align-items:center;gap:12px;height:46px;padding:0 20px;border-radius:999px;border:none;background:{{ t.bg }};color:{{ t.color }};font-family:'Golos Text',sans-serif;font-size:17px;font-weight:500;cursor:pointer;transition:background 200ms,color 200ms;white-space:nowrap" style-hover="background:rgba(255,255,255,.16)"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;opacity:.55">{{ t.n }}</span>{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <p style="margin:0;max-width:380px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.65)">{{ tabText }}</p>
+        <a href="#form" style="display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 26px;border-radius:999px;background:#fff;color:#121417;font-size:17px;font-weight:500;text-decoration:none;white-space:nowrap;align-self:flex-start" style-hover="background:#2F5AE6;color:#fff">Посмотреть на моих товарах</a>
+      </div>
+
+      <div style="position:relative;border-radius:28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:20px;min-height:600px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 4px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.5);white-space:nowrap">ЭКРАН {{ tabNum }}</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ tabMeta }}</span></div>
+
+        <sc-if value="{{ isTryon }}" hint-placeholder-val="{{ true }}">
+          <div style="position:relative;flex:1;border-radius:16px;overflow:hidden;background:#0E1014;min-height:520px">
+            <img src="./looks/look-2.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%">
+            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,22,.3) 0%,rgba(10,14,22,0) 35%,rgba(10,14,22,.55) 100%)"></div>
+            <div style="position:absolute;top:16px;left:16px;right:16px;display:flex;gap:8px;flex-wrap:wrap">
+              <sc-for list="{{ tryonLayers }}" as="l" hint-placeholder-count="3">
+                <span style="display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px 0 6px;border-radius:999px;background:rgba(255,255,255,.92);color:#121417;font-size:15px;font-weight:500;white-space:nowrap"><span style="width:22px;height:22px;border-radius:50%;background:{{ l.dot }}"></span>{{ l.name }}</span>
+              </sc-for>
+              <span style="display:inline-flex;align-items:center;height:34px;padding:0 14px;border-radius:999px;border:1px dashed rgba(255,255,255,.45);color:#fff;font-size:15px;white-space:nowrap">+ слой</span>
+            </div>
+            <div style="position:absolute;left:16px;right:16px;bottom:16px;display:flex;gap:10px;align-items:flex-end">
+              <div style="flex:1;border-radius:16px;background:rgba(255,255,255,.94);color:#121417;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px">
+                <span style="display:flex;flex-direction:column;gap:2px;min-width:0"><span style="font-size:12px;color:#565E6B">Артикул DR-2041 · слой 2 из 5</span><span style="font-size:15px;font-weight:500">Ваш размер по сетке этого изделия</span></span>
+                <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:36px;font-weight:300;color:#2F5AE6;line-height:1;flex:none">M</span>
+              </div>
+              <span style="height:52px;padding:0 22px;display:inline-flex;align-items:center;border-radius:999px;background:#121417;color:#fff;font-size:15px;font-weight:500;white-space:nowrap">В корзину</span>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isSize }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;border-radius:16px;background:#fff;color:#121417;padding:28px;display:flex;flex-direction:column;gap:24px;min-height:520px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div><div style="font-size:15px;color:#565E6B">Платье-миди из плотной шерсти</div><div style="margin-top:6px;font-size:20px;font-weight:500">Рекомендуем размер</div></div>
+              <div style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:72px;line-height:.9;color:#2F5AE6">M</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:18px">
+              <sc-for list="{{ fitRows }}" as="f" hint-placeholder-count="4">
+                <div style="display:flex;flex-direction:column;gap:8px">
+                  <div style="display:flex;justify-content:space-between;font-size:15px"><span>{{ f.name }}</span><span style="font-family:'Martian Mono',ui-monospace,monospace;color:#565E6B">{{ f.value }}</span></div>
+                  <div style="position:relative;height:6px;border-radius:999px;background:#EEF0F3"><span style="position:absolute;left:0;top:0;bottom:0;width:{{ f.w }};border-radius:999px;background:{{ f.color }}"></span><span style="position:absolute;left:{{ f.mark }};top:-5px;width:2px;height:16px;background:#121417"></span></div>
+                  <div style="font-size:15px;color:#565E6B">{{ f.note }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top:auto;padding:16px 18px;border-radius:16px;background:#F6F7F9;font-size:15px;line-height:1.5;color:#3A414B">Считаем по вашей размерной сетке: замеры этого изделия против параметров покупателя. Не по усреднённой таблице.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isStylist }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;border-radius:16px;background:#fff;color:#121417;padding:24px;display:flex;flex-direction:column;gap:14px;min-height:520px">
+            <sc-for list="{{ chat }}" as="m" hint-placeholder-count="4">
+              <div style="max-width:82%;align-self:{{ m.align }};border-radius:{{ m.radius }};background:{{ m.bg }};color:{{ m.color }};padding:14px 16px;font-size:15px;line-height:1.45">{{ m.text }}</div>
+            </sc-for>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px">
+                <div style="border-radius:16px;overflow:hidden;background:#EEF0F3;height:150px;position:relative"><img src="./looks/look-1.jpg" alt="Образ из каталога: Платье-миди" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%"><span style="position:absolute;left:10px;bottom:10px;height:26px;padding:0 10px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.92);font-size:12px;font-weight:500;white-space:nowrap">Платье-миди</span></div>
+                <div style="border-radius:16px;overflow:hidden;background:#EEF0F3;height:150px;position:relative"><img src="./looks/look-2.jpg" alt="Образ из каталога: Пальто" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%"><span style="position:absolute;left:10px;bottom:10px;height:26px;padding:0 10px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.92);font-size:12px;font-weight:500;white-space:nowrap">Пальто</span></div>
+                <div style="border-radius:16px;overflow:hidden;background:#EEF0F3;height:150px;position:relative"><img src="./looks/look-7.jpg" alt="Образ из каталога: Жакет" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%"><span style="position:absolute;left:10px;bottom:10px;height:26px;padding:0 10px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.92);font-size:12px;font-weight:500;white-space:nowrap">Жакет</span></div>
+            </div>
+            <div style="margin-top:auto;display:flex;gap:10px;align-items:center"><span style="flex:1;height:48px;border-radius:999px;background:#F6F7F9;display:flex;align-items:center;padding:0 18px;font-size:15px;color:#565E6B">Опишите повод — соберём образ из вашего каталога</span><span style="width:48px;height:48px;border-radius:50%;background:#121417;color:#fff;display:grid;place-items:center;font-size:17px">→</span></div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isCustom }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;border-radius:16px;background:#fff;color:#121417;padding:28px;display:flex;flex-direction:column;gap:24px;min-height:520px">
+            <div style="font-size:20px;font-weight:500">Кнопка «Примерить» на вашей карточке</div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">ЦВЕТ АКЦЕНТА</div>
+              <div style="display:flex;gap:10px">
+                <sc-for list="{{ swatches }}" as="s" hint-placeholder-count="5">
+                  <button onClick="{{ s.pick }}" title="Выбрать цвет" style="width:40px;height:40px;border-radius:50%;background:{{ s.color }};border:2px solid {{ s.ring }};cursor:pointer;padding:0"></button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">ФОРМА И ТЕКСТ</div>
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <sc-for list="{{ shapes }}" as="sh" hint-placeholder-count="3">
+                  <button onClick="{{ sh.pick }}" style="height:40px;padding:0 16px;border-radius:16px;border:1px solid {{ sh.border }};background:{{ sh.bg }};color:{{ sh.color }};font-family:'Golos Text',sans-serif;font-size:15px;cursor:pointer;white-space:nowrap">{{ sh.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="flex:1;border-radius:16px;background:#F6F7F9;padding:24px;display:flex;gap:20px;align-items:center">
+              <div style="width:110px;height:150px;border-radius:16px;overflow:hidden;background:#E4E8ED;position:relative;flex:none"><img src="./looks/look-1.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></div>
+              <div style="display:flex;flex-direction:column;gap:10px;min-width:0">
+                <span style="font-size:12px;color:#565E6B">Платья / Миди</span>
+                <span style="font-size:17px;font-weight:500;line-height:1.3">Платье-миди из плотной шерсти</span>
+                <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:17px">14 900 ₽</span>
+                <span style="display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 20px;border-radius:{{ btnRadius }};background:{{ accent }};color:#fff;font-size:15px;font-weight:500;white-space:nowrap;align-self:flex-start">{{ btnLabel }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isStats }}" hint-placeholder-val="{{ false }}">
+          <div style="flex:1;border-radius:16px;background:#fff;color:#121417;padding:28px;display:flex;flex-direction:column;gap:24px;min-height:520px">
+            <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:20px;font-weight:500;white-space:nowrap">Кабинет · сентябрь</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;color:#565E6B">ДАННЫЕ ВАШЕГО МАГАЗИНА</span></div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px">
+              <sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+                <div style="border-radius:16px;background:#F6F7F9;padding:16px;display:flex;flex-direction:column;gap:6px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-weight:300;font-size:26px;line-height:1;color:{{ k.color }};white-space:nowrap">{{ k.value }}</span><span style="font-size:12px;line-height:1.35;color:#565E6B">{{ k.label }}</span></div>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B">ПРИМЕРКИ ПО ДНЯМ</span>
+              <div style="height:150px;display:flex;align-items:flex-end;gap:6px">
+                <sc-for list="{{ statBars }}" as="s2" hint-placeholder-count="12">
+                  <div style="flex:1;height:{{ s2.h }};border-radius:999px;background:{{ s2.color }}"></div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column">
+              <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:#565E6B;margin-bottom:10px">ЧАЩЕ ВСЕГО МЕРИЛИ</span>
+              <sc-for list="{{ topItems }}" as="i" hint-placeholder-count="3">
+                <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid rgba(18,20,23,.08)"><span style="font-size:15px;min-width:0">{{ i.name }}</span><span style="display:flex;gap:20px;flex:none"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:15px;color:#565E6B;white-space:nowrap">{{ i.tryons }}</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:15px;color:#2F5AE6;white-space:nowrap">{{ i.cart }}</span></span></div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 how it connects -->
+<section data-screen-label="09 Connect" style="padding:120px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;align-items:start">
+    <div style="background:#fff;border-radius:28px;padding:clamp(24px,3vw,40px)">
+      <span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#F2F3F5;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Подключение</span>
+      <h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(26px,2.6vw,38px);line-height:1.1;letter-spacing:-.03em">Разработчик нужен на <span style="font-weight:400;color:#565E6B">десять минут</span></h2>
+      <div style="margin-top:32px;display:flex;flex-direction:column">
+        <sc-for list="{{ connectSteps }}" as="c" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:32px 1fr;gap:18px">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:50%;background:{{ c.dot }};margin-top:6px"></span><span style="flex:1;width:1px;background:{{ c.line }}"></span></div>
+            <div style="padding-bottom:28px"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#565E6B">{{ c.n }}</span><span style="font-size:20px;font-weight:500;letter-spacing:-.01em;line-height:1.3">{{ c.title }}</span></div><p style="margin:8px 0 0;font-size:15px;line-height:1.5;color:#565E6B;max-width:420px">{{ c.text }}</p></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="border-radius:16px;background:#0E1014;padding:20px 22px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.45);white-space:nowrap">СТРАНИЦА ТОВАРА · ОДНА СТРОКА</span><span style="height:26px;padding:0 10px;display:inline-flex;align-items:center;border-radius:999px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:12px;white-space:nowrap">скопировать</span></div>
+        <code style="font-family:'Martian Mono',ui-monospace,monospace;font-size:15px;line-height:1.6;color:#8FB0FF;word-break:break-all">&lt;script src="https://cdn.makemelook.ai/w.js" data-shop="<span style="color:#fff">ваш-id</span>" defer&gt;&lt;/script&gt;</code>
+      </div>
+      <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">
+        <sc-for list="{{ platforms }}" as="p2" hint-placeholder-count="6">
+          <div style="border-radius:16px;background:#F6F7F9;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:15px;font-weight:500;white-space:nowrap">{{ p2.name }}</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;color:#565E6B">{{ p2.note }}</span></div>
+        </sc-for>
+      </div>
+      <div style="margin-top:16px;padding:18px 20px;border-radius:16px;background:#F6F7F9;border-left:2px solid #2F5AE6;font-size:15px;line-height:1.5">Каталог импортируется из вашей системы или забирается прямо с сайта. Вручную заводить товары не нужно.</div>
+    </div>
+    <div data-r="sticky" style="position:sticky;top:24px;background:#121417;color:#fff;border-radius:28px;padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:24px">
+      <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:22px;letter-spacing:-.02em">Что нужно от вашей команды</h3>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;gap:14px;align-items:baseline;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:22px;font-weight:300;color:#8FB0FF;white-space:nowrap">10 мин</span><span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.75)">разработчика — поставить скрипт на страницу товара</span></div>
+        <div style="display:flex;gap:14px;align-items:baseline;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:22px;font-weight:300;color:#8FB0FF;white-space:nowrap">1 файл</span><span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.75)">размерные сетки в любом формате</span></div>
+        <div style="display:flex;gap:14px;align-items:baseline"><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:22px;font-weight:300;color:#8FB0FF;white-space:nowrap">1 ссылка</span><span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.75)">на каталог или доступ к нему</span></div>
+      </div>
+      <div style="font-size:15px;line-height:1.5;color:rgba(255,255,255,.6)">Нет разработчика — подключаем сами.</div>
+      <a href="#form" style="display:inline-flex;align-items:center;justify-content:center;height:52px;border-radius:999px;background:#fff;color:#121417;font-size:17px;font-weight:500;text-decoration:none;white-space:nowrap" style-hover="background:#2F5AE6;color:#fff">Прислать ссылку на каталог</a>
+    </div>
+  </div>
+</section>
+
+<!-- 10 data -->
+<section data-screen-label="10 Data" style="padding:120px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="background:#fff;border-radius:28px;padding:clamp(24px,3.4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px">
+    <div style="max-width:320px">
+      <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.4vw,34px);line-height:1.12;letter-spacing:-.03em">Фото покупателя: где хранится и кому принадлежит</h2>
+      <p style="margin:20px 0 0;font-size:17px;line-height:1.55;color:#565E6B">Покупатель загружает своё фото — значит, у вашего юриста будут вопросы по 152-ФЗ. Отвечаем на них до того, как вы их зададите.</p>
+      <div style="margin-top:24px;display:flex;gap:16px;font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;color:#6B7380"><a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#565E6B;text-decoration:underline">политика</a><a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#565E6B;text-decoration:underline">типовое согласие</a></div>
+    </div>
+    <div style="max-width:620px">
+      <sc-for list="{{ legal }}" as="l" hint-placeholder-count="4">
+        <div style="padding:20px 0;border-bottom:1px solid rgba(18,20,23,.08);display:flex;flex-direction:column;gap:6px"><span style="font-size:17px;font-weight:500">{{ l.title }}</span><span style="font-size:15px;line-height:1.55;color:#565E6B">{{ l.text }}</span></div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- 11 why us, not -->
+<section data-screen-label="11 Alternatives" style="padding:200px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:end;gap:24px 48px;margin-bottom:32px">
+    <div><span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Альтернативы</span><h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em">Почему мы, <span style="font-weight:400;color:#565E6B">а не</span></h2></div>
+    <p style="margin:0;max-width:420px;font-size:17px;line-height:1.5;color:#565E6B;justify-self:end">Пять вариантов, которые вы уже рассматривали. По каждому — что именно ломается.</p>
+  </div>
+  <div style="background:#fff;border-radius:28px;padding:8px clamp(20px,3vw,40px)">
+    <sc-for list="{{ alternatives }}" as="a" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px 48px;padding:32px 0;border-bottom:1px solid rgba(18,20,23,.08)">
+        <div style="font-size:22px;line-height:1.3;color:#6B7380;max-width:340px;letter-spacing:-.01em">{{ a.q }}</div>
+        <div style="font-size:17px;line-height:1.55;max-width:640px">{{ a.answer }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+
+
+<!-- 12 journal -->
+<section id="journal" data-screen-label="12 Journal" style="padding:200px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:end;gap:24px 48px;margin-bottom:40px">
+    <div>
+      <span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Журнал</span>
+      <h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em;text-wrap:balance">Что мы узнаём, пока считаем возвраты</h2>
+    </div>
+    <p style="margin:0;max-width:420px;font-size:17px;line-height:1.5;color:#565E6B;justify-self:end">Разборы на данных магазинов, с методикой и источниками. Без обещаний процентов — только то, что можно проверить.</p>
+  </div>
+
+  <a href="./MakeMeLook Article.dc.html" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));border-radius:28px;overflow:hidden;background:#0E1014;color:#fff;text-decoration:none;min-height:440px" style-hover="color:#fff">
+    <div style="position:relative;min-height:280px"><img src="./looks/look-6.jpg" alt="Разбор: почему размер остаётся причиной возвратов" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%"><div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,16,20,0) 40%,rgba(14,16,20,.9) 100%)"></div></div>
+    <div style="position:relative;padding:clamp(28px,3.4vw,48px);display:flex;flex-direction:column;justify-content:space-between;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <span style="height:28px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;background:#2F5AE6;font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;white-space:nowrap">РАЗБОР</span>
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.03em;color:rgba(255,255,255,.55);white-space:nowrap">9 СЕНТЯБРЯ · 11 МИН</span>
+        </div>
+        <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.6vw,38px);line-height:1.1;letter-spacing:-.03em;text-wrap:balance">Возврат стоит дороже, чем кажется: считаем полную цену чужой неуверенности</h3>
+        <p style="margin:0;max-width:520px;font-size:17px;line-height:1.55;color:rgba(255,255,255,.75)">Обратная логистика — только первая строка счёта. Разобрали, из чего складываются 300–1500 ₽ за один возврат, и почему магазины видят в отчётах меньшую цифру, чем платят.</p>
+      </div>
+      <span style="display:inline-flex;align-items:center;gap:12px;font-size:16px;font-weight:500;white-space:nowrap">Читать разбор <span style="width:36px;height:36px;border-radius:999px;background:rgba(255,255,255,.14);display:grid;place-items:center">→</span></span>
+    </div>
+  </a>
+
+  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+    <a href="./MakeMeLook Article.dc.html" style="display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:hidden;text-decoration:none;color:#121417;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px);color:#121417">
+      <span style="position:relative;display:block;aspect-ratio:16/10;background:#E4E8ED;overflow:hidden"><img src="./looks/look-3.jpg" alt="Как собрать размерную сетку, по которой можно считать" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></span>
+      <span style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1">
+        <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="height:26px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:#F2F3F5;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.02em;color:#565E6B;white-space:nowrap">МЕТОДИКА</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;color:#6B7380;white-space:nowrap">7 мин</span></span>
+        <span style="font-size:20px;font-weight:500;line-height:1.28;letter-spacing:-.015em">Как собрать размерную сетку, по которой можно считать</span>
+        <span style="font-size:15px;line-height:1.5;color:#565E6B">Восемь замеров, которых достаточно, и три, которые чаще всего забывают внести.</span>
+        <span style="margin-top:auto;padding-top:12px;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.03em;color:#2F5AE6;white-space:nowrap">ЧИТАТЬ →</span>
+      </span>
+    </a>
+    <a href="./MakeMeLook Article.dc.html" style="display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:hidden;text-decoration:none;color:#121417;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px);color:#121417">
+      <span style="position:relative;display:block;aspect-ratio:16/10;background:#E4E8ED;overflow:hidden"><img src="./looks/look-5.jpg" alt="Примерочная исчезает: что случилось с офлайном за два года" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></span>
+      <span style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1">
+        <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="height:26px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:#F2F3F5;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.02em;color:#565E6B;white-space:nowrap">ИССЛЕДОВАНИЕ</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;color:#6B7380;white-space:nowrap">9 мин</span></span>
+        <span style="font-size:20px;font-weight:500;line-height:1.28;letter-spacing:-.015em">Примерочная исчезает: что случилось с офлайном за два года</span>
+        <span style="font-size:15px;line-height:1.5;color:#565E6B">Данные по сокращению сетей против поведения покупателей на сайтах.</span>
+        <span style="margin-top:auto;padding-top:12px;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.03em;color:#2F5AE6;white-space:nowrap">ЧИТАТЬ →</span>
+      </span>
+    </a>
+    <a href="./MakeMeLook Article.dc.html" style="display:flex;flex-direction:column;background:#fff;border-radius:28px;overflow:hidden;text-decoration:none;color:#121417;transition:transform 240ms cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-4px);color:#121417">
+      <span style="position:relative;display:block;aspect-ratio:16/10;background:#E4E8ED;overflow:hidden"><img src="./looks/look-2.jpg" alt="Какие фото товара подходят для примерки, а какие нет" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%"></span>
+      <span style="padding:24px;display:flex;flex-direction:column;gap:14px;flex:1">
+        <span style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="height:26px;padding:0 11px;display:inline-flex;align-items:center;border-radius:999px;background:#F2F3F5;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.02em;color:#565E6B;white-space:nowrap">ПРАКТИКА</span><span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;color:#6B7380;white-space:nowrap">6 мин</span></span>
+        <span style="font-size:20px;font-weight:500;line-height:1.28;letter-spacing:-.015em">Какие фото товара подходят для примерки, а какие нет</span>
+        <span style="font-size:15px;line-height:1.5;color:#565E6B">Ракурс, фон, складки и подкладка: что мешает собрать вещь на человеке.</span>
+        <span style="margin-top:auto;padding-top:12px;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.03em;color:#2F5AE6;white-space:nowrap">ЧИТАТЬ →</span>
+      </span>
+    </a>
+  </div>
+
+  <div style="margin-top:16px;border-radius:28px;background:#fff;padding:clamp(24px,3vw,36px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:20px;font-weight:500">Письмо раз в две недели</span>
+      <span style="font-size:15px;line-height:1.5;color:#565E6B;max-width:420px">Разборы возвратов, размерных сеток и примерки — на данных магазинов. Без новостей и без рассылок «мы обновили дизайн».</span>
+    </div>
+    <form onSubmit="{{ subscribe }}" style="display:flex;gap:10px;flex-wrap:wrap;justify-self:end;width:min(100%,420px)">
+      <input required type="email" placeholder="Рабочая почта" style="flex:1;min-width:180px;height:56px;border-radius:999px;border:1px solid rgba(18,20,23,.12);padding:0 20px;font-size:16px;font-family:'Golos Text',sans-serif;color:#121417;outline:none" style-focus="border-color:#2F5AE6">
+      <button type="submit" style="height:56px;padding:0 24px;border-radius:999px;border:none;background:#121417;color:#fff;font-family:'Golos Text',sans-serif;font-size:16px;font-weight:500;cursor:pointer;white-space:nowrap" style-hover="background:#2F5AE6">{{ subLabel }}</button>
+    </form>
+  </div>
+</section>
+
+<!-- 13 FAQ -->
+<section data-screen-label="13 FAQ" style="padding:120px 24px 0;max-width:1288px;margin:0 auto">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:end;gap:24px 48px;margin-bottom:32px">
+    <div><span style="display:inline-flex;height:28px;align-items:center;padding:0 12px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:#565E6B;white-space:nowrap">Вопросы</span><h2 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(28px,3vw,44px);line-height:1.08;letter-spacing:-.03em">Что обычно <span style="font-weight:400;color:#565E6B">спрашивают</span></h2></div>
+    <p style="margin:0;max-width:420px;font-size:17px;line-height:1.5;color:#565E6B;justify-self:end">Ничего не спрятано в гармошку. Если чего-то здесь нет — напишите, ответим.</p>
+  </div>
+  <div style="background:#fff;border-radius:28px;padding:8px clamp(20px,3vw,40px)">
+    <sc-for list="{{ faq }}" as="f" hint-placeholder-count="8">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px 48px;padding:32px 0;border-bottom:1px solid rgba(18,20,23,.08)">
+        <div style="font-size:17px;font-weight:500;line-height:1.35;max-width:340px;letter-spacing:-.01em">{{ f.q }}</div>
+        <div style="font-size:17px;line-height:1.6;color:#3F4650;max-width:680px">{{ f.a }}</div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<!-- final CTA -->
+<section id="form" data-screen-label="14 CTA" style="padding:200px 12px 12px">
+  <div style="position:relative;border-radius:28px;overflow:hidden;min-height:680px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));background:#0E1014">
+    <img src="./looks/look-5.jpg" alt="Покупательница в образе, собранном примеркой" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%">
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,14,22,.72) 0%,rgba(10,14,22,.6) 34%,rgba(10,14,22,.12) 62%,rgba(10,14,22,0) 100%)"></div>
+    <div style="position:relative;padding:clamp(32px,5vw,64px) clamp(20px,4vw,56px);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:24px">
+      <sc-if value="{{ hasBets }}" hint-placeholder-val="{{ false }}">
+        <div style="display:inline-flex;align-items:center;gap:12px;padding:12px 18px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(14px);align-self:flex-start;max-width:100%">
+          <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:20px;font-weight:300;color:#fff;white-space:nowrap">{{ correctCount }} / {{ betCount }}</span>
+          <span style="font-size:14px;line-height:1.4;color:#fff">вы отличили примерку от съёмки — и вы искали подвох. Ваш покупатель не ищет.</span>
+        </div>
+      </sc-if>
+      <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(30px,3.4vw,52px);line-height:1.04;letter-spacing:-.03em;text-wrap:balance">Посмотрите на <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:1.15em">своих</span> товарах</h2>
+      <p style="margin:0;max-width:440px;font-size:17px;line-height:1.55;color:#fff">Пришлите ссылку на каталог — соберём примерку на ваших вещах и покажем результат. Без интеграции, без оплаты и без обязательств.</p>
+    </div>
+    <div style="position:relative;padding:40px;display:flex;align-items:center;justify-content:center">
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="width:min(440px,100%);background:#fff;border-radius:28px;padding:28px;display:flex;flex-direction:column;gap:14px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#565E6B">Ссылка на каталог или сайт<input required placeholder="https://" style="height:52px;border-radius:16px;border:1px solid rgba(18,20,23,.12);padding:0 16px;font-size:17px;font-family:'Golos Text',sans-serif;color:#121417;outline:none" style-focus="border-color:#2F5AE6"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#565E6B">Как с вами связаться<input required placeholder="Телефон, почта или Telegram" style="height:52px;border-radius:16px;border:1px solid rgba(18,20,23,.12);padding:0 16px;font-size:17px;font-family:'Golos Text',sans-serif;color:#121417;outline:none" style-focus="border-color:#2F5AE6"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:12px;color:#565E6B">Имя<input required placeholder="Как к вам обращаться" style="height:52px;border-radius:16px;border:1px solid rgba(18,20,23,.12);padding:0 16px;font-size:17px;font-family:'Golos Text',sans-serif;color:#121417;outline:none" style-focus="border-color:#2F5AE6"></label>
+          <button type="submit" style="height:54px;border-radius:999px;background:#121417;color:#fff;border:none;font-family:'Golos Text',sans-serif;font-size:17px;font-weight:500;cursor:pointer;margin-top:6px" style-hover="background:#2F5AE6">Показать на моих товарах</button>
+          <span style="font-size:12px;color:#6B7380;text-align:center">Отвечаем в течение рабочего дня. Ничего не устанавливаем и не списываем, пока вы не увидите результат.</span>
+        </form>
+      </sc-if>
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="width:min(440px,100%);background:#fff;border-radius:28px;padding:clamp(24px,3vw,40px) 28px;text-align:center;font-size:20px;line-height:1.45">Приняли. Соберём примерку на ваших товарах и вернёмся в течение рабочего дня.</div>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<footer style="padding:clamp(72px,8vw,120px) 12px 12px">
+  <div style="position:relative;border-radius:28px;overflow:hidden;background:#0E1014;color:#fff;padding:clamp(28px,4vw,56px) clamp(20px,3.4vw,48px) 0">
+    <div style="position:absolute;inset:0;background:radial-gradient(60% 55% at 12% 0%, rgba(47,90,230,.26) 0%, rgba(14,16,20,0) 70%),radial-gradient(50% 50% at 92% 40%, rgba(143,176,255,.12) 0%, rgba(14,16,20,0) 70%);pointer-events:none"></div>
+
+    <div style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,64px);padding-bottom:clamp(32px,4vw,56px);border-bottom:1px solid rgba(255,255,255,.1)">
+      <div style="display:flex;flex-direction:column;gap:22px;max-width:460px">
+        <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.04em;color:rgba(255,255,255,.55)">ОДНО ДЕЙСТВИЕ</span>
+        <span style="font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(24px,2.6vw,36px);line-height:1.1;letter-spacing:-.03em;text-wrap:balance">Пришлите ссылку на каталог — соберём примерку на ваших вещах</span>
+        <a href="#form" style="display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 26px;border-radius:999px;box-sizing:border-box;background:#fff;color:#121417;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;align-self:flex-start" style-hover="background:#2F5AE6;color:#fff">Показать на моих товарах</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:28px 24px;align-content:start">
+        <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:4px;min-width:0">
+            <span style="font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.45);padding-bottom:8px">{{ col.title }}</span>
+            <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+              <a href="{{ l.href }}" style="display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:rgba(255,255,255,.78);text-decoration:none;transition:color 180ms" style-hover="color:#fff">{{ l.label }}</a>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="position:relative;display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center;padding:22px 0">
+      <span style="display:flex;flex-wrap:wrap;gap:10px 22px;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.55)">
+        <span style="display:inline-flex;align-items:center;gap:8px;white-space:nowrap"><span style="width:6px;height:6px;border-radius:999px;background:#8FB0FF"></span>ОТВЕЧАЕМ В ТЕЧЕНИЕ РАБОЧЕГО ДНЯ</span>
+        <span style="white-space:nowrap">МОСКВА · МСК</span>
+        <span style="white-space:nowrap">ДАННЫЕ ХРАНЯТСЯ В РФ · 152-ФЗ</span>
+      </span>
+      <span style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;text-decoration:none;white-space:nowrap" style-hover="background:rgba(255,255,255,.18);color:#fff">Telegram</a>
+        <a href="mailto:hello@makemelook.ai" style="display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:999px;background:rgba(255,255,255,.08);color:#fff;font-size:14px;text-decoration:none;white-space:nowrap" style-hover="background:rgba(255,255,255,.18);color:#fff">hello@makemelook.ai</a>
+      </span>
+    </div>
+
+    <div style="position:relative;margin:clamp(10px,2vw,22px) calc(-1 * clamp(20px,3.4vw,48px)) 0;padding-bottom:0;font-size:0;line-height:0">
+      <svg viewBox="0 0 1000 100" preserveAspectRatio="none" width="100%" height="clamp(58px,11vw,168px)" role="img" aria-label="MakeMeLook" style="display:block;overflow:hidden">
+        <text x="0" y="100" textLength="1000" lengthAdjust="spacingAndGlyphs" font-family="Unbounded, sans-serif" font-weight="500" font-size="118" fill="rgba(255,255,255,0.1)">MakeMeLook</text>
+      </svg>
+    </div>
+  </div>
+  <div style="max-width:1288px;margin:0 auto;padding:20px 12px 8px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;font-family:'Martian Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.04em;color:#565E6B">
+    <span style="display:inline-flex;align-items:center;min-height:44px">MAKEMELOOK · ООО «МОНОРУС» · 2026</span>
+    <span style="display:flex;gap:20px;flex-wrap:wrap"><a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#565E6B;text-decoration:none" style-hover="color:#121417">ПОЛИТИКА ДАННЫХ</a><a href="#" style="display:inline-flex;align-items:center;min-height:44px;color:#565E6B;text-decoration:none" style-hover="color:#121417">УСЛОВИЯ</a></span>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { i: 0, revealed: {}, bets: {}, seen: false, subscribed: false, pulse: 1, orders: 1000, rate: 30, cost: 700, pack: 1, sent: false, barsIn: false, split: 46, tab: 0, accent: '#2F5AE6', radius: '999px', step: 0, layer: 1 };
+  drag = false;
+  splitAt(e) {
+    const r = e.currentTarget.getBoundingClientRect();
+    this.setState({ split: Math.max(4, Math.min(96, (e.clientX - r.left) / r.width * 100)) });
+  }
+  looks = [
+    { size: 'S', fit: 'В талии по фигуре, длина до середины икры', layers: [['Платье', './looks/look-1.jpg', '50% 60%'], ['Перчатки', './looks/look-1.jpg', '30% 40%'], ['Обувь', './looks/look-1.jpg', '50% 95%']] },
+    { size: 'M', fit: 'Оверсайз по замыслу, рукав до кисти', layers: [['Пальто', './looks/look-2.jpg', '50% 50%'], ['Брюки', './looks/look-2.jpg', '60% 80%'], ['Обувь', './looks/look-2.jpg', '70% 95%']] },
+    { size: 'L', fit: 'Свободно в плечах, как задумано', layers: [['Куртка', './looks/look-7.jpg', '50% 55%'], ['Водолазка', './looks/look-7.jpg', '50% 35%'], ['Обувь', './looks/look-7.jpg', '50% 95%']] }
+  ];
+  cardData = [
+    ['./looks/look-1.jpg', 'tryon'], ['./looks/look-3.jpg', 'shoot'], ['./looks/look-4.jpg', 'tryon'], ['./looks/look-5.jpg', 'shoot'],
+    ['./looks/look-6.jpg', 'shoot'], ['./looks/look-2.jpg', 'tryon'], ['./looks/look-7.jpg', 'shoot'], ['./looks/look-3.jpg', 'tryon']
+  ];
+  packsData = [5000, 10000, 15000];
+  fmt(n) { return Math.round(n).toLocaleString('ru-RU').replace(/,/g, ' '); }
+  kinds = ['tryon','shoot','tryon','shoot','shoot','tryon','shoot','tryon'];
+  g(k) {
+    const bet = this.state.bets[k], seen = !!this.state.seen;
+    const right = bet && bet === this.kinds[k];
+    return {
+      betShoot: () => this.bet(k, 'shoot'), betTryon: () => this.bet(k, 'tryon'),
+      betOpacity: bet ? 0 : 1, betEvents: bet ? 'none' : 'auto',
+      plateOpacity: bet ? 1 : 0,
+      plateBg: bet ? (right ? 'linear-gradient(180deg,rgba(14,16,20,.25) 0%,rgba(14,16,20,.92) 100%)' : 'linear-gradient(180deg,rgba(47,90,230,.35) 0%,rgba(23,36,58,.94) 100%)') : 'transparent',
+      verdict: bet ? (right ? 'ВЫ УГАДАЛИ' : 'НЕ УГАДАЛИ') : '',
+      verdictColor: right ? '#8FB0FF' : '#fff',
+      seen
+    };
+  }
+  tick(patch) {
+    clearTimeout(this._pulse);
+    this.setState({ ...patch, pulse: 1.035 });
+    this._pulse = setTimeout(() => this.setState({ pulse: 1 }), 200);
+  }
+  bet(k, v) {
+    this.setState(s => ({ bets: { ...s.bets, [k]: v } }));
+  }
+  stepTitles = ['Нажимает «Примерить»', 'Загружает одно фото', 'Видит вещь на себе', 'Получает свой размер'];
+  stepTexts = [
+    'Кнопка живёт на карточке товара. Вид, место и текст настраиваются под ваш магазин — виджет не выглядит вставкой.',
+    'Обычное фото в полный рост. Регистрация не нужна, второй раз загружать тоже: фото сохраняется для следующих примерок.',
+    'Не на модели, похожей на него, а на нём. Можно добавить второй и третий слой и собрать образ целиком.',
+    'Расчёт по замерам конкретного изделия и параметрам человека — с пояснением, где будет свободнее, а где по фигуре.'
+  ];
+  componentDidMount() {
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const key = e.target.dataset.anim;
+        if (key === 'chart') this.setState({ barsIn: true });
+        if (key === 'guess') this.setState({ seen: true });
+        this._io.unobserve(e.target);
+      });
+    }, { rootMargin: '-10% 0px -10% 0px' });
+    this._raf = requestAnimationFrame(() => document.querySelectorAll('[data-anim]').forEach(el => this._io.observe(el)));
+    this._t = setTimeout(() => this.setState({ barsIn: true }), 1200);
+    this._scroll = () => {
+      const wrap = document.getElementById('step-cards');
+      if (!wrap) return;
+      const mid = window.innerHeight / 2;
+      let best = 0, bestD = Infinity;
+      [...wrap.children].forEach((el, k) => {
+        const r = el.getBoundingClientRect();
+        const d = Math.abs(r.top + r.height / 2 - mid);
+        if (d < bestD) { bestD = d; best = k; }
+      });
+      if (best !== this.state.step) this.setState({ step: best });
+    };
+    window.addEventListener('scroll', this._scroll, { passive: true });
+    this._scroll();
+  }
+  componentWillUnmount() { if (this._io) this._io.disconnect(); cancelAnimationFrame(this._raf); clearTimeout(this._t); clearTimeout(this._pulse); window.removeEventListener('scroll', this._scroll); }
+  renderVals() {
+    const s = this.state, cur = this.looks[s.i];
+    const opened = Object.keys(s.revealed).length;
+    const month = s.orders * s.rate / 100 * s.cost, year = month * 12;
+    const pack = this.packsData[s.pack];
+    const barsDef = [['32%', '2023', 0.32], ['36%', '2024', 0.36], ['48%', '2026', 0.48]];
+    return {
+      o0: s.i === 0 ? 1 : 0, o1: s.i === 1 ? 1 : 0, o2: s.i === 2 ? 1 : 0,
+      num: s.i + 1, size: cur.size, fit: cur.fit,
+      layers: cur.layers.map(([name, src, pos]) => ({ name, src, pos })),
+      next: () => this.setState(x => ({ i: (x.i + 1) % 3 })),
+      stop: (e) => e.stopPropagation(),
+      betCount: Object.keys(s.bets).length,
+      correctCount: Object.keys(s.bets).filter(k => s.bets[k] === this.kinds[k]).length,
+      allBet: Object.keys(s.bets).length === 8,
+      hasBets: Object.keys(s.bets).length > 0,
+      g0: this.g(0), g1: this.g(1), g2: this.g(2), g3: this.g(3), g4: this.g(4), g5: this.g(5), g6: this.g(6), g7: this.g(7),
+      opened, notAllOpen: opened < 8, allOpen: opened >= 8,
+      orders: s.orders, rate: s.rate, cost: s.cost,
+      ordersFmt: this.fmt(s.orders), costFmt: this.fmt(s.cost), monthFmt: this.fmt(month), yearFmt: this.fmt(year),
+      payback: Math.round(s.cost / 8),
+      setOrders: (e) => this.setState({ orders: +e.target.value }),
+      setRate: (e) => this.setState({ rate: +e.target.value }),
+      setCost: (e) => this.setState({ cost: +e.target.value }),
+      bars: barsDef.map(([label, yr, v], k) => ({
+        label, year: yr, w: s.barsIn ? (v / 0.48 * 100) + '%' : '0%',
+        thickness: k === 2 ? '28px' : '20px',
+        color: k === 2 ? 'linear-gradient(90deg,#8FB0FF 0%,#2F5AE6 100%)' : 'rgba(255,255,255,.28)',
+        labelColor: k === 2 ? '#8FB0FF' : '#fff', labelSize: k === 2 ? '26px' : '20px', delay: (k * 140) + 'ms'
+      })),
+      packs: this.packsData.map((p, k) => ({ label: this.fmt(p), pick: () => this.setState({ pack: k }), border: k === s.pack ? '#121417' : 'rgba(18,20,23,.15)', bg: k === s.pack ? '#121417' : '#fff', color: k === s.pack ? '#fff' : '#121417' })),
+      packTotal: this.fmt(pack * 8), packReturns: this.fmt(Math.ceil(pack * 8 / 700)),
+      splitLeft: s.split + '%', splitWidth: s.split + '%', cardWidth: (10000 / s.split) + '%',
+      onSplitDown: (e) => { this.drag = true; if (e.currentTarget.setPointerCapture) e.currentTarget.setPointerCapture(e.pointerId); this.splitAt(e); },
+      onSplitMove: (e) => { if (this.drag) this.splitAt(e); },
+      onSplitUp: () => { this.drag = false; },
+      dials: [
+        { name: 'Заказов в месяц', value: this.fmt(s.orders), unit: '', raw: s.orders, min: 100, max: 20000, step: 100, pct: ((s.orders - 100) / 19900 * 100) + '%', minLabel: '100', maxLabel: '20 000', set: (e) => this.tick({ orders: +e.target.value }) },
+        { name: 'Доля возвратов', value: s.rate + '%', unit: '', raw: s.rate, min: 5, max: 60, step: 1, pct: ((s.rate - 5) / 55 * 100) + '%', minLabel: '5%', maxLabel: '60%', set: (e) => this.tick({ rate: +e.target.value }) },
+        { name: 'Стоимость одного возврата', value: this.fmt(s.cost), unit: '₽', raw: s.cost, min: 200, max: 2000, step: 50, pct: ((s.cost - 200) / 1800 * 100) + '%', minLabel: '200 ₽', maxLabel: '2 000 ₽', set: (e) => this.tick({ cost: +e.target.value }) }
+      ],
+      results: [
+        { icon: '₽', value: this.fmt(month) + ' ₽', label: 'уходит на возвраты в месяц', bg: '#fff', color: '#121417', muted: '#565E6B', iconBg: '#F2F3F5', iconColor: '#121417' },
+        { icon: '∑', value: this.fmt(year) + ' ₽', label: 'за год при тех же показателях', bg: '#121417', color: '#fff', muted: 'rgba(255,255,255,.62)', iconBg: 'rgba(255,255,255,.1)', iconColor: '#8FB0FF' },
+        { icon: '×', value: this.fmt(Math.round(s.cost / 8)), label: 'примерок окупает один невозврат — примерка стоит 8 ₽', bg: '#fff', color: '#121417', muted: '#565E6B', iconBg: 'rgba(59,107,255,.1)', iconColor: '#2F5AE6' }
+      ],
+      stepNav: this.stepTitles.map((title, k) => ({ title, n: '0' + (k + 1), opacity: k === s.step ? 1 : .4, numColor: k === s.step ? '#2F5AE6' : '#565E6B' })),
+      activeStepText: this.stepTexts[s.step],
+      stepProgress: ((s.step + 1) / 4 * 100) + '%',
+      lo0: s.layer === 0 ? 1 : 0, lo1: s.layer === 1 ? 1 : 0, lo2: s.layer === 2 ? 1 : 0,
+      layerTabs: ['1 слой', '3 слоя', '5 слоёв'].map((label, k) => ({
+        label, pick: () => this.setState({ layer: k }),
+        bg: k === s.layer ? '#fff' : 'rgba(18,20,23,.35)', color: k === s.layer ? '#121417' : '#fff',
+        border: k === s.layer ? '#fff' : 'rgba(255,255,255,.3)'
+      })),
+      activeLayerChips: [
+        [{ name: 'Топ в рубчик', dot: '#E8E4DE' }],
+        [{ name: 'Топ в рубчик', dot: '#E8E4DE' }, { name: 'Брюки прямые', dot: '#2B3340' }, { name: 'Жакет', dot: '#8E96A3' }],
+        [{ name: 'Топ в рубчик', dot: '#E8E4DE' }, { name: 'Брюки прямые', dot: '#2B3340' }, { name: 'Жакет', dot: '#8E96A3' }, { name: 'Пальто', dot: '#DDE3EA' }, { name: 'Лоферы', dot: '#6B5A44' }]
+      ][s.layer],
+      layerCount: [1, 3, 5][s.layer],
+      layerNote: ['Одна вещь на человеке — это всё, что умеет примерка маркетплейсов', 'Низ, верх и третий слой — образ читается целиком', 'Пять слоёв в одном образе: от базы до верхней одежды'][s.layer],
+      returnsCount: this.fmt(s.orders * s.rate / 100),
+      tryonYearFmt: this.fmt(s.orders * 12 * 8),
+      tryonShare: Math.min(100, Math.round(s.orders * 12 * 8 / Math.max(year, 1) * 100)) + '%',
+      tryonShareLabel: Math.round(s.orders * 12 * 8 / Math.max(year, 1) * 100) + '%',
+      breakEven: this.fmt(Math.ceil(s.orders * 8 / Math.max(s.cost, 1))),
+      pulse: s.pulse,
+      tryonsForYear: this.fmt(year / 8),
+      situations: [
+        { n: '01', title: 'Возвраты съедают то, что заработали продажи', quote: '«Продажи идут, а прибыли нет. Считаем — половина маржи уходит в обратную логистику. Вещь ездит туда-сюда, приходит помятой, часть уже нельзя продать как новую».', change: 'Покупатель принимает решение до заказа, а не после получения. Возврат не происходит, потому что ошибки не было.', metrics: [{ value: '30–45%', label: 'заказов возвращают в одежде', color: '#121417' }, { value: '×2', label: 'платите за доставку туда и обратно', color: '#2F5AE6' }] },
+        { n: '02', title: 'Магазины закрылись, а онлайн не вытянул', quote: '«Сократили розницу — экономика не сходилась. Думали, покупатели перейдут на сайт. Часть перешла, но конверсия там втрое ниже. Люди привыкли мерить, а теперь негде».', change: 'Сайт получает то, ради чего люди приходили в магазин, — возможность увидеть вещь на себе.', metrics: [{ value: '48%', label: 'сетей сократили офлайн за год', color: '#121417' }, { value: '57%', label: 'хотели купить и не нашли офлайн', color: '#2F5AE6' }] },
+        { n: '03', title: 'Товар дорогой, и ошибиться нельзя', quote: '«У нас платья по цене, при которой человек не станет заказывать наугад три размера. Он либо едет в салон, либо не покупает. А салон — это город, запись и время».', change: 'Дорогая покупка перестаёт требовать поездки. Человек видит вещь на себе и решает дома.', metrics: [{ value: '51%', label: 'не находят одежду под свою фигуру', color: '#121417' }, { value: '1 фото', label: 'вместо поездки в салон', color: '#2F5AE6' }] }
+      ],
+      compare: [
+        { title: 'MAKEMELOOK', bg: '#121417', color: '#fff', mutedColor: 'rgba(255,255,255,.5)', line: 'rgba(255,255,255,.14)', rows: [{ k: 'Слоёв одежды', v: 'до пяти' }, { k: 'Подсказка размера', v: 'по вашей сетке' }, { k: 'Где работает', v: 'ваш сайт' }, { k: 'Чей товар', v: 'ваш артикул' }] },
+        { title: 'ПРИМЕРКА У МАРКЕТПЛЕЙСОВ', bg: '#fff', color: '#121417', mutedColor: '#6B7380', line: 'rgba(18,20,23,.08)', rows: [{ k: 'Слоёв одежды', v: 'один' }, { k: 'Подсказка размера', v: 'нет' }, { k: 'Где работает', v: 'только их площадка' }, { k: 'Чей товар', v: 'их каталог' }] },
+        { title: 'ГЕНЕРАТОРЫ КАРТИНОК', bg: '#fff', color: '#121417', mutedColor: '#6B7380', line: 'rgba(18,20,23,.08)', rows: [{ k: 'Слоёв одежды', v: 'один' }, { k: 'Подсказка размера', v: 'нет' }, { k: 'Где работает', v: 'отдельный сервис' }, { k: 'Чей товар', v: 'похожая вещь' }] },
+        { title: 'ВИДЖЕТ НА ЗАКАЗ', bg: '#fff', color: '#121417', mutedColor: '#6B7380', line: 'rgba(18,20,23,.08)', rows: [{ k: 'Слоёв одежды', v: 'как сделают' }, { k: 'Подсказка размера', v: 'своя разработка' }, { k: 'Где работает', v: 'ваш сайт' }, { k: 'Чей товар', v: 'ваш артикул' }] }
+      ],
+      tabs: ['Виртуальная примерка', 'Подсказка размера', 'Чат-стилист', 'Настройка под магазин', 'Статистика'].map((label, k) => ({
+        label, n: '0' + (k + 1), pick: () => this.setState({ tab: k }),
+        bg: k === s.tab ? '#fff' : 'rgba(255,255,255,.08)', color: k === s.tab ? '#121417' : 'rgba(255,255,255,.72)'
+      })),
+      tabNum: '0' + (s.tab + 1),
+      tabMeta: ['ДО ПЯТИ СЛОЁВ', 'ПО ВАШЕЙ СЕТКЕ', 'ПОДКЛЮЧАЕТСЯ ОТДЕЛЬНО', 'ПОД ВАШ ДИЗАЙН', 'ВАШИ ДАННЫЕ'][s.tab],
+      tabText: [
+        'Покупатель видит ваши вещи на себе. До пяти слоёв в одном образе: низ, верх, третий слой. Работает по фотографиям товара, которые у вас уже есть.',
+        'Расчёт по замерам конкретного изделия и параметрам человека, с пояснением посадки: где будет свободнее, а где по фигуре.',
+        'Покупатель описывает повод или задачу и получает собранный образ из вашего каталога. Подключается отдельно, если нужен.',
+        'Цвета, форма и положение кнопки, тексты шагов. Виджет выглядит частью вашего сайта, а не вставкой.',
+        'Сколько примерок, какие товары мерили чаще, что после примерки положили в корзину и что выкупили. Видно, окупается ли инструмент.'
+      ][s.tab],
+      isTryon: s.tab === 0, isSize: s.tab === 1, isStylist: s.tab === 2, isCustom: s.tab === 3, isStats: s.tab === 4,
+      tryonLayers: [{ name: 'Пальто оверсайз', dot: '#DDE3EA' }, { name: 'Брюки прямые', dot: '#2B3340' }, { name: 'Лоферы', dot: '#6B5A44' }],
+      fitRows: [
+        { name: 'Плечи', value: '42 см', w: '58%', mark: '56%', color: '#2F5AE6', note: 'По фигуре — как задумано в этой модели' },
+        { name: 'Грудь', value: '96 см', w: '62%', mark: '60%', color: '#2F5AE6', note: 'По фигуре, без натяжения' },
+        { name: 'Талия', value: '74 см', w: '48%', mark: '56%', color: '#8FB0FF', note: 'Свободнее на 2 см' },
+        { name: 'Длина', value: '118 см', w: '72%', mark: '72%', color: '#2F5AE6', note: 'До середины икры при вашем росте' }
+      ],
+      chat: [
+        { text: 'Нужен образ на встречу с клиентом, чтобы не выглядеть скучно', align: 'flex-end', bg: '#121417', color: '#fff', radius: '16px 16px 4px 16px' },
+        { text: 'Собрала три варианта из наличия. Первый — жакет и прямые брюки, второй — платье-миди с ремнём.', align: 'flex-start', bg: '#F6F7F9', color: '#121417', radius: '16px 16px 16px 4px' },
+        { text: 'Второй. Примерь на мне', align: 'flex-end', bg: '#121417', color: '#fff', radius: '16px 16px 4px 16px' },
+        { text: 'Готово — на вас размер M. Показываю на трёх позициях из каталога.', align: 'flex-start', bg: '#F6F7F9', color: '#121417', radius: '16px 16px 16px 4px' }
+      ],
+      swatches: ['#121417', '#3B6BFF', '#8B5E3C', '#2F6B4F', '#B03A48'].map(color => ({ color, ring: color === s.accent ? '#121417' : 'transparent', pick: () => this.setState({ accent: color }) })),
+      shapes: [['Пилюля', '999px'], ['Скругление 10', '10px'], ['Прямой угол', '2px']].map(([label, r]) => ({ label, pick: () => this.setState({ radius: r }), border: r === s.radius ? '#121417' : 'rgba(18,20,23,.14)', bg: r === s.radius ? '#121417' : '#fff', color: r === s.radius ? '#fff' : '#121417' })),
+      accent: s.accent, btnRadius: s.radius, btnLabel: 'Примерить на себе',
+      kpis: [
+        { value: '4 812', label: 'примерок за месяц', color: '#121417' },
+        { value: '38%', label: 'после примерки — в корзину', color: '#2F5AE6' },
+        { value: '2 630', label: 'уникальных покупателей', color: '#121417' },
+        { value: '7,4 с', label: 'среднее время результата', color: '#121417' }
+      ],
+      topItems: [
+        { name: 'Платье-миди из плотной шерсти', tryons: '612 примерок', cart: '241 в корзину' },
+        { name: 'Пальто оверсайз, белое', tryons: '474 примерки', cart: '166 в корзину' },
+        { name: 'Жакет прямого кроя', tryons: '358 примерок', cart: '119 в корзину' }
+      ],
+      features: [
+        { n: '03', title: 'Чат-стилист', text: 'Покупатель описывает повод, получает собранный образ из вашего каталога. Подключается отдельно.' },
+        { n: '04', title: 'Настройка под магазин', text: 'Цвета, шрифт, форма и положение кнопки, тексты шагов. Виджет выглядит частью вашего сайта.' },
+        { n: '05', title: 'Работа на телефоне', text: 'Больше половины покупок в одежде — с телефона. Примерка рассчитана на него в первую очередь.' }
+      ],
+      statBars: [34, 52, 41, 68, 60, 78, 72, 90, 84, 96, 88, 100].map((v, k) => ({ h: v + '%', color: k > 8 ? '#2F5AE6' : 'rgba(18,20,23,.14)' })),
+      connectSteps: [
+        { n: '01', title: 'Присылаете ссылку на каталог', text: 'Мы собираем примерку на ваших товарах и показываем результат. До интеграции и без оплаты.' },
+        { n: '02', title: 'Смотрите на своих вещах', text: 'Вы видите, как это выглядит на вашем ассортименте, и решаете, идём ли дальше.' },
+        { n: '03', title: 'Ставим скрипт на сайт', text: 'Одна строка на страницу товара. Работает на любой платформе и на самописных сайтах.' },
+        { n: '04', title: 'Загружаем размерные сетки', text: 'Ваши таблицы замеров — чтобы подсказка размера считала по вашим изделиям.' },
+        { n: '05', title: 'Настраиваем вид', text: 'Подгоняем под ваш дизайн, чтобы виджет не выглядел чужим.' }
+      ].map((c, k) => ({ n: c.n, title: c.title, text: c.text, dot: k < 3 ? '#2F5AE6' : 'rgba(18,20,23,.2)', line: k < 2 ? '#2F5AE6' : 'rgba(18,20,23,.12)' })),
+      platforms: [
+        { name: 'Tilda', note: 'блок HTML' }, { name: 'InSales', note: 'шаблон товара' }, { name: '1С-Битрикс', note: 'компонент' },
+        { name: 'CS-Cart', note: 'хук' }, { name: 'OpenCart', note: 'модуль' }, { name: 'Самописный', note: 'любой шаблон' }
+      ],
+      legal: [
+        { title: 'Данные остаются вашими', text: 'Мы выступаем обработчиком по вашему поручению. Права на данные принадлежат вам и вашему покупателю, не нам.' },
+        { title: 'Хранение в России', text: 'Персональные данные российских покупателей размещаются на серверах в РФ, как требует 152-ФЗ.' },
+        { title: 'Фото не уходит в рекламу', text: 'Мы не передаём изображения третьим лицам и не используем их вне сервиса примерки.' },
+        { title: 'Удаление по запросу', text: 'Покупатель может удалить своё фото, вы — все данные проекта. Типовой текст согласия передаём при подключении.' }
+      ],
+      alternatives: [
+        { q: '«Сделаем подробную размерную таблицу»', answer: 'Она у вас, скорее всего, уже есть — и треть покупателей всё равно жалуется, что сетки не совпадают между брендами. Таблица требует, чтобы человек взял сантиметр и измерил себя. Почти никто этого не делает. Примерка не требует ничего, кроме фото.' },
+        { q: '«Добавим больше фотографий и видео на модели»', answer: 'Фотографии показывают вещь на чужом теле. Ровно из этого и рождается «на модели сидит, на мне нет» — вторая по массовости причина возвратов после размера.' },
+        { q: '«Закажем такой виджет на разработку»', answer: 'Это не вёрстка, а работа с моделями: многослойная примерка, сохранение личности человека и позы, расчёт по размерным сеткам. Дорого, долго, и результат придётся поддерживать самим. Мы этим занимаемся как продуктом.' },
+        { q: '«Подождём, пока это появится у всех»', answer: 'У крупных площадок примерка уже есть — внутри их экосистем. На вашем сайте её нет ни у кого. Пока это так, она работает как отличие, а не как гигиена.' },
+        { q: '«Возьмём зарубежное решение»', answer: 'Хорошие есть. Они продаются корпоративными контрактами с ценой по запросу, оплата и договор идут через иностранное юрлицо, поддержка живёт в другом часовом поясе. И ни одно из них не считает размер по вашей размерной сетке.' }
+      ],
+      faq: [
+        { q: 'Как выглядит примерка на моём товаре?', a: 'Пришлите ссылку на каталог — соберём примерку на ваших вещах и покажем результат. Бесплатно и без интеграции: вы увидите качество на своём ассортименте, а не на подобранных примерах.' },
+        { q: 'Сколько времени занимает подключение?', a: 'Скрипт ставится на страницу товара за десять минут. Загрузка размерных сеток и настройка внешнего вида — обычно один-два рабочих дня. Если своего разработчика нет, подключаем сами.' },
+        { q: 'Работает ли на моей платформе?', a: 'Да — Tilda, InSales, 1С-Битрикс, CS-Cart, OpenCart и самописные сайты. Виджет подключается скриптом и не зависит от движка.' },
+        { q: 'Нужно ли переснимать товар?', a: 'Нет. Работаем по фотографиям, которые у вас уже есть. Если какие-то снимки не подойдут по качеству, скажем об этом заранее и покажем, на каких позициях результат уверенный.' },
+        { q: 'Что покупатель делает со своим фото?', a: 'Загружает одно фото в полный рост прямо на странице товара. Регистрация не нужна. Фото сохраняется для его следующих примерок, чтобы не загружать заново.' },
+        { q: 'Насколько это снизит возвраты?', a: 'Честно: у вашего магазина это покажет только ваш магазин. Главной причиной возвратов во всех исследованиях остаётся размер — мы даём инструмент и считаем результат вместе с вами по вашей статистике.' },
+        { q: 'У нас маленький магазин, это не слишком дорого?', a: 'Оплата за примерки, а не за подписку. Пока покупатели не мерили — вы не платите. Порог входа — минимальный пакет, и он окупается несколькими предотвращёнными возвратами.' },
+        { q: 'Чем вы отличаетесь от примерки на маркетплейсах и зарубежных сервисов?', a: 'У маркетплейсов примерка однослойная, без расчёта размера, и работает только внутри их площадки. Зарубежные решения показывают, как вещь смотрится, но на вопрос «какой размер заказать» не отвечают. Мы считаем размер по вашей размерной сетке и работаем с магазинами без своей команды разработки.' }
+      ],
+      footerCols: [
+        { title: 'ПРОДУКТ', links: [{ label: 'Примерка', href: '#steps' }, { label: 'Подсказка размера', href: '#steps' }, { label: 'Чат-стилист', href: '#steps' }, { label: 'Демонстрация', href: '#form' }] },
+        { title: 'ИНТЕГРАЦИИ', links: [{ label: 'Tilda', href: '#' }, { label: 'InSales', href: '#' }, { label: '1С-Битрикс', href: '#' }, { label: 'CS-Cart · OpenCart', href: '#' }, { label: 'Документация', href: '#' }] },
+        { title: 'КОМПАНИЯ', links: [{ label: 'Журнал', href: '#journal' }, { label: 'О нас', href: '#' }, { label: 'Контакты', href: '#form' }, { label: 'Политика данных', href: '#' }] }
+      ],
+      subLabel: s.subscribed ? 'Готово' : 'Подписаться',
+      subscribe: (e) => { e.preventDefault(); this.setState({ subscribed: true }); },
+      notSent: !s.sent, sent: s.sent,
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+/*
+ * @mml/ui — self-hosted шрифты через @fontsource (subsets: cyrillic + latin).
+ * Inter 400/500/600/700 · Spectral 400/500 + italic 400 (замена Martina Plantijn — у той нет кириллицы)
+ * IBM Plex Mono 400/500/600 (кириллица поддерживается; использовать с font-variant-numeric: tabular-nums)
+ */
+
+/* Inter — UI */
+@import "@fontsource/inter/cyrillic-400.css";
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/cyrillic-500.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/cyrillic-600.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/cyrillic-700.css";
+@import "@fontsource/inter/latin-700.css";
+@import "@fontsource/inter/cyrillic-800.css";
+@import "@fontsource/inter/latin-800.css";
+
+/* Spectral — display serif */
+@import "@fontsource/spectral/cyrillic-400.css";
+@import "@fontsource/spectral/latin-400.css";
+@import "@fontsource/spectral/cyrillic-500.css";
+@import "@fontsource/spectral/latin-500.css";
+@import "@fontsource/spectral/cyrillic-400-italic.css";
+@import "@fontsource/spectral/latin-400-italic.css";
+
+/* IBM Plex Mono — цены, метки, overlines */
+@import "@fontsource/ibm-plex-mono/cyrillic-400.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/cyrillic-500.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
+@import "@fontsource/ibm-plex-mono/cyrillic-600.css";
+@import "@fontsource/ibm-plex-mono/latin-600.css";

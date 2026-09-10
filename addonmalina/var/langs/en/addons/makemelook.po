@@ -1,0 +1,35 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tygh\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en_US\n"
+"Language-Team: English\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "Addons::name::makemelook"
+msgid "makemelook"
+msgstr "Make Me Look"
+
+msgctxt "Addons::description::makemelook"
+msgid "makemelook_description"
+msgstr "Virtual try-on for products via the Make Me Look widget."
+
+msgctxt "SettingsSections::makemelook::general"
+msgid "general"
+msgstr "General"
+
+msgctxt "SettingsOptions::makemelook::project_token"
+msgid "project_token"
+msgstr "Project token"
+
+msgctxt "SettingsTooltips::makemelook::project_token"
+msgid "project_token_tooltip"
+msgstr "Project identifier from Make Me Look dashboard."
+
+msgctxt "SettingsOptions::makemelook::button_text"
+msgid "button_text"
+msgstr "Button text"
+
+msgctxt "SettingsTooltips::makemelook::button_text"
+msgid "button_text_tooltip"
+msgstr "Text displayed on the try-on button."

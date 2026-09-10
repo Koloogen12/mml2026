@@ -1,0 +1,352 @@
+/* ============================================================
+   dp.css — стили hi-fi макета "Desktop Prototype.dc.html",
+   перенесены ДОСЛОВНО (контракт 1:1).
+   Разрешённые трансформации:
+   (a) 'Martina Plantijn' → 'Spectral' (решение основателя: у Martina
+       нет кириллицы; Spectral уже грузится из @mml/ui/fonts.css,
+       поэтому @font-face Martina убраны);
+   (b) responsive-хаки @media [style*="…"] сматчены на классы
+       (те же значения) — в React строки inline-стилей другие,
+       и атрибутные селекторы молча ломались бы.
+   ============================================================ */
+
+*{box-sizing:border-box}
+:focus-visible{outline:2px solid #2B2BCC;outline-offset:2px;border-radius:2px}
+body{margin:0;background:#fff;font-family:'Inter',system-ui,sans-serif;color:#000}
+@keyframes dpShimmer{0%{background-position:-380px 0}100%{background-position:380px 0}}
+@keyframes dpBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes dpScan{0%{top:6%}100%{top:92%}}
+@keyframes dpFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes dpDot{0%,80%,100%{opacity:.25}40%{opacity:1}}
+@keyframes dpMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Анимация задана здесь, а не инлайном: инлайновый шорткат `animation:` несёт
+ * в себе animation-play-state:running и перебивает любую попытку поставить
+ * ленту на паузу из стилей — она продолжала крутиться под открытым оверлеем. */
+.dp-track{animation:dpMarquee 48s linear infinite}
+.dp-marquee:hover .dp-track{animation-play-state:paused}
+.dp-skel{background:linear-gradient(100deg,#ECE9E2 30%,#F4F2EC 50%,#ECE9E2 70%);background-size:760px 100%;animation:dpShimmer 1.3s infinite linear}
+.dp-fade{animation:dpFade .45s ease both}
+.dp-chip{cursor:pointer;transition:background .15s,border-color .15s,transform .1s}
+.dp-chip:hover{background:#000!important;color:#F4F1EA!important;border-color:#000!important}
+.dp-chip:active{transform:scale(.97)}
+.dp-prod{cursor:pointer;transition:transform .18s,box-shadow .18s}
+.dp-prod:hover{transform:translateY(-4px)}
+.dp-btn{cursor:pointer;transition:transform .1s,opacity .15s,background .15s}
+.dp-btn:hover{opacity:.92}
+.dp-btn:active{transform:scale(.98)}
+.dp-hero-input::placeholder{color:rgba(0,0,0,.4);font-style:italic;opacity:1}
+.dp-hero-input{caret-color:#2B2BCC}
+.dp-auth-input::placeholder{color:rgba(0,0,0,.35);font-style:normal}
+@keyframes dpPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.55}}
+@keyframes dpIrid{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes dpFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.dp-irid{background:linear-gradient(120deg,#ECE9F8,#E6EAFC 50%,#EEF1FB);background-size:200% 200%;animation:dpIrid 14s ease infinite}
+.dp-grad{background:linear-gradient(115deg,#c9b8fb,#a6b4fc 26%,#6f8cff 50%,#9cc7ff 72%,#dbe7ff);background-size:220% 220%;animation:dpIrid 9s ease infinite}
+.dp-grad-text{background:linear-gradient(110deg,#8a6bff,#6f8cff 30%,#5aa0ff 58%,#8ec5ff 85%);background-size:220% 220%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:dpIrid 7s ease infinite}
+.dp-irid-text{background:linear-gradient(110deg,#2B2BCC,#4b4bd8 60%,#2B2BCC);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:dpIrid 9s ease infinite}
+.dp-irid-ring{position:relative}
+.dp-irid-ring::before{content:"";position:absolute;inset:-1.5px;border-radius:inherit;padding:1.5px;background:linear-gradient(120deg,#d6d3f2,#2B2BCC,#9b9be2);background-size:200% 200%;animation:dpIrid 8s ease infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.dp-nav{cursor:pointer;transition:color .15s}
+.dp-heart{cursor:pointer;transition:transform .12s}
+.dp-heart:active{transform:scale(.8)}
+.dp-card{cursor:pointer;background:#fff;border-radius:2px;overflow:hidden;transition:transform .18s}
+.dp-card:hover{transform:translateY(-3px)}
+.dp-ico{position:absolute;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.14);cursor:pointer;opacity:0;transform:translateY(-3px);transition:opacity .16s,transform .16s,background .15s;z-index:2}
+.dp-card:hover .dp-ico{opacity:1;transform:none}
+.dp-ico:hover{background:#fff}
+.dp-ico-persist{position:absolute;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.14);cursor:pointer;transition:background .15s,transform .1s;z-index:2}
+.dp-ico-persist:active{transform:scale(.9)}
+.dp-cardpop{position:absolute;left:12px;right:12px;top:50%;transform:translateY(-50%);background:#fff;border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.22);padding:14px;z-index:5}
+@keyframes dpHeart{0%{transform:scale(1)}30%{transform:scale(1.4)}55%{transform:scale(.88)}80%{transform:scale(1.1)}100%{transform:scale(1)}}
+.dp-fav-on svg{animation:dpHeart .42s ease}
+.dp-cardimg{position:relative;overflow:hidden}
+
+/* Эталон кадра товара — один на все плитки.
+ *
+ * Было: у каждой сетки своя фиксированная высота (280 в «Похожем», 220 в
+ * «С этим носят», 280 на главной) при плывущей ширине. Пропорция коробки
+ * менялась вместе с шириной окна, а background-size:cover дорезал картинку под
+ * коробку — одну и ту же вещь кадрировало то по голове, то по ногам, и кадр
+ * «прыгал» при ресайзе.
+ *
+ * Стало: aspect-ratio держит пропорцию постоянной на любой ширине, а contain
+ * вписывает пакшот целиком — товар не обрезается никогда. 3:4 — формат, в
+ * котором фиды отдают пакшоты, поэтому поля минимальны.
+ */
+.dp-plate{position:relative;aspect-ratio:3/4;background:#F4F1EA;overflow:hidden}
+.dp-plate>.dp-ph{
+  position:absolute;inset:0;
+  background-size:contain;background-repeat:no-repeat;background-position:center;
+}
+.dp-cardimg>.dp-ph{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.dp-card:hover .dp-ph{transform:scale(1.05)}
+.dp-try{position:absolute;left:12px;right:12px;bottom:12px;text-align:center;border-radius:9px;padding:12px 0;font:500 13.5px 'Inter',sans-serif;color:#fff;opacity:0;transform:translateY(10px);transition:opacity .2s,transform .2s;display:flex;align-items:center;justify-content:center;gap:7px}
+.dp-card:hover .dp-try{opacity:1;transform:none}
+.dp-spark{position:absolute;bottom:12px;left:12px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.14);transition:opacity .18s}
+.dp-card:hover .dp-spark{opacity:0}
+
+/* ── responsive-хаки макета, сконвертированные [style*=…] → классы
+      (значения 1:1 из исходного @media-блока) ── */
+@media (max-width:900px){
+  .dp-r4{grid-template-columns:repeat(3,1fr) !important}
+  .dp-r6{grid-template-columns:repeat(4,1fr) !important}
+  .dp-r5{grid-template-columns:repeat(4,1fr) !important}
+  .dp-topbar{padding-left:20px !important;padding-right:20px !important}
+}
+@media (max-width:600px){
+  .dp-r4{grid-template-columns:repeat(2,1fr) !important}
+  .dp-r3{grid-template-columns:repeat(2,1fr) !important}
+  .dp-r6{grid-template-columns:repeat(3,1fr) !important}
+  .dp-r5{grid-template-columns:repeat(2,1fr) !important}
+  .dp-c2{grid-template-columns:1fr !important}
+  .dp-c-meet{grid-template-columns:1fr !important}
+  .dp-c-trend{grid-template-columns:1fr !important}
+  .dp-c-coll{grid-template-columns:1fr !important}
+  .dp-c-budget{grid-template-columns:1fr !important}
+  .dp-c-board{grid-template-columns:1fr !important}
+  .dp-topbar{padding-top:14px !important;padding-bottom:14px !important;padding-left:14px !important;padding-right:14px !important}
+  .dp-f62{font-size:32px !important;line-height:1.1 !important}
+  .dp-f46{font-size:28px !important;line-height:1.12 !important}
+  .dp-f44{font-size:27px !important;line-height:1.12 !important}
+  .dp-f40{font-size:26px !important;line-height:1.12 !important}
+}
+
+/* ── ProductDetail (карточка товара) — адаптив ── */
+.dp-detail-shell{padding:44px 48px 48px}
+.dp-detail-top{display:flex;gap:44px;align-items:stretch}
+.dp-detail-img{position:relative;width:520px;flex:none;min-height:560px}
+@media (max-width:820px){
+  .dp-detail-shell{padding:22px 16px 30px}
+  .dp-detail-top{flex-direction:column;gap:18px}
+  .dp-detail-img{width:100%;min-height:0;aspect-ratio:3/4}
+}
+@media (max-width:600px){
+  .dp-detail-shell{padding:18px 13px 26px}
+}
+
+/* ── «Выбор стилиста» в чате — адаптив.
+      На узком экране картинка 340px в flex:none выдавливала текст и кнопки
+      за край: на телефоне складываем в колонку. ── */
+.dp-hero-pick{display:flex;gap:26px}
+.dp-hero-pick-img{width:340px;flex:none}
+.dp-hero-pick-body{flex:1;min-width:0;padding:30px 34px 30px 0}
+.dp-hero-actions{display:flex;gap:12px;padding-top:8px}
+@media (max-width:820px){
+  .dp-hero-pick{flex-direction:column;gap:0}
+  .dp-hero-pick-img{width:100%;aspect-ratio:3/4}
+  .dp-hero-pick-body{padding:18px 16px 20px}
+  .dp-hero-actions{flex-wrap:wrap}
+  .dp-hero-actions>*{flex:1 1 100%;justify-content:center;padding-left:0 !important;padding-right:0 !important;text-align:center}
+}
+
+/* Лента чата и панель ввода: на мобиле панель выше (чипы в два ряда),
+   поэтому нижний отступ ленты больше — иначе карточки уезжали под ввод. */
+.dp-chat-scroll{padding:36px 40px 130px}
+.dp-chat-composer{padding:0 40px}
+@media (max-width:600px){
+  .dp-chat-scroll{padding:22px 14px 210px}
+  .dp-chat-composer{padding:0 12px;bottom:14px}
+  /* !important — у этих узлов inline-стиль из макета (nowrap+ellipsis),
+     он бьёт класс: на мобиле имя обрезалось в «Be…». */
+  .dp-card-meta{flex-direction:column !important;align-items:flex-start !important;gap:3px !important}
+  .dp-card-name{white-space:normal !important;overflow:visible !important;text-overflow:clip !important;line-height:1.3;overflow-wrap:anywhere}
+}
+
+/* ── Паспорт стиля — адаптив.
+      Шапка (аватар+заголовок и кнопки) стояла в одну строку с flex:none:
+      на 375px заголовок сжимался в столбик по слову, а «Избранное»
+      и «Поделиться» уезжали за экран (right:590 при ширине 375). ── */
+.dp-pass{padding:48px 40px 96px}
+.dp-pass-hero{padding:38px 40px}
+@media (max-width:820px){
+  .dp-pass{padding:26px 16px 80px}
+  .dp-pass-hero{padding:26px 20px}
+  .dp-pass-head{flex-direction:column;align-items:stretch !important;gap:18px !important}
+  .dp-pass-acts{flex:1 1 auto !important;flex-wrap:wrap}
+  .dp-pass-acts>*{flex:1 1 140px;justify-content:center}
+  .dp-style-code{font-size:30px !important}
+  .dp-style-code>span{font-size:30px !important}
+}
+@media (max-width:600px){
+  .dp-pass-id{gap:14px !important}
+  .dp-pass-id>.dp-irid{width:60px !important;height:60px !important;font-size:24px !important}
+  .dp-style-code{font-size:26px !important}
+  .dp-style-code>span{font-size:26px !important}
+}
+
+/* ── хедер (TopBar) — адаптив ──
+   Логотип центрируется сеткой (1fr auto 1fr), поэтому для его показа нужно
+   вдвое больше места, чем занимает навигация: 2×меню + лого + поля ≈ 970px.
+   Уже — логотип уступает место навигации, она важнее. */
+@media (max-width:1000px){
+  .dp-topbar{grid-template-columns:1fr auto !important}
+  .dp-topbar-logo{display:none !important}
+}
+@media (max-width:700px){
+  .dp-topbar-logo{display:none !important}
+  .dp-topbar-name{display:none !important}         /* оставляем только аватар */
+  .dp-topbar-profile{padding:5px !important}       /* круглый аватар-чип */
+  .dp-nav{padding-left:12px !important;padding-right:12px !important;font-size:13px !important}
+}
+
+/* ── служебные классы dc-runtime, использованные в разметке макета,
+      но определённые в его рантайме (support.js) — воспроизведены ── */
+.ml-hidescroll{scrollbar-width:none;-ms-overflow-style:none}
+.ml-hidescroll::-webkit-scrollbar{display:none}
+/* style-hover="…" из макета → :hover-классы с теми же значениями */
+.dp-hov-dim:hover{background:rgba(0,0,0,.05)}
+.dp-merch:hover{border-color:rgba(0,0,0,.4) !important;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.dp-sizeopt:hover{background:#F4F1EA !important}
+/* композер чата: в макете это статичный span-плейсхолдер; здесь —
+   реальный input с идентичной типографикой плейсхолдера */
+.dp-chat-input{flex:1;min-width:0;border:none;outline:none;background:transparent;font:400 16px 'Spectral',Georgia,serif;color:#000}
+.dp-chat-input::placeholder{color:rgba(0,0,0,.4);font-style:italic;opacity:1}
+
+/* ── Листалка фото в плитке ──
+   Стрелки появляются по наведению (как остальные иконки карточки), на тач-
+   устройствах ховера нет — там листаем свайпом, поэтому стрелки скрыты. */
+.dp-shot-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:30px;height:30px;border-radius:50%;
+  background:rgba(255,255,255,.94);box-shadow:0 2px 10px rgba(0,0,0,.16);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  opacity:0;transition:opacity .16s;z-index:3;
+}
+.dp-shot-prev{left:10px}
+.dp-shot-next{right:10px}
+.dp-card:hover .dp-shot-nav{opacity:1}
+.dp-shot-nav:hover{background:#fff}
+.dp-shot-dots{
+  position:absolute;left:0;right:0;bottom:9px;z-index:3;
+  display:flex;justify-content:center;gap:4px;pointer-events:none;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));
+}
+@media (hover:none){
+  .dp-shot-nav{display:none}      /* тач: листаем свайпом */
+  .dp-shot-dots{bottom:12px}
+}
+
+/* Карточка добора паспорта: на узком экране колонки складываются. */
+@media (max-width:820px){
+  .dp-gap-card{grid-template-columns:1fr !important;gap:18px !important;padding:20px 18px !important}
+}
+
+
+/* Пока открыт оверлей товара, фон под ним обязан быть неподвижен.
+ *
+ * Оверлей накрывает страницу backdrop-filter:blur(4px). Фон при этом живой:
+ * курсор наводится на карточки (transform на .dp-card/.dp-ph/.dp-prod), крутится
+ * бегущая строка. Каждое изменение под блюром заставляет браузер пересчитывать
+ * размытие на весь вьюпорт — это и видно как мерцание при движении мышью.
+ *
+ * Гасим и ховеры, и анимацию: под размытием их всё равно никто не различает.
+ */
+/* Затемняющий слой оверлея.
+ *
+ * Размытие вынесено на отдельный неизменный элемент, а не на контейнер с
+ * контентом. Причина: backdrop-filter пересчитывается при ЛЮБОЙ перерисовке
+ * внутри своего элемента. Пока блюр висел на контейнере модалки, наведение на
+ * крестик или карточку перерисовывало контейнер — и браузер заново размывал
+ * весь экран. Вспышка была видна дважды: курсор вошёл и вышел.
+ *
+ * isolation:isolate — свой контекст наложения, чтобы слой не переезжал.
+ * will-change поднимает его на отдельный слой композитора: тогда перерисовка
+ * контента не трогает размытие вообще.
+ */
+.dp-scrim{isolation:isolate}
+.dp-scrim-blur{
+  position:fixed;inset:0;z-index:-1;
+  background:rgba(0,0,0,.45);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  will-change:backdrop-filter;
+  pointer-events:none;               /* клик по затемнению ловит .dp-scrim */
+}
+
+/* У окна входа затемнение плотнее и размытие сильнее — как было в макете. */
+.dp-scrim-blur-strong{background:rgba(0,0,0,.5);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+
+/* Фон под оверлеем не принимает курсор — ховеров под размытием нет вовсе. */
+body.dp-overlay .dp-page{pointer-events:none}
+/* Анимации фона останавливаем отдельно: они идут сами, без курсора. */
+body.dp-overlay .dp-track{animation-play-state:paused}
+body.dp-overlay .dp-skel{animation:none}
+
+/* ═══ FeatureShowcase — гостевая демо-петля «что умеет продукт» ═══
+ * Пять табов, у каждого своя проигрываемая анимация. Картинки — реальный
+ * каталог (табы) и снятые под онбординг кадры (примерка), не заглушки.
+ * Порт витринных анимаций из референса. */
+
+.fx-stage{position:relative;height:400px;border-radius:14px;overflow:hidden;background:transparent}
+
+/* — Подбор: три колонки, средняя едет вниз, крайние вверх — */
+.fx-explore{display:flex;gap:8px;height:100%;padding:8px}
+.fx-col{flex:1;overflow:hidden}
+.fx-track{display:flex;flex-direction:column;gap:8px}
+.fx-track img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;background:#F0EEE9;display:block}
+@keyframes fxUp{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+@keyframes fxDown{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+.fx-col-a .fx-track{animation:fxUp 78s linear infinite}
+.fx-col-b .fx-track{animation:fxDown 78s linear infinite}
+.fx-col-c .fx-track{animation:fxUp 96s linear infinite}
+
+/* — общая «влёт снизу» для чата и уточнения — */
+@keyframes fxRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* — Чат: элементы появляются по очереди — */
+.fx-chat{height:100%;padding:26px 24px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.fx-chat > *{opacity:0;animation:fxRise .55s ease forwards}
+.fx-bubble{align-self:flex-end;max-width:78%;background:#000;color:#fff;border-radius:16px 16px 4px 16px;padding:13px 17px;font:400 14px/1.4 'Inter',sans-serif}
+.fx-lead{display:flex;align-items:center;gap:8px;font:400 13px 'Inter',sans-serif;color:rgba(0,0,0,.6)}
+.fx-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.fx-cards img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;background:#F0EEE9}
+
+/* — Сохранение: карусель коллекций, скролл влево — */
+.fx-save{display:flex;align-items:center;height:100%;overflow:hidden}
+.fx-save-track{display:flex;gap:16px;padding:0 16px;animation:fxSlide 34s linear infinite;will-change:transform}
+@keyframes fxSlide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.fx-coll{flex:none;width:190px}
+.fx-coll-img{width:190px;height:230px;border-radius:8px;object-fit:cover;background:#F0EEE9;display:block}
+.fx-coll-tag{font:600 10px 'Inter',sans-serif;letter-spacing:.1em;color:#2B2BCC;margin:12px 0 4px}
+.fx-coll-name{font:400 18px 'Spectral',Georgia,serif}
+.fx-coll-n{font:400 12px 'Inter',sans-serif;color:rgba(0,0,0,.45);margin-top:2px}
+
+/* — Уточнение: центр, курсор жмёт «Похожее», разлёт — */
+.fx-refine{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
+.fx-center{position:relative;z-index:3;width:190px;aspect-ratio:3/4;object-fit:cover;border-radius:8px;box-shadow:0 16px 40px rgba(0,0,0,.22);background:#F0EEE9;opacity:0;animation:fxRise .5s ease forwards}
+.fx-fan{position:absolute;top:50%;left:50%;width:118px;aspect-ratio:3/4;object-fit:cover;border-radius:6px;box-shadow:0 10px 26px rgba(0,0,0,.18);background:#F0EEE9;z-index:2;opacity:0;transform:translate(-50%,-50%) scale(.6)}
+/* Четыре явных разлёта: центр → своя позиция вокруг. CSS-переменные через sx
+ * ломаются (--to превращается в -To), поэтому позиции зашиты в keyframes. */
+.fx-fan-0{animation:fxFan0 .7s cubic-bezier(.2,.7,.2,1) forwards}
+.fx-fan-1{animation:fxFan1 .7s cubic-bezier(.2,.7,.2,1) forwards}
+.fx-fan-2{animation:fxFan2 .7s cubic-bezier(.2,.7,.2,1) forwards}
+.fx-fan-3{animation:fxFan3 .7s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes fxFan0{to{opacity:1;transform:translate(calc(-50% - 165px),calc(-50% - 40px)) rotate(-9deg)}}
+@keyframes fxFan1{to{opacity:1;transform:translate(calc(-50% - 120px),calc(-50% + 70px)) rotate(6deg)}}
+@keyframes fxFan2{to{opacity:1;transform:translate(calc(-50% + 120px),calc(-50% - 60px)) rotate(8deg)}}
+@keyframes fxFan3{to{opacity:1;transform:translate(calc(-50% + 160px),calc(-50% + 50px)) rotate(-6deg)}}
+.fx-cursor{position:absolute;z-index:5;width:22px;height:22px;pointer-events:none;opacity:0;animation:fxCursor 5.5s ease forwards}
+@keyframes fxCursor{
+  0%{opacity:0;transform:translate(120px,120px)}
+  18%{opacity:1;transform:translate(120px,120px)}
+  40%{opacity:1;transform:translate(0,44px)}      /* доехал до кнопки */
+  46%{transform:translate(0,44px) scale(.82)}     /* клик */
+  52%{transform:translate(0,44px) scale(1)}
+  100%{opacity:1;transform:translate(0,44px)}
+}
+.fx-morelike{position:absolute;z-index:4;bottom:78px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:7px;background:#fff;border-radius:999px;padding:9px 15px;font:500 12px 'Inter',sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.14);opacity:0;animation:fxRise .5s ease .5s forwards}
+
+/* — Примерка: кадр + чип вещи + скан-линия — */
+.fx-tryon{position:relative;height:100%;display:flex;align-items:center;justify-content:center;background:transparent}
+.fx-tryon img{position:absolute;height:92%;border-radius:10px;object-fit:cover;box-shadow:0 16px 44px rgba(0,0,0,.2)}
+/* «после» появляется поверх «до» по кругу — тот же человек, новый образ. */
+.fx-tryon-b{animation:fxSwap 6s ease-in-out infinite}
+@keyframes fxSwap{0%,15%{opacity:0}40%,75%{opacity:1}100%{opacity:0}}
+/* Скан-линия пробегает в момент «примерки». */
+.fx-scan{position:absolute;left:26%;right:26%;height:2px;background:linear-gradient(90deg,transparent,#2B2BCC,transparent);box-shadow:0 0 14px 2px rgba(43,43,204,.5);opacity:0;animation:fxScan 6s ease-in-out infinite}
+@keyframes fxScan{0%,12%{top:8%;opacity:0}16%{opacity:1}34%{top:90%;opacity:1}38%,100%{opacity:0}}
+.fx-chip{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:9px;background:#fff;border-radius:999px;padding:9px 16px;font:500 13px 'Inter',sans-serif;box-shadow:0 8px 22px rgba(0,0,0,.16)}
+.fx-chip b{font-weight:600}
+/* Кнопка «Примерить» на канвасе примерки. */
+.fx-tryon-btn{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);background:#000;color:#fff;border-radius:999px;padding:13px 30px;font:600 15px 'Inter',sans-serif;box-shadow:0 10px 26px rgba(0,0,0,.22);white-space:nowrap}
+
+@media(max-width:900px){ .fx-stage{height:340px} }

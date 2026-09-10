@@ -1,0 +1,78 @@
+# Платформа персонализированного шоппинга на общей площадке.
+#
+# Отличия от docker-compose.prod.yml (тот писался под одиночный сервер с
+# certbot на хосте): портов наружу нет вообще, наружу ходит только Caddy по
+# сети edge, секреты живут в /etc/mmlplat/ вне /opt/stacks (там ходит
+# rsync --delete). Имя стека уникально на площадке.
+name: mmlplat
+
+networks:
+  internal:
+  edge:
+    external: true
+
+volumes:
+  pgdata:
+  hfcache:
+  miniodata:
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    restart: unless-stopped
+    env_file: [/etc/mmlplat/db.env]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks: [internal]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U platform -d mml_platform"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  reco:
+    build: ./reco
+    restart: unless-stopped
+    environment:
+      HF_HOME: /app/.hf
+    volumes:
+      - hfcache:/app/.hf
+    networks: [internal]
+    # Потолок обязателен: машина общая. Без него torch+Marqo под нагрузкой
+    # выедают память, и OOM-killer приходит за чужим postgres, а не за ними.
+    mem_limit: 4g
+
+  minio:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    env_file: [/etc/mmlplat/minio.env]
+    volumes:
+      - miniodata:/data
+    networks: [internal]
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    env_file: [/etc/mmlplat/backend.env]
+    depends_on:
+      postgres: {condition: service_healthy}
+      reco: {condition: service_started}
+      minio: {condition: service_started}
+    networks: [internal]
+
+  web:
+    # Контекст — корень платформы, а не web/: в образ кладётся ещё и статика
+    # вейтлиста из ../waitlist (корень домена).
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    restart: unless-stopped
+    depends_on: [backend]
+    networks: [internal, edge]
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3

@@ -1,0 +1,38 @@
+/*
+ * Онбординг — стили портированы ДОСЛОВНО из hi-fi макета
+ * "Onboarding Desktop.dc.html" (контракт 1:1).
+ * Заменено ТОЛЬКО:
+ *   'Martina Plantijn' → 'Spectral' (решение основателя: у Martina нет
+ *    кириллицы; Spectral уже грузится из @mml/ui/fonts.css) — в JSX inline-стилях.
+ * @font-face Martina убраны. Keyframes, .ob-* классы, @media — дословно.
+ */
+@keyframes obFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes obSpin{to{transform:rotate(360deg)}}
+.ob-fade{animation:obFade .45s ease both}
+.ob-btn{cursor:pointer;transition:transform .1s,opacity .15s,background .16s,color .16s,border-color .16s}
+.ob-btn:hover{opacity:.92}
+.ob-btn:active{transform:scale(.98)}
+.ob-seg{cursor:pointer;transition:background .16s,color .16s}
+.ob-card{cursor:pointer;transition:transform .18s,box-shadow .18s}
+.ob-card:hover{transform:translateY(-3px)}
+.ob-brand{cursor:pointer;transition:border-color .16s,background .16s,transform .12s}
+.ob-brand:active{transform:scale(.97)}
+.ob-input::placeholder{color:rgba(0,0,0,.4)}
+@media (max-width:760px){
+  .ob-grid3{grid-template-columns:1fr 1fr !important}
+}
+@media (max-width:560px){
+  .ob-head{padding-left:18px !important;padding-right:18px !important}
+  .ob-content{padding-left:18px !important;padding-right:18px !important;padding-top:32px !important}
+  .ob-content h1{font-size:29px !important;line-height:1.14 !important}
+  .ob-grid3{gap:12px !important}
+  .ob-foot{padding-left:18px !important;padding-right:18px !important}
+}
+
+/* Строка образа жизни: на узком экране подпись и переключатель встают
+   в две строки, а сегменты жмутся — иначе «Повседневное» выталкивало
+   переключатель за экран и страница скроллилась вбок. */
+@media (max-width: 420px) {
+  .ob-life { gap: 10px !important; }
+  .ob-life .ob-seg { padding-left: 12px !important; padding-right: 12px !important; font-size: 12.5px !important; }
+}

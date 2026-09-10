@@ -1,0 +1,195 @@
+# ============================================================================
+# docker-compose.shopping.yml — production deployment for
+#   https://b2b.makemelook.ai/shopping
+#
+# Designed for total isolation from the existing /shop, SaaS backend and
+# every other project already running on 45.92.176.137:
+#   - container names:  mml-shopping-*
+#   - volume names:     mml-shopping-*
+#   - host ports:       bound to 127.0.0.1 only, non-standard numbers
+#   - DB / MinIO:       fresh empty volumes (never touches makemelook prod data)
+#   - nginx:            host reverse-proxies /shopping* to these loopback ports
+# ============================================================================
+
+services:
+  # ----- infra ------------------------------------------------------------
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: mml-shopping-postgres
+    environment:
+      POSTGRES_USER: makemelook
+      POSTGRES_PASSWORD: makemelook
+      POSTGRES_DB: makemelook
+    ports:
+      - "127.0.0.1:15414:5432"
+    volumes:
+      - mml-shopping-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U makemelook -d makemelook"]
+      interval: 2s
+      timeout: 2s
+      retries: 20
+
+  minio:
+    image: minio/minio
+    container_name: mml-shopping-minio
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "127.0.0.1:19010:9000"
+      - "127.0.0.1:19011:9001"
+    volumes:
+      - mml-shopping-minio:/data
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://127.0.0.1:9000/minio/health/live"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+  minio-init:
+    image: minio/mc
+    container_name: mml-shopping-minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    entrypoint: >
+      /bin/sh -c "
+      set -e;
+      until mc alias set local http://minio:9000 minioadmin minioadmin >/dev/null 2>&1; do
+        echo 'waiting for minio...'; sleep 1;
+      done;
+      mc mb --ignore-existing local/makemelook;
+      mc anonymous set download local/makemelook;
+      echo 'minio bucket ready';
+      "
+    restart: "no"
+
+  # ----- HTTP proxy (Outline / Shadowsocks) ------------------------------
+  # Outbound route for Gemini API (geo-blocked on RU server). Matches the
+  # approach used in the main repo commit 0fe229033c: sslocal-rust running
+  # in HTTP-tunnel mode so Go's net/http ProxyURL() can use it out of the
+  # box. We run our OWN sidecar — the host's ss-outline (socks only, bound
+  # to 127.0.0.1) is not touched.
+  ss-proxy:
+    image: ghcr.io/shadowsocks/sslocal-rust:latest
+    container_name: mml-shopping-ss-proxy
+    restart: unless-stopped
+    entrypoint: ["sslocal"]
+    command:
+      - "-s"
+      - "144.31.196.28:56103"
+      - "-k"
+      - "PaHuBQEY6067x2yNKz6NQU"
+      - "-m"
+      - "chacha20-ietf-poly1305"
+      - "-b"
+      - "0.0.0.0:10808"
+      - "--protocol"
+      - "http"
+
+  # ----- backend ----------------------------------------------------------
+  backend:
+    build:
+      context: ./mml-saas-backend
+      dockerfile: Dockerfile
+      args:
+        ENV_FILE: .env.shopping
+    container_name: mml-shopping-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      minio:
+        condition: service_started
+      ss-proxy:
+        condition: service_started
+    expose:
+      - "3010"
+    environment:
+      APP_ENV: production
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://127.0.0.1:3010/health"]
+      interval: 3s
+      timeout: 2s
+      retries: 20
+      start_period: 15s
+
+  # ----- edge (nginx) -----------------------------------------------------
+  # Loopback :13010, hit by host nginx via /shopping-api/ and
+  # /shopping-s3/widget-assets/ (for widget assets).
+  edge:
+    image: nginx:1.27-alpine
+    container_name: mml-shopping-edge
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:13010:80"
+    volumes:
+      - ./edge/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./mml-saas-widget-tryon/src/assets/img:/srv/widget-assets:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/edge-health"]
+      interval: 5s
+      timeout: 2s
+      retries: 10
+
+  # ----- one-shot seed ----------------------------------------------------
+  seed:
+    image: postgres:16-alpine
+    container_name: mml-shopping-seed
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      PGPASSWORD: makemelook
+    volumes:
+      - ./seeds/christi-wedding.sql:/seed.sql:ro
+    command: >
+      psql -h postgres -U makemelook -d makemelook
+           -v ON_ERROR_STOP=1
+           -f /seed.sql
+    profiles: ["seed"]
+
+  # ----- widget bundle ----------------------------------------------------
+  widget:
+    build:
+      context: ./mml-saas-widget-tryon
+      dockerfile: Dockerfile.static
+    container_name: mml-shopping-widget
+    ports:
+      - "127.0.0.1:14173:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+  # ----- shop (витрина) ---------------------------------------------------
+  shop:
+    build:
+      context: ./demo-for-mml-main
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL:   https://b2b.makemelook.ai/shopping-api
+        VITE_PROJECT_ID: 11111111-1111-1111-1111-111111111111
+        VITE_WIDGET_URL: https://b2b.makemelook.ai/shopping-widget
+        VITE_BASE_PATH:  /shopping/
+        BASE_DIR:        shopping
+        NGINX_CONF:      docker/nginx.shopping.conf
+    container_name: mml-shopping-shop
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:18080:80"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/health"]
+      interval: 5s
+      timeout: 2s
+      retries: 5
+
+volumes:
+  mml-shopping-pgdata:
+  mml-shopping-minio:

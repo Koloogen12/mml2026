@@ -1,0 +1,172 @@
+@token=467Kh0umIM0a66Y6QwDmJ4Kvy7Ce10Sn
+
+
+POST https://api.aiuta.com/digital-try-on/v1/uploaded_images HTTP/1.1
+Authorization: Bearer {{token}}
+Accept: application/json
+Content-Type: multipart/form-data
+
+--boundary
+Content-Disposition: form-data; name="image_data"; filename="00057_00.jpg"
+Content-Type: application/octet-stream
+
+< /Users/triglav/Downloads/00057_00.jpg
+--boundary--
+
+
+####
+POST https://api.aiuta.com/digital-try-on/v1/sku_images_operations HTTP/1.1
+X-API-Key: DhJrh6m29mv8wgjPofqO5827gnPwfIIj
+Accept: application/json
+Content-Type: application/json
+
+{"uploaded_image_id":"user_image-bdd3231a-2bbf-40a6-bb61-a6e59a8c364d","sku_id":"test2"}
+
+
+
+####
+GET https://api.aiuta.com/digital-try-on/v1/sku_catalogs
+X-API-Key: DhJrh6m29mv8wgjPofqO5827gnPwfIIj
+
+
+
+####
+GET https://api.aiuta.com/digital-try-on/v1/sku_items/main
+X-API-Key: DhJrh6m29mv8wgjPofqO5827gnPwfIIj
+
+
+####
+DELETE https://api.aiuta.com/digital-try-on/v1/sku_items/main/test1
+X-API-Key: DhJrh6m29mv8wgjPofqO5827gnPwfIIj
+
+
+
+###
+POST https://api.aiuta.com/digital-try-on/v1/sku_items/main
+X-API-Key: DhJrh6m29mv8wgjPofqO5827gnPwfIIj
+Content-Type: application/json
+
+{
+    "images": ["user_image-450d648d-c683-430f-91b3-600dd9646fdf"],
+    "sku_id": "test2",
+    "title": "test2",
+    "category_google_name": "Dresses"
+}
+
+
+
+### 6e8b7bf07amsh9229fdb01d5fe31p155a72jsnddb618e8b2aa e4bd47be62msh68a8c02776f3aa1p165e03jsn741f22bb127b
+POST https://texel-virtual-try-on.p.rapidapi.com/try-on-url HTTP/1.1
+Content-Type: application/json
+X-RapidAPI-Key: e4bd47be62msh68a8c02776f3aa1p165e03jsn741f22bb127b
+X-RapidAPI-Host: texel-virtual-try-on.p.rapidapi.com
+
+{"clothing_image_url": "https://raw.githubusercontent.com/john-eighteenth/clothes-tryon-js/main/resources/look.jpg", "avatar_image_url": "https://hochu.ua/static/content/thumbs/*x*/3/6c/wetgji-eac402c7564a2b1478f10c23e542a6c3.jpg"}
+
+
+
+
+####
+
+curl -X POST "https://api.aiuta.com/digital-try-on/v1/uploaded_images"\
+ -H "accept: application/json"\
+ -H "X-API-Key: DhJrh6m29mv8wgjPofqO5827gnPwfIIj"\
+ -F "image_data=@/Users/triglav/develop/MakeMeLook/repositories/monocpo/makemelook-backend/misc/TryOn/2/eCom-769236QEAAA6659_F.jpg"
+
+curl -X POST "https://api.aiuta.com/digital-try-on/v1/sku_images_operations" \
+ -H "X-API-Key: DhJrh6m29mv8wgjPofqO5827gnPwfIIj"\
+ -H "accept: application/json"\
+ -H "content-type: application/json" \
+ -d '{"uploaded_image_id":"user_image-bdd3231a-2bbf-40a6-bb61-a6e59a8c364d","sku_id":"sku-0ee42fab-a246-4e07-ac30-921a7fdbd312","sku_catalog_name":"main"}'
+
+curl -X GET "https://api.aiuta.com/digital-try-on/v1/uploaded_images/user_image-fb596983-048d-4249-b501-0103e32f1096" \
+ -H "accept: application/json"
+
+
+
+###
+# /Users/triglav/develop/MakeMeLook/repositories/monocpo/makemelook-backend/misc/TryOn/00190_00.jpg
+{
+    "id":"user_image-fb596983-048d-4249-b501-0103e32f1096",
+    "url":"https://storage.googleapis.com/aiuta_prod_external_api_images/external_api/user/anonymous/uploaded_images/user_image-fb596983-048d-4249-b501-0103e32f1096.jpg"
+}
+
+{
+    "id":"user_image-bdd3231a-2bbf-40a6-bb61-a6e59a8c364d",
+    "url":"https://storage.googleapis.com/aiuta_prod_external_api_images/external_api/user/664767c8c996d62323c393e2/uploaded_images/user_image-bdd3231a-2bbf-40a6-bb61-a6e59a8c364d.jpg"
+}
+
+# /Users/triglav/develop/MakeMeLook/repositories/monocpo/makemelook-backend/misc/TryOn/22450195_52810053_2048.jpg
+{
+    "id":"user_image-bdbc8b9a-210b-4719-8ddb-97562da6b52d",
+    "url":"https://storage.googleapis.com/aiuta_prod_external_api_images/external_api/user/anonymous/uploaded_images/user_image-bdbc8b9a-210b-4719-8ddb-97562da6b52d.jpg"
+}
+
+
+{
+  "id": "sku-0ee42fab-a246-4e07-ac30-921a7fdbd312",
+  "sku_id": "test1",
+  "sku_catalog_name": "main",
+  "description": "",
+  "title": "test1",
+  "category_google_id": "2271",
+  "category_google_name": "Apparel & Accessories > Clothing > Dresses",
+  "color": "",
+  "image_urls": [],
+  "is_ready": false,
+  "store_url": ""
+}
+
+
+{
+  "id": "sku-a3b14a75-f514-4fa3-a28e-6b84ece84466",
+  "sku_id": "test2",
+  "sku_catalog_name": "main",
+  "description": "",
+  "title": "test2",
+  "category_google_id": "2271",
+  "category_google_name": "Apparel & Accessories > Clothing > Dresses",
+  "color": "",
+  "image_urls": [
+    "https://storage.googleapis.com/aiuta_prod_external_api_images/external_api/user/664767c8c996d62323c393e2/uploaded_images/user_image-450d648d-c683-430f-91b3-600dd9646fdf.jpg"
+  ],
+  "is_ready": false,
+  "store_url": ""
+}
+
+
+
+
+{
+  "id": "user_image-9174aed6-6799-4aca-9fbf-e0d421bf5999",
+  "url": "https://storage.googleapis.com/aiuta_prod_external_api_images/external_api/user/664767c8c996d62323c393e2/uploaded_images/user_image-9174aed6-6799-4aca-9fbf-e0d421bf5999.jpg"
+}
+
+{
+  "id": "user_image-fd19a6eb-2c1a-4467-85f9-232afb7b5472",
+  "url": "https://storage.googleapis.com/aiuta_prod_external_api_images/external_api/user/664767c8c996d62323c393e2/uploaded_images/user_image-fd19a6eb-2c1a-4467-85f9-232afb7b5472.jpg"
+}
+
+
+{
+    "id":"user_image-450d648d-c683-430f-91b3-600dd9646fdf",
+    "url":"https://storage.googleapis.com/aiuta_prod_external_api_images/external_api/user/664767c8c996d62323c393e2/uploaded_images/user_image-450d648d-c683-430f-91b3-600dd9646fdf.jpg"
+}
+
+
+
+[
+    {
+        "gender":"female",
+        "clothesList":[
+            {
+                "imageUrl":"https://ai-business-algo-pai.oss-ap-southeast-1.aliyuncs.com/pengxin.zpx/8683046691566_200.jpg?OSSAccessKeyId\\u003dLTAI5tAGoBnm5eYsnZ5E1zMr\\u0026Expires\\u003d360001710758584\\u0026Signature\\u003dEfIJzSJXuS1OJTe4KLz2S7eXhBs\\u003d",
+                "type":"tops"
+            },
+            {
+                "imageUrl":"https://ai-business-algo-pai.oss-ap-southeast-1.aliyuncs.com/pengxin.zpx/8683046691566_200.jpg?OSSAccessKeyId\\u003dLTAI5tAGoBnm5eYsnZ5E1zMr\\u0026Expires\\u003d360001710758584\\u0026Signature\\u003dEfIJzSJXuS1OJTe4KLz2S7eXhBs\\u003d",
+                "type":"tops"
+            }
+        ]
+    }
+]

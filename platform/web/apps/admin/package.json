@@ -1,0 +1,40 @@
+{
+  "name": "@mml/admin",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5175",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mml/ui": "workspace:*",
+    "@tiptap/core": "^3.28.0",
+    "@tiptap/extension-character-count": "^3.28.0",
+    "@tiptap/extension-image": "^3.28.0",
+    "@tiptap/extension-link": "^3.28.0",
+    "@tiptap/extension-placeholder": "^3.28.0",
+    "@tiptap/extension-table": "^3.28.0",
+    "@tiptap/extension-table-cell": "^3.28.0",
+    "@tiptap/extension-table-header": "^3.28.0",
+    "@tiptap/extension-table-row": "^3.28.0",
+    "@tiptap/extension-underline": "^3.28.0",
+    "@tiptap/pm": "^3.28.0",
+    "@tiptap/react": "^3.28.0",
+    "@tiptap/starter-kit": "^3.28.0",
+    "clsx": "^2.1.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zustand": "^5.0.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.8",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^4.5.0",
+    "tailwindcss": "^4.1.8",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}

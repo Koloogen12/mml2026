@@ -1,0 +1,38 @@
+.uix-component-button-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border: none;
+  color: #000;
+  border-radius: 100px;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    color 0.3s,
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.uix-component-button-button:hover {
+  border: var(--border-hover, none);
+  color: var(--color-hover, #000);
+  background: var(--background-hover, transparent);
+}
+
+.uix-component-button-button:active,
+.uix-component-button-button.uix--active {
+  border: var(--border-active, var(--border-hover, none));
+  color: var(--color-active, var(--color-hover, #000));
+  background: var(--background-active, var(--background-hover, transparent));
+}
+
+.uix-component-button-button:disabled,
+.uix-component-button-button.uix--disabled {
+  border: var(--border-disabled, transparent);
+  color: var(--color-disabled, #000);
+  background: var(--background-disabled, transparent);
+  cursor: default;
+  pointer-events: none;
+}

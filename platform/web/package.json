@@ -1,0 +1,17 @@
+{
+  "name": "@mml/web",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@9.1.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "lint": "eslint apps/*/src"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "typescript-eslint": "^8.64.0"
+  }
+}

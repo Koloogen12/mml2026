@@ -1,0 +1,153 @@
+/*
+ * Порт стилей hi-fi хендоффа "Admin Console.dc.html" (контракт 1:1).
+ * Классы / keyframes / тайминги перенесены ДОСЛОВНО из <style> эталона.
+ * Отличия (санкционированы стандартом проекта):
+ *   • @font-face 'Martina Plantijn' убран — у гарнитуры нет кириллицы; в JSX
+ *     заменён на 'Spectral' (грузится из @mml/ui/fonts.css).
+ *   • <link> Google Fonts (Inter + IBM Plex Mono) убраны — оба шрифта
+ *     self-hosted через @fontsource из @mml/ui/fonts.css (без сети).
+ *   • Всё остальное — цвета, размеры, анимации — как в эталоне.
+ */
+
+* {
+  box-sizing: border-box;
+}
+:focus-visible {
+  outline: 2px solid #2436d8;
+  outline-offset: 1px;
+  border-radius: 3px;
+}
+body {
+  margin: 0;
+  background: #eeebe4;
+  font-family: "Inter", system-ui, sans-serif;
+  color: #16150f;
+}
+a {
+  color: #2436d8;
+}
+a:hover {
+  color: #1a29a8;
+}
+input,
+textarea {
+  font-family: "Inter", system-ui, sans-serif;
+}
+.mono {
+  font-family: "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
+}
+@keyframes acShim {
+  0% {
+    background-position: -320px 0;
+  }
+  100% {
+    background-position: 320px 0;
+  }
+}
+@keyframes acFade {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes acSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes acDot {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+.ac-skel {
+  background: linear-gradient(100deg, #e4e0d7 30%, #efece4 50%, #e4e0d7 70%);
+  background-size: 640px 100%;
+  animation: acShim 1.25s infinite linear;
+  border-radius: 4px;
+}
+.ac-fade {
+  animation: acFade 0.35s ease both;
+}
+.ac-spin {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(36, 54, 216, 0.25);
+  border-top-color: #2436d8;
+  border-radius: 50%;
+  animation: acSpin 0.8s linear infinite;
+}
+.ac-btn {
+  cursor: pointer;
+  transition:
+    transform 0.1s,
+    opacity 0.14s,
+    background 0.14s,
+    border-color 0.14s,
+    color 0.14s;
+}
+.ac-btn:hover {
+  opacity: 0.9;
+}
+.ac-btn:active {
+  transform: scale(0.98);
+}
+.ac-nav {
+  cursor: pointer;
+  transition:
+    background 0.13s,
+    color 0.13s;
+}
+.ac-nav:hover {
+  background: #f3f1eb;
+}
+.ac-row {
+  cursor: pointer;
+  transition:
+    background 0.12s,
+    border-color 0.12s;
+}
+.ac-row:hover {
+  background: #fbfaf7;
+}
+.ac-in {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font: 400 13px "Inter", sans-serif;
+  color: #16150f;
+  outline: none;
+  transition:
+    border-color 0.14s,
+    box-shadow 0.14s;
+}
+.ac-in:focus {
+  border-color: #2436d8;
+  box-shadow: 0 0 0 3px rgba(36, 54, 216, 0.12);
+}
+.ac-in::placeholder {
+  color: rgba(0, 0, 0, 0.36);
+}
+.ac-thumb {
+  background: #eae6dd;
+  background-size: cover;
+  background-position: center;
+  flex: none;
+}
+.ac-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex: none;
+}

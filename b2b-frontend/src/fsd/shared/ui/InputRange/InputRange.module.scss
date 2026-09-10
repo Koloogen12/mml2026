@@ -1,0 +1,100 @@
+.container {
+  height: 65px;
+}
+
+.wrapper {
+  height: 40px;
+  background: linear-gradient(90deg, #ff9dc0 0%, #889af3 100%);
+  border-radius: 500px;
+  padding-right: 4.5px;
+}
+
+.track {
+  width: 200px;
+  z-index: -1;
+}
+
+.thumb {
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
+  top: 2px;
+  background: linear-gradient(180deg, #fff 0%, #f4f4f4 100%);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
+  margin-left: 2px;
+}
+
+.thumbBage {
+  position: relative;
+  font-family: var(--secondaryFont);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 105%;
+  letter-spacing: -0.03em;
+  color: var(--text-whiteColor);
+  background: rgba(255, 255, 255, 0.25);
+  padding: 9px 16px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease-in-out;
+}
+
+.triangle {
+  content: url('/assets/images/icons/arrow-calc.svg');
+  position: absolute;
+  top: 50%;
+  transform: translateY(-40%);
+}
+
+.mark {
+  color: #c29ad8;
+  font-family: var(--secondaryFont);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 105%;
+  letter-spacing: -0.98px;
+  top: 50px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 100%;
+    right: 50%;
+    transform: translateX(50%);
+    top: -31px;
+    background-color: #fff;
+  }
+}
+
+.markMid {
+  transform: translateX(-20%);
+}
+
+.markMax {
+  color: #747474;
+  right: 0;
+  left: auto !important;
+
+  &::after {
+    right: 20px;
+    left: auto !important;
+  }
+}
+
+.markMin {
+  color: #ff9dc0;
+  left: 0;
+  right: auto !important;
+
+  &::after {
+    left: 20px;
+    right: auto !important;
+  }
+}

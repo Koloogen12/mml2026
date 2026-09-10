@@ -1,0 +1,61 @@
+.main {
+  min-height: 100vh;
+  padding: var(--containerXPaddingsXxl);
+}
+
+.header {
+  margin-bottom: 17px;
+}
+
+.section {
+  margin-bottom: 140px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 440px) {
+    margin-bottom: 110px;
+  }
+}
+
+.contactSection {
+  margin-bottom: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fixedBtn {
+  position: fixed;
+  z-index: 10;
+  top: 70%;
+  right: 100px;
+
+  @media (max-width: 768px) {
+    right: 30px;
+  }
+
+  @media (max-width: 440px) {
+    top: 80%;
+    right: 10px;
+  }
+}
+
+.faqSection {
+  margin-bottom: 120px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.infoIconTShirt {
+  width: 23.3px;
+  height: 23.3px;
+}
+
+.infoIconHanger {
+  width: 23.33px;
+  height: 26.25px;
+}
+
+.infoIconChat {
+  width: 21.99px;
+  height: 21.5px;
+}

@@ -1,0 +1,7 @@
+mediapipe==0.10.21
+pillow==11.0.0
+numpy==1.26.4
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+python-multipart==0.0.20
+onnxruntime==1.20.1

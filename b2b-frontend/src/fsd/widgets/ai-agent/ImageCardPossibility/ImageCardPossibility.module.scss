@@ -1,0 +1,111 @@
+.sectionImages {
+  max-width: 1024px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+
+  @media (max-width: 440px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.imageCard2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--whiteColor);
+  border-radius: 60px;
+  height: 400px;
+  padding: 25px;
+  text-align: center;
+
+  @media (max-width: 440px) {
+    padding: 25px 0;
+    height: 500px;
+    border-radius: 40px;
+  }
+}
+
+.imageCardSmallH {
+  height: 340px;
+
+  @media (max-width: 440px) {
+    height: 500px;
+    padding-top: 85px;
+  }
+}
+
+.imageCardImg {
+  width: 100%;
+  height: 200px;
+  position: relative;
+
+  @media (max-width: 440px) {
+    height: 290px;
+  }
+}
+
+.imageCover {
+  & img {
+    object-fit: contain;
+  }
+
+  @media (max-width: 440px) {
+    & img {
+      object-fit: cover;
+    }
+  }
+}
+
+.imageCard2Data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.imageCard2Text {
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.05em;
+  max-width: 375px;
+
+  @media (max-width: 440px) {
+    /*padding: 0 25px;*/
+  }
+}
+
+.imageCard2TextComment2 {
+  max-width: 430px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15.7px;
+  letter-spacing: -0.05em;
+  color: var(--text-secondaryColor);
+
+  @media (max-width: 440px) {
+    padding: 0 25px;
+  }
+}
+
+.imagePossibilities2 {
+  @media (max-width: 440px) {
+    height: 250px;
+  }
+}
+
+.imagePossibilities3 {
+  @media (max-width: 440px) {
+    height: 210px;
+  }
+}
+
+.imagePossibilities4 {
+  @media (max-width: 440px) {
+    height: 220px;
+  }
+}

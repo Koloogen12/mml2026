@@ -1,0 +1,38 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "admin",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@mml/admin",
+        "dev"
+      ],
+      "port": 5175,
+      "cwd": "web"
+    },
+    {
+      "name": "buyer",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@mml/buyer",
+        "dev"
+      ],
+      "port": 5173,
+      "cwd": "web"
+    },
+    {
+      "name": "partner",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "--filter",
+        "@mml/partner",
+        "dev"
+      ],
+      "port": 5174,
+      "cwd": "web"
+    }
+  ]
+}
