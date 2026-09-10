@@ -31,7 +31,19 @@ _O, _G = True, False   # True = пиксель из ОРИГИНАЛА, False = 
 #     шарф, капюшон и воротник-стойка стирались бы с подбородка, а это половина
 #     осенней коллекции, а не редкий край. Личность живёт в ядре.
 SRC_TABLE = {
-    BG:      {BG:_O, HAIR:_O, SKIN:_O, FACE:_O, CLOTHES:_G, ACC:_O},
+    # Строка BG — самая тонкая. Она про то, что делать там, где в исходном
+    # кадре был фон, а генерация что-то нарисовала.
+    #
+    # Клетка BG x SKIN обязана отдавать ГЕНЕРАЦИЮ. Вещь имеет право менять
+    # силуэт: юбка короче брюк — открылись голени, каблук — фигура выше,
+    # облегающее вместо оверсайза — тело у́же. Раньше здесь стоял оригинал,
+    # и сгенерированное тело обрезалось по силуэту старой одежды: на кадре
+    # оставались призрачные контуры прежних брюк и футболки. Это тот самый
+    # случай, который поймал Данил 10.09.2026.
+    #
+    # А вот BG x HAIR и BG x FACE остаются за оригиналом: голова не должна
+    # ни расти, ни съезжать, и это последняя защита личности по краю.
+    BG:      {BG:_O, HAIR:_O, SKIN:_G, FACE:_O, CLOTHES:_G, ACC:_O},
     HAIR:    {BG:_O, HAIR:_O, SKIN:_O, FACE:_O, CLOTHES:_G, ACC:_O},
     SKIN:    {BG:_O, HAIR:_O, SKIN:_O, FACE:_O, CLOTHES:_G, ACC:_O},
     FACE:    {BG:_O, HAIR:_O, SKIN:_O, FACE:_O, CLOTHES:_G, ACC:_O},  # см. ядро ниже
@@ -137,7 +149,7 @@ def verify_invariant(o, g, out, alpha):
 AR_TOLERANCE = 0.02
 
 
-def composite(orig_pil, gen_pil, feather=4):
+def composite(orig_pil, gen_pil, feather=4, erode=6):
     """Возвращает (итоговое изображение, статистика)."""
     W, H = gen_pil.size
     ow, oh = orig_pil.size
@@ -155,7 +167,28 @@ def composite(orig_pil, gen_pil, feather=4):
     co, cg = parse(o), parse(g)
     core = face_core_mask(o)
     keep = build_keep_mask(co, cg, core)
-    m = Image.fromarray((keep*255).astype(np.uint8)).filter(ImageFilter.GaussianBlur(feather))
+    # Маску сначала СЖИМАЕМ, и только потом размываем.
+    #
+    # Зачем: перо смешивает два источника на границе. Если граница проходит
+    # по контуру тела, оно смешивает исходные джинсы с сгенерированной кожей
+    # и оставляет цветной след ровно по старому силуэту — тот самый дефект
+    # от 10.09.2026. Сжатие отодвигает границу вглубь территории оригинала,
+    # так что переход происходит между двумя похожими областями (фон к фону),
+    # а сам стык тела отдаётся генерации целиком.
+    #
+    # MinFilter — это эрозия: берёт минимум по окну, то есть съедает белое
+    # по краям. Окно 2*erode+1 сжимает маску примерно на erode пикселей.
+    mask8 = Image.fromarray((keep * 255).astype(np.uint8))
+    if erode > 0:
+        eroded = np.asarray(mask8.filter(ImageFilter.MinFilter(2 * erode + 1)))
+        # Ядро лица из сжатия исключаем. Сжатие нужно там, где граница идёт
+        # по стыку тела и фона; вокруг лица никакого стыка нет, а отдавать
+        # генерации даже несколько пикселей по краю ядра — значит без нужды
+        # терять то, ради чего композит и делался.
+        if core is not None:
+            eroded = np.maximum(eroded, (core * 255).astype(np.uint8))
+        mask8 = Image.fromarray(eroded)
+    m = mask8.filter(ImageFilter.GaussianBlur(feather))
     out = Image.composite(o, g, m)
     stats = {
         "invariant": verify_invariant(o, g, out, np.asarray(m)),
