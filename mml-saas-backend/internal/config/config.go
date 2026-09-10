@@ -214,6 +214,19 @@ type Config struct {
 	// дорого и незачем: тревога нужна как сигнал тренда, а не как проверка
 	// каждого кадра.
 	VTOCompositeSamplePct int
+
+	// PhotoValidationSkipProjects — проекты, где строгая проверка фото
+	// покупателя не выполняется. Список числовых id через запятую.
+	//
+	// Зачем: проверка — это отдельный вызов зрительной модели, и он стоит
+	// около 10 секунд (замерено: загрузка с проверкой 11.4 c, без неё 1.0 c).
+	// На демо-стенде, где снимают ролики и показывают продукт вживую, это
+	// делает демонстрацию неубедительной. У реальных магазинов проверка
+	// должна остаться: она отсеивает кадры, на которых примерка заведомо
+	// выйдет плохой, и экономит им деньги на генерации.
+	//
+	// Пусто = проверка работает везде.
+	PhotoValidationSkipProjects string
 }
 
 func Load() (*Config, error) {
@@ -316,6 +329,7 @@ func Load() (*Config, error) {
 		VTOCompositeURL:        getEnv("VTO_COMPOSITE_URL", ""),
 		VTOCompositeTimeoutSec: getEnvInt("VTO_COMPOSITE_TIMEOUT_SEC", 5),
 		VTOCompositeSamplePct:  getEnvInt("VTO_COMPOSITE_SAMPLE_PCT", 10),
+		PhotoValidationSkipProjects: getEnv("PHOTO_VALIDATION_SKIP_PROJECTS", ""),
 	}
 
 	if err := cfg.Validate(); err != nil {

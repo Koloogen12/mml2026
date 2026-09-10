@@ -540,7 +540,11 @@ func (h *WidgetSessionHandler) UploadPhoto(w http.ResponseWriter, r *http.Reques
 	forceParam := r.URL.Query().Get("force")
 	forceOverride := forceParam == "1" || forceParam == "true"
 
-	if !forceOverride {
+	// На демо-стенде проверка выключена намеренно: см.
+	// service.PhotoValidationEnabled — там же обоснование и замеры.
+	if !forceOverride && !h.tryOnSvc.PhotoValidationEnabled(projectID) {
+		logger.Info("tryon", "photo validation skipped for project", "project_id", projectID)
+	} else if !forceOverride {
 		validation, vErr := h.tryOnSvc.ValidateModelPhoto(r.Context(), imgBytes, mime)
 		if vErr == nil && validation != nil && !validation.OK {
 			reason := validation.ReasonCode
