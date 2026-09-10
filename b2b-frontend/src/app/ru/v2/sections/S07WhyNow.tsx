@@ -17,27 +17,23 @@ export function S07WhyNow({ v }: { v: LandingVals }) {
         <div style={{ padding: "clamp(32px,5vw,64px) clamp(20px,4vw,56px)", color: "#fff", display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "40px" }}>
           <div>
             <h2 style={{ margin: "0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(30px,3.4vw,52px)", lineHeight: "1.04", letterSpacing: "-.03em" }}>
-              {"Мерить стало "}
+              {"Примерка переехала "}
               <span style={{ fontFamily: "'Cormorant Garamond',serif", fontStyle: "italic", fontWeight: "400", fontSize: "1.15em" }}>
-                негде
+                в логистику
               </span>
             </h2>
             {" "}
             <p style={{ margin: "22px 0 0", maxWidth: "460px", fontSize: "17px", lineHeight: "1.55", color: "rgba(255,255,255,.72)" }}>
-              {"За год "}
-              <b style={{ color: "#fff", fontWeight: "500" }}>
-                48%
-              </b>
-              {" сетевых fashion-операторов сократили офлайн. "}
-              <b style={{ color: "#fff", fontWeight: "500" }}>
-                57%
-              </b>
-              {" покупателей хотели купить вещь и не нашли её в магазине. "}
-              <b style={{ color: "#fff", fontWeight: "500" }}>
-                51%
-              </b>
-              {" не находят одежду под свою фигуру — это сложность номер один, с отрывом от цены."}
+              Примерочная не исчезла — она переехала в пункт выдачи. Но там примеряют после заказа: вещь уже поехала, доставка уже оплачена, и каждая неподошедшая — оплаченный рейс туда и обратно.
             </p>
+            {" "}
+            <p style={{ margin: "22px 0 0", maxWidth: "460px", fontSize: "17px", lineHeight: "1.55", color: "rgba(255,255,255,.72)" }}>
+              С марта 2026 Wildberries и Ozon начали ограничивать покупателей с низким выкупом. Причина названа прямо: пункты выдачи используют как бесплатную примерочную, и это слишком дорого.
+            </p>
+            {" "}
+            <a href="/ru/blog/primerka-pereehala-v-logistiku" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "18px", minHeight: "44px", fontSize: "14px", color: "rgba(255,255,255,.6)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+              Читать полностью →
+            </a>
           </div>
           {" "}
           <div>

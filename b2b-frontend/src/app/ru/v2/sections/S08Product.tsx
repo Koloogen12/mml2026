@@ -15,13 +15,13 @@ export function S08Product({ v }: { v: LandingVals }) {
           <div data-r="sticky" style={{ position: "sticky", top: "28px", display: "flex", flexDirection: "column", gap: "28px" }}>
             <div>
               <span style={{ display: "inline-flex", height: "28px", alignItems: "center", padding: "0 12px", borderRadius: "999px", background: "rgba(255,255,255,.1)", fontSize: "12px", fontWeight: "500", color: "rgba(255,255,255,.75)", whiteSpace: "nowrap" }}>
-                Состав продукта
+                Вы получаете
               </span>
               {" "}
               <h2 style={{ margin: "18px 0 0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(28px,3vw,44px)", lineHeight: "1.08", letterSpacing: "-.03em" }}>
-                {"Инструменты, которые ставятся "}
+                {"Инструменты, которые "}
                 <span style={{ fontWeight: "400", color: "#C9D6E4" }}>
-                  по отдельности
+                  работают на вас
                 </span>
               </h2>
             </div>

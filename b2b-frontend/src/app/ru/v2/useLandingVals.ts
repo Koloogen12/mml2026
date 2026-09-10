@@ -71,8 +71,27 @@ export function useLandingVals() {
   const [accent, setAccent] = useState('#2F5AE6');
   const [radius, setRadius] = useState('999px');
   const [layer, setLayer] = useState(1);
+  // Пока человек сам не нажал вкладку, слои листаются сами: иначе переключатель
+  // читается как подпись, а не как элемент управления, и половина посетителей
+  // так и не узнаёт, что слоёв больше одного. После первого нажатия автоход
+  // выключается насовсем — дальше человек смотрит то, что выбрал, и вкладка
+  // не должна уезжать у него из-под пальца.
+  const [layerAuto, setLayerAuto] = useState(true);
 
   const pulseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (!layerAuto) return;
+    // Автосмена — это движение: кому оно выключено, вкладки стоят на месте.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => {
+      // В фоновой вкладке листать нечего: браузер и так тормозит таймеры, но
+      // человек вернётся на середину последовательности вместо начала.
+      if (document.hidden) return;
+      setLayer((k) => (k + 1) % 4);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [layerAuto]);
 
   // tick(): импульс числа при движении ползунка
   const tick = useCallback((apply: () => void) => {
@@ -231,6 +250,7 @@ export function useLandingVals() {
         label,
         pick: () => {
           track('layers_switch', { layers: k });
+          setLayerAuto(false);
           setLayer(k);
         },
         bg: k === layer ? '#fff' : 'rgba(18,20,23,.35)',
