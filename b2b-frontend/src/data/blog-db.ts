@@ -4,7 +4,7 @@
 // static posts without branching the UI.
 
 import type { Article } from '@/data/blog';
-import { articles as staticArticles, authors } from '@/data/blog';
+import { authors } from '@/data/blog';
 import { prisma } from '@/lib/db';
 
 function minutesFromHtml(html: string): number {
@@ -94,11 +94,12 @@ export async function getDraftArticleBySlug(slug: string): Promise<Article | nul
 // the editor has produced enough material to stand on its own.
 export async function getMergedArticles(): Promise<Article[]> {
   const db = await getPublishedArticles();
-  const dbSlugs = new Set(db.map((a) => a.slug));
-  const merged = [
-    ...db,
-    ...staticArticles.filter((a) => !dbSlugs.has(a.slug))
-  ];
+  // Посевные статьи из демо-макета больше не подмешиваем. Они написаны за
+  // подписью несуществующих авторов и описывают несуществующие кейсы; пока
+  // они лежали в выдаче, их индексировали как наши материалы. Журнал живёт
+  // только тем, что опубликовано в админке. Сам массив оставлен в репозитории
+  // как образец структуры статьи.
+  const merged = [...db];
   // Sort by date desc so latest shows first regardless of origin.
   return merged.sort((a, b) => b.date.localeCompare(a.date));
 }
@@ -106,7 +107,6 @@ export async function getMergedArticles(): Promise<Article[]> {
 export async function getMergedArticleBySlug(
   slug: string
 ): Promise<Article | null> {
-  const fromDb = await getDbArticleBySlug(slug);
-  if (fromDb) return fromDb;
-  return staticArticles.find((a) => a.slug === slug) ?? null;
+  // Только база: посевные статьи из демо-макета отключены, см. getMergedArticles.
+  return await getDbArticleBySlug(slug);
 }

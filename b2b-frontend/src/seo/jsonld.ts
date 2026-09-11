@@ -91,9 +91,8 @@ export function websiteNode(): JsonLdNode {
 
 /**
  * Сам виджет. SoftwareApplication, а не Product: продаётся доступ к сервису,
- * а не физическая вещь. Цена — та же, что напечатана в блоке с калькулятором
- * («8 ₽ стоит одна примерка»), поэтому разметка не расходится со страницей.
- * Рейтинга и отзывов нет — на сайте их тоже нет.
+ * а не физическая вещь. Цену не объявляем — решение владельца не публиковать
+ * цены. Рейтинга и отзывов нет — на сайте их тоже нет.
  */
 export function widgetNode(): JsonLdNode {
   return {
@@ -117,18 +116,12 @@ export function widgetNode(): JsonLdNode {
       'Настройка внешнего вида кнопки и шагов под дизайн сайта',
       'Статистика примерок, добавлений в корзину и выкупов'
     ],
+    // Цену в разметке не объявляем: владелец решил не публиковать цены нигде.
+    // Offer без цены — это не «бесплатно», это «цена по запросу»; поисковику
+    // честнее не знать цену, чем знать неверную.
     offers: {
       '@type': 'Offer',
-      price: '8',
-      priceCurrency: 'RUB',
       availability: 'https://schema.org/InStock',
-      priceSpecification: {
-        '@type': 'UnitPriceSpecification',
-        price: '8',
-        priceCurrency: 'RUB',
-        unitText: 'примерка',
-        referenceQuantity: { '@type': 'QuantitativeValue', value: 1, unitText: 'примерка' }
-      },
       seller: { '@id': ID.organization },
       eligibleRegion: { '@type': 'Country', name: 'Россия' }
     }

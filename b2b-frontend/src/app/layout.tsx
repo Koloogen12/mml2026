@@ -96,7 +96,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       {/*<Script*/}
       {/*  strategy="lazyOnload"*/}
       {/*  id="mmlb2b"*/}
