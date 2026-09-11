@@ -61,45 +61,7 @@ export function S08Product({ v }: { v: LandingVals }) {
             {(v.isTryon) ? (
               <>
                 <div style={{ position: "relative", flex: "1", borderRadius: "16px", overflow: "hidden", background: "#0E1014", minHeight: "520px" }}>
-                  <img src="/landing/ru/look-2.jpg" alt="" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%" }} />
-                  {" "}
-                  <div style={{ position: "absolute", inset: "0", background: "linear-gradient(180deg,rgba(10,14,22,.3) 0%,rgba(10,14,22,0) 35%,rgba(10,14,22,.55) 100%)" }}></div>
-                  {" "}
-                  <div style={{ position: "absolute", top: "16px", left: "16px", right: "16px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                    {(v.tryonLayers ?? []).map((l, i0) => (
-                      <Fragment key={i0}>
-                        <span style={{ display: "inline-flex", alignItems: "center", gap: "8px", height: "34px", padding: "0 14px 0 6px", borderRadius: "999px", background: "rgba(255,255,255,.92)", color: "#121417", fontSize: "15px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                          <span style={{ width: "22px", height: "22px", borderRadius: "50%", background: l.dot }}></span>
-                          {l.name}
-                        </span>
-                      </Fragment>
-                    ))}
-                    {" "}
-                    <span style={{ display: "inline-flex", alignItems: "center", height: "34px", padding: "0 14px", borderRadius: "999px", border: "1px dashed rgba(255,255,255,.45)", color: "#fff", fontSize: "15px", whiteSpace: "nowrap" }}>
-                      + слой
-                    </span>
-                  </div>
-                  {" "}
-                  <div style={{ position: "absolute", left: "16px", right: "16px", bottom: "16px", display: "flex", gap: "10px", alignItems: "flex-end" }}>
-                    <div style={{ flex: "1", borderRadius: "16px", background: "rgba(255,255,255,.94)", color: "#121417", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "12px" }}>
-                      <span style={{ display: "flex", flexDirection: "column", gap: "2px", minWidth: "0" }}>
-                        <span style={{ fontSize: "12px", color: "#565E6B" }}>
-                          Артикул DR-2041 · слой 2 из 5
-                        </span>
-                        <span style={{ fontSize: "15px", fontWeight: "500" }}>
-                          Ваш размер по сетке этого изделия
-                        </span>
-                      </span>
-                      {" "}
-                      <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "36px", fontWeight: "300", color: "#2F5AE6", lineHeight: "1", flex: "none" }}>
-                        M
-                      </span>
-                    </div>
-                    {" "}
-                    <span style={{ height: "52px", padding: "0 22px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "#121417", color: "#fff", fontSize: "15px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                      В корзину
-                    </span>
-                  </div>
+                  <img src="/landing/ru/product-tryon.webp" alt="Экран примерки: образ из пяти слоёв, полка вещей и каталог верхней одежды" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 50%" }} />
                 </div>
               </>
             ) : null}
@@ -167,25 +129,29 @@ export function S08Product({ v }: { v: LandingVals }) {
                   ))}
                   {" "}
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "10px", marginTop: "4px" }}>
-                    <div style={{ borderRadius: "16px", overflow: "hidden", background: "#EEF0F3", height: "150px", position: "relative" }}>
-                      <img src="/landing/ru/look-1.jpg" alt="Образ из каталога: Платье-миди" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 30%" }} />
-                      <span style={{ position: "absolute", left: "10px", bottom: "10px", height: "26px", padding: "0 10px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.92)", fontSize: "12px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                        Платье-миди
+                    <div className="pcard">
+                      <span className="pcard__shot">
+                        <img src="/landing/ru/pc-dress.webp" alt="Платье-миди ZIMMERMANN из каталога магазина" />
                       </span>
+                      <span className="pcard__brand">ZIMMERMANN</span>
+                      <span className="pcard__name">Платье-миди</span>
+                      <span className="pcard__price">384 000 ₽</span>
                     </div>
-                    {" "}
-                    <div style={{ borderRadius: "16px", overflow: "hidden", background: "#EEF0F3", height: "150px", position: "relative" }}>
-                      <img src="/landing/ru/look-2.jpg" alt="Образ из каталога: Пальто" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 35%" }} />
-                      <span style={{ position: "absolute", left: "10px", bottom: "10px", height: "26px", padding: "0 10px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.92)", fontSize: "12px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                        Пальто
+                    <div className="pcard">
+                      <span className="pcard__shot">
+                        <img src="/landing/ru/pc-jacket.webp" alt="Куртка ROTATE из каталога магазина" />
                       </span>
+                      <span className="pcard__brand">ROTATE</span>
+                      <span className="pcard__name">Куртка</span>
+                      <span className="pcard__price">116 000 ₽</span>
                     </div>
-                    {" "}
-                    <div style={{ borderRadius: "16px", overflow: "hidden", background: "#EEF0F3", height: "150px", position: "relative" }}>
-                      <img src="/landing/ru/look-7.jpg" alt="Образ из каталога: Жакет" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 30%" }} />
-                      <span style={{ position: "absolute", left: "10px", bottom: "10px", height: "26px", padding: "0 10px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "rgba(255,255,255,.92)", fontSize: "12px", fontWeight: "500", whiteSpace: "nowrap" }}>
-                        Жакет
+                    <div className="pcard">
+                      <span className="pcard__shot">
+                        <img src="/landing/ru/pc-blazer.webp" alt="Жакет TOTEME из каталога магазина" />
                       </span>
+                      <span className="pcard__brand">TOTEME</span>
+                      <span className="pcard__name">Жакет</span>
+                      <span className="pcard__price">462 000 ₽</span>
                     </div>
                   </div>
                   {" "}

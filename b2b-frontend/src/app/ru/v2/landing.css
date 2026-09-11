@@ -349,3 +349,55 @@ html {
     justify-content: center;
   }
 }
+
+/* Карточки товара в подсказках чат-стилиста.
+
+   Стилист предлагает вещи из каталога — значит и выглядеть это должно как
+   карточка каталога, а не как кадрированная фотография с подписью поверх.
+   Пакшот показан целиком (contain): у него белый фон и обрезать у вещи рукав
+   или подол незачем. Бренд, название, цена — как в витрине. */
+.mml-v2 .pcard {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.mml-v2 .pcard__shot {
+  display: block;
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #F6F7F9;
+  margin-bottom: 8px;
+}
+.mml-v2 .pcard__shot img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.mml-v2 .pcard__brand {
+  font-family: 'Martian Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: #8B93A0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mml-v2 .pcard__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: #121417;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mml-v2 .pcard__price {
+  font-size: 13px;
+  color: #565E6B;
+  white-space: nowrap;
+}

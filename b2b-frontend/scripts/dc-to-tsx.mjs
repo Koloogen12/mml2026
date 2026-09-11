@@ -713,6 +713,56 @@ const OVERRIDES = {
   ],
   S08Product: [
     {
+      // Экран примерки. В макете тут была фотография из фотобанка, поверх
+      // которой рисовались плашки слоёв и карточка размера. Пришёл настоящий
+      // макет экрана — со своей полкой вещей слева, подписью «Верхняя одежда»
+      // и каруселью снизу. Накладывать поверх него наши плашки нельзя: они
+      // лягут ровно на эту полку. Показываем экран как есть.
+      //
+      // object-fit: contain, а не cover: это макет экрана, у него свои
+      // пропорции, и обрезать у него полку или карусель — значит показать
+      // не тот инструмент, про который написан текст.
+      what: 'экран примерки → настоящий макет экрана',
+      find: /<div style=\{\{ position: "relative", flex: "1", borderRadius: "16px", overflow: "hidden", background: "#0E1014", minHeight: "520px" \}\}>\n[\s\S]*?\n(\s*)<\/div>\n\s*<\/>\n/,
+      to: (m, ind) =>
+        `<div style={{ position: "relative", flex: "1", borderRadius: "16px", overflow: "hidden", background: "#0E1014", minHeight: "520px" }}>\n` +
+        `${ind}  <img src="/landing/ru/product-tryon.webp" alt="Экран примерки: образ из пяти слоёв, полка вещей и каталог верхней одежды" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 50%" }} />\n` +
+        `${ind}</div>\n${ind.slice(2)}</>\n`
+    },
+    {
+      // Подсказки чат-стилиста. В макете три кадрированные фотографии из
+      // фотобанка с подписью-пилюлей. Стилист предлагает вещи из каталога,
+      // значит и выглядеть это должно как карточки каталога: пакшот целиком
+      // на светлом поле, название, цена. Товары и цены настоящие, из
+      // демо-витрины.
+      //
+      // «Пальто» в подписи заменено на «Куртку»: пальто с живой фотографией
+      // в каталогах нет — у проекта Malina Bonita они есть, но их снимки
+      // лежат битыми ссылками в MinIO. Ставить под подпись «Пальто» снимок
+      // куртки — врать в витрине.
+      what: 'подсказки стилиста → карточки реальных товаров',
+      find: /<div style=\{\{ display: "grid", gridTemplateColumns: "repeat\(3,1fr\)", gap: "10px", marginTop: "4px" \}\}>\n[\s\S]*?Жакет\n\s*<\/span>\n\s*<\/div>\n(\s*)<\/div>/,
+      to: (m, ind) => {
+        const cards = [
+          ['pc-dress', 'Платье-миди', '384 000 ₽', 'ZIMMERMANN'],
+          ['pc-jacket', 'Куртка', '116 000 ₽', 'ROTATE'],
+          ['pc-blazer', 'Жакет', '462 000 ₽', 'TOTEME']
+        ];
+        const i2 = ind + '  ';
+        const body = cards.map(([file, name, price, brand]) =>
+          `${i2}<div className="pcard">\n` +
+          `${i2}  <span className="pcard__shot">\n` +
+          `${i2}    <img src="/landing/ru/${file}.webp" alt="${name} ${brand} из каталога магазина" />\n` +
+          `${i2}  </span>\n` +
+          `${i2}  <span className="pcard__brand">${brand}</span>\n` +
+          `${i2}  <span className="pcard__name">${name}</span>\n` +
+          `${i2}  <span className="pcard__price">${price}</span>\n` +
+          `${i2}</div>`
+        ).join('\n');
+        return `<div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "10px", marginTop: "4px" }}>\n${body}\n${ind}</div>`;
+      }
+    },
+    {
       what: 'капсула блока продукта',
       find: /(<span style=\{\{ display: "inline-flex", height: "28px", alignItems: "center", padding: "0 12px", borderRadius: "999px", background: "rgba\(255,255,255,\.1\)", fontSize: "12px", fontWeight: "500", color: "rgba\(255,255,255,\.75\)", whiteSpace: "nowrap" \}\}>\n\s*)Состав продукта/,
       to: (m, head) => `${head}Вы получаете`
@@ -741,6 +791,16 @@ const OVERRIDES = {
     }
   ],
   S14Cta: [
+    {
+      // Фон блока заявки. В макете фотография покупательницы — она дублирует
+      // такие же кадры выше по странице. Абстрактный свет не спорит с формой
+      // и не тянет внимание на себя. alt пустой и aria-hidden: это подложка,
+      // читать её вслух нечего.
+      what: 'фон блока заявки',
+      find: /<img src="\/landing\/ru\/look-5\.jpg" alt="Покупательница в образе, собранном примеркой" style=\{\{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 20%" \}\} \/>/,
+      to: () =>
+        '<img src="/landing/ru/cta-bg.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }} />'
+    },
     {
       // Состояние отправки. В макете подпись кнопки статична, потому что там
       // форма ничего не отправляет. У нас отправляет — и человек должен
