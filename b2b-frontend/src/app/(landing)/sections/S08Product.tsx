@@ -61,7 +61,7 @@ export function S08Product({ v }: { v: LandingVals }) {
             {(v.isTryon) ? (
               <>
                 <div style={{ position: "relative", flex: "1", borderRadius: "16px", overflow: "hidden", background: "#0E1014", minHeight: "520px" }}>
-                  <img src="/landing/ru/product-tryon.webp" alt="Экран примерки: образ из пяти слоёв, полка вещей и каталог верхней одежды" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 50%" }} />
+                  <img src="/landing/ru/product-tryon.29230598.webp" alt="Экран примерки: образ из пяти слоёв, полка вещей и каталог верхней одежды" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 50%" }} />
                 </div>
               </>
             ) : null}

@@ -13,7 +13,7 @@ import { SectionTitle } from '@/components/blog/SectionTitle';
 import { TagChip } from '@/components/blog/TagChip';
 import type { Article } from '@/data/blog';
 
-// Interactive list UI for /ru/blog. Articles (DB + static merged) are
+// Interactive list UI for /blog. Articles (DB + static merged) are
 // passed down from the server component so the whole page still SSRs.
 
 export function BlogIndexClient({

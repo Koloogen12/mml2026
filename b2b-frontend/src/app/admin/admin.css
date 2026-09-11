@@ -1,5 +1,5 @@
 /* Tailwind reset + utilities for the /admin subtree.
-   Separate entry from /ru/blog so each section stays independent. */
+   Separate entry from /blog so each section stays independent. */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

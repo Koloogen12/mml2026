@@ -14,7 +14,7 @@ export const FeaturedCard = ({ article }: { article: Article }) => {
       transition={{ duration: 0.3, ease: "easeOut" }}
       className="group overflow-hidden rounded-[32px] bg-brand-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
     >
-      <Link href={`/ru/blog/${article.slug}`} className="grid md:grid-cols-2">
+      <Link href={`/blog/${article.slug}`} className="grid md:grid-cols-2">
         <div className="aspect-[16/10] overflow-hidden md:aspect-auto md:h-full">
           <img
             src={article.cover}

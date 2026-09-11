@@ -1,5 +1,6 @@
-/* Стили лендинга /ru/v2. Сгенерированную часть (блок <style> из <helmet> макета
-   и псевдоклассы style-hover/style-focus) правит только scripts/dc-to-tsx.mjs. */
+/* Стили лендинга (корень «/»). Сгенерированную часть (блок <style> из <helmet>
+   макета и псевдоклассы style-hover/style-focus) правит только
+   scripts/dc-to-tsx.mjs. */
 
 /* Сгенерированное: шрифты из <helmet> макета, сам блок <style> и
    псевдоклассы style-hover/style-focus. */
@@ -16,7 +17,10 @@
            background-color:transparent; line-height:inherit; font-size:inherit;
            font-family:inherit; ... }
        html, body { font-size:15px }
-     • src/app/ru/blog/blog.css (layout /ru) — Tailwind preflight.
+     • раньше сюда же приезжал Tailwind preflight из blog.css — лендинг лежал
+       под layout /ru. После переезда на корень его нет, но правила ниже
+       оставлены: они описывают целевое состояние поддерева, а не заплатку под
+       конкретный сброс, и без preflight ничего не ломают.
 
    Критично для совпадения с макетом именно box-sizing (в макете кнопки и поля
    считают height + padding + border по content-box), базовый кегль и

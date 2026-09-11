@@ -25,8 +25,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'design-handoff/ru-landing/MakeMeLook Landing.dc.html');
-const OUT_DIR = path.join(ROOT, 'src/app/ru/v2/sections');
-const OUT_CSS = path.join(ROOT, 'src/app/ru/v2/landing.generated.css');
+const OUT_DIR = path.join(ROOT, 'src/app/(landing)/sections');
+const OUT_CSS = path.join(ROOT, 'src/app/(landing)/landing.generated.css');
 
 /* ─────────────────────────── парсер ─────────────────────────── */
 
@@ -694,7 +694,7 @@ const OVERRIDES = {
           `              С марта 2026 Wildberries и Ozon начали ограничивать покупателей с низким выкупом. Причина названа прямо: пункты выдачи используют как бесплатную примерочную, и это слишком дорого.\n` +
           `            </p>\n` +
           `            {" "}\n` +
-          `            <a href="/ru/blog/primerka-pereehala-v-logistiku" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "18px", minHeight: "44px", fontSize: "14px", color: "rgba(255,255,255,.6)", textDecoration: "underline", textUnderlineOffset: "3px" }}>\n` +
+          `            <a href="/blog/primerka-pereehala-v-logistiku" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "18px", minHeight: "44px", fontSize: "14px", color: "rgba(255,255,255,.6)", textDecoration: "underline", textUnderlineOffset: "3px" }}>\n` +
           `              Читать полностью →\n` +
           `            </a>`
         );
@@ -726,7 +726,7 @@ const OVERRIDES = {
       find: /<div style=\{\{ position: "relative", flex: "1", borderRadius: "16px", overflow: "hidden", background: "#0E1014", minHeight: "520px" \}\}>\n[\s\S]*?\n(\s*)<\/div>\n\s*<\/>\n/,
       to: (m, ind) =>
         `<div style={{ position: "relative", flex: "1", borderRadius: "16px", overflow: "hidden", background: "#0E1014", minHeight: "520px" }}>\n` +
-        `${ind}  <img src="/landing/ru/product-tryon.webp" alt="Экран примерки: образ из пяти слоёв, полка вещей и каталог верхней одежды" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 50%" }} />\n` +
+        `${ind}  <img src="/landing/ru/product-tryon.29230598.webp" alt="Экран примерки: образ из пяти слоёв, полка вещей и каталог верхней одежды" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "contain", objectPosition: "50% 50%" }} />\n` +
         `${ind}</div>\n${ind.slice(2)}</>\n`
     },
     {
@@ -799,7 +799,7 @@ const OVERRIDES = {
       what: 'фон блока заявки',
       find: /<img src="\/landing\/ru\/look-5\.jpg" alt="Покупательница в образе, собранном примеркой" style=\{\{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 20%" \}\} \/>/,
       to: () =>
-        '<img src="/landing/ru/cta-bg.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }} />'
+        '<img src="/landing/ru/cta-bg.f077cc44.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }} />'
     },
     {
       // Состояние отправки. В макете подпись кнопки статична, потому что там
@@ -877,7 +877,7 @@ fs.writeFileSync(OUT_CSS, css);
 
 // JSON-LD для страницы
 fs.writeFileSync(
-  path.join(ROOT, 'src/app/ru/v2/jsonld.generated.json'),
+  path.join(ROOT, 'src/app/(landing)/jsonld.generated.json'),
   jsonLd.join('\n') + '\n'
 );
 

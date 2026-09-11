@@ -31,7 +31,7 @@ export function S07WhyNow({ v }: { v: LandingVals }) {
               С марта 2026 Wildberries и Ozon начали ограничивать покупателей с низким выкупом. Причина названа прямо: пункты выдачи используют как бесплатную примерочную, и это слишком дорого.
             </p>
             {" "}
-            <a href="/ru/blog/primerka-pereehala-v-logistiku" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "18px", minHeight: "44px", fontSize: "14px", color: "rgba(255,255,255,.6)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
+            <a href="/blog/primerka-pereehala-v-logistiku" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "18px", minHeight: "44px", fontSize: "14px", color: "rgba(255,255,255,.6)", textDecoration: "underline", textUnderlineOffset: "3px" }}>
               Читать полностью →
             </a>
           </div>

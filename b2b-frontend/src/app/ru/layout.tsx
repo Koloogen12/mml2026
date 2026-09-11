@@ -1,8 +1,15 @@
-// blog.css exposes the brand CSS variables + Tailwind utility classes used
-// by the BlogTeaser section that the landing embeds before <Contacts />.
-// Keeping the import here (not in the root layout) scopes Tailwind loading
-// to /ru/** only, so /en and / stay untouched.
-import './blog/blog.css';
+// Под /ru остался только /ru/platform: старый лендинг виджета (/ru) и журнал
+// (/ru/blog) отсюда уехали — лендинг занял корень, журнал живёт на /blog,
+// оба старых адреса отдают 301 (см. redirects() в next.config.mjs).
+//
+// blog.css здесь остаётся, хотя журнала под /ru больше нет. Он приезжал сюда
+// ради BlogTeaser старого лендинга, но заодно давал /ru/platform Tailwind
+// preflight — и страница на него опирается: без него line-height падает с 1.5
+// на UA-шный normal, тексты карточек сжимаются, страница становится на 150 px
+// короче (проверено скриншотами). Убирать preflight — отдельная задача про
+// /ru/platform и /en/platform (близнец без Tailwind, он уже рисуется иначе),
+// а не побочный эффект переезда лендинга.
+import '../blog/blog.css';
 import type { Metadata } from 'next';
 
 // eslint-disable-next-line import/no-unused-modules
@@ -46,8 +53,5 @@ export const metadata: Metadata = {
 
 // eslint-disable-next-line import/no-unused-modules
 export default function RuPageLayout({ children }: { children: React.ReactNode }) {
-  // Widget script is intentionally NOT loaded here — it's specific to the
-  // landing homepage and was leaking into /ru/blog/** pages where it took
-  // over the layout. `/ru/page.tsx` loads the widget itself.
   return <>{children}</>;
 }

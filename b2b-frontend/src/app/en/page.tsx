@@ -29,7 +29,7 @@ import { VideoIntro } from '@/fsd/widgets/VideoIntro';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 
-import s from '../page.module.css';
+import s from './page.module.css';
 
 // eslint-disable-next-line import/no-unused-modules
 export default function HomeEn() {

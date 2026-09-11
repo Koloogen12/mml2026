@@ -24,7 +24,7 @@ const DEFAULT_NAV: NavLink[] = [
   // /shopping/ is served by a separate docker stack behind the edge nginx —
   // use a raw <a> so Next.js doesn't try to client-navigate inside its router.
   { label: 'Демо-магазин', href: '/shopping/', external: true },
-  { label: 'Блог', href: '/ru/blog' }
+  { label: 'Блог', href: '/blog' }
 ];
 
 export default function Header({

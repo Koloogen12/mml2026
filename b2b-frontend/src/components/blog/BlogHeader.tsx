@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import IconLogo from '@/fsd/shared/icons/IconLogo';
 
-// Custom header for /ru/blog pages.
+// Custom header for /blog pages.
 //
 // We do not reuse the main landing <Header /> widget directly because that
 // component accepts a single onClick handler for a demo-request modal that
@@ -21,7 +21,7 @@ export const BlogHeader = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isBlogActive = pathname?.startsWith('/ru/blog');
+  const isBlogActive = pathname?.startsWith('/blog');
 
   return (
     <header className="w-full">
@@ -31,7 +31,7 @@ export const BlogHeader = () => {
         transition={{ duration: 0.3 }}
         className="relative mx-auto flex max-w-container-brand items-center justify-between gap-6 px-4 py-[22px] md:px-2"
       >
-        <Link href="/ru" className="flex-shrink-0 text-brand-dark" aria-label="MakeMeLook">
+        <Link href="/" className="flex-shrink-0 text-brand-dark" aria-label="MakeMeLook">
           <IconLogo />
         </Link>
 
@@ -49,7 +49,7 @@ export const BlogHeader = () => {
             Демо-магазин
           </a>
           <Link
-            href="/ru/blog"
+            href="/blog"
             className={`text-[15px] font-medium transition-opacity duration-150 hover:opacity-65 ${
               isBlogActive ? 'text-brand-accent' : 'text-brand-ink'
             }`}

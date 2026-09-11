@@ -230,7 +230,7 @@ export default function BlogEditor({ post }: { post: Post }) {
 
           {status === 'published' && (
             <NextLink
-              href={`/ru/blog/${slug}`}
+              href={`/blog/${slug}`}
               target="_blank"
               rel="noopener"
               className="inline-flex items-center gap-1.5 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface)] px-3 py-1.5 text-[13px] font-medium text-[var(--admin-ink)] transition-colors hover:bg-[var(--admin-bg)]"

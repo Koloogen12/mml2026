@@ -42,11 +42,11 @@ export function BlogArticleClient({
         <section className="pt-10 md:pt-14">
           <div className="mx-auto max-w-prose-brand px-4 md:px-2">
             <nav className="mb-6 flex items-center gap-1 text-[13px] text-brand-muted">
-              <Link href="/ru" className="hover:text-brand-ink">
+              <Link href="/" className="hover:text-brand-ink">
                 Главная
               </Link>
               <ChevronRight className="h-3.5 w-3.5" />
-              <Link href="/ru/blog" className="hover:text-brand-ink">
+              <Link href="/blog" className="hover:text-brand-ink">
                 Блог
               </Link>
               <ChevronRight className="h-3.5 w-3.5" />

@@ -7,7 +7,7 @@ export function S14Cta({ v }: { v: LandingVals }) {
   return (
     <section id="form" data-screen-label="14 CTA" style={{ padding: "200px 12px 12px" }}>
       <div style={{ position: "relative", borderRadius: "28px", overflow: "hidden", minHeight: "680px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", background: "#0E1014" }}>
-        <img src="/landing/ru/cta-bg.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }} />
+        <img src="/landing/ru/cta-bg.f077cc44.webp" alt="" aria-hidden="true" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 50%" }} />
         {" "}
         <div style={{ position: "absolute", inset: "0", background: "linear-gradient(90deg,rgba(10,14,22,.72) 0%,rgba(10,14,22,.6) 34%,rgba(10,14,22,.12) 62%,rgba(10,14,22,0) 100%)" }}></div>
         {" "}

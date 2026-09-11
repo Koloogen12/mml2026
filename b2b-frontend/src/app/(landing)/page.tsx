@@ -8,11 +8,11 @@ export const metadata: Metadata = {
   title: 'MakeMeLook — виртуальная примерка для интернет-магазина одежды',
   description:
     'Одно фото — и покупатель видит вашу вещь на себе. Размер считается по вашей размерной сетке. Виджет ставится скриптом на Tilda, InSales, 1С-Битрикс, CS-Cart, OpenCart и самописные сайты.',
-  alternates: { canonical: '/ru/v2' },
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: '/ru/v2',
+    url: '/',
     siteName: 'MakeMeLook',
     title: 'MakeMeLook — виртуальная примерка для интернет-магазина одежды',
     description:
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 // eslint-disable-next-line import/no-unused-modules
-export default function LandingV2Page() {
+export default function LandingPage() {
   return (
     <>
       <script

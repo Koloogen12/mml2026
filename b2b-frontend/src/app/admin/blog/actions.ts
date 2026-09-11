@@ -90,7 +90,7 @@ export async function deletePostAction(id: number) {
   await prisma.blogPost.delete({ where: { id } });
   revalidatePath('/admin/blog');
   revalidatePath('/admin');
-  revalidatePath('/ru/blog');
+  revalidatePath('/blog');
 }
 
 interface SavePostInput {
@@ -122,8 +122,8 @@ export async function savePostAction(input: SavePostInput) {
 
   revalidatePath('/admin/blog');
   revalidatePath(`/admin/blog/${input.id}`);
-  revalidatePath('/ru/blog');
-  revalidatePath(`/ru/blog/${safeSlug}`);
+  revalidatePath('/blog');
+  revalidatePath(`/blog/${safeSlug}`);
 
   return { slug: safeSlug };
 }
@@ -144,8 +144,8 @@ export async function togglePublishAction(id: number) {
 
   revalidatePath('/admin/blog');
   revalidatePath(`/admin/blog/${id}`);
-  revalidatePath('/ru/blog');
-  revalidatePath(`/ru/blog/${post.slug}`);
+  revalidatePath('/blog');
+  revalidatePath(`/blog/${post.slug}`);
 
   return { status: nextStatus };
 }

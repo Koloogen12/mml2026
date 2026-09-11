@@ -98,7 +98,7 @@ function Section({
                       {p.title}
                     </Link>
                     <div className="mt-0.5 font-mono text-[12px] text-[var(--admin-muted)]">
-                      /ru/blog/{p.slug}
+                      /blog/{p.slug}
                     </div>
                   </td>
                   <td className="w-40 px-3 py-3 text-[13px] text-[var(--admin-muted)]">

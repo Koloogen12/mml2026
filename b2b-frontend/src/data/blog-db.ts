@@ -1,6 +1,6 @@
 // Adapter layer that exposes DB-backed blog posts in the same `Article`
 // shape that the Lovable static data (`@/data/blog`) uses. Lets the
-// public /ru/blog pages mix published-from-admin posts with the seed
+// public /blog pages mix published-from-admin posts with the seed
 // static posts without branching the UI.
 
 import type { Article } from '@/data/blog';

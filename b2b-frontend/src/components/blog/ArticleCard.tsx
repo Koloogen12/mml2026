@@ -30,7 +30,7 @@ export const ArticleCard = ({ article, index = 0, query }: Props) => {
       transition={{ duration: 0.3, ease: "easeOut", delay: Math.min(index, 6) * 0.04 }}
       className="group flex flex-col overflow-hidden rounded-[24px] bg-brand-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.08)]"
     >
-      <Link href={`/ru/blog/${article.slug}`} className="flex flex-1 flex-col">
+      <Link href={`/blog/${article.slug}`} className="flex flex-1 flex-col">
         <div className="aspect-[16/9] w-full overflow-hidden">
           <img
             src={article.cover}

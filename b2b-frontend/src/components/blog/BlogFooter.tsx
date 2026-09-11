@@ -4,7 +4,7 @@ export const BlogFooter = () => (
       <span style={{ letterSpacing: "-0.05em" }}>© {new Date().getFullYear()} MakeMeLook. Все права защищены.</span>
       <div className="flex gap-5" style={{ letterSpacing: "-0.05em" }}>
         <a href="/" className="transition-colors duration-200 hover:text-brand-ink">Главная</a>
-        <a href="/ru/blog" className="transition-colors duration-200 hover:text-brand-ink">Блог</a>
+        <a href="/blog" className="transition-colors duration-200 hover:text-brand-ink">Блог</a>
         <a href="mailto:hello@makemelook.ai" className="transition-colors duration-200 hover:text-brand-ink">Контакты</a>
       </div>
     </div>

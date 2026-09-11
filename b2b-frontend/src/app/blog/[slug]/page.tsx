@@ -56,7 +56,7 @@ export default async function BlogArticlePage({ params }: Props) {
             Возможно, материал был перемещён или удалён.
           </p>
           <Link
-            href="/ru/blog"
+            href="/blog"
             className="inline-flex h-[42px] items-center rounded-[100px] bg-brand-cta px-6 text-[13px] font-medium text-white transition-colors duration-300 hover:bg-brand-cta-hover"
           >
             Вернуться в блог
