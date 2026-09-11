@@ -15,7 +15,14 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { JournalData } from './journal';
-import { readForm, submitLead } from './submitLead';
+import {
+  formatContactInput,
+  normalizeSite,
+  readForm,
+  submitLead,
+  validateContact,
+  validateName
+} from './submitLead';
 import { track } from './track';
 
 // Ползунок дёргает обработчик на каждый пиксель. Метрике важен факт «человек
@@ -569,6 +576,20 @@ export function useLandingVals(journal: JournalData) {
       sent,
       formError,
       submitLabel: sending ? 'Отправляем…' : 'Показать на моих товарах',
+      // Подсказка при наборе. Слушаем форму целиком, а не каждое поле: полей
+      // в разметке макета нет атрибутов name, вешать обработчики поштучно
+      // означало бы дописывать их в сгенерированную вёрстку.
+      formInput: (e: React.FormEvent) => {
+        const el = e.target as HTMLInputElement;
+        if (el.tagName !== 'INPUT') return;
+        el.removeAttribute('aria-invalid');
+        const form = el.form;
+        if (!form) return;
+        const idx = Array.from(form.querySelectorAll('input')).indexOf(el);
+        if (idx !== 1) return;            // форматируем только поле контакта
+        const next = formatContactInput(el.value);
+        if (next !== el.value) el.value = next;
+      },
       submit: async (e: React.FormEvent) => {
         e.preventDefault();
         if (sending) return;
@@ -577,7 +598,22 @@ export function useLandingVals(journal: JournalData) {
         setFormError('');
         try {
           // Порядок полей задан макетом: каталог, контакт, имя.
-          const [site, contact, person] = readForm(form, 3);
+          const [rawSite, rawContact, rawName] = readForm(form, 3);
+          // Проверяем на клиенте до отправки: сервер отвечает одной строкой на
+          // всю форму, и человек не понимает, какое из трёх полей исправлять.
+          const inputs = Array.from(form.querySelectorAll('input'));
+          inputs.forEach((i) => i.removeAttribute('aria-invalid'));
+          const checks = [normalizeSite(rawSite), validateContact(rawContact), validateName(rawName)];
+          const bad = checks.findIndex((r) => 'field' in r);
+          if (bad !== -1) {
+            const err = checks[bad] as { message: string };
+            inputs[bad]?.setAttribute('aria-invalid', 'true');
+            inputs[bad]?.focus();
+            setFormError(err.message);
+            setSending(false);
+            return;
+          }
+          const [site, contact, person] = checks.map((r) => (r as { value: string }).value);
           await submitLead({ name: person, contact, site });
           track('lead_form_sent');
           setSent(true);

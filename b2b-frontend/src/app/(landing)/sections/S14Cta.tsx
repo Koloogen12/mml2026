@@ -42,7 +42,7 @@ export function S14Cta({ v }: { v: LandingVals }) {
         <div style={{ position: "relative", padding: "40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
           {(v.notSent) ? (
             <>
-              <form onSubmit={v.submit} style={{ width: "min(440px,100%)", background: "#fff", borderRadius: "28px", padding: "28px", display: "flex", flexDirection: "column", gap: "14px" }}>
+              <form onSubmit={v.submit} onInput={v.formInput} style={{ width: "min(440px,100%)", background: "#fff", borderRadius: "28px", padding: "28px", display: "flex", flexDirection: "column", gap: "14px" }}>
                 <label style={{ display: "flex", flexDirection: "column", gap: "6px", fontSize: "12px", color: "#565E6B" }}>
                   Ссылка на каталог или сайт
                   <input className="scp7" required placeholder="https://" style={{ height: "52px", borderRadius: "16px", border: "1px solid rgba(18,20,23,.12)", padding: "0 16px", fontSize: "17px", fontFamily: "'Golos Text',sans-serif", color: "#121417", outline: "none" }} />
