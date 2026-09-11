@@ -1,6 +1,6 @@
 'use client';
 
-import { FileText, Home, LogOut, Mail, Settings } from 'lucide-react';
+import { FileText, Home, LogOut, Mail } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -17,8 +17,8 @@ interface NavItem {
 const NAV: NavItem[] = [
   { href: '/admin', label: 'Главная', icon: Home },
   { href: '/admin/leads', label: 'Заявки', icon: Mail },
-  { href: '/admin/blog', label: 'Блог', icon: FileText },
-  { href: '/admin/settings', label: 'Настройки', icon: Settings }
+  { href: '/admin/blog', label: 'Блог', icon: FileText }
+  // «Настройки» из меню убраны: страницы /admin/settings нет, пункт вёл в 404.
 ];
 
 export default function AdminShell({ children }: { children: React.ReactNode }) {

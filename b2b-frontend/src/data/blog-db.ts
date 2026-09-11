@@ -78,6 +78,16 @@ export async function getDbArticleBySlug(slug: string): Promise<Article | null> 
   return toArticle(post);
 }
 
+/**
+ * Черновик по slug — для предпросмотра из админки. Вызывать только после
+ * проверки сессии: статус здесь намеренно не фильтруется.
+ */
+export async function getDraftArticleBySlug(slug: string): Promise<Article | null> {
+  const post = await prisma.blogPost.findFirst({ where: { slug } });
+  if (!post) return null;
+  return toArticle(post);
+}
+
 // Merged list: published DB posts first, then static seed posts that are
 // not already "replaced" by a DB post with the same slug. This lets the
 // admin publish new posts without hiding the Lovable demo content until

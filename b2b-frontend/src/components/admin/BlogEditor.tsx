@@ -25,12 +25,14 @@ import {
   Redo2,
   Save,
   Trash2,
+  Upload,
+  X,
   Underline as UnderlineIcon,
   Undo2
 } from 'lucide-react';
 import NextLink from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState, useTransition } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 
 import {
   deletePostAction,
@@ -93,6 +95,10 @@ export default function BlogEditor({ post }: { post: Post }) {
   const [dirty, setDirty] = useState(false);
   const [savedAt, setSavedAt] = useState<Date | null>(null);
   const [status, setStatus] = useState(post.status);
+  const [uploading, setUploading] = useState<null | 'cover' | 'inline'>(null);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const coverInput = useRef<HTMLInputElement>(null);
+  const inlineInput = useRef<HTMLInputElement>(null);
 
   const editor = useEditor({
     extensions: [
@@ -197,11 +203,45 @@ export default function BlogEditor({ post }: { post: Post }) {
     editor?.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
   };
 
-  const insertImage = () => {
-    const url = prompt('URL картинки:');
-    if (!url) return;
-    editor?.chain().focus().setImage({ src: url }).run();
+  /**
+   * Заливка картинки на сервер. Файлы уходят в том /app/data/media, а не в
+   * public/: public пересобирается в образ на каждом деплое, и всё залитое
+   * редактором пропадало бы. Возвращается постоянный адрес /media/<хеш>.
+   */
+  const upload = async (file: File): Promise<string | null> => {
+    setUploadError(null);
+    const body = new FormData();
+    body.append('file', file);
+    const res = await fetch('/api/admin/media', { method: 'POST', body });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setUploadError(data.error || `Не удалось загрузить (${res.status})`);
+      return null;
+    }
+    const { url } = (await res.json()) as { url: string };
+    return url;
   };
+
+  const onPickCover = async (file: File | undefined) => {
+    if (!file) return;
+    setUploading('cover');
+    const url = await upload(file);
+    setUploading(null);
+    if (url) setCoverUrl(url);
+  };
+
+  const onPickInline = async (file: File | undefined) => {
+    if (!file) return;
+    setUploading('inline');
+    const url = await upload(file);
+    setUploading(null);
+    if (url) {
+      editor?.chain().focus().setImage({ src: url }).run();
+      setDirty(true);
+    }
+  };
+
+  const insertImage = () => inlineInput.current?.click();
 
   if (!editor) return null;
 
@@ -228,17 +268,19 @@ export default function BlogEditor({ post }: { post: Post }) {
                 : `Без изменений · ${wordCount} слов`}
           </span>
 
-          {status === 'published' && (
-            <NextLink
-              href={`/blog/${slug}`}
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-1.5 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface)] px-3 py-1.5 text-[13px] font-medium text-[var(--admin-ink)] transition-colors hover:bg-[var(--admin-bg)]"
-            >
-              <Eye className="h-3.5 w-3.5" />
-              На сайте
-            </NextLink>
-          )}
+          {/* Черновик тоже открывается — по ?draft=1 и только вошедшему в
+              админку. Без этого единственный способ увидеть статью глазами
+              покупателя был «опубликовать и посмотреть», то есть показать
+              сырой текст всем. */}
+          <NextLink
+            href={status === 'published' ? `/blog/${slug}` : `/blog/${slug}?draft=1`}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center gap-1.5 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface)] px-3 py-1.5 text-[13px] font-medium text-[var(--admin-ink)] transition-colors hover:bg-[var(--admin-bg)]"
+          >
+            <Eye className="h-3.5 w-3.5" />
+            {status === 'published' ? 'На сайте' : 'Предпросмотр'}
+          </NextLink>
 
           <button
             type="button"
@@ -313,15 +355,74 @@ export default function BlogEditor({ post }: { post: Post }) {
           />
         </Field>
 
-        <Field label="URL обложки" hint="Ссылка на картинку 16:9. Пока загрузка файлов не сделана — используй готовую ссылку." className="md:col-span-2">
-          <input
-            value={coverUrl}
-            onChange={(e) => setCoverUrl(e.target.value)}
-            className="h-10 w-full rounded-md border border-[var(--admin-border)] bg-white px-3 font-mono text-[13px] text-[var(--admin-ink)] outline-none focus:border-[var(--admin-accent)]"
-            placeholder="https://example.com/cover.jpg  или  /blog/cover-1.jpg"
-          />
+        <Field
+          label="Обложка"
+          hint="Кадр 16:9 — он же уходит в соцсети при шеринге. Можно загрузить файл (JPEG, PNG, WebP, AVIF, GIF до 8 МБ) или вставить готовую ссылку."
+          className="md:col-span-2"
+        >
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-wrap items-center gap-2">
+              <input
+                ref={coverInput}
+                type="file"
+                accept="image/jpeg,image/png,image/webp,image/avif,image/gif"
+                className="hidden"
+                onChange={(e) => {
+                  void onPickCover(e.target.files?.[0]);
+                  // Сбрасываем значение: иначе повторный выбор того же файла
+                  // не даёт события change и кнопка выглядит сломанной.
+                  e.target.value = '';
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => coverInput.current?.click()}
+                disabled={uploading !== null}
+                className="inline-flex items-center gap-1.5 rounded-md border border-[var(--admin-border)] bg-[var(--admin-surface)] px-3 py-1.5 text-[13px] font-medium text-[var(--admin-ink)] transition-colors hover:bg-[var(--admin-bg)] disabled:opacity-50"
+              >
+                <Upload className="h-3.5 w-3.5" />
+                {uploading === 'cover' ? 'Загружаем…' : 'Загрузить файл'}
+              </button>
+
+              {coverUrl && (
+                <button
+                  type="button"
+                  onClick={() => setCoverUrl('')}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-[var(--admin-border)] bg-white px-3 py-1.5 text-[13px] font-medium text-[var(--admin-muted)] transition-colors hover:bg-[var(--admin-bg)]"
+                >
+                  <X className="h-3.5 w-3.5" />
+                  Убрать
+                </button>
+              )}
+            </div>
+
+            <input
+              value={coverUrl}
+              onChange={(e) => setCoverUrl(e.target.value)}
+              className="h-10 w-full rounded-md border border-[var(--admin-border)] bg-white px-3 font-mono text-[13px] text-[var(--admin-ink)] outline-none focus:border-[var(--admin-accent)]"
+              placeholder="/media/… или https://example.com/cover.jpg"
+            />
+
+            {coverUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={coverUrl}
+                alt="Обложка статьи"
+                className="aspect-[16/9] w-full max-w-[420px] rounded-lg border border-[var(--admin-border)] object-cover"
+              />
+            )}
+          </div>
         </Field>
       </div>
+
+      {uploadError && (
+        <div
+          role="alert"
+          className="rounded-lg border border-[var(--admin-danger)] bg-red-50 px-4 py-2 text-[13px] text-[var(--admin-danger)]"
+        >
+          {uploadError}
+        </div>
+      )}
 
       {/* Editor card */}
       <div className="rounded-xl border border-[var(--admin-border)] bg-[var(--admin-surface)]">
@@ -429,6 +530,20 @@ export default function BlogEditor({ post }: { post: Post }) {
           <ToolbarBtn title="Картинка" onClick={insertImage}>
             <ImageIcon className="h-4 w-4" />
           </ToolbarBtn>
+          <input
+            ref={inlineInput}
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/avif,image/gif"
+            className="hidden"
+            onChange={(e) => {
+              void onPickInline(e.target.files?.[0]);
+              e.target.value = '';
+            }}
+          />
+
+          {uploading === 'inline' && (
+            <span className="ml-2 text-[12px] text-[var(--admin-muted)]">Загружаем картинку…</span>
+          )}
         </div>
 
         <div className="px-6 py-6">

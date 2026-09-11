@@ -7,6 +7,10 @@ import type { NextAuthConfig } from 'next-auth';
 // in `./auth.ts` and is used by the route handler + server components.
 
 export const authConfig = {
+  // Приложение отдаётся сразу на двух именах (b2b.makemelook.ai и
+  // makemelook.tech), поэтому «правильный» адрес — тот, по которому пришёл
+  // запрос, а не зашитый в переменную окружения.
+  trustHost: true,
   pages: {
     signIn: '/admin/login'
   },
@@ -27,8 +31,18 @@ export const authConfig = {
         return true;
       }
 
-      if (isOnAdmin) {
-        return isLoggedIn;
+      if (isOnAdmin && !isLoggedIn) {
+        // Редирект собираем сами от адреса запроса, а не возвращаем false.
+        //
+        // На false NextAuth строит адрес страницы входа от своей базы —
+        // NEXTAUTH_URL. На проде там стоит https://makemelook.ai (это ДРУГОЙ
+        // продукт, платформа покупателя), и человек, набравший
+        // b2b.makemelook.ai/admin, улетал на чужой сайт и не мог войти вообще.
+        // От nextUrl такое невозможно: на каком домене открыли админку, на том
+        // и останемся.
+        const login = new URL('/admin/login', nextUrl);
+        login.searchParams.set('callbackUrl', `${nextUrl.pathname}${nextUrl.search}`);
+        return Response.redirect(login);
       }
 
       return true;
