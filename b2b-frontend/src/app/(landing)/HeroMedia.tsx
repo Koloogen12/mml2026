@@ -10,8 +10,10 @@ import { useEffect, useRef, useState } from 'react';
  * Поэтому кадрирование выбираем в JS до того, как назначен src, и грузим
  * ровно один файл: телефон не тянет десктопный кадр и наоборот.
  *
- * preload="none" плюс постер фоном: первый экран рисуется мгновенно, само
- * видео (около мегабайта) догружается после.
+ * Постер рисуется мгновенно, видео (около мегабайта) подгружается следом.
+ * preload="auto" здесь осознанно: это первый экран, и без предзагрузки
+ * браузер не подхватывает autoPlay — вместо движения человек видит постер
+ * с кнопкой воспроизведения поверх.
  *
  * prefers-reduced-motion: зацикленное видео — это движение. Пользователю,
  * который просил его выключить, показываем только постер и ничего не грузим.
@@ -43,12 +45,28 @@ export function HeroMedia({ className, style }: { className?: string; style?: Re
       s.src = `/landing/ru/hero-${crop}.${ext}`;
       v.appendChild(s);
     }
-    // play() сразу после load() браузер отклоняет: данных ещё нет. Ждём
-    // canplay — только тогда запуск имеет смысл.
-    const start = () => void v.play().catch(() => {});
-    v.addEventListener('canplay', start, { once: true });
+    // Запуск. Одной попытки мало: Safari отклоняет play(), если данных ещё
+    // нет или вкладка не в фокусе, и тогда рисует поверх постера свою кнопку
+    // воспроизведения — на первом экране это выглядит как сломанное видео.
+    // Поэтому пробуем на каждом событии, после которого запуск имеет смысл,
+    // и ещё раз, когда вкладка становится видимой.
+    const start = () => {
+      if (!v.paused) return;
+      void v.play().catch(() => {});
+    };
+    const events = ['loadeddata', 'canplay', 'canplaythrough'] as const;
+    events.forEach((e) => v.addEventListener(e, start));
+    document.addEventListener('visibilitychange', start);
+    // Последняя страховка: браузер мог отклонить все попытки молча.
+    const retry = setInterval(start, 1200);
+    const stopRetry = setTimeout(() => clearInterval(retry), 12000);
     v.load();
-    return () => v.removeEventListener('canplay', start);
+    return () => {
+      events.forEach((e) => v.removeEventListener(e, start));
+      document.removeEventListener('visibilitychange', start);
+      clearInterval(retry);
+      clearTimeout(stopRetry);
+    };
   }, [crop]);
 
   // Пока кадрирование не выбрано — постера нет. Иначе на телефоне браузер
@@ -64,7 +82,9 @@ export function HeroMedia({ className, style }: { className?: string; style?: Re
       muted
       loop
       playsInline
-      preload="none"
+      // Для первого экрана preload="auto": без данных браузер не подхватывает
+      // autoPlay и показывает свою кнопку воспроизведения.
+      preload="auto"
       aria-hidden="true"
       className={className}
       style={style}
