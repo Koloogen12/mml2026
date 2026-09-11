@@ -1,7 +1,12 @@
 import type { Metadata } from 'next';
 
 import Landing from './Landing';
+import { getJournal } from './journal';
 import faqJsonLd from './jsonld.generated.json';
+
+// Статьи для блока «Журнал» берутся из базы на каждый запрос: опубликовали
+// разбор в админке — он появился на лендинге, без пересборки.
+export const dynamic = 'force-dynamic';
 
 // eslint-disable-next-line import/no-unused-modules
 export const metadata: Metadata = {
@@ -23,7 +28,9 @@ export const metadata: Metadata = {
 };
 
 // eslint-disable-next-line import/no-unused-modules
-export default function LandingPage() {
+export default async function LandingPage() {
+  const journal = await getJournal();
+
   return (
     <>
       <script
@@ -31,7 +38,7 @@ export default function LandingPage() {
         // JSON-LD FAQPage — один в один из <helmet> макета
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <Landing />
+      <Landing journal={journal} />
     </>
   );
 }

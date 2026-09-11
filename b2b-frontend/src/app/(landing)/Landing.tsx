@@ -1,11 +1,12 @@
 'use client';
 
+import type { JournalData } from './journal';
 import * as S from './sections';
 import { StickyCta } from './StickyCta';
 import { useLandingVals } from './useLandingVals';
 
-export default function Landing() {
-  const v = useLandingVals();
+export default function Landing({ journal }: { journal: JournalData }) {
+  const v = useLandingVals(journal);
 
   return (
     <div className="mml-v2">

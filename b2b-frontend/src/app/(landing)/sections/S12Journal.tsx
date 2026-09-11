@@ -22,9 +22,10 @@ export function S12Journal({ v }: { v: LandingVals }) {
         </p>
       </div>
       {" "}
-      <a className="scp5" href="./MakeMeLook Article.dc.html" style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", borderRadius: "28px", overflow: "hidden", background: "#0E1014", color: "#fff", textDecoration: "none", minHeight: "440px" }}>
+      {v.jLead ? (
+      <a className="scp5" href={v.jLead.href} style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", borderRadius: "28px", overflow: "hidden", background: "#0E1014", color: "#fff", textDecoration: "none", minHeight: "440px" }}>
         <div style={{ position: "relative", minHeight: "280px" }}>
-          <img src="/landing/ru/look-6.jpg" alt="Разбор: почему размер остаётся причиной возвратов" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 28%" }} />
+          <img src={v.jLead.cover} alt={v.jLead.alt} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 28%" }} />
           <div style={{ position: "absolute", inset: "0", background: "linear-gradient(90deg,rgba(14,16,20,0) 40%,rgba(14,16,20,.9) 100%)" }}></div>
         </div>
         {" "}
@@ -32,20 +33,20 @@ export function S12Journal({ v }: { v: LandingVals }) {
           <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
             <div style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
               <span style={{ height: "28px", padding: "0 12px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "#2F5AE6", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".03em", whiteSpace: "nowrap" }}>
-                РАЗБОР
+                {v.jLead.badge}
               </span>
               {" "}
               <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "12px", letterSpacing: ".03em", color: "rgba(255,255,255,.55)", whiteSpace: "nowrap" }}>
-                9 СЕНТЯБРЯ · 11 МИН
+                {v.jLead.meta}
               </span>
             </div>
             {" "}
             <h3 style={{ margin: "0", fontFamily: "Unbounded,sans-serif", fontWeight: "500", fontSize: "clamp(24px,2.6vw,38px)", lineHeight: "1.1", letterSpacing: "-.03em", textWrap: "balance" }}>
-              Возврат стоит дороже, чем кажется: считаем полную цену чужой неуверенности
+              {v.jLead.title}
             </h3>
             {" "}
             <p style={{ margin: "0", maxWidth: "520px", fontSize: "17px", lineHeight: "1.55", color: "rgba(255,255,255,.75)" }}>
-              Обратная логистика — только первая строка счёта. Разобрали, из чего складываются 300–1500 ₽ за один возврат, и почему магазины видят в отчётах меньшую цифру, чем платят.
+              {v.jLead.excerpt}
             </p>
           </div>
           {" "}
@@ -57,95 +58,42 @@ export function S12Journal({ v }: { v: LandingVals }) {
           </span>
         </div>
       </a>
+      ) : null}
       {" "}
+      {v.jRest.length > 0 ? (
       <div style={{ marginTop: "16px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "16px" }}>
-        <a className="scp6" href="./MakeMeLook Article.dc.html" style={{ display: "flex", flexDirection: "column", background: "#fff", borderRadius: "28px", overflow: "hidden", textDecoration: "none", color: "#121417", transition: "transform 240ms cubic-bezier(.2,.8,.2,1)" }}>
-          <span style={{ position: "relative", display: "block", aspectRatio: "16/10", background: "#E4E8ED", overflow: "hidden" }}>
-            <img src="/landing/ru/look-3.jpg" alt="Как собрать размерную сетку, по которой можно считать" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%" }} />
-          </span>
-          {" "}
-          <span style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "14px", flex: "1" }}>
-            <span style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
-              <span style={{ height: "26px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "#F2F3F5", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".02em", color: "#565E6B", whiteSpace: "nowrap" }}>
-                МЕТОДИКА
-              </span>
-              <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", color: "#6B7380", whiteSpace: "nowrap" }}>
-                7 мин
-              </span>
+        {v.jRest.map((a) => (
+          <a key={a.href} className="scp6" href={a.href} style={{ display: "flex", flexDirection: "column", background: "#fff", borderRadius: "28px", overflow: "hidden", textDecoration: "none", color: "#121417", transition: "transform 240ms cubic-bezier(.2,.8,.2,1)" }}>
+            <span style={{ position: "relative", display: "block", aspectRatio: "16/10", background: "#E4E8ED", overflow: "hidden" }}>
+              <img src={a.cover} alt={a.alt} style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%" }} />
             </span>
             {" "}
-            <span style={{ fontSize: "20px", fontWeight: "500", lineHeight: "1.28", letterSpacing: "-.015em" }}>
-              Как собрать размерную сетку, по которой можно считать
-            </span>
-            {" "}
-            <span style={{ fontSize: "15px", lineHeight: "1.5", color: "#565E6B" }}>
-              Восемь замеров, которых достаточно, и три, которые чаще всего забывают внести.
-            </span>
-            {" "}
-            <span style={{ marginTop: "auto", paddingTop: "12px", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".03em", color: "#2F5AE6", whiteSpace: "nowrap" }}>
-              ЧИТАТЬ →
-            </span>
-          </span>
-        </a>
-        {" "}
-        <a className="scp6" href="./MakeMeLook Article.dc.html" style={{ display: "flex", flexDirection: "column", background: "#fff", borderRadius: "28px", overflow: "hidden", textDecoration: "none", color: "#121417", transition: "transform 240ms cubic-bezier(.2,.8,.2,1)" }}>
-          <span style={{ position: "relative", display: "block", aspectRatio: "16/10", background: "#E4E8ED", overflow: "hidden" }}>
-            <img src="/landing/ru/look-5.jpg" alt="Примерочная исчезает: что случилось с офлайном за два года" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%" }} />
-          </span>
-          {" "}
-          <span style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "14px", flex: "1" }}>
-            <span style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
-              <span style={{ height: "26px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "#F2F3F5", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".02em", color: "#565E6B", whiteSpace: "nowrap" }}>
-                ИССЛЕДОВАНИЕ
+            <span style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "14px", flex: "1" }}>
+              <span style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
+                <span style={{ height: "26px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "#F2F3F5", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".02em", color: "#565E6B", whiteSpace: "nowrap" }}>
+                  {a.badge}
+                </span>
+                <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", color: "#6B7380", whiteSpace: "nowrap" }}>
+                  {a.meta}
+                </span>
               </span>
-              <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", color: "#6B7380", whiteSpace: "nowrap" }}>
-                9 мин
+              {" "}
+              <span style={{ fontSize: "20px", fontWeight: "500", lineHeight: "1.28", letterSpacing: "-.015em" }}>
+                {a.title}
+              </span>
+              {" "}
+              <span style={{ fontSize: "15px", lineHeight: "1.5", color: "#565E6B" }}>
+                {a.excerpt}
+              </span>
+              {" "}
+              <span style={{ marginTop: "auto", paddingTop: "12px", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".03em", color: "#2F5AE6", whiteSpace: "nowrap" }}>
+                ЧИТАТЬ →
               </span>
             </span>
-            {" "}
-            <span style={{ fontSize: "20px", fontWeight: "500", lineHeight: "1.28", letterSpacing: "-.015em" }}>
-              Примерочная исчезает: что случилось с офлайном за два года
-            </span>
-            {" "}
-            <span style={{ fontSize: "15px", lineHeight: "1.5", color: "#565E6B" }}>
-              Данные по сокращению сетей против поведения покупателей на сайтах.
-            </span>
-            {" "}
-            <span style={{ marginTop: "auto", paddingTop: "12px", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".03em", color: "#2F5AE6", whiteSpace: "nowrap" }}>
-              ЧИТАТЬ →
-            </span>
-          </span>
-        </a>
-        {" "}
-        <a className="scp6" href="./MakeMeLook Article.dc.html" style={{ display: "flex", flexDirection: "column", background: "#fff", borderRadius: "28px", overflow: "hidden", textDecoration: "none", color: "#121417", transition: "transform 240ms cubic-bezier(.2,.8,.2,1)" }}>
-          <span style={{ position: "relative", display: "block", aspectRatio: "16/10", background: "#E4E8ED", overflow: "hidden" }}>
-            <img src="/landing/ru/look-2.jpg" alt="Какие фото товара подходят для примерки, а какие нет" style={{ position: "absolute", inset: "0", width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 25%" }} />
-          </span>
-          {" "}
-          <span style={{ padding: "24px", display: "flex", flexDirection: "column", gap: "14px", flex: "1" }}>
-            <span style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
-              <span style={{ height: "26px", padding: "0 11px", display: "inline-flex", alignItems: "center", borderRadius: "999px", background: "#F2F3F5", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".02em", color: "#565E6B", whiteSpace: "nowrap" }}>
-                ПРАКТИКА
-              </span>
-              <span style={{ fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", color: "#6B7380", whiteSpace: "nowrap" }}>
-                6 мин
-              </span>
-            </span>
-            {" "}
-            <span style={{ fontSize: "20px", fontWeight: "500", lineHeight: "1.28", letterSpacing: "-.015em" }}>
-              Какие фото товара подходят для примерки, а какие нет
-            </span>
-            {" "}
-            <span style={{ fontSize: "15px", lineHeight: "1.5", color: "#565E6B" }}>
-              Ракурс, фон, складки и подкладка: что мешает собрать вещь на человеке.
-            </span>
-            {" "}
-            <span style={{ marginTop: "auto", paddingTop: "12px", fontFamily: "'Martian Mono',ui-monospace,monospace", fontSize: "11px", letterSpacing: ".03em", color: "#2F5AE6", whiteSpace: "nowrap" }}>
-              ЧИТАТЬ →
-            </span>
-          </span>
-        </a>
+          </a>
+        ))}
       </div>
+      ) : null}
       {" "}
       <div style={{ marginTop: "16px", borderRadius: "28px", background: "#fff", padding: "clamp(24px,3vw,36px)", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "24px", alignItems: "center" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>

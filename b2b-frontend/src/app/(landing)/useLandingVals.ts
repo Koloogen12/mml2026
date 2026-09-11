@@ -14,6 +14,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
+import type { JournalData } from './journal';
 import { readForm, submitLead } from './submitLead';
 import { track } from './track';
 
@@ -54,7 +55,7 @@ export type GuessCell = {
   seen: boolean;
 };
 
-export function useLandingVals() {
+export function useLandingVals(journal: JournalData) {
   const [bets, setBets] = useState<Record<number, Kind>>({});
   const [seen, setSeen] = useState(false);
   const [subscribed, setSubscribed] = useState(false);
@@ -503,6 +504,12 @@ export function useLandingVals() {
         { q: 'Чем вы отличаетесь от примерки на маркетплейсах и зарубежных сервисов?', a: 'У маркетплейсов примерка однослойная, без расчёта размера, и работает только внутри их площадки. Зарубежные решения показывают, как вещь смотрится, но на вопрос «какой размер заказать» не отвечают. Мы считаем размер по вашей размерной сетке и работаем с магазинами без своей команды разработки.' }
       ],
 
+      // Блок «Журнал». Приходит с сервера готовым (см. ./journal.ts) — здесь
+      // только прокидывается в разметку.
+      jLead: journal.lead,
+      jRest: journal.rest,
+      whyNowHref: journal.whyNowHref,
+
       footerCols: [
         {
           title: 'ПРОДУКТ',
@@ -526,7 +533,8 @@ export function useLandingVals() {
         {
           title: 'КОМПАНИЯ',
           links: [
-            { label: 'Журнал', href: '#journal' },
+            // Ведёт на живой список разборов, а не на якорь блока на самой странице.
+            { label: 'Журнал', href: '/blog' },
             { label: 'О нас', href: '#' },
             { label: 'Контакты', href: '#form' },
             { label: 'Политика данных', href: '#' }
@@ -581,7 +589,7 @@ export function useLandingVals() {
         }
       }
     };
-  }, [bets, seen, subscribed, subState, pulse, orders, rate, cost, sent, sending, formError, barsIn, tab, accent, radius, layer, bet, tick]);
+  }, [journal, bets, seen, subscribed, subState, pulse, orders, rate, cost, sent, sending, formError, barsIn, tab, accent, radius, layer, bet, tick]);
 }
 
 export type LandingVals = ReturnType<typeof useLandingVals>;

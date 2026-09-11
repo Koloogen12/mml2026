@@ -694,10 +694,92 @@ const OVERRIDES = {
           `              С марта 2026 Wildberries и Ozon начали ограничивать покупателей с низким выкупом. Причина названа прямо: пункты выдачи используют как бесплатную примерочную, и это слишком дорого.\n` +
           `            </p>\n` +
           `            {" "}\n` +
-          `            <a href="/blog/primerka-pereehala-v-logistiku" style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "18px", minHeight: "44px", fontSize: "14px", color: "rgba(255,255,255,.6)", textDecoration: "underline", textUnderlineOffset: "3px" }}>\n` +
-          `              Читать полностью →\n` +
-          `            </a>`
+          // Ссылка появляется только когда разбор действительно опубликован
+          // (см. whyNowHref в src/app/(landing)/journal.ts). Пока статьи нет,
+          // «Читать полностью» вело на «Статья не найдена» — читателю это
+          // сообщает ровно одно: тут врут.
+          `            {v.whyNowHref ? (\n` +
+          `              <a href={v.whyNowHref} style={{ display: "inline-flex", alignItems: "center", gap: "6px", marginTop: "18px", minHeight: "44px", fontSize: "14px", color: "rgba(255,255,255,.6)", textDecoration: "underline", textUnderlineOffset: "3px" }}>\n` +
+          `                Читать полностью →\n` +
+          `              </a>\n` +
+          `            ) : null}`
         );
+      }
+    }
+  ],
+  S12Journal: [
+    {
+      // Карточки журнала. В макете их четыре, с выдуманными заголовками и
+      // ссылкой href="./MakeMeLook Article.dc.html" — то есть в бою блок вёл
+      // в никуда. Подставляем настоящие статьи из того же списка, который
+      // показывает /blog.
+      //
+      // Вёрстка не переписывается: замена берёт разметку макета как есть и
+      // меняет в ней только тексты, ссылки и картинки на выражения. Три
+      // маленькие карточки схлопываются в .map() по первой из них — они
+      // отличались только содержимым.
+      //
+      // Ни одной статьи не будет — большая карточка и сетка просто не
+      // отрисуются: пустой блок честнее выдуманного.
+      what: 'карточки журнала → настоящие статьи',
+      find: /<a className="scp5" href="\.\/MakeMeLook Article\.dc\.html"[\s\S]*?\n      <\/div>\n(?=      \{" "\}\n      <div style=\{\{ marginTop: "16px", borderRadius: "28px")/,
+      to: (m) => {
+        const splitAt = m.indexOf('\n      {" "}\n      <div style={{ marginTop: "16px", display: "grid"');
+        if (splitAt === -1) throw new Error('S12Journal: не нашёл границу между большой карточкой и сеткой');
+        let lead = m.slice(0, splitAt);
+        const grid = m.slice(splitAt);
+
+        // ── большая карточка ──────────────────────────────────────────────
+        const leadSubs = [
+          ['<a className="scp5" href="./MakeMeLook Article.dc.html"', '<a className="scp5" href={v.jLead.href}'],
+          ['src="/landing/ru/look-6.jpg" alt="Разбор: почему размер остаётся причиной возвратов"', 'src={v.jLead.cover} alt={v.jLead.alt}'],
+          ['\n                РАЗБОР\n', '\n                {v.jLead.badge}\n'],
+          ['\n                9 СЕНТЯБРЯ · 11 МИН\n', '\n                {v.jLead.meta}\n'],
+          ['\n              Возврат стоит дороже, чем кажется: считаем полную цену чужой неуверенности\n', '\n              {v.jLead.title}\n'],
+          ['\n              Обратная логистика — только первая строка счёта. Разобрали, из чего складываются 300–1500 ₽ за один возврат, и почему магазины видят в отчётах меньшую цифру, чем платят.\n', '\n              {v.jLead.excerpt}\n']
+        ];
+        for (const [from, into] of leadSubs) {
+          if (!lead.includes(from)) throw new Error(`S12Journal: в большой карточке нет «${from.trim().slice(0, 48)}»`);
+          lead = lead.replace(from, into);
+        }
+
+        // ── три карточки помельче: берём первую как образец ────────────────
+        const openGrid = '<div style={{ marginTop: "16px", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "16px" }}>';
+        const gi = grid.indexOf(openGrid);
+        const firstStart = grid.indexOf('        <a className="scp6"', gi);
+        const firstEnd = grid.indexOf('\n        </a>', firstStart);
+        if (gi === -1 || firstStart === -1 || firstEnd === -1) throw new Error('S12Journal: не нашёл карточку-образец');
+        let card = grid.slice(firstStart, firstEnd + '\n        </a>'.length);
+
+        const cardSubs = [
+          ['<a className="scp6" href="./MakeMeLook Article.dc.html"', '<a key={a.href} className="scp6" href={a.href}'],
+          ['src="/landing/ru/look-3.jpg" alt="Как собрать размерную сетку, по которой можно считать"', 'src={a.cover} alt={a.alt}'],
+          ['\n                МЕТОДИКА\n', '\n                {a.badge}\n'],
+          ['\n                7 мин\n', '\n                {a.meta}\n'],
+          ['\n              Как собрать размерную сетку, по которой можно считать\n', '\n              {a.title}\n'],
+          ['\n              Восемь замеров, которых достаточно, и три, которые чаще всего забывают внести.\n', '\n              {a.excerpt}\n']
+        ];
+        for (const [from, into] of cardSubs) {
+          if (!card.includes(from)) throw new Error(`S12Journal: в карточке-образце нет «${from.trim().slice(0, 48)}»`);
+          card = card.replace(from, into);
+        }
+        // Отступ внутри .map() на два пробела глубже.
+        card = card.split('\n').map((l) => (l ? '  ' + l : l)).join('\n');
+
+        return (
+          `{v.jLead ? (\n` +
+          `      ${lead.trimStart()}\n` +
+          `      ) : null}\n` +
+          `      {" "}\n` +
+          `      {v.jRest.length > 0 ? (\n` +
+          `      ${openGrid}\n` +
+          `${card}\n` +
+          `      </div>\n` +
+          `      ) : null}\n`
+        )
+          // Внутри условия большая карточка остаётся как была, а сетку
+          // разворачиваем в .map().
+          .replace(`${openGrid}\n${card}`, `${openGrid}\n        {v.jRest.map((a) => (\n${card}\n        ))}`);
       }
     }
   ],
